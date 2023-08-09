@@ -1,15 +1,8 @@
-import "./Login.css";
-import logo from "../assets/logo.png";
-import elipse1 from "../assets/elipse1.png";
-import elipse2 from "../assets/elipse2.png";
-import elipse3 from "../assets/elipse3.png";
-import logoa from "../assets/logoa.png";
-import elipse1a from "../assets/elipse1a.png";
-import elipse2a from "../assets/elipse2a.png";
-import elipse3a from "../assets/elipse3a.png";
 import { useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import BackgroundCircles from "../assets/BackgroundCircles";
+import Logo from "../assets/Logo";
 
 function Login() {
   const [isResponsavel, setIsResponsavel] = useState(false);
@@ -21,33 +14,20 @@ function Login() {
 
   return (
     <div
-      className="container"
+      className="absolute w-full h-full z-20 flex items-center justify-center"
       style={{
         backgroundImage: isResponsavel
           ? "linear-gradient(108deg, #C6D6FF 0%, #FFF 100%)"
           : "linear-gradient(108deg, #e5c6ff 0%, #fff 100%)",
       }}
     >
-      <img
-        className="svg topleft"
-        src={isResponsavel ? elipse2a : elipse2}
-        alt=""
-      />
-      <img
-        className="svg botleft"
-        src={isResponsavel ? elipse1a : elipse1}
-        alt=""
-      />
-      <img
-        className="svg botright"
-        src={isResponsavel ? elipse3a : elipse3}
-        alt=""
-      />
-      <div className="logotitle">
-        <img src={isResponsavel ? logoa : logo} alt="" className="logo" />
+      <BackgroundCircles isResponsavel={isResponsavel} />
+      <div className="logotitle z-20 h-full w-1/3 flex items-center justify-center flex-col">
+        <Logo isResponsavel={isResponsavel} />
+
         <p className="titlelogo">Faça seu login</p>
       </div>
-      <div className="block">
+      <div className="block z-20 h-full w-2/3">
         <div className="buttons">
           <button
             className={

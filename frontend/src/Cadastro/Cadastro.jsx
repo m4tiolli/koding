@@ -1,12 +1,3 @@
-import "./Cadastro.css";
-import logo from "../assets/logo.png";
-import elipse1 from "../assets/elipse1.png";
-import elipse2 from "../assets/elipse2.png";
-import elipse3 from "../assets/elipse3.png";
-import logoa from "../assets/logoa.png";
-import elipse1a from "../assets/elipse1a.png";
-import elipse2a from "../assets/elipse2a.png";
-import elipse3a from "../assets/elipse3a.png";
 import { useState } from "react";
 
 function Cadastro() {
