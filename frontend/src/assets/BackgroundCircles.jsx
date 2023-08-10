@@ -2,7 +2,7 @@
 export default function BackgroundCircles({ isResponsavel }) {
     return (
         <>
-            <svg className="absolute top-0 left-0 -z-10" width="587" height="413" viewBox="0 0 587 413" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg className="absolute -top-16 -left-20 -z-10 scale-75" width="587" height="413" viewBox="0 0 587 413" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <ellipse cx="69.0033" cy="-24.0398" rx="291.595" ry="358.703" transform="rotate(67.9215 69.0033 -24.0398)" fill="url(#paint0_radial_149_69)" fillOpacity="0.6" />
                 <g filter="url(#filter0_bf_149_69)">
                     <ellipse cx="144.003" cy="-17.9599" rx="291.595" ry="358.703" transform="rotate(67.9215 144.003 -17.9599)" fill="url(#paint1_radial_149_69)" fillOpacity="0.6" />
@@ -27,7 +27,7 @@ export default function BackgroundCircles({ isResponsavel }) {
                     </radialGradient>
                 </defs>
             </svg>
-            <svg className="absolute left-0 bottom-0 -z-10" width="512" height="365" viewBox="0 0 512 365" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg className="absolute -left-16 -bottom-12 -z-10 scale-75" width="512" height="365" viewBox="0 0 512 365" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <ellipse cx="-5.99769" cy="430.305" rx="291.595" ry="358.703" transform="rotate(67.9215 -5.99769 430.305)" fill="url(#paint0_radial_149_72)" fillOpacity="0.6" />
                 <g filter="url(#filter0_bf_149_72)">
                     <ellipse cx="69.0023" cy="436.384" rx="291.595" ry="358.703" transform="rotate(67.9215 69.0023 436.384)" fill="url(#paint1_radial_149_72)" fillOpacity="0.6" />
@@ -52,7 +52,7 @@ export default function BackgroundCircles({ isResponsavel }) {
                     </radialGradient>
                 </defs>
             </svg>
-            <svg className="absolute right-0 bottom-0 -z-10" width="390" height="459" viewBox="0 0 390 459" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg className="absolute -right-12 -bottom-16  -z-10 scale-75" width="390" height="459" viewBox="0 0 390 459" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <ellipse cx="488.837" cy="511.036" rx="291.595" ry="358.703" transform="rotate(-47.5782 488.837 511.036)" fill="url(#paint0_radial_146_52)" fillOpacity="0.6" />
                 <g filter="url(#filter0_bf_146_52)">
                     <ellipse cx="487.838" cy="457.23" rx="291.595" ry="358.703" transform="rotate(-47.5782 487.838 457.23)" fill="url(#paint1_radial_146_52)" fillOpacity="0.6" />
