@@ -6,13 +6,14 @@ const cors = require("cors");
 const db = mysql.createPool({
   host: "localhost",
   user: "root",
-  password: "",
+  password: "root",
   database: "koding",
 });
 
 app.use(cors());
 app.use(express.json());
 
+// CRUD - responsável
 app.get("/responsavel", (req, res) => {
   db.query("SELECT * FROM responsavel", (err, result) => {
     if (err) {
@@ -73,6 +74,8 @@ app.delete("/responsavel/:id", (req, res) => {
     }
   });
 });
+
+// CRUD - criança 
 app.get("/crianca", (req, res) => {
   db.query("SELECT * FROM crianca", (err, result) => {
     if (err) {
@@ -132,6 +135,50 @@ app.delete("/crianca/:id", (req, res) => {
       res.json({ message: "Usuário deletado com sucesso" });
     }
   });
+});
+
+// Login - responsável
+app.post("/responsavel/login", (req, res) => {
+  const { email, senha } = req.body;
+  db.query(
+    "SELECT * FROM responsavel WHERE email = ? AND senha = ?",
+    [email, senha],
+    (err, result) => {
+      if (err) {
+        console.error("Erro ao fazer login", err);
+        res.status(500).json({ error: "Erro ao fazer login" });
+      } else if (result.length === 0) {
+        res.status(401).json({ error: "Credenciais inválidas" });
+      } else {
+        res.json({
+          message: "Login realizado com sucesso!",
+          user: result[0],
+        });
+      }
+    }
+  );
+});
+
+// Login - criança
+app.post("/crianca/login", (req, res) => {
+  const { email, senha } = req.body;
+  db.query(
+    "SELECT * FROM crianca WHERE email = ? AND senha = ?",
+    [email, senha],
+    (err, result) => {
+      if (err) {
+        console.error("Erro ao fazer login", err);
+        res.status(500).json({ error: "Erro ao fazer login" });
+      } else if (result.length === 0) {
+        res.status(401).json({ error: "Credenciais inválidas" });
+      } else {
+        res.json({
+          message: "Login realizado com sucesso!",
+          user: result[0],
+        });
+      }
+    }
+  );
 });
 
 app.listen(3005, () => {
