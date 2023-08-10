@@ -11,11 +11,18 @@ export default {
         verdeclaro: "#E5E9F9",
         input: "#BCC2C7",
       },
+      backgroundImage: {
+        gradient1:
+          "linear-gradient(180deg, #3CF55C 0%, #2BB0A1 53.13%, #1E7BD7 97.40%)",
+        gradient2:
+          "linear-gradient(180deg,#f09a2d 0%, #c26674 53.13%,#811bd9 97.4%)",
+      },
       width: {
         "40vw": "40vw",
       },
       height: {
         "35vh": "35vw",
+        "45vh": "44vw",
       },
     },
   },

@@ -32,7 +32,7 @@ function Login() {
         <div className="absolute top-16 w-2/5 justify-evenly flex items-center">
           <button
             className={
-              `text-2xl font-bold text-cinza hover:opacity-80 after:content-[' '] after:block after:w-4/5 after:h-[1px] after:m-auto ${!isResponsavel ? "after:bg-cinza" : "after:bg-transparent"}`
+              `text-2xl font-bold text-cinza hover:opacity-80 active:translate-y-1 active:shadow-inner px-3 py2 rounded-2xl after:content-[' '] after:block after:w-4/5 after:h-[1px] after:m-auto ${!isResponsavel ? "after:bg-cinza" : "after:bg-transparent"}`
             }
             onClick={() => setIsResponsavel(false)}
           >
@@ -40,7 +40,7 @@ function Login() {
           </button>
           <button
             className={
-              `text-2xl font-bold text-cinza hover:opacity-80 after:content-[' '] after:block after:w-4/5 after:h-[1px] after:m-auto ${isResponsavel ? "after:bg-cinza" : "after:bg-transparent"}`
+              `text-2xl font-bold text-cinza hover:opacity-80 active:translate-y-1 active:shadow-inner px-3 py2 rounded-2xl after:content-[' '] after:block after:w-4/5 after:h-[1px] after:m-auto ${isResponsavel ? "after:bg-cinza" : "after:bg-transparent"}`
             }
             onClick={() => setIsResponsavel(true)}
           >
@@ -53,9 +53,9 @@ function Login() {
             <input type={isPassVisible ? "text" : "password"} className="w-4/5 outline-0 bg-transparent placeholder:opacity-70 placeholder:text-black text-cinza" placeholder="Senha" />
             {isPassVisible ? <AiFillEyeInvisible className="text-2xl text-cinza cursor-pointer" onClick={TogglePassVisible} /> : <AiFillEye className="text-2xl text-cinza cursor-pointer" onClick={TogglePassVisible} />}
           </div>
-          <button className="bg-input rounded-xl w-2/5 h-16 my-8 text-xl text-cinza">Entrar</button>
+          <button className="bg-input rounded-xl w-2/5 h-16 my-8 text-xl text-cinza hover:opacity-70 active:shadow-inner active:translate-y-1">Entrar</button>
           <p className=" text-xl">Não tem conta?
-            <Link to={"/criar-conta"} className={`${isResponsavel ? "linkresponsavel" : "linkcrianca"} cursor-pointer`
+            <Link to={"/criar-conta"} className={`${isResponsavel ? "linkresponsavel" : "linkcrianca"} cursor-pointer font-bold hover:opacity-70`
             }>
               &nbsp;Registre-se
             </Link>
