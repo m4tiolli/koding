@@ -3,7 +3,7 @@ CREATE DATABASE koding;
 USE koding;
 
 CREATE TABLE responsavel(
-	id INT not null AUTO_INCREMENT primary key,
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	nome VARCHAR(255),
 	cpf VARCHAR(255),
 	telefone VARCHAR(255),
@@ -12,10 +12,12 @@ CREATE TABLE responsavel(
 );
 
 CREATE TABLE crianca(
-	id INT not null AUTO_INCREMENT primary key,
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	nome VARCHAR(255),
 	username VARCHAR(255),
 	email VARCHAR(255),
 	senha VARCHAR(255)
 );
+
+INSERT INTO responsavel VALUES (DEFAULT, 'ju', '13142413', '7236294', '29efu@gmail.com', '0840248');
 
