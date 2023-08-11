@@ -78,7 +78,7 @@ function Cadastro() {
             <BackgroundCircles isResponsavel={isResponsavel} />
             <div className="z-20 h-full w-2/4 flex items-end justify-center flex-col relative">
                 <div className="flex items-center justify-evenly flex-col h-full">
-                    <div className="w-2/5 justify-evenly flex items-center">
+                    <div className="w-2/5 h-1/8 justify-evenly flex items-center">
                         <button
                             className={
                                 `z-50 text-2xl font-bold text-cinza hover:opacity-80 active:translate-y-1 active:shadow-inner px-3 py2 rounded-2xl after:content-[' '] after:block after:w-4/5 after:h-[1px] after:m-auto ${!isResponsavel ? "after:bg-cinza" : "after:bg-transparent"}`
@@ -96,9 +96,9 @@ function Cadastro() {
                             Responsável
                         </button>
                     </div>
-                    <div className={`${isResponsavel ? "before:bg-verdeclaro bg-verde" : "before:bg-roxoclaro bg-roxo"} z-10 relative w-40vw h-45vh rounded-2xl flex flex-col items-center before:block before:absolute before:top-0 before:content-[' '] before:w-40vw before:h-45vh before:rotate-[-8deg] before:radius-x before:-z-20 before:shadow-lg shadow-lg before:rounded-2xl`}>
-                        <h1 className="text-cinza font-bold text-4xl mb-5 absolute top-3">Crie sua conta</h1>
-                        <div className="absolute flex flex-col items-center w-full top-12">
+                    <div className={`${isResponsavel ? "before:bg-verdeclaro bg-verde" : "before:bg-roxoclaro bg-roxo"} z-10 relative w-40vw h-4/5 rounded-2xl flex flex-col justify-between items-center before:block before:content-[' '] before:w-40vw before:h-full before:rotate-[-8deg] before:radius-x before:-z-20 before:shadow-lg shadow-lg before:rounded-2xl`}>
+                        <h1 className="text-cinza font-bold text-4xl absolute top-6">Crie sua conta</h1>
+                        <div className="flex flex-col items-center w-full absolute top-16">
                             <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} className="bg-input px-10 py-3 w-3/4 placeholder:opacity-70 rounded-lg text-xl placeholder:text-black my-3 outline-0 text-cinza" placeholder="Nome" />
                             {isResponsavel ? (<>
                                 <input type="text" value={cpf} onChange={(e) => setCpf(e.target.value)} className="bg-input px-10 py-3 w-3/4 placeholder:opacity-70 rounded-lg text-xl placeholder:text-black my-3 outline-0 text-cinza" placeholder="CPF" />
@@ -116,11 +116,11 @@ function Cadastro() {
                                 {isPassVisible ? <AiFillEyeInvisible className="text-2xl text-cinza cursor-pointer" onClick={TogglePassVisible} /> : <AiFillEye className="text-2xl text-cinza cursor-pointer" onClick={TogglePassVisible} />}
                             </div>
                         </div>
-                        <button className="bg-input rounded-xl w-2/5 h-16 my-8 text-xl text-cinza hover:opacity-70 active:shadow-inner active:translate-y-1 absolute bottom-2 " onClick={Cadastrar}>Cadastrar</button>
+                        <button className="bg-input rounded-xl w-2/5 h-16 absolute -bottom-3 my-8 text-xl text-cinza hover:opacity-70 active:shadow-inner active:translate-y-1" onClick={Cadastrar}>Cadastrar</button>
                     </div>
                 </div>
             </div>
-            <div className="logotitle z-20 h-full w-1/3 m-auto flex items-start justify-center flex-col">
+            <div className="logotitle z-20 h-full w-1/3 m-auto flex items-start justify-center gap-2 flex-col">
                 <Logo isResponsavel={isResponsavel} />
                 <p className={`text-7xl font-bold titleregister ${isResponsavel ? "bg-gradient1" : "bg-gradient2"}`}>Junte-se a nós e faça a diferença!</p>
                 <div className="flex items-center my-3 text-cinza">

@@ -52,7 +52,7 @@ function Login() {
         <p className="text-7xl text-cinza font-bold">Faça seu login</p>
       </div>
       <div className="z-20 h-full w-2/3 flex items-center justify-center flex-col relative">
-        <div className="absolute top-16 w-2/5 justify-evenly flex items-center">
+        <div className="w-2/5 h-1/4 justify-evenly flex items-center">
           <button
             className={
               `text-2xl font-bold text-cinza hover:opacity-80 active:translate-y-1 active:shadow-inner px-3 py2 rounded-2xl after:content-[' '] after:block after:w-4/5 after:h-[1px] after:m-auto ${!isResponsavel ? "after:bg-cinza" : "after:bg-transparent"}`
@@ -70,52 +70,54 @@ function Login() {
             Responsável
           </button>
         </div>
-        <div className={`${isResponsavel ? "before:bg-verdeclaro bg-verde" : "before:bg-roxoclaro bg-roxo"} z-10 relative w-40vw h-35vh rounded-2xl flex flex-col items-center justify-center before:block before:absolute before:top-0 before:content-[' '] before:w-40vw before:h-35vh before:rotate-[-8deg] before:radius-x before:-z-50 before:shadow-lg shadow-lg before:rounded-2xl`}>
-          <input
-            type="text"
-            className="bg-input px-10 py-5 w-3/4 placeholder:opacity-70 rounded-lg text-xl placeholder:text-black my-8 outline-0 text-cinza"
-            placeholder="E-mail"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <div className="bg-input px-10 py-5 w-3/4 placeholder:opacity-70 rounded-lg text-xl flex items-center justify-between">
+        <div className="h-4/5">
+          <div className={`${isResponsavel ? "before:bg-verdeclaro bg-verde" : "before:bg-roxoclaro bg-roxo"} z-10 relative w-40vw h-35vh rounded-2xl flex flex-col items-center justify-center before:block before:absolute before:top-0 before:content-[' '] before:w-40vw before:h-35vh before:rotate-[-8deg] before:radius-x before:-z-50 before:shadow-lg shadow-lg before:rounded-2xl`}>
             <input
-              type={isPassVisible ? "text" : "password"}
-              className="w-4/5 outline-0 bg-transparent placeholder:opacity-70 placeholder:text-black text-cinza"
-              placeholder="Senha"
-              value={senha}
-              onChange={(e) => setSenha(e.target.value)}
+              type="text"
+              className="bg-input px-10 py-5 w-3/4 placeholder:opacity-70 rounded-lg text-xl placeholder:text-black my-8 outline-0 text-cinza"
+              placeholder="E-mail"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
-            {isPassVisible ? (
-              <AiFillEyeInvisible
-                className="text-2xl text-cinza cursor-pointer"
-                onClick={TogglePassVisible}
+            <div className="bg-input px-10 py-5 w-3/4 placeholder:opacity-70 rounded-lg text-xl flex items-center justify-between">
+              <input
+                type={isPassVisible ? "text" : "password"}
+                className="w-4/5 outline-0 bg-transparent placeholder:opacity-70 placeholder:text-black text-cinza"
+                placeholder="Senha"
+                value={senha}
+                onChange={(e) => setSenha(e.target.value)}
               />
-            ) : (
-              <AiFillEye
-                className="text-2xl text-cinza cursor-pointer"
-                onClick={TogglePassVisible}
-              />
+              {isPassVisible ? (
+                <AiFillEyeInvisible
+                  className="text-2xl text-cinza cursor-pointer"
+                  onClick={TogglePassVisible}
+                />
+              ) : (
+                <AiFillEye
+                  className="text-2xl text-cinza cursor-pointer"
+                  onClick={TogglePassVisible}
+                />
+              )}
+            </div>
+            {loginError && (
+              <p className="text-red-500 my-2">{loginError}</p>
             )}
-          </div>
-          {loginError && (
-            <p className="text-red-500 my-2">{loginError}</p>
-          )}
-          <button
-            className="bg-input rounded-xl w-2/5 h-16 my-8 text-xl text-cinza hover:opacity-70 active:shadow-inner active:translate-y-1"
-            onClick={handleLogin}
-          >
-            Entrar
-          </button>
-          <p className=" text-xl">
-            Não tem conta?
-            <Link
-              to={"/criar-conta"}
-              className={`${isResponsavel ? "linkresponsavel" : "linkcrianca"} cursor-pointer font-bold hover:opacity-70`}
+            <button
+              className="bg-input rounded-xl w-2/5 h-16 my-8 text-xl text-cinza hover:opacity-70 active:shadow-inner active:translate-y-1"
+              onClick={handleLogin}
             >
-              &nbsp;Registre-se
-            </Link>
-          </p>
+              Entrar
+            </button>
+            <p className=" text-xl">
+              Não tem conta?
+              <Link
+                to={"/criar-conta"}
+                className={`${isResponsavel ? "linkresponsavel" : "linkcrianca"} cursor-pointer font-bold hover:opacity-70`}
+              >
+                &nbsp;Registre-se
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
     </div>
