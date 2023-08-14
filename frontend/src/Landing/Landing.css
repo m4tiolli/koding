@@ -1,19 +1,5 @@
-
-.card{
-    width: 30rem;
-    border-radius: 15px;
-    letter-spacing: 5px;
+li {
+  font-family: monospace;
+  font-size: 1.5em;
+  font-weight: bold;
 }
-
-li{
-    font-family: monospace;
-    font-size: 1.5em;
-    font-weight: bold;
-}
-
-header{
-    display: flex;
-    justify-content: space-between;
-}
-
-
