@@ -20,12 +20,16 @@ function Cadastro() {
     const [telefone, setTelefone] = useState("")
     const [email, setEmail] = useState("")
     const [senha, setSenha] = useState("")
+    const [confirmarSenha, setConfirmarSenha] = useState("");
 
     const Cadastrar = (e) => {
         e.preventDefault();
         if (isResponsavel) {
-            if (nome === '' || cpf === '' || telefone === '' || email === '' || senha === '') {
+            if (nome === '' || cpf === '' || telefone === '' || email === '' || senha === '' || confirmarSenha === '') {
                 alert('Por favor, preencha todos os campos.');
+                return;
+            } else if (senha !== confirmarSenha) {
+                alert("As senhas não coincidem.");
                 return;
             } else {
                 const bodyresponsavel = { nome, cpf, telefone, email, senha };
@@ -44,8 +48,11 @@ function Cadastro() {
                         alert('Erro ao cadastrar usuário');
                     });
             }
-        } else if (!isResponsavel && nome === '' || username === '' || email === '' || senha === '') {
+        } else if (!isResponsavel && nome === '' || username === '' || email === '' || senha === '' || confirmarSenha === '') {
             alert('Por favor, preencha todos os campos.');
+            return;
+        } else if (senha !== confirmarSenha) {
+            alert("As senhas não coincidem.");
             return;
         } else {
             const bodyresponsavel = { nome, cpf, telefone, email, senha };
@@ -112,7 +119,7 @@ function Cadastro() {
                                 {isPassVisible ? <AiFillEyeInvisible className="text-2xl text-cinza cursor-pointer" onClick={TogglePassVisible} /> : <AiFillEye className="text-2xl text-cinza cursor-pointer" onClick={TogglePassVisible} />}
                             </div>
                             <div className="bg-input px-10 py-3 w-3/4 my-3 placeholder:opacity-70 rounded-lg text-xl flex items-center justify-between">
-                                <input type={isPassVisible ? "text" : "password"} className="w-4/5 outline-0 bg-transparent placeholder:opacity-70 placeholder:text-black text-cinza" placeholder="Confirmar senha" />
+                                <input type={isPassVisible ? "text" : "password"} className="w-4/5 outline-0 bg-transparent placeholder:opacity-70 placeholder:text-black text-cinza" placeholder="Confirmar senha"value={confirmarSenha} onChange={(e) => setConfirmarSenha(e.target.value)} />
                                 {isPassVisible ? <AiFillEyeInvisible className="text-2xl text-cinza cursor-pointer" onClick={TogglePassVisible} /> : <AiFillEye className="text-2xl text-cinza cursor-pointer" onClick={TogglePassVisible} />}
                             </div>
                         </div>
