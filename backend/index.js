@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
+// const jwt = require("jsonwebtoken");
+
+// const jwtSecret = "KodingTOP";
 
 const db = mysql.createPool({
   host: "localhost",
@@ -12,6 +15,10 @@ const db = mysql.createPool({
 
 app.use(cors());
 app.use(express.json());
+
+// function generateToken(user) {
+//   return jwt.sign(user, jwtSecret, { expiresIn: "1m" });
+// }
 
 // CRUD - responsável
 app.get("/responsavel", (req, res) => {
@@ -150,8 +157,11 @@ app.post("/responsavel/login", (req, res) => {
       } else if (result.length === 0) {
         res.status(401).json({ error: "Credenciais inválidas" });
       } else {
+        // const user = { id: result[0].id, email: result[0].email };
+        // const token = generateToken(user);
         res.json({
           message: "Login realizado com sucesso!",
+          // token: token,
           user: result[0],
         });
       }
@@ -172,8 +182,11 @@ app.post("/crianca/login", (req, res) => {
       } else if (result.length === 0) {
         res.status(401).json({ error: "Credenciais inválidas" });
       } else {
+        // const user = { id: result[0].id, email: result[0].email };
+        // const token = generateToken(user);
         res.json({
           message: "Login realizado com sucesso!",
+          // token: token,
           user: result[0],
         });
       }
