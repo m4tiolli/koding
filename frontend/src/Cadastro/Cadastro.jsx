@@ -4,7 +4,7 @@ import Logo from './../assets/Logo';
 import { AiFillEyeInvisible } from 'react-icons/ai';
 import { AiFillEye } from 'react-icons/ai';
 import { BsArrowLeft } from 'react-icons/bs'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Cadastro() {
     const [isResponsavel, setIsResponsavel] = useState(false);
@@ -13,6 +13,8 @@ function Cadastro() {
     const TogglePassVisible = () => {
         setPassVisible(!isPassVisible)
     }
+
+    const navigate = useNavigate();
 
     const [nome, setNome] = useState("")
     const [cpf, setCpf] = useState("")
@@ -42,6 +44,7 @@ function Cadastro() {
                 })
                     .then(() => {
                         alert('Usuário cadastrado com sucesso');
+                        navigate("/login");
                     })
                     .catch((error) => {
                         console.log(error);
@@ -65,6 +68,7 @@ function Cadastro() {
             })
                 .then(() => {
                     alert('Usuário cadastrado com sucesso');
+                    navigate("/login");
                 })
                 .catch((error) => {
                     console.log(error);
@@ -119,7 +123,7 @@ function Cadastro() {
                                 {isPassVisible ? <AiFillEyeInvisible className="text-2xl text-cinza cursor-pointer" onClick={TogglePassVisible} /> : <AiFillEye className="text-2xl text-cinza cursor-pointer" onClick={TogglePassVisible} />}
                             </div>
                             <div className="bg-input px-10 py-3 w-3/4 my-3 placeholder:opacity-70 rounded-lg text-xl flex items-center justify-between">
-                                <input type={isPassVisible ? "text" : "password"} className="w-4/5 outline-0 bg-transparent placeholder:opacity-70 placeholder:text-black text-cinza" placeholder="Confirmar senha"value={confirmarSenha} onChange={(e) => setConfirmarSenha(e.target.value)} />
+                                <input type={isPassVisible ? "text" : "password"} className="w-4/5 outline-0 bg-transparent placeholder:opacity-70 placeholder:text-black text-cinza" placeholder="Confirmar senha" value={confirmarSenha} onChange={(e) => setConfirmarSenha(e.target.value)} />
                                 {isPassVisible ? <AiFillEyeInvisible className="text-2xl text-cinza cursor-pointer" onClick={TogglePassVisible} /> : <AiFillEye className="text-2xl text-cinza cursor-pointer" onClick={TogglePassVisible} />}
                             </div>
                         </div>
