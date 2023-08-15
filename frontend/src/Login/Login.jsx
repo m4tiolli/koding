@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { Link, useNavigate  } from "react-router-dom"; // Importe o withRouter
+import { Link, useNavigate  } from "react-router-dom";
 import BackgroundCircles from "../assets/BackgroundCircles";
 import Logo from "../assets/Logo";
 import './Login.css'
