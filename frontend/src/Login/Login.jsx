@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom"; // Importe o withRouter
 import BackgroundCircles from "../assets/BackgroundCircles";
 import Logo from "../assets/Logo";
 import './Login.css'
@@ -11,6 +11,8 @@ function Login() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [loginError, setLoginError] = useState(null);
+
+  const navigate = useNavigate();
 
   const TogglePassVisible = () => {
     setPassVisible(!isPassVisible);
@@ -27,7 +29,8 @@ function Login() {
       });
 
       if (response.ok) {
-        console.log("Login efetuado")
+        console.log("Login efetuado");
+        navigate("/");
       } else {
         const data = await response.json();
         setLoginError(data.error);
