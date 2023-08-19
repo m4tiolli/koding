@@ -53,6 +53,18 @@ function Materiais (){
 
             {/* Conteudo */}
           
+            <main className="w-full ml-56 mr-2 overflow-hidden">
+                <container className="flex h-64 w-96 ml-10 mt-10 items-center justify-center">
+                <form className="flex rounded-2xl w-full items-center justify-center text-white text-xl p-2" style={{ background: "#811CD7"}}> {/*wrapper*/}
+                    <input type="text" className="bg-transparent outline-none text-2xl"  placeholder="Buscar"/>
+                    <a href="">
+                        <BiSearch className="text-3xl text-white"></BiSearch>
+                    </a>
+                </form>
+                </container> {/*conteudo*/} 
+               
+            </main>
+
         </div>
     )
 }
