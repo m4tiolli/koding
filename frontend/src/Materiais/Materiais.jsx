@@ -51,6 +51,19 @@ function Materiais (){
              
             </aside>
 
+            {/* Barra de pesquisa - menu */}
+
+            <header className="fixed w-full h-16 flex items-center justify-end ml-52 shadow-sm" style={{ background: "#EDD8FF"}}>
+               
+                <form className="flex w-full items-center justify-center" action="">
+                    <input className="bg-transparent outline-none w-7/12 text-2xl" type="text" />
+                    <a href="">
+                        <BiSearch className="text-3xl"></BiSearch>
+                    </a>
+                </form>
+               
+            </header>
+
             {/* Conteudo */}
           
             <main className="w-full ml-56 mr-2 overflow-hidden place-content-center">
@@ -58,7 +71,7 @@ function Materiais (){
 
                      {/* Barra de pesquisa */}
                     <container className="flex h-64 w-5/12 ml-10 mt-10 items-center justify-center gap-3">
-                        <form className="flex rounded-xl w-full items-center justify-center text-white text-xl p-2" style={{ background: "#811CD7"}}>
+                        <form action="" className="flex rounded-xl w-full items-center justify-center text-white text-xl p-2" style={{ background: "#811CD7"}}>
                             <input type="text" className="bg-transparent outline-none text-2xl"/>
                             <a href="">
                                 <BiSearch className="text-3xl text-white ml-20"></BiSearch>
