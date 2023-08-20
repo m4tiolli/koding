@@ -9,7 +9,7 @@ import './Materiais.css';
 
 function Materiais (){
     return(
-        <div className="flex h-screen w-full" style={{ background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)"}}>
+        <div className="flex h-full w-full" style={{ background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)"}}>
 
             {/* Menu */}
 
@@ -20,28 +20,28 @@ function Materiais (){
                 </header>
 
                 <nav className="flex flex-col flex-auto w-full">
-                    <button className="h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50" style={{transition: '150ms ease-in'}}>
+                    <button className="h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 " style={{transition: '150ms ease-in'}}>
                         <span className="inline-flex items-center gap-5">
                             <BsBook className="relative text-3xl">materiais</BsBook>
                             <span className="text-lg">Materiais</span>
                         </span>
                     </button>
 
-                    <button className="h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50" style={{transition: '150ms ease-in'}}>
+                    <button className="h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 " style={{transition: '150ms ease-in'}}>
                         <span className="inline-flex items-center gap-5">
                             <AiOutlineUser className="relative text-3xl">perfil</AiOutlineUser>
                             <span className="text-lg">Perfil</span>
                         </span>
                     </button>
 
-                    <button className="h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50" style={{transition: '150ms ease-in'}}>
+                    <button className="h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 " style={{transition: '150ms ease-in'}}>
                         <span className="inline-flex items-center gap-5">
                             <PiSword className="relative text-3xl">desafios</PiSword>
                             <span className="text-lg">Desafios</span>
                         </span>
                     </button>
 
-                    <button className="h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50" style={{transition: '150ms ease-in'}}>
+                    <button className="h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 " style={{transition: '150ms ease-in'}}>
                         <span className="inline-flex items-center gap-5">
                             <CiCircleMore className="relative text-3xl">mais</CiCircleMore>
                             <span className="text-lg">Mais</span>
@@ -87,7 +87,99 @@ function Materiais (){
 
                     </container> 
 
-                    
+                    {/* Cards */}
+
+                    {/* HTML */}
+
+                    <container className="flex flex-col justify-center ml-10 space-y-8">
+                        <spam className="text-2xl font-semibold">
+                            Aprendendo HTML
+                        </spam>
+                        <div className="flex space-x-16 items-center">
+
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)"}}>
+                            </div>
+
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)"}}>
+                            </div>
+
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)"}}>
+                            </div>
+
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)"}}>
+                            </div>
+
+                        </div>
+                    </container>
+
+                    {/* CSS */}
+
+                    <container className="flex flex-col justify-center ml-10 mt-32 space-y-8">
+                        <spam className="text-2xl font-semibold">
+                            Aprendendo CSS
+                        </spam>
+                        <div className="flex space-x-16 items-center">
+
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #1566C4 0%, #438ADD 100%)"}}>
+                            </div>
+
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #1566C4 0%, #438ADD 100%)"}}>
+                            </div>
+
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #1566C4 0%, #438ADD 100%)"}}>
+                            </div>
+
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #1566C4 0%, #438ADD 100%)"}}>
+                            </div>
+
+                        </div>
+                    </container>
+
+                    {/* JS */}
+
+                    <container className="flex flex-col justify-center ml-10 mt-32 space-y-8">
+                        <spam className="text-2xl font-semibold">
+                            Aprendendo JavaSript
+                        </spam>
+                        <div className="flex space-x-16 items-center">
+
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #F2D01F 0%, #E3BA4F 100%)"}}> 
+                            </div>
+
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #F2D01F 0%, #E3BA4F 100%)"}}> 
+                            </div>
+
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #F2D01F 0%, #E3BA4F 100%)"}}>
+                            </div>
+
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #F2D01F 0%, #E3BA4F 100%)"}}>
+                            </div>
+                            
+                        </div>
+                    </container>
+
+                     {/* PHP */}
+
+                     <container className="flex flex-col justify-center ml-10 mt-32 mb-32 space-y-8">
+                        <spam className="text-2xl font-semibold">
+                            Aprendendo PHP
+                        </spam>
+                        <div className="flex space-x-16 items-center">
+
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #485BBB 0%, #707EC6 100%)"}}>
+                            </div>
+
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #485BBB 0%, #707EC6 100%)"}}>
+                            </div>
+                            
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #485BBB 0%, #707EC6 100%)"}}>
+                            </div>
+
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #485BBB 0%, #707EC6 100%)"}}>
+                            </div>
+
+                        </div>
+                    </container>
 
                
             </main>
