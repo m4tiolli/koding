@@ -6,8 +6,17 @@ import { BiSearch, BiHelpCircle} from "react-icons/bi";
 
 import Logo from '../assets/kodingLogo.png';
 import './Materiais.css';
+import { useState } from "react";
 
-function Materiais() {
+const Materiais = () => {
+
+    // clicar e abrir
+    const [open, setOpen] = useState (false);
+     
+    // clicar e sair
+    const button = useRef();
+    const navRef = useRef();
+
     return(
         <div className="flex h-full w-full" style={{ background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)"}}>
 
@@ -42,7 +51,7 @@ function Materiais() {
                         </span>
                     </button>
 
-                    <button className="h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50" style={{transition: '150ms ease-in'}}>
+                    <button ref={buttonRef} onClick={()=>setOpen(!open)} className="h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50" style={{transition: '150ms ease-in'}}>
                         <span className="inline-flex items-center gap-5">
                             <CiCircleMore className="relative text-3xl">mais</CiCircleMore>
                             <span className="text-lg">Mais</span>
@@ -186,36 +195,42 @@ function Materiais() {
 
                     {/* Menu pop up */}
 
-                        <nav className="flex flex-col space-y-3 rounded-xl shadow-md w-56 ml-5 p-5 mb-10" style={{ background: "#E4D9ED"}}>
+                    {
+                        open &&(
+                            <nav ref={navRef} onClick={()=>setOpen(false)} className="flex flex-col space-y-3 rounded-xl shadow-md w-56 ml-5 p-5 mb-10" style={{ background: "#E4D9ED"}}>
 
-                           <button className="text-left rounded-lg leading-none hover:bg-purple-700 hover:text-white ">
-                            <span className="inline-flex items-center gap-2">
+                                <button className="text-left rounded-lg leading-none hover:bg-purple-700 hover:text-white ">
+                                    <span className="inline-flex items-center gap-2">
+                                        
+                                        <span className="text-lg">Configurações</span>
+                                    </span>
+                                </button>
+
+                                <button className="text-left rounded-lg leading-none hover:bg-purple-700 hover:text-white ">
+                                    <span className="inline-flex items-center gap-2">
+                                        <BiHelpCircle className="relative text-lg"></BiHelpCircle>
+                                        <span className="text-lg">Central de Ajuda</span>
+                                    </span>
+                                </button>
+
+                                <button className="text-left rounded-lg leading-none mb-32 hover:bg-purple-700 hover:text-white ">
+                                    <span className="inline-flex items-center gap-2">
+                                        <BiHelpCircle className="relative text-lg"></BiHelpCircle>
+                                        <span className="text-lg">Sair</span>
+                                    </span>
+                                </button>
                                 
-                                <span className="text-lg">Configurações</span>
-                            </span>
-                           </button>
-
-                           <button className="text-left rounded-lg leading-none hover:bg-purple-700 hover:text-white ">
-                            <span className="inline-flex items-center gap-2">
-                                <BiHelpCircle className="relative text-lg"></BiHelpCircle>
-                                <span className="text-lg">Central de Ajuda</span>
-                            </span>
-                           </button>
-
-                           <button className="text-left rounded-lg leading-none mb-32 hover:bg-purple-700 hover:text-white ">
-                            <span className="inline-flex items-center gap-2">
-                                <BiHelpCircle className="relative text-lg"></BiHelpCircle>
-                                <span className="text-lg">Sair</span>
-                            </span>
-                           </button>
-                           
-                           <button className="text-center rounded-lg leading-none mb-32 border-1 border-red hover:scale-110" style={{ background: "#C4BCC7", transition: "300ms ease-in"}}>
-                            <span className="inline-flex items-center">
-                                <span className="text-lg">Dar Feedback</span>
-                            </span>
-                           </button>
+                                <button className="text-center rounded-lg leading-none mb-32 border-1 border-red hover:scale-110" style={{ background: "#C4BCC7", transition: "300ms ease-in"}}>
+                                    <span className="inline-flex items-center">
+                                        <span className="text-lg">Dar Feedback</span>
+                                    </span>
+                                </button>
 
                         </nav>
+                        )
+                    }
+
+                        
                
             </main>
 
