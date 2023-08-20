@@ -2,12 +2,12 @@ import { BsBook, BsFilter } from "react-icons/bs";
 import { PiSword } from "react-icons/pi";
 import { AiOutlineUser } from "react-icons/ai";
 import {CiCircleMore } from "react-icons/ci";
-import { BiSearch} from "react-icons/bi";
+import { BiSearch, BiHelpCircle} from "react-icons/bi";
 
 import Logo from '../assets/kodingLogo.png';
 import './Materiais.css';
 
-function Materiais (){
+function Materiais() {
     return(
         <div className="flex h-full w-full" style={{ background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)"}}>
 
@@ -20,6 +20,7 @@ function Materiais (){
                 </header>
 
                 <nav className="flex flex-col flex-auto w-full">
+
                     <button className="h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 " style={{transition: '150ms ease-in'}}>
                         <span className="inline-flex items-center gap-5">
                             <BsBook className="relative text-3xl">materiais</BsBook>
@@ -41,12 +42,13 @@ function Materiais (){
                         </span>
                     </button>
 
-                    <button className="h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 " style={{transition: '150ms ease-in'}}>
+                    <button className="h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50" style={{transition: '150ms ease-in'}}>
                         <span className="inline-flex items-center gap-5">
                             <CiCircleMore className="relative text-3xl">mais</CiCircleMore>
                             <span className="text-lg">Mais</span>
                         </span>
                     </button>
+
                 </nav>
              
             </aside>
@@ -66,7 +68,8 @@ function Materiais (){
 
             {/* Conteudo */}
           
-            <main className="w-full ml-56 mr-2 overflow-hidden place-content-center">
+            <main className="w-full ml-56 mr-2 overflow-hidden">
+
 
 
                      {/* Barra de pesquisa */}
@@ -181,6 +184,38 @@ function Materiais (){
                         </div>
                     </container>
 
+                    {/* Menu pop up */}
+
+                        <nav className="flex flex-col space-y-3 rounded-xl shadow-md w-56 ml-5 p-5 mb-10" style={{ background: "#E4D9ED"}}>
+
+                           <button className="text-left rounded-lg leading-none hover:bg-purple-700 hover:text-white ">
+                            <span className="inline-flex items-center gap-2">
+                                
+                                <span className="text-lg">Configurações</span>
+                            </span>
+                           </button>
+
+                           <button className="text-left rounded-lg leading-none hover:bg-purple-700 hover:text-white ">
+                            <span className="inline-flex items-center gap-2">
+                                <BiHelpCircle className="relative text-lg"></BiHelpCircle>
+                                <span className="text-lg">Central de Ajuda</span>
+                            </span>
+                           </button>
+
+                           <button className="text-left rounded-lg leading-none mb-32 hover:bg-purple-700 hover:text-white ">
+                            <span className="inline-flex items-center gap-2">
+                                <BiHelpCircle className="relative text-lg"></BiHelpCircle>
+                                <span className="text-lg">Sair</span>
+                            </span>
+                           </button>
+                           
+                           <button className="text-center rounded-lg leading-none mb-32 border-1 border-red hover:scale-110" style={{ background: "#C4BCC7", transition: "300ms ease-in"}}>
+                            <span className="inline-flex items-center">
+                                <span className="text-lg">Dar Feedback</span>
+                            </span>
+                           </button>
+
+                        </nav>
                
             </main>
 
