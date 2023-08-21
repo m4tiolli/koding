@@ -11,7 +11,7 @@ import CardCarousel from "../assets/CardCarousel";
 import svgs from '../assets/SvgLanding';
 
 const settings = {
-  dots: false,
+  dots: true,
   infinite: true,
   speed: 1300,
   slidesToShow: 1,
@@ -31,19 +31,19 @@ function Landing() {
         {/* group aprenda */}
 
 
-        <div className="flex flex-col gap-8 items-center justify-center relative">
-          <h1 className="text-center text-7xl w-4/5 text-cinza">Aprenda a programar!</h1>
-          <h1 className="text-center text-2xl w-5/6 text-cinza">Conheça os conceitos básicos para iniciar sua jornada dev!</h1>
-          <button className=" text-center uppercase bg-[#EE9765] w-1/4 h-14 rounded-xl shadow-md text-white flex justify-evenly items-center relative my-2">Comece agora <FaAngleRight className="text-2xl" /></button>
+        <div className="flex flex-col gap-6 items-center justify-center relative">
+          <h1 className="text-center text-4xl w-4/5 text-cinza">Aprenda a programar!</h1>
+          <h1 className="text-center text-lg w-7/8 text-cinza">Conheça os conceitos básicos para iniciar sua jornada dev!</h1>
+          <button className=" text-center uppercase bg-[#EE9765] w-fit h-14 rounded-xl shadow-md text-white flex justify-evenly items-center relative my-2 px-2 text-xs">Comece agora <FaAngleRight className="text-2xl" /></button>
         </div>
 
       </div>
 
       {/* group ensinos */}
 
-      <div className="bg-[#8654AD] h-fit py-20 flex items-center justify-around z-50 relative">
-        <h1 className="pl-10 text-6xl leading-[5rem]  text-white mt-10 text-center">O que você<br /> irá aprender?</h1>
-        <div className='w-1/3'>
+      <div className="bg-[#8654AD] h-[28rem] py-20 flex flex-col items-center justify-between z-50 relative">
+        <h1 className="text-3xl leading-[3rem] text-white text-center">O que você irá aprender?</h1>
+        <div className='w-screen'>
           <Slider {...settings}>
             <CardCarousel props={svgs.html} />
             <CardCarousel props={svgs.css} />
