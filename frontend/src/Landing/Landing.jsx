@@ -41,9 +41,9 @@ function Landing() {
 
       {/* group ensinos */}
 
-      <div className="bg-[#8654AD] h-[28rem] py-20 flex flex-col items-center justify-between z-50 relative">
-        <h1 className="text-3xl leading-[3rem] text-white text-center">O que você irá aprender?</h1>
-        <div className='w-screen'>
+      <div className="bg-[#8654AD] h-[28rem] py-20 flex flex-col lg:flex-row items-center justify-evenly z-50 relative">
+        <h1 className="text-3xl leading-[10rem] lg:text-5xl lg:w-1/4 text-white text-center">O que você irá aprender?</h1>
+        <div className='w-screen lg:w-2/4'>
           <Slider {...settings}>
             <CardCarousel props={svgs.html} />
             <CardCarousel props={svgs.css} />
