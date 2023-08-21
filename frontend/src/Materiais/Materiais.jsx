@@ -14,8 +14,8 @@ const Materiais = () => {
     const [open, setOpen] = useState (false);
      
     // clicar e sair
-    const button = useRef();
-    const navRef = useRef();
+    // const button = useRef();
+    // const navRef = useRef();
 
     return(
         <div className="flex h-full w-full" style={{ background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)"}}>
@@ -51,7 +51,7 @@ const Materiais = () => {
                         </span>
                     </button>
 
-                    <button ref={buttonRef} onClick={()=>setOpen(!open)} className="h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50" style={{transition: '150ms ease-in'}}>
+                    <button onClick={()=>setOpen(!open)} className="h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50" style={{transition: '150ms ease-in'}}>
                         <span className="inline-flex items-center gap-5">
                             <CiCircleMore className="relative text-3xl">mais</CiCircleMore>
                             <span className="text-lg">Mais</span>
@@ -197,7 +197,7 @@ const Materiais = () => {
 
                     {
                         open &&(
-                            <nav ref={navRef} onClick={()=>setOpen(false)} className="flex flex-col space-y-3 rounded-xl shadow-md w-56 ml-5 p-5 mb-10" style={{ background: "#E4D9ED"}}>
+                            <nav onClick={()=>setOpen(false)} className="flex flex-col space-y-3 rounded-xl shadow-md w-56 ml-5 p-5 mb-10 fixed bottom-0 left-40" style={{ background: "#E4D9ED"}}>
 
                                 <button className="text-left rounded-lg leading-none hover:bg-purple-700 hover:text-white ">
                                     <span className="inline-flex items-center gap-2">

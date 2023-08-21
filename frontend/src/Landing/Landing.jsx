@@ -31,10 +31,10 @@ function Landing() {
         {/* group aprenda */}
 
 
-        <div className="flex flex-col gap-6 items-center justify-center relative">
-          <h1 className="text-center text-4xl w-4/5 text-cinza">Aprenda a programar!</h1>
-          <h1 className="text-center text-lg w-7/8 text-cinza">Conheça os conceitos básicos para iniciar sua jornada dev!</h1>
-          <button className=" text-center uppercase bg-[#EE9765] w-fit h-14 rounded-xl shadow-md text-white flex justify-evenly items-center relative my-2 px-2 text-xs">Comece agora <FaAngleRight className="text-2xl" /></button>
+        <div className="flex flex-col gap-6 md:gap-8 items-center justify-center relative">
+          <h1 className="text-center text-4xl md:text-6xl w-4/5 text-cinza">Aprenda a programar!</h1>
+          <h1 className="text-center text-lg md:text-xl md:w-4/5 w-7/8 text-cinza">Conheça os conceitos básicos para iniciar sua jornada dev!</h1>
+          <button className=" text-center uppercase bg-[#EE9765] w-fit h-14 rounded-xl shadow-md text-white flex justify-evenly items-center relative my-2 px-2 text-xs md:text-lg">Comece agora <FaAngleRight className="text-2xl" /></button>
         </div>
 
       </div>
