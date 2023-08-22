@@ -24,6 +24,14 @@ export default {
         "35vh": "35vw",
         "45vh": "44vw",
       },
+      screens: {
+
+        "laptop": '1440px',
+        // => @media (min-width: 1440px) { ... }
+
+        "4k": '2560px',
+        // => @media (min-width: 2560px) { ... }
+      }
     },
   },
   plugins: [],

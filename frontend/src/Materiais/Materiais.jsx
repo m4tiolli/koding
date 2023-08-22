@@ -195,34 +195,34 @@ const Materiais = () => {
 
                     {/* Menu pop up */}
 
-                    {
+                    {   
                         open &&(
-                            <nav onClick={()=>setOpen(false)} className="flex flex-col space-y-3 rounded-xl shadow-md w-56 ml-5 p-5 mb-10 fixed bottom-0 left-40" style={{ background: "#E4D9ED"}}>
+                            <nav onClick={()=>setOpen(false)} className="flex flex-col space-y-3 rounded-xl shadow-md 2xl:w-64 w-56 ml-5 p-5 mb-10 fixed 4k:bottom-2/4 2xl:bottom-42 laptop:bottom-32 xl:bottom-10 bottom-0 left-40" style={{ background: "#E4D9ED"}}>
 
                                 <button className="text-left rounded-lg leading-none hover:bg-purple-700 hover:text-white ">
                                     <span className="inline-flex items-center gap-2">
-                                        
-                                        <span className="text-lg">Configurações</span>
+                                        <BiHelpCircle className="relative 2xl:text-3xl text-lg"></BiHelpCircle>
+                                        <span className="2xl:text-xl text-lg">Configurações</span>
                                     </span>
                                 </button>
 
                                 <button className="text-left rounded-lg leading-none hover:bg-purple-700 hover:text-white ">
                                     <span className="inline-flex items-center gap-2">
-                                        <BiHelpCircle className="relative text-lg"></BiHelpCircle>
-                                        <span className="text-lg">Central de Ajuda</span>
+                                        <BiHelpCircle className="relative 2xl:text-3xl text-lg"></BiHelpCircle>
+                                        <span className="2xl:text-xl text-lg">Central de Ajuda</span>
                                     </span>
                                 </button>
 
                                 <button className="text-left rounded-lg leading-none mb-32 hover:bg-purple-700 hover:text-white ">
                                     <span className="inline-flex items-center gap-2">
-                                        <BiHelpCircle className="relative text-lg"></BiHelpCircle>
-                                        <span className="text-lg">Sair</span>
+                                        <BiHelpCircle className="relative 2xl:text-3xl text-lg"></BiHelpCircle>
+                                        <span className="2xl:text-xl text-lg">Sair</span>
                                     </span>
                                 </button>
                                 
-                                <button className="text-center rounded-lg leading-none mb-32 border-1 border-red hover:scale-110" style={{ background: "#C4BCC7", transition: "300ms ease-in"}}>
+                                <button className="text-center rounded-lg leading-none mb-32 hover:scale-110" style={{ background: "#C4BCC7", transition: "300ms ease-in"}}>
                                     <span className="inline-flex items-center">
-                                        <span className="text-lg">Dar Feedback</span>
+                                        <span className="2xl:text-xl text-lg">Dar Feedback</span>
                                     </span>
                                 </button>
 
