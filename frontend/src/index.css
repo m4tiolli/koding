@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -16,4 +16,8 @@
 ::selection {
   background-color: #b461a9;
   color: #fff;
+}
+
+.Toastify__toast-body div {
+  font-family: "Poppins" !important;
 }

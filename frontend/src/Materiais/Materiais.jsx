@@ -22,7 +22,7 @@ const Materiais = () => {
 
             {/* Menu */}
 
-            <aside className="h-screen 2xl:w-64 w-52 p-5 fixed top-0 flex flex-col items-start shadow-lg" style={{ background: "#EDD8FF"}}>
+            <aside className="h-screen w-52 p-5 fixed top-0 flex flex-col items-start shadow-lg" style={{ background: "#EDD8FF"}}>
 
                 <header className="w-full mb-12">
                     <img className="logo-img" src={Logo} alt="Koding" />
@@ -30,31 +30,31 @@ const Materiais = () => {
 
                 <nav className="flex flex-col flex-auto w-full">
 
-                    <button className="2xl:h-32 h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 " style={{transition: '150ms ease-in'}}>
+                    <button className="h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 " style={{transition: '150ms ease-in'}}>
                         <span className="inline-flex items-center gap-5">
-                            <BsBook className="relative 2xl:text-5xl xl:text-4xl text-3xl">materiais</BsBook>
-                            <span className="2xl:text-2xl xl:text-xl text-lg">Materiais</span>
+                            <BsBook className="relative text-3xl">materiais</BsBook>
+                            <span className="text-lg">Materiais</span>
                         </span>
                     </button>
 
-                    <button className="2xl:h-32 h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 " style={{transition: '150ms ease-in'}}>
+                    <button className="h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 " style={{transition: '150ms ease-in'}}>
                         <span className="inline-flex items-center gap-5">
-                            <AiOutlineUser className="relative 2xl:text-5xl xl:text-4xl text-3xl">perfil</AiOutlineUser>
-                            <span className="2xl:text-2xl xl:text-xl text-lg">Perfil</span>
+                            <AiOutlineUser className="relative text-3xl">perfil</AiOutlineUser>
+                            <span className="text-lg">Perfil</span>
                         </span>
                     </button>
 
-                    <button className="2xl:h-32 h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 " style={{transition: '150ms ease-in'}}>
+                    <button className="h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 " style={{transition: '150ms ease-in'}}>
                         <span className="inline-flex items-center gap-5">
-                            <PiSword className="relative 2xl:text-5xl xl:text-4xl text-3xl">desafios</PiSword>
-                            <span className="2xl:text-2xl xl:text-xl text-lg">Desafios</span>
+                            <PiSword className="relative text-3xl">desafios</PiSword>
+                            <span className="text-lg">Desafios</span>
                         </span>
                     </button>
 
-                    <button onClick={()=>setOpen(!open)} className="2xl:h-32 h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50" style={{transition: '150ms ease-in'}}>
+                    <button onClick={()=>setOpen(!open)} className="h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50" style={{transition: '150ms ease-in'}}>
                         <span className="inline-flex items-center gap-5">
-                            <CiCircleMore className="relative 2xl:text-5xl xl:text-4xl text-3xl">mais</CiCircleMore>
-                            <span className="2xl:text-2xl xl:text-xl text-lg">Mais</span>
+                            <CiCircleMore className="relative text-3xl">mais</CiCircleMore>
+                            <span className="text-lg">Mais</span>
                         </span>
                     </button>
 
@@ -69,7 +69,7 @@ const Materiais = () => {
                 <form className="flex w-full items-center justify-center" action="">
                     <input className="bg-transparent outline-none w-7/12 text-2xl" type="text" />
                     <a href="">
-                        <BiSearch className="2xl:ml-64 xl:ml-32 mr-12 2xl:text-4xl text-3xl"></BiSearch>
+                        <BiSearch className="text-3xl"></BiSearch>
                     </a>
                 </form>
                
@@ -82,18 +82,18 @@ const Materiais = () => {
 
 
                      {/* Barra de pesquisa */}
-                    <container className="flex h-64 w-5/12 2xl:ml-20 ml-14 mt-10 items-center justify-center gap-3">
-                        <form action="" className="flex rounded-xl w-full items-center justify-center text-white text-xl 2xl:p-3 p-2" style={{ background: "#811CD7"}}>
-                            <input type="text" className="bg-transparent outline-none 2xl:text-3xl text-2xl"/>
+                    <container className="flex h-64 w-5/12 ml-10 mt-10 items-center justify-center gap-3">
+                        <form action="" className="flex rounded-xl w-full items-center justify-center text-white text-xl p-2" style={{ background: "#811CD7"}}>
+                            <input type="text" className="bg-transparent outline-none text-2xl"/>
                             <a href="">
-                                <BiSearch className="xl:ml-56 mr-32 2xl:text-4xl text-3xl text-white ml-20"></BiSearch>
+                                <BiSearch className="text-3xl text-white ml-20"></BiSearch>
                             </a>
                         </form>
 
                         {/* Filtro */}
-                        <container className="flex h-10 w-56 2xl:space-x-3 space-x-8 items-center justify-center">
+                        <container className="flex h-10 w-56 space-x-8 items-center justify-center">
                             <button>
-                                <BsFilter className="flex items-center justify-center 2xl:text-5xl text-4xl text-white rounded-md" style={{ background: "#811CD7"}}></BsFilter>
+                                <BsFilter className="flex items-center justify-center text-4xl text-white rounded-md" style={{ background: "#811CD7"}}></BsFilter>
                             </button>
                         </container>
 
@@ -103,22 +103,22 @@ const Materiais = () => {
 
                     {/* HTML */}
 
-                    <container className="flex flex-col justify-center 2xl:ml-20 ml-10 space-y-8">
-                        <spam className="2xl:text-3xl text-2xl font-semibold">
+                    <container className="flex flex-col justify-center ml-10 space-y-8">
+                        <spam className="text-2xl font-semibold">
                             Aprendendo HTML
                         </spam>
                         <div className="flex space-x-16 items-center">
 
-                            <div className="2xl:w-72 2xl:h-48 xl:w-64 xl:h-40 w-56 h-32 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)"}}>
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)"}}>
                             </div>
 
-                            <div className="2xl:w-72 2xl:h-48 xl:w-64 xl:h-40 w-56 h-32 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)"}}>
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)"}}>
                             </div>
 
-                            <div className="2xl:w-72 2xl:h-48 xl:w-64 xl:h-40 w-56 h-32 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)"}}>
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)"}}>
                             </div>
 
-                            <div className="2xl:w-72 2xl:h-48 xl:w-64 xl:h-40 w-56 h-32 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)"}}>
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)"}}>
                             </div>
 
                         </div>
@@ -126,22 +126,22 @@ const Materiais = () => {
 
                     {/* CSS */}
 
-                    <container className="flex flex-col justify-center 2xl:ml-20 ml-10 mt-32 space-y-8">
-                        <spam className="2xl:text-3xl text-2xl font-semibold">
+                    <container className="flex flex-col justify-center ml-10 mt-32 space-y-8">
+                        <spam className="text-2xl font-semibold">
                             Aprendendo CSS
                         </spam>
                         <div className="flex space-x-16 items-center">
 
-                            <div className="2xl:w-72 2xl:h-48 xl:w-64 xl:h-40 w-56 h-32 rounded-xl" style={{ background: "linear-gradient(108deg, #1566C4 0%, #438ADD 100%)"}}>
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #1566C4 0%, #438ADD 100%)"}}>
                             </div>
 
-                            <div className="2xl:w-72 2xl:h-48 xl:w-64 xl:h-40 w-56 h-32 rounded-xl" style={{ background: "linear-gradient(108deg, #1566C4 0%, #438ADD 100%)"}}>
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #1566C4 0%, #438ADD 100%)"}}>
                             </div>
 
-                            <div className="2xl:w-72 2xl:h-48 xl:w-64 xl:h-40 w-56 h-32 rounded-xl" style={{ background: "linear-gradient(108deg, #1566C4 0%, #438ADD 100%)"}}>
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #1566C4 0%, #438ADD 100%)"}}>
                             </div>
 
-                            <div className="2xl:w-72 2xl:h-48 xl:w-64 xl:h-40 w-56 h-32 rounded-xl" style={{ background: "linear-gradient(108deg, #1566C4 0%, #438ADD 100%)"}}>
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #1566C4 0%, #438ADD 100%)"}}>
                             </div>
 
                         </div>
@@ -149,22 +149,22 @@ const Materiais = () => {
 
                     {/* JS */}
 
-                    <container className="flex flex-col justify-center 2xl:ml-20 ml-10 mt-32 space-y-8">
-                        <spam className="2xl:text-3xl text-2xl font-semibold">
+                    <container className="flex flex-col justify-center ml-10 mt-32 space-y-8">
+                        <spam className="text-2xl font-semibold">
                             Aprendendo JavaSript
                         </spam>
                         <div className="flex space-x-16 items-center">
 
-                            <div className="2xl:w-72 2xl:h-48 xl:w-64 xl:h-40 w-56 h-32 rounded-xl" style={{ background: "linear-gradient(108deg, #F2D01F 0%, #E3BA4F 100%)"}}> 
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #F2D01F 0%, #E3BA4F 100%)"}}> 
                             </div>
 
-                            <div className="2xl:w-72 2xl:h-48 xl:w-64 xl:h-40 w-56 h-32 rounded-xl" style={{ background: "linear-gradient(108deg, #F2D01F 0%, #E3BA4F 100%)"}}> 
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #F2D01F 0%, #E3BA4F 100%)"}}> 
                             </div>
 
-                            <div className="2xl:w-72 2xl:h-48 xl:w-64 xl:h-40 w-56 h-32 rounded-xl" style={{ background: "linear-gradient(108deg, #F2D01F 0%, #E3BA4F 100%)"}}>
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #F2D01F 0%, #E3BA4F 100%)"}}>
                             </div>
 
-                            <div className="2xl:w-72 2xl:h-48 xl:w-64 xl:h-40 w-56 h-32 rounded-xl" style={{ background: "linear-gradient(108deg, #F2D01F 0%, #E3BA4F 100%)"}}>
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #F2D01F 0%, #E3BA4F 100%)"}}>
                             </div>
                             
                         </div>
@@ -172,22 +172,22 @@ const Materiais = () => {
 
                      {/* PHP */}
 
-                     <container className="flex flex-col justify-center 2xl:ml-20 ml-10 mt-32 mb-32 space-y-8">
-                        <spam className="2xl:text-3xl text-2xl font-semibold">
+                     <container className="flex flex-col justify-center ml-10 mt-32 mb-32 space-y-8">
+                        <spam className="text-2xl font-semibold">
                             Aprendendo PHP
                         </spam>
                         <div className="flex space-x-16 items-center">
 
-                            <div className="2xl:w-72 2xl:h-48 xl:w-64 xl:h-40 w-56 h-32 rounded-xl" style={{ background: "linear-gradient(108deg, #485BBB 0%, #707EC6 100%)"}}>
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #485BBB 0%, #707EC6 100%)"}}>
                             </div>
 
-                            <div className="2xl:w-72 2xl:h-48 xl:w-64 xl:h-40 w-56 h-32 rounded-xl" style={{ background: "linear-gradient(108deg, #485BBB 0%, #707EC6 100%)"}}>
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #485BBB 0%, #707EC6 100%)"}}>
                             </div>
                             
-                            <div className="2xl:w-72 2xl:h-48 xl:w-64 xl:h-40 w-56 h-32 rounded-xl" style={{ background: "linear-gradient(108deg, #485BBB 0%, #707EC6 100%)"}}>
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #485BBB 0%, #707EC6 100%)"}}>
                             </div>
 
-                            <div className="2xl:w-72 2xl:h-48 xl:w-64 xl:h-40 w-56 h-32 rounded-xl" style={{ background: "linear-gradient(108deg, #485BBB 0%, #707EC6 100%)"}}>
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #485BBB 0%, #707EC6 100%)"}}>
                             </div>
 
                         </div>
@@ -201,7 +201,7 @@ const Materiais = () => {
 
                                 <button className="text-left rounded-lg leading-none hover:bg-purple-700 hover:text-white ">
                                     <span className="inline-flex items-center gap-2">
-                                        <BiHelpCircle className="relative text-lg"></BiHelpCircle>
+                                        
                                         <span className="text-lg">Configurações</span>
                                     </span>
                                 </button>

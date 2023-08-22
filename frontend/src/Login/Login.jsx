@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { Link, useNavigate  } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import BackgroundCircles from "../assets/BackgroundCircles";
 import Logo from "../assets/Logo";
 import './Login.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Login() {
   const [isResponsavel, setIsResponsavel] = useState(false);
@@ -12,6 +14,7 @@ function Login() {
   const [senha, setSenha] = useState("");
   const [loginError, setLoginError] = useState(null);
 
+
   const navigate = useNavigate();
 
   const TogglePassVisible = () => {
@@ -19,6 +22,7 @@ function Login() {
   }
 
   const handleLogin = async () => {
+
     try {
       const response = await fetch(`http://localhost:3005/${isResponsavel ? "responsavel" : "crianca"}/login`, {
         method: 'POST',
@@ -34,11 +38,24 @@ function Login() {
       } else {
         const data = await response.json();
         setLoginError(data.error);
+        toast.error(loginError, {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        })
       }
     } catch (error) {
       console.error('Erro ao fazer login:', error);
     }
   };
+
+
+
 
   return (
     <div
@@ -49,6 +66,22 @@ function Login() {
           : "linear-gradient(108deg, #e5c6ff 0%, #fff 100%)",
       }}
     >
+      {loginError && (
+        <ToastContainer
+          position="top-center"
+          autoClose={2000}
+          limit={3}
+          hideProgressBar
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
+      )
+      }
       <BackgroundCircles isResponsavel={isResponsavel} />
       <div className="logotitle z-20 h-full w-1/4 m-auto flex items-center justify-center flex-col">
         <Logo isResponsavel={isResponsavel} />
@@ -78,12 +111,14 @@ function Login() {
           <div className={`${isResponsavel ? "before:bg-verdeclaro bg-verde" : "before:bg-roxoclaro bg-roxo"} z-10 relative w-40vw h-35vh rounded-2xl flex flex-col items-center justify-center before:block before:absolute before:top-0 before:content-[' '] before:w-40vw before:h-35vh before:rotate-[-8deg] before:radius-x before:-z-50 before:shadow-lg shadow-lg before:rounded-2xl`}>
             <input
               type="text"
-              className="bg-input px-10 py-5 w-3/4 placeholder:opacity-70 rounded-lg text-xl placeholder:text-black my-8 outline-0 text-cinza"
+              className="bg-input px-10 my-8 py-5 w-3/4 placeholder:opacity-70 rounded-lg text-xl placeholder:text-black outline-0 text-cinza"
               placeholder="E-mail"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+
             />
-            <div className="bg-input px-10 py-5 w-3/4 placeholder:opacity-70 rounded-lg text-xl flex items-center justify-between">
+
+            <div className="bg-input  px-10 py-5 w-3/4 placeholder:opacity-70 placeholder:font-regular rounded-lg text-xl flex items-center justify-between">
               <input
                 type={isPassVisible ? "text" : "password"}
                 className="w-4/5 outline-0 bg-transparent placeholder:opacity-70 placeholder:text-black text-cinza"
@@ -103,12 +138,10 @@ function Login() {
                 />
               )}
             </div>
-            {loginError && (
-              <p className="text-red-500 my-2">{loginError}</p>
-            )}
             <button
               className="bg-input rounded-xl w-2/5 h-16 my-8 text-xl text-cinza hover:opacity-70 active:shadow-inner active:translate-y-1"
               onClick={handleLogin}
+              type="submit"
             >
               Entrar
             </button>
@@ -124,7 +157,7 @@ function Login() {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 

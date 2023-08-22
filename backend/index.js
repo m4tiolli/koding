@@ -9,7 +9,7 @@ const cors = require("cors");
 const db = mysql.createPool({
   host: "localhost",
   user: "root",
-  password: "root",
+  password: "",
   database: "koding",
 });
 
@@ -82,7 +82,7 @@ app.delete("/responsavel/:id", (req, res) => {
   });
 });
 
-// CRUD - criança 
+// CRUD - criança
 app.get("/crianca", (req, res) => {
   db.query("SELECT * FROM crianca", (err, result) => {
     if (err) {
@@ -164,6 +164,25 @@ app.post("/responsavel/login", (req, res) => {
           // token: token,
           user: result[0],
         });
+      }
+    }
+  );
+});
+
+//verifica email existente
+app.get("/responsavel/email/:email", (req, res) => {
+  const { email } = req.params;
+
+  db.query(
+    "SELECT COUNT(*) AS count FROM responsavel WHERE email = ?",
+    [email],
+    (err, results) => {
+      if (err) {
+        console.error("Error querying database:", err);
+        res.status(500).json({ error: "Erro no servidor" });
+      } else {
+        const exists = results[0].count > 0;
+        res.json({ exists });
       }
     }
   );
