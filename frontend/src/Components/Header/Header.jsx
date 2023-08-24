@@ -1,4 +1,4 @@
-import Logo from "../assets/Logo";
+import Logo from "../Logo";
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import { FaUserAlt } from "react-icons/fa"
