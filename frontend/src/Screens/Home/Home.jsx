@@ -7,6 +7,7 @@ import { LuPaintBucket } from "react-icons/lu";
 import Logo from "../../Components/Logo";
 import { useState } from "react";
 import Materiais from "../Materiais/Materiais";
+import Perfil from "../Perfil/Perfil";
 import "./Home.css";
 import { useDisclosure } from "@chakra-ui/react";
 
@@ -167,7 +168,7 @@ export default function Home() {
       {button === "materiais" ? (
         <Materiais />
       ) : button === "perfil" ? (
-        "oi"
+        <Perfil />
       ) : button === "desafios" ? (
         "tchau"
       ) : null}

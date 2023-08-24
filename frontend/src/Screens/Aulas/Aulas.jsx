@@ -2,15 +2,12 @@ import { BsFilter } from "react-icons/bs";
 import { BiSearch } from "react-icons/bi";
 
 import SideBar from '../../Components/SideBar/SideBar';
-import Logo from "../../Components/Logo";
 
 function Aulas(){
     return(
         <div className="flex h-full w-full" style={{ background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)" }}>   
 
         <SideBar />
-
-        
 
          {/* Conteudo */}
 
