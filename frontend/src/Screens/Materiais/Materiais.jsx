@@ -20,8 +20,6 @@ const Materiais = () => {
 
             {/* Barra de pesquisa - menu */}
 
-
-
             {/* Conteudo */}
 
             <main className="w-full ml-56 mr-2 overflow-hidden">
