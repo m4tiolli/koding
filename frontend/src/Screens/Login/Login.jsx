@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
-import BackgroundCircles from "../assets/BackgroundCircles";
-import Logo from "../assets/Logo";
+import BackgroundCircles from "../../Components/BackgroundCircles";
+import Logo from "../../Components/Logo";
 import './Login.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

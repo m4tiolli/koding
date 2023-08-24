@@ -1,6 +1,6 @@
 import { useState } from "react";
-import BackgroundCircles from './../assets/BackgroundCircles';
-import Logo from './../assets/Logo';
+import BackgroundCircles from '../../Components/BackgroundCircles';
+import Logo from '../../Components/Logo';
 import { AiFillEyeInvisible } from 'react-icons/ai';
 import { AiFillEye } from 'react-icons/ai';
 import { BsArrowLeft } from 'react-icons/bs'

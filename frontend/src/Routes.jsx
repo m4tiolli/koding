@@ -1,8 +1,10 @@
 import { HashRouter, Route, Routes } from "react-router-dom";
-import Login from "./Login/Login";
-import Cadastro from './Cadastro/Cadastro';
-import Landing from './Landing/Landing';
-import Materiais from './Materiais/Materiais';
+import Landing from './Screens/Landing/Landing';
+import Cadastro from './Screens/Cadastro/Cadastro';
+import Login from './Screens/Login/Login';
+import Materiais from './Screens/Materiais/Materiais';
+import Home from "./Screens/Home/Home";
+
 
 function AppRoutes() {
   return (
@@ -12,6 +14,7 @@ function AppRoutes() {
         <Route exact path="/criar-conta" element={<Cadastro />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/materiais" element={<Materiais />} />
+        <Route exact path="/home" element={<Home />} />
       </Routes>
     </HashRouter>
   );
