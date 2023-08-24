@@ -1,32 +1,14 @@
 import { BsFilter } from "react-icons/bs";
 import { BiSearch } from "react-icons/bi";
-
 import './Materiais.css';
-import { useState } from "react";
 
 const Materiais = () => {
 
-    // clicar e abrir
-    const [open, setOpen] = useState(false);
 
-    // clicar e sair
-    // const button = useRef();
-    // const navRef = useRef();
 
     return (
         <div className="flex h-full w-full" style={{ background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)" }}>
-
-            {/* Menu */}
-
-            {/* Barra de pesquisa - menu */}
-
-
-
-            {/* Conteudo */}
-
             <main className="w-full ml-56 mr-2 overflow-hidden">
-
-
 
                 {/* Barra de pesquisa */}
                 <container className="flex h-64 w-5/12 ml-10 mt-10 items-center justify-center gap-3">
