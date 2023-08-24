@@ -19,7 +19,7 @@ export default function SideBar() {
       className="h-screen w-52 p-5 fixed top-0 flex flex-col items-start justify-center shadow-lg"
       style={{ background: "#EDD8FF" }}
     >
-      <header className="w-full mb-12">
+      <header className="w-full xl:mt-3 laptop:-mb-8 mb-20">
         <Logo className="absolute -top-4 -left-20 scale-50" />
       </header>
 

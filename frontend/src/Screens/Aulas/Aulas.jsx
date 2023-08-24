@@ -19,7 +19,7 @@ function Aulas(){
                     <form action="" className="flex rounded-xl w-full items-center justify-center text-white text-xl p-2" style={{ background: "#811CD7" }}>
                         <input type="text" className="bg-transparent outline-none text-2xl" />
                         <a href="">
-                            <BiSearch className="text-3xl text-white ml-20"></BiSearch>
+                            <BiSearch className="xl:mr-5 lg:mr-5 laptop:mr-3 mr-32 text-3xl text-white ml-20"></BiSearch>
                         </a>
                     </form>
 
