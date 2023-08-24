@@ -2,6 +2,7 @@ import { BsFilter } from "react-icons/bs";
 import { BiSearch } from "react-icons/bi";
 
 import SideBar from '../../Components/SideBar/SideBar';
+import Logo from "../../Components/Logo";
 
 function Aulas(){
     return(
@@ -9,10 +10,11 @@ function Aulas(){
 
         <SideBar />
 
+        
+
          {/* Conteudo */}
 
             <main className="w-full ml-56 mr-2 overflow-hidden">
-
 
                 {/* Barra de pesquisa */}
                 <container className="flex h-64 w-5/12 ml-10 mt-10 items-center justify-center gap-3">
@@ -40,13 +42,15 @@ function Aulas(){
                         <div className="flex space-x-16 items-center">
                             
                             <div className="space-y-5">
+                                {/* Card */}
                                 <div className="w-80 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)" }}>
                                 </div>
                                 <div className="flex flex-col">
                                     <span className="w-80 flex items-center justify-start text-xl text-black font-semibold truncate">
                                     Aula 00 - Estrutura HTML
                                     </span>
-                                    <div className="flex space-x-5">
+                                    {/* Filtro */}
+                                    <div className="w-80 flex flex-wrap gap-x-3 gap-y-3">
                                         <div className="w-16 p-1 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)" }}>
                                             <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate">HTML</span>
                                         </div>
@@ -58,13 +62,15 @@ function Aulas(){
                             </div>
 
                             <div className="space-y-5">
+                                {/* Card */}
                                 <div className="w-80 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)" }}>
                                 </div>
                                 <div className="flex flex-col">
                                     <span className="w-80 flex items-center justify-start text-xl text-black font-semibold truncate">
                                     Aula 00 - Estrutura HTML
                                     </span>
-                                    <div className="flex space-x-5">
+                                    {/* Filtro */}
+                                    <div className="w-80 flex flex-wrap gap-x-3 gap-y-3">
                                         <div className="w-16 p-1 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)" }}>
                                             <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate">HTML</span>
                                         </div>
@@ -74,7 +80,6 @@ function Aulas(){
                                     </div>
                                 </div>
                             </div>
-
                         </div>
 
                     </container>
@@ -83,14 +88,16 @@ function Aulas(){
                         
                         <div className="flex space-x-16 items-center mb-32">
                             
-                            <div className="space-y-5">
+                        <div className="space-y-5">
+                                {/* Card */}
                                 <div className="w-80 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)" }}>
                                 </div>
                                 <div className="flex flex-col">
                                     <span className="w-80 flex items-center justify-start text-xl text-black font-semibold truncate">
                                     Aula 00 - Estrutura HTML
                                     </span>
-                                    <div className="flex space-x-5">
+                                    {/* Filtro */}
+                                    <div className="w-80 flex flex-wrap gap-x-3 gap-y-3">
                                         <div className="w-16 p-1 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)" }}>
                                             <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate">HTML</span>
                                         </div>
@@ -102,13 +109,15 @@ function Aulas(){
                             </div>
 
                             <div className="space-y-5">
+                                {/* Card */}
                                 <div className="w-80 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)" }}>
                                 </div>
                                 <div className="flex flex-col">
                                     <span className="w-80 flex items-center justify-start text-xl text-black font-semibold truncate">
-                                    Aula 01 - Inserindo Imagem
+                                    Aula 00 - Estrutura HTML
                                     </span>
-                                    <div className="flex space-x-5">
+                                    {/* Filtro */}
+                                    <div className="w-80 flex flex-wrap gap-x-3 gap-y-3">
                                         <div className="w-16 p-1 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)" }}>
                                             <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate">HTML</span>
                                         </div>
