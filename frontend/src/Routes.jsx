@@ -5,6 +5,7 @@ import Login from './Screens/Login/Login';
 import Materiais from './Screens/Materiais/Materiais';
 import Home from "./Screens/Home/Home";
 import Aulas from "./Screens/Aulas/Aulas";
+import Ajuda from "./Screens/Ajuda/Ajuda";
 
 
 function AppRoutes() {
@@ -17,6 +18,7 @@ function AppRoutes() {
         <Route exact path="/materiais" element={<Materiais />} />
         <Route exact path="/home" element={<Home />} />
         <Route exact path="/aulas" element={<Aulas />} />
+        <Route exact path="/ajuda" element={<Ajuda />} />
       </Routes>
     </HashRouter>
   );
