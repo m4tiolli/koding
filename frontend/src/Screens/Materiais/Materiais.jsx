@@ -1,10 +1,10 @@
 import { BsFilter } from "react-icons/bs";
 import { BiSearch } from "react-icons/bi";
+
+import { Link } from 'react-router-dom';
 import './Materiais.css';
 
 const Materiais = () => {
-
-
 
     return (
         <div className="flex h-full w-full" style={{ background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)" }}>
@@ -36,6 +36,8 @@ const Materiais = () => {
                     <spam className="text-2xl font-semibold">
                         Aprendendo HTML
                     </spam>
+                    
+                    <Link to={'/aulas'}>
                     <div className="flex space-x-16 items-center">
 
                         <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)" }}>
@@ -51,6 +53,9 @@ const Materiais = () => {
                         </div>
 
                     </div>
+
+                    </Link>
+                    
                 </container>
 
                 {/* CSS */}
