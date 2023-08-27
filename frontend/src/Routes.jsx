@@ -6,6 +6,7 @@ import Materiais from './Screens/Materiais/Materiais';
 import Home from "./Screens/Home/Home";
 import Aulas from "./Screens/Aulas/Aulas";
 import Ajuda from "./Screens/Ajuda/Ajuda";
+import Aprender from "./Screens/Aprender/Aprender";
 
 
 function AppRoutes() {
@@ -19,6 +20,7 @@ function AppRoutes() {
         <Route exact path="/home" element={<Home />} />
         <Route exact path="/aulas" element={<Aulas />} />
         <Route exact path="/ajuda" element={<Ajuda />} />
+        <Route exact path="/aprender" element={<Aprender />} />
       </Routes>
     </HashRouter>
   );
