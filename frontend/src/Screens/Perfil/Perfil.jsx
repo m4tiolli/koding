@@ -15,7 +15,7 @@ function Perfil(){
                     <div className="xl:h-36 xl:w-36 h-32 w-32 rounded-full bg-white"></div>
                     <div className="flex flex-col items-center justify-center"> 
                         <span className="xl:text-3xl text-2xl text-white">
-                        @user
+                            @user
                         </span>
                         <span className="xl:text-2xl text-xl text-white/60">
                             User Sobrenome

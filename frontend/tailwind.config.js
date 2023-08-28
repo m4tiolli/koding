@@ -31,6 +31,12 @@ export default {
 
         "4k": '2560px',
         // => @media (min-width: 2560px) { ... }
+      },
+      borderWidth: {
+        '1': '1px'
+      },
+      spacing: {
+        '18': '4.5rem'
       }
     },
   },
