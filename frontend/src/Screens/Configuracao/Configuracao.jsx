@@ -1,12 +1,14 @@
 import { IoIosLogOut } from "react-icons/io";
 import { BsTrash3 } from "react-icons/bs";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+
+
 
 import SideBar from '../../Components/SideBar/SideBar';
 import { Link } from 'react-router-dom';
+import Logout from "../../Components/Logout/Logout";
 
-export default function Configuracao(){
-
-    // const [open, setOpen] = useState(false);
+function Configuracao(){
 
     return(
         <div className="flex h-full w-full" style={{ background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)" }}>
@@ -131,20 +133,21 @@ export default function Configuracao(){
                     <div className="flex flex-col items-center justify-center py-10 w-96 text-gray-700 gap-3">
                         <div className="flex items-center gap-3 w-full">
                             <IoIosLogOut className="text-2xl"></IoIosLogOut>
-                            <div className="text-xl">
+                            <button className="text-xl">
                                 <Link to={'/#'}>Sair</Link>
-                            </div>
+                            </button>
                         </div>
 
                         <div className="flex items-center gap-3 w-full text-red-600">
                             <BsTrash3 className="text-2xl"></BsTrash3>
-                            <div className="text-xl">
-                                <Link to={'/#'}>Excluir minha conta</Link>
-                            </div>
+                            <button className="text-xl">
+                                
+                            <Logout/>
+                            </button>
+
                         </div>
                     </div>
 
-                    {/* Confirmar excluir */}
                 </container>
 
             </main>
@@ -152,3 +155,5 @@ export default function Configuracao(){
         </div>
     )
 }
+
+export default Configuracao;

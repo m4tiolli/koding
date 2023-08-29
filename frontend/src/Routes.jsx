@@ -1,4 +1,5 @@
 import { HashRouter, Route, Routes } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Landing from './Screens/Landing/Landing';
 import Cadastro from './Screens/Cadastro/Cadastro';
 import Login from './Screens/Login/Login';
