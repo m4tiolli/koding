@@ -19,6 +19,7 @@ export default {
       },
       width: {
         "40vw": "40vw",
+        "50": "12.5rem"
       },
       height: {
         "35vh": "35vw",
@@ -34,9 +35,6 @@ export default {
       },
       borderWidth: {
         '1': '1px'
-      },
-      spacing: {
-        '18': '4.5rem'
       }
     },
   },
