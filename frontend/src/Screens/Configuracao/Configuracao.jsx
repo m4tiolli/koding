@@ -1,12 +1,10 @@
 import { IoIosLogOut } from "react-icons/io";
 import { BsTrash3 } from "react-icons/bs";
-import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+// import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
-
+// import {Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton,} from '@chakra-ui/react';
 
 import SideBar from '../../Components/SideBar/SideBar';
-import { Link } from 'react-router-dom';
-import Logout from "../../Components/Logout/Logout";
 
 function Configuracao(){
 
@@ -105,7 +103,7 @@ function Configuracao(){
 
                     <div className="flex flex-col gap-y-5 text-lg">
                         <div className="flex">
-                            <div className="w-50">
+                            <div className="w-52">
                                 <span>Modo Escuro</span>
                             </div>
                             
@@ -117,7 +115,7 @@ function Configuracao(){
                         </div>
 
                         <div className="flex">
-                            <div className="w-50">
+                            <div className="w-52">
                                 <span>Alto Contraste</span>
                             </div>
 
@@ -134,16 +132,32 @@ function Configuracao(){
                         <div className="flex items-center gap-3 w-full">
                             <IoIosLogOut className="text-2xl"></IoIosLogOut>
                             <button className="text-xl">
-                                <Link to={'/#'}>Sair</Link>
+                                Sair
                             </button>
                         </div>
 
                         <div className="flex items-center gap-3 w-full text-red-600">
                             <BsTrash3 className="text-2xl"></BsTrash3>
                             <button className="text-xl">
-                                
-                            <Logout/>
+                                Excluir minha conta
                             </button>
+                            {/* <Modal isOpen={isOpen} onClose={onClose}>
+                                <ModalOverlay />
+                                <ModalContent>
+                                    <ModalHeader>Modal Title</ModalHeader>
+                                    <ModalCloseButton />
+                                    <ModalBody>
+                                        opa
+                                    </ModalBody>
+
+                                    <ModalFooter>
+                                        <Button colorScheme="blue" mr={3} onClick={onClose}>
+                                        Close
+                                        </Button>
+                                        <Button variant="ghost">Secondary Action</Button>
+                                    </ModalFooter>
+                                </ModalContent>
+                            </Modal> */}
 
                         </div>
                     </div>
