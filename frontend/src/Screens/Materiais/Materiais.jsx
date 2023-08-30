@@ -36,26 +36,32 @@ const Materiais = () => {
                     <spam className="text-2xl font-semibold">
                         Aprendendo HTML
                     </spam>
-                    
-                    <Link to={'/aulas'}>
+
                     <div className="flex space-x-16 items-center">
 
-                        <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)" }}>
-                        </div>
+                        <Link to={'/aulas'}>
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)" }}>
+                            </div>
+                        </Link>
 
-                        <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)" }}>
-                        </div>
+                        <Link to={'/aulas'}>
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)" }}>
+                            </div>
+                        </Link>
 
-                        <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)" }}>
-                        </div>
+                        <Link to={'/aulas'}>
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)" }}>
+                            </div>
+                        </Link>
 
-                        <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)" }}>
-                        </div>
+                        <Link to={'/aulas'}>
+                            <div className="w-72 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)" }}>
+                            </div>
+                        </Link>
 
                     </div>
 
-                    </Link>
-                    
+
                 </container>
 
                 {/* CSS */}

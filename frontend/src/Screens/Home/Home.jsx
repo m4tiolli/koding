@@ -18,8 +18,7 @@ import { ThemeContext } from '../../Components/Theme/theme-context';
 export default function Home() {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
-
-  const [open, setOpen] = useState(false);
+  const { isOpen: isMaisOpen, onOpen: onMaisOpen, onClose: onMaisClose } = useDisclosure();
 
   const [button, setButton] = useState("materiais");
 
@@ -102,7 +101,7 @@ export default function Home() {
             </button>
 
             <button
-              onClick={() => setOpen(!open)}
+              onClick={onMaisOpen}
               className="h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50"
               style={{ transition: "150ms ease-in" }}
             >
@@ -179,6 +178,42 @@ export default function Home() {
             </div>
           </ModalContent>
         </Modal>
+        <Modal isOpen={isMaisOpen} onClose={onMaisClose} motionPreset='slideInRight' blockScrollOnMount={false}>
+          <ModalContent w="16vw" position="fixed" bottom="0" left="10rem" zIndex={100} borderRadius="100">
+            <div className="bg-cinza">
+              <button className="text-left rounded-lg leading-none hover:bg-purple-700 hover:text-white ">
+                <span className="inline-flex items-center gap-2">
+                  <BiHelpCircle className="relative 2xl:text-3xl text-lg"></BiHelpCircle>
+                  <span className="2xl:text-xl text-lg">Configurações</span>
+                </span>
+              </button>
+
+              <button className="text-left rounded-lg leading-none hover:bg-purple-700 hover:text-white ">
+                <span className="inline-flex items-center gap-2">
+                  <BiHelpCircle className="relative 2xl:text-3xl text-lg"></BiHelpCircle>
+                  <span className="2xl:text-xl text-lg">Central de Ajuda</span>
+                </span>
+              </button>
+
+              <button className="text-left rounded-lg leading-none mb-32 hover:bg-purple-700 hover:text-white ">
+                <span className="inline-flex items-center gap-2">
+                  <BiHelpCircle className="relative 2xl:text-3xl text-lg"></BiHelpCircle>
+                  <span className="2xl:text-xl text-lg">Sair</span>
+                </span>
+              </button>
+
+              <button
+                className="text-center rounded-lg leading-none mb-32 hover:scale-110"
+                style={{ background: "#C4BCC7" }}
+              >
+                <span className="inline-flex items-center">
+                  <span className="2xl:text-xl text-lg">Dar Feedback</span>
+                </span>
+              </button>
+
+            </div>
+          </ModalContent>
+        </Modal>
 
         {button === "materiais" ? (
           <Materiais />
@@ -187,44 +222,6 @@ export default function Home() {
         ) : button === "desafios" ? (
           "tchau"
         ) : null}
-
-        {open && (
-          <nav
-            onClick={() => setOpen(false)}
-            className="flex flex-col space-y-3 rounded-xl shadow-md 2xl:w-64 w-56 ml-5 p-5 mb-10 fixed 4k:bottom-2/4 2xl:bottom-42 laptop:bottom-32 xl:bottom-10 bottom-0 left-40"
-            style={{ background: "#E4D9ED" }}
-          >
-            <button className="text-left rounded-lg leading-none hover:bg-purple-700 hover:text-white ">
-              <span className="inline-flex items-center gap-2">
-                <BiHelpCircle className="relative 2xl:text-3xl text-lg"></BiHelpCircle>
-                <span className="2xl:text-xl text-lg">Configurações</span>
-              </span>
-            </button>
-
-            <button className="text-left rounded-lg leading-none hover:bg-purple-700 hover:text-white ">
-              <span className="inline-flex items-center gap-2">
-                <BiHelpCircle className="relative 2xl:text-3xl text-lg"></BiHelpCircle>
-                <span className="2xl:text-xl text-lg">Central de Ajuda</span>
-              </span>
-            </button>
-
-            <button className="text-left rounded-lg leading-none mb-32 hover:bg-purple-700 hover:text-white ">
-              <span className="inline-flex items-center gap-2">
-                <BiHelpCircle className="relative 2xl:text-3xl text-lg"></BiHelpCircle>
-                <span className="2xl:text-xl text-lg">Sair</span>
-              </span>
-            </button>
-
-            <button
-              className="text-center rounded-lg leading-none mb-32 hover:scale-110"
-              style={{ background: "#C4BCC7", transition: "300ms ease-in" }}
-            >
-              <span className="inline-flex items-center">
-                <span className="2xl:text-xl text-lg">Dar Feedback</span>
-              </span>
-            </button>
-          </nav>
-        )}
       </div>
     </ThemeContext.Provider>
   );
