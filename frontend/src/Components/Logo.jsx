@@ -1,22 +1,7 @@
 /* eslint-disable react/prop-types */
-import { useState, useEffect } from "react";
-export default function Logo({ isResponsavel, className }) {
+export default function Logo({ isResponsavel, className, isResponsive }) {
 
-    const [isResponsive, setResponsive] = useState()
-
-    useEffect(() => {
-        const handleResize = () => {
-            setResponsive(window.innerWidth < 700);
-        };
-
-        handleResize(); // Set initial state
-
-        window.addEventListener("resize", handleResize);
-
-        return () => {
-            window.removeEventListener("resize", handleResize);
-        };
-    }, []);
+    
 
     return (
         <>

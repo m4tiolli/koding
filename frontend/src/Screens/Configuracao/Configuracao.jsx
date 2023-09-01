@@ -40,7 +40,6 @@ function Configuracao() {
       <SideBar />
 
       <main className="w-full ml-60 mr-2 mt-7 overflow-hidden">
-
         <div className="mb-10">
           <span className="text-3xl font-semibold">Configurações</span>
         </div>
@@ -193,7 +192,6 @@ function Configuracao() {
               </select>
             </div>
           </div>
-          
 
           {/* Logout */}
 

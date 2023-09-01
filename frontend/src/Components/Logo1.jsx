@@ -8,7 +8,7 @@ export default function Logo1() {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <g clip-path="url(#clip0_219_116)">
+        <g clipPath="url(#clip0_219_116)">
           <path
             d="M162.258 60.5641C162.258 66.7979 160.059 72.1245 155.678 76.5356C151.19 81.0965 145.639 83.377 139.005 83.377C132.372 83.377 126.766 81.1132 122.278 76.5772C117.889 72.1911 115.698 66.8811 115.698 60.6474C115.698 54.4136 117.889 49.1036 122.278 44.7175C126.793 40.2398 132.372 38.0093 139.005 38.0093C145.639 38.0093 151.146 40.2481 155.634 44.7175C160.059 49.0703 162.267 54.3553 162.267 60.5558L162.258 60.5641ZM152.12 60.6557C152.12 57.0186 150.922 53.9142 148.517 51.3508C146.023 48.6375 142.849 47.2809 139.005 47.2809C135.161 47.2809 131.969 48.6209 129.439 51.3091C127.034 53.9059 125.836 57.0186 125.836 60.6557C125.836 64.2927 127.052 67.3389 129.484 69.9606C132.05 72.7321 135.214 74.122 138.996 74.122C142.778 74.122 145.978 72.7321 148.508 69.9606C150.913 67.3389 152.111 64.2345 152.111 60.6557H152.12Z"
             fill="#323232"
@@ -30,7 +30,7 @@ export default function Logo1() {
             fill="#323232"
           />
         </g>
-        <g clip-path="url(#clip1_219_116)" filter="url(#filter0_d_219_116)">
+        <g clipPath="url(#clip1_219_116)" filter="url(#filter0_d_219_116)">
           <path
             d="M59.2533 112C89.7688 112 114.507 86.9279 114.507 56C114.507 25.0721 89.7688 0 59.2533 0C28.7377 0 4 25.0721 4 56C4 86.9279 28.7377 112 59.2533 112Z"
             fill="white"
@@ -48,9 +48,9 @@ export default function Logo1() {
             width="118.507"
             height="120"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -83,10 +83,10 @@ export default function Logo1() {
             y2="97.3171"
             gradientUnits="userSpaceOnUse"
           >
-            <stop offset="0.18" stop-color="#3FFF51" />
-            <stop offset="0.34" stop-color="#36DB74" />
-            <stop offset="0.8" stop-color="#1E79D7" />
-            <stop offset="1" stop-color="#1552FF" />
+            <stop offset="0.18" stopColor="#3FFF51" />
+            <stop offset="0.34" stopColor="#36DB74" />
+            <stop offset="0.8" stopColor="#1E79D7" />
+            <stop offset="1" stopColor="#1552FF" />
           </linearGradient>
           <clipPath id="clip0_219_116">
             <rect

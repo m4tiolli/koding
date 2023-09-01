@@ -4,7 +4,7 @@ import { AiOutlineUser } from "react-icons/ai";
 import { CiCircleMore } from "react-icons/ci";
 import { BiSearch, BiHelpCircle } from "react-icons/bi";
 import { LuPaintBucket } from "react-icons/lu";
-import { ImContrast } from 'react-icons/im';
+import { ImContrast } from "react-icons/im";
 import Logo from "../../Components/Logo";
 import { useState } from "react";
 import Materiais from "../Materiais/Materiais";
@@ -12,13 +12,15 @@ import Perfil from "../Perfil/Perfil";
 import "./Home.css";
 import { useDisclosure } from "@chakra-ui/react";
 import { Modal, ModalContent } from "@chakra-ui/react";
-
-import { ThemeContext } from '../../Components/Theme/theme-context';
+import { ChakraProvider } from "@chakra-ui/react";
 
 export default function Home() {
-
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { isOpen: isMaisOpen, onOpen: onMaisOpen, onClose: onMaisClose } = useDisclosure();
+  const {
+    isOpen: isMaisOpen,
+    onOpen: onMaisOpen,
+    onClose: onMaisClose,
+  } = useDisclosure();
 
   const [button, setButton] = useState("materiais");
 
@@ -28,11 +30,12 @@ export default function Home() {
 
   const [isChecked, setIsChecked] = useState(false);
 
-  const isBrowserDefaultDark = () => window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const isBrowserDefaultDark = () =>
+    window.matchMedia("(prefers-color-scheme: dark)").matches;
 
   const getDefaultTheme = () => {
-    const localStorageTheme = localStorage.getItem('default-theme');
-    const browserDefault = isBrowserDefaultDark() ? 'dark' : 'light';
+    const localStorageTheme = localStorage.getItem("default-theme");
+    const browserDefault = isBrowserDefaultDark() ? "dark" : "light";
     return localStorageTheme || browserDefault;
   };
 
@@ -40,13 +43,13 @@ export default function Home() {
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
-    const isCurrentDark = theme === 'dark';
-    setTheme(isCurrentDark ? 'light' : 'dark');
-    localStorage.setItem('theme', isCurrentDark ? 'light' : 'dark');
-  }
+    const isCurrentDark = theme === "dark";
+    setTheme(isCurrentDark ? "light" : "dark");
+    localStorage.setItem("theme", isCurrentDark ? "light" : "dark");
+  };
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ChakraProvider>
       <div
         className="flex h-full w-full"
         style={{
@@ -63,8 +66,9 @@ export default function Home() {
 
           <nav className="flex flex-col flex-auto justify-start pt-24 w-full">
             <button
-              className={`h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 ${button == "materiais" ? "bg-white/50" : ""
-                }`}
+              className={`h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 ${
+                button == "materiais" ? "bg-white/50" : ""
+              }`}
               style={{ transition: "150ms ease-in" }}
               onClick={() => toggleButton("materiais")}
             >
@@ -75,8 +79,9 @@ export default function Home() {
             </button>
 
             <button
-              className={`h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 ${button == "perfil" ? "bg-white/50" : ""
-                }`}
+              className={`h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 ${
+                button == "perfil" ? "bg-white/50" : ""
+              }`}
               style={{ transition: "150ms ease-in" }}
               onClick={() => toggleButton("perfil")}
             >
@@ -89,8 +94,9 @@ export default function Home() {
             </button>
 
             <button
-              className={`h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 ${button == "desafios" ? "bg-white/50" : ""
-                }`}
+              className={`h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 ${
+                button == "desafios" ? "bg-white/50" : ""
+              }`}
               style={{ transition: "150ms ease-in" }}
               onClick={() => toggleButton("desafios")}
             >
@@ -118,7 +124,10 @@ export default function Home() {
           style={{ background: "#EDD8FF" }}
         >
           <div className="h-3/5 w-2/5 flex items-center justify-end pr-4">
-            <form className="flex w-fit items-center justify-center  " action="">
+            <form
+              className="flex w-fit items-center justify-center  "
+              action=""
+            >
               <input
                 className="bg-transparent outline-none w-7/12 text-2xl"
                 type="text"
@@ -127,14 +136,31 @@ export default function Home() {
                 <BiSearch className="text-3xl text-cinza" />
               </a>
             </form>
-            <div className={`w-10 h-10 flex items-center justify-center rounded-full hover:opacity-60  text-white bg-cinza`}>
-              <LuPaintBucket onClick={onOpen} className="text-2xl cursor-pointer relative" />
+            <div
+              className={`w-10 h-10 flex items-center justify-center rounded-full hover:opacity-60  text-white bg-cinza`}
+            >
+              <LuPaintBucket
+                onClick={onOpen}
+                className="text-2xl cursor-pointer relative"
+              />
             </div>
           </div>
         </header>
 
-        <Modal isOpen={isOpen} onClose={onClose} motionPreset='slideInBottom' blockScrollOnMount={false}>
-          <ModalContent w="16vw" position="fixed" top="0" right="1rem" zIndex={100} borderRadius="100">
+        <Modal
+          isOpen={isOpen}
+          onClose={onClose}
+          motionPreset="slideInBottom"
+          blockScrollOnMount={false}
+        >
+          <ModalContent
+            w="16vw"
+            position="fixed"
+            top="0"
+            right="1rem"
+            zIndex={100}
+            borderRadius="100"
+          >
             <div className="bg-[#56505B] w-full py-3 flex justify-evenly items-center rounded-t-xl">
               <BsFillMoonFill className="text-[#e4d9ed] text-xl" />
               <p className="text-[#e4d9ed]">Modo escuro</p>
@@ -150,7 +176,9 @@ export default function Home() {
                     className={`box block h-6 w-10 rounded-full bg-[#e4d9ed]`}
                   ></div>
                   <div
-                    className={`absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded-full transition bg-[#56505B] ${isChecked ? "translate-x-full" : ""}`}
+                    className={`absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded-full transition bg-[#56505B] ${
+                      isChecked ? "translate-x-full" : ""
+                    }`}
                   ></div>
                 </div>
               </label>
@@ -170,47 +198,60 @@ export default function Home() {
                     className={`box block h-6 w-10 rounded-full bg-[#56505B]`}
                   ></div>
                   <div
-                    className={`absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded-full transition bg-[#e4d9ed] ${!isChecked ? "translate-x-full" : ""
-                      }`}
+                    className={`absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded-full transition bg-[#e4d9ed] ${
+                      !isChecked ? "translate-x-full" : ""
+                    }`}
                   ></div>
                 </div>
               </label>
             </div>
           </ModalContent>
         </Modal>
-        <Modal isOpen={isMaisOpen} onClose={onMaisClose} motionPreset='slideInRight' blockScrollOnMount={false}>
-          <ModalContent w="16vw" position="fixed" bottom="0" left="10rem" zIndex={100} borderRadius="100">
-            <div className="bg-cinza">
-              <button className="text-left rounded-lg leading-none hover:bg-purple-700 hover:text-white ">
-                <span className="inline-flex items-center gap-2">
-                  <BiHelpCircle className="relative 2xl:text-3xl text-lg"></BiHelpCircle>
-                  <span className="2xl:text-xl text-lg">Configurações</span>
+        <Modal
+          isOpen={isMaisOpen}
+          onClose={onMaisClose}
+          motionPreset="slideInRight"
+          blockScrollOnMount={false}
+        >
+          <ModalContent
+            w="container.xl"
+            position="fixed"
+            bottom="0"
+            left="10rem"
+            zIndex={100}
+            borderRadius="20"
+          >
+            <div className="bg-[#E4D9ED] flex flex-col items-center w-full justify-start rounded-2xl h-fit pb-4 gap-0">
+              <button className="text-left rounded-t-lg leading-none text-white bg-[#56505B] py-3 w-full hover:opacity-70">
+                <span className="inline-flex items-center gap-2 w-full">
+                  <BiHelpCircle className="relative 2xl:text-3xl text-lg w-1/4 "></BiHelpCircle>
+                  <span className="2xl:text-xl text-lg w-3/4">
+                    Configurações
+                  </span>
                 </span>
               </button>
 
-              <button className="text-left rounded-lg leading-none hover:bg-purple-700 hover:text-white ">
-                <span className="inline-flex items-center gap-2">
-                  <BiHelpCircle className="relative 2xl:text-3xl text-lg"></BiHelpCircle>
-                  <span className="2xl:text-xl text-lg">Central de Ajuda</span>
+              <button className="text-left rounded-t-lg leading-none text-cinza py-3 w-full hover:opacity-70">
+                <span className="inline-flex items-center gap-2 w-full">
+                  <BiHelpCircle className="relative 2xl:text-3xl text-lg w-1/4 "></BiHelpCircle>
+                  <span className="2xl:text-lg text-md w-3/4">
+                    Central de Ajuda
+                  </span>
                 </span>
               </button>
 
-              <button className="text-left rounded-lg leading-none mb-32 hover:bg-purple-700 hover:text-white ">
-                <span className="inline-flex items-center gap-2">
-                  <BiHelpCircle className="relative 2xl:text-3xl text-lg"></BiHelpCircle>
-                  <span className="2xl:text-xl text-lg">Sair</span>
+              <button className="text-left rounded-t-lg leading-none text-cinza py-3 w-full hover:opacity-70">
+                <span className="inline-flex items-center gap-2 w-full">
+                  <BiHelpCircle className="relative 2xl:text-3xl text-lg w-1/4 "></BiHelpCircle>
+                  <span className="2xl:text-xl text-lg w-3/4">Sair</span>
                 </span>
               </button>
 
-              <button
-                className="text-center rounded-lg leading-none mb-32 hover:scale-110"
-                style={{ background: "#C4BCC7" }}
-              >
-                <span className="inline-flex items-center">
+              <button className="text-center rounded-lg leading-none bg-[#C4BCC7] px-4 py-2 hover:opacity-70">
+                <span className="inline-flex items-center gap-2 w-full">
                   <span className="2xl:text-xl text-lg">Dar Feedback</span>
                 </span>
               </button>
-
             </div>
           </ModalContent>
         </Modal>
@@ -223,6 +264,6 @@ export default function Home() {
           "tchau"
         ) : null}
       </div>
-    </ThemeContext.Provider>
+    </ChakraProvider>
   );
 }

@@ -25,6 +25,22 @@ function Cadastro() {
     const [senha, setSenha] = useState("")
     const [confirmarSenha, setConfirmarSenha] = useState("");
 
+    const [isResponsive, setResponsive] = useState()
+
+    useEffect(() => {
+        const handleResize = () => {
+            setResponsive(window.innerWidth < 700);
+        };
+
+        handleResize(); // Set initial state
+
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
     const Cadastrar = (e) => {
         e.preventDefault();
         if (emailExists) {
