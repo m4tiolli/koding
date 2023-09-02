@@ -59,7 +59,7 @@ function Login() {
 
   return (
     <div
-      className="absolute w-full h-screen z-20 overflow-hidden"
+      className="absolute w-full h-screen z-20 overflow-hidden lg:flex lg:flex-row lg:items-center lg:justify-between"
       style={{
         backgroundImage: isResponsavel
           ? "linear-gradient(108deg, #C6D6FF 0%, #FFF 100%)"
@@ -82,20 +82,20 @@ function Login() {
         />
       )}
       <BackgroundCircles isResponsavel={isResponsavel} />
-      <div className="w-full h-1/4">
-        <div className="flex items-start  text-start justify-center flex-col relative">
+      <div className="w-full h-1/4 lg:w-1/4">
+        <div className="flex items-start text-start justify-center flex-col relative">
           <Logo
             isResponsavel={isResponsavel}
             isResponsive={false}
-            className={"scale-[.60]"}
+            className={"scale-[.60] lg:-ml-6 xl:scale-[.80] xl:ml-2"}
           />
 
-          <p className="text-5xl w-3/5 text-cinza font-bold pl-16">
+          <p className="text-3xl w-4/5 text-cinza font-bold pl-16 lg:text-6xl lg:w-96 xl:text-7xl lg:pl-10">
             Faça seu login
           </p>
         </div>
       </div>
-      <div className="z-20 h-3/4 w-full flex items-center justify-evenly flex-col relative">
+      <div className="z-20 h-3/4 w-full lg:w-3/5 flex items-center justify-evenly flex-col relative">
         <div className="justify-center w-3/4 flex items-center">
           <button
             className={`text-2xl font-bold text-cinza hover:opacity-80 active:translate-y-1 active:shadow-inner px-3 py2 rounded-2xl after:content-[' '] after:block after:w-4/5 after:h-[1px] after:m-auto ${
@@ -119,7 +119,7 @@ function Login() {
             isResponsavel
               ? "before:bg-verdeclaro bg-verde"
               : "before:bg-roxoclaro bg-roxo"
-          } z-10 relative w-5/6 h-3/4 rounded-2xl flex flex-col items-center justify-center before:block before:absolute before:top-0 before:content-[' '] before:w-full before:h-full before:rotate-[-8deg] before:radius-x before:-z-50 before:shadow-lg shadow-lg before:rounded-2xl`}
+          } z-10 relative w-5/6 xl:w-4/6 h-3/4 lg:h-5/6 rounded-2xl flex flex-col items-center justify-center before:block before:absolute before:top-0 before:content-[' '] before:w-full before:h-full before:rotate-[-8deg] before:radius-x before:-z-50 before:shadow-lg shadow-lg before:rounded-2xl`}
         >
           <input
             type="text"
@@ -150,13 +150,13 @@ function Login() {
             )}
           </div>
           <button
-            className="bg-input rounded-xl w-2/5 h-16 my-8 text-xl text-cinza hover:opacity-70 active:shadow-inner active:translate-y-1"
+            className="bg-input rounded-xl font-bold w-2/5 h-16 my-8 text-xl text-cinza hover:opacity-70 active:shadow-inner active:translate-y-1"
             onClick={handleLogin}
             type="submit"
           >
             Entrar
           </button>
-          <p className=" text-xl">
+          <p className="text-md md:text-xl font-semibold text-cinza">
             Não tem conta?
             <Link
               to={"/criar-conta"}
