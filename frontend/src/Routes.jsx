@@ -9,6 +9,7 @@ import Perfil from "./Screens/Perfil/Perfil";
 import Ajuda from "./Screens/Ajuda/Ajuda";
 import Aprender from "./Screens/Aprender/Aprender";
 import Configuracao from "./Screens/Configuracao/Configuracao";
+import Flexbox from "./Screens/Jogos/Flexbox/Flexbox";
 
 
 function AppRoutes() {
@@ -24,7 +25,8 @@ function AppRoutes() {
         <Route exact path="/perfil" element={<Perfil />} />
         <Route exact path="/ajuda" element={<Ajuda />} />
         <Route exact path="/aprender" element={<Aprender />} />
-        <Route exact path="/configuracao" element={<Configuracao />} />
+        <Route exact path="/configuracao" element={<Configuracao />} /> 
+        <Route exact path="/flexbox" element={<Flexbox />} /> 
       </Routes>
     </HashRouter>
   );

@@ -9,9 +9,9 @@ function Perfil(){
         <main className="w-full h-screen flex xl:gap-x-32 gap-x-16 ml-56 mr-2 overflow-hidden">
 
             {/* Card Perfil */}
-            <container className="items-center justify-center xl:w-72 xl:h-96 w-64 h-80 xl:ml-64 ml-32 xl:mt-40 mt-32 gap-3 rounded-xl" style={{ background: "linear-gradient(10deg, #831ED5 0%, #C66A6E 50%, #F19A2C 100%)" }}>
-                <div className="w-full h-full flex flex-col xl:-mt-10 items-center gap-y-5 justify-center">
-                    <div className="w-12 h-12 absolute top-52 ml-32 flex items-center justify-center bg-neutral-500 rounded-full">
+            <container className="items-center justify-center xl:w-72 xl:h-96 w-64 h-96 xl:ml-64 ml-28 xl:mt-40 mt-32 rounded-xl" style={{ background: "linear-gradient(10deg, #831ED5 0%, #C66A6E 50%, #F19A2C 100%)" }}>
+                <div className="w-full h-full flex flex-col -mt-5 items-center gap-y-8 justify-center">
+                    <div className="w-10 h-10 absolute xl:top-56 top-48 ml-28 flex items-center justify-center bg-neutral-500 rounded-full">
                         <GoPencil className="text-white text-3xl"/>
                     </div>
                        
@@ -30,7 +30,7 @@ function Perfil(){
 
             {/* Dados */}
 
-            <container className="flex flex-col items-center justify-center w-72 h-96 xl:mt-40 mt-24 gap-y-5">
+            <container className="flex flex-col items-center justify-center w-72 h-96 xl:mt-40 mt-32 gap-y-5">
 
                 <span className="xl:text-4xl text-3xl mr-28 text-left font-semibold text-black">Dados</span>
 
