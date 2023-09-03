@@ -23,8 +23,7 @@ function Login() {
   const handleLogin = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3005/${
-          isResponsavel ? "responsavel" : "crianca"
+        `http://localhost:3005/${isResponsavel ? "responsavel" : "crianca"
         }/login`,
         {
           method: "POST",
@@ -98,28 +97,25 @@ function Login() {
       <div className="z-20 h-3/4 w-full lg:w-3/5 flex items-center justify-evenly flex-col relative">
         <div className="justify-center w-3/4 flex items-center">
           <button
-            className={`text-2xl font-bold text-cinza hover:opacity-80 active:translate-y-1 active:shadow-inner px-3 py2 rounded-2xl after:content-[' '] after:block after:w-4/5 after:h-[1px] after:m-auto ${
-              !isResponsavel ? "after:bg-cinza" : "after:bg-transparent"
-            }`}
+            className={`text-2xl font-bold text-cinza hover:opacity-80 active:translate-y-1 active:shadow-inner px-3 py2 rounded-2xl after:content-[' '] after:block after:w-4/5 after:h-[1px] after:m-auto ${!isResponsavel ? "after:bg-cinza" : "after:bg-transparent"
+              }`}
             onClick={() => setIsResponsavel(false)}
           >
             Criança
           </button>
           <button
-            className={`text-2xl font-bold text-cinza hover:opacity-80 active:translate-y-1 active:shadow-inner px-3 py2 rounded-2xl after:content-[' '] after:block after:w-4/5 after:h-[1px] after:m-auto ${
-              isResponsavel ? "after:bg-cinza" : "after:bg-transparent"
-            }`}
+            className={`text-2xl font-bold text-cinza hover:opacity-80 active:translate-y-1 active:shadow-inner px-3 py2 rounded-2xl after:content-[' '] after:block after:w-4/5 after:h-[1px] after:m-auto ${isResponsavel ? "after:bg-cinza" : "after:bg-transparent"
+              }`}
             onClick={() => setIsResponsavel(true)}
           >
             Responsável
           </button>
         </div>
         <div
-          className={`${
-            isResponsavel
-              ? "before:bg-verdeclaro bg-verde"
-              : "before:bg-roxoclaro bg-roxo"
-          } z-10 relative w-5/6 xl:w-4/6 h-3/4 lg:h-5/6 rounded-2xl flex flex-col items-center justify-center before:block before:absolute before:top-0 before:content-[' '] before:w-full before:h-full before:rotate-[-8deg] before:radius-x before:-z-50 before:shadow-lg shadow-lg before:rounded-2xl`}
+          className={`${isResponsavel
+            ? "before:bg-verdeclaro bg-verde"
+            : "before:bg-roxoclaro bg-roxo"
+            } z-10 relative w-5/6 xl:w-4/6 h-3/4 lg:h-5/6 rounded-2xl flex flex-col items-center justify-center before:block before:absolute before:top-0 before:content-[' '] before:w-full before:h-full before:rotate-[-8deg] before:radius-x before:-z-50 before:shadow-lg shadow-lg before:rounded-2xl`}
         >
           <input
             type="text"
@@ -150,7 +146,7 @@ function Login() {
             )}
           </div>
           <button
-            className="bg-input rounded-xl font-bold w-2/5 h-16 my-8 text-xl text-cinza hover:opacity-70 active:shadow-inner active:translate-y-1"
+            className={`rounded-xl font-regular uppercase shadow-md shadow-gray-400 w-2/5 h-16 my-8 text-xl text-white hover:opacity-70 active:shadow-inner active:translate-y-1 ${isResponsavel ? "bg-[#4259CF]" : "bg-[#7E1AD4]"}`}
             onClick={handleLogin}
             type="submit"
           >
@@ -160,9 +156,8 @@ function Login() {
             Não tem conta?
             <Link
               to={"/criar-conta"}
-              className={`${
-                isResponsavel ? "linkresponsavel" : "linkcrianca"
-              } cursor-pointer font-bold hover:opacity-70`}
+              className={`${isResponsavel ? "linkresponsavel" : "linkcrianca"
+                } cursor-pointer font-bold hover:opacity-70`}
             >
               &nbsp;Registre-se
             </Link>
