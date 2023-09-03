@@ -11,7 +11,10 @@ function Perfil(){
             {/* Card Perfil */}
             <container className="items-center justify-center xl:w-72 xl:h-96 w-64 h-80 xl:ml-64 ml-32 xl:mt-40 mt-32 gap-3 rounded-xl" style={{ background: "linear-gradient(10deg, #831ED5 0%, #C66A6E 50%, #F19A2C 100%)" }}>
                 <div className="w-full h-full flex flex-col xl:-mt-10 items-center gap-y-5 justify-center">
-                        <GoPencil className="absolute xl:top-52 xl:ml-24 top-48 ml-20 bg-neutral-500 rounded-full text-white text-3xl"/>
+                    <div className="w-12 h-12 absolute top-52 ml-32 flex items-center justify-center bg-neutral-500 rounded-full">
+                        <GoPencil className="text-white text-3xl"/>
+                    </div>
+                       
                     <div className="xl:h-36 xl:w-36 h-32 w-32 rounded-full bg-white"></div>
                     <div className="flex flex-col items-center justify-center"> 
                         <span className="xl:text-3xl text-2xl text-white">
