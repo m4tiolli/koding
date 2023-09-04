@@ -1,3 +1,8 @@
+.codigo {
+    font-family: 'Source Code Pro' !important;
+    letter-spacing: -1px;
+}
+
 .sec{
     border-bottom-left-radius: 30px;
 }

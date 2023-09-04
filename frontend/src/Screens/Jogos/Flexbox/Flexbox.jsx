@@ -9,7 +9,7 @@ function Flexbox(){
             <section className="w-3/6 p-16" >
                 <h1 className="text-3xl uppercase font-semibold text-gray-600">Flexbox</h1>
                 <p className="font-sans mb-5">
-                    Ajude a alinhar 3 (três) colunas usando uma combinação de <span className="bg-orange-300/100 border-b-2 border-purple-500 border-solid">flex-direction</span> e <span className="bg-orange-300/100 border-b-2 border-purple-500 border-solid">flex-wrap</span>.
+                    Ajude a alinhar 3 (três) colunas usando uma combinação de <span className="bg-orange-300/100 border-b-2 border-purple-500 border-solid codigo">flex-direction</span> e <span className="bg-orange-300/100 border-b-2 border-purple-500 border-solid codigo">flex-wrap</span>.
                 </p>
 
                 {/* Editor */}

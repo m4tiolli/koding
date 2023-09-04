@@ -48,6 +48,11 @@ export default function Home() {
     localStorage.setItem("theme", isCurrentDark ? "light" : "dark");
   };
 
+  const toggleDarkMode = () => {
+    const html = document.getElementsByTagName("html")[0];
+    html.className.add("dark")
+  }
+
   return (
     <ChakraProvider>
       <div
@@ -66,9 +71,8 @@ export default function Home() {
 
           <nav className="flex flex-col flex-auto justify-start pt-24 w-full">
             <button
-              className={`h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 ${
-                button == "materiais" ? "bg-white/50" : ""
-              }`}
+              className={`h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 ${button == "materiais" ? "bg-white/50" : ""
+                }`}
               style={{ transition: "150ms ease-in" }}
               onClick={() => toggleButton("materiais")}
             >
@@ -79,9 +83,8 @@ export default function Home() {
             </button>
 
             <button
-              className={`h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 ${
-                button == "perfil" ? "bg-white/50" : ""
-              }`}
+              className={`h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 ${button == "perfil" ? "bg-white/50" : ""
+                }`}
               style={{ transition: "150ms ease-in" }}
               onClick={() => toggleButton("perfil")}
             >
@@ -94,9 +97,8 @@ export default function Home() {
             </button>
 
             <button
-              className={`h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 ${
-                button == "desafios" ? "bg-white/50" : ""
-              }`}
+              className={`h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 ${button == "desafios" ? "bg-white/50" : ""
+                }`}
               style={{ transition: "150ms ease-in" }}
               onClick={() => toggleButton("desafios")}
             >
@@ -176,9 +178,8 @@ export default function Home() {
                     className={`box block h-6 w-10 rounded-full bg-[#e4d9ed]`}
                   ></div>
                   <div
-                    className={`absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded-full transition bg-[#56505B] ${
-                      isChecked ? "translate-x-full" : ""
-                    }`}
+                    className={`absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded-full transition bg-[#56505B] ${isChecked ? "translate-x-full" : ""
+                      }`}
                   ></div>
                 </div>
               </label>
@@ -198,9 +199,8 @@ export default function Home() {
                     className={`box block h-6 w-10 rounded-full bg-[#56505B]`}
                   ></div>
                   <div
-                    className={`absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded-full transition bg-[#e4d9ed] ${
-                      !isChecked ? "translate-x-full" : ""
-                    }`}
+                    className={`absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded-full transition bg-[#e4d9ed] ${!isChecked ? "translate-x-full" : ""
+                      }`}
                   ></div>
                 </div>
               </label>

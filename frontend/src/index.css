@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Source+Code+Pro:wght@200;300;400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&family=Source+Code+Pro:wght@200;300;400;500&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -11,7 +11,7 @@
 }
 
 ::selection {
-  background-color: #b461a9;
+  background-color: #2bb0a1;
   color: #fff;
 }
 
