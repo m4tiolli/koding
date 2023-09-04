@@ -23,8 +23,7 @@ function Login() {
   const handleLogin = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3005/${isResponsavel ? "responsavel" : "crianca"
-        }/login`,
+        `http://localhost:3005/${isResponsavel ? "responsavel" : "crianca"}/login`,
         {
           method: "POST",
           headers: {
@@ -35,12 +34,11 @@ function Login() {
       );
 
       if (response.ok) {
-        console.log("Login efetuado");
         navigate("/");
       } else {
         const data = await response.json();
         setLoginError(data.error);
-        toast.error(loginError, {
+        toast.error(data.error, {
           position: "top-center",
           autoClose: 2000,
           hideProgressBar: true,
@@ -56,6 +54,7 @@ function Login() {
     }
   };
 
+
   return (
     <div
       className="absolute w-full h-screen z-20 overflow-hidden lg:flex lg:flex-row lg:items-center lg:justify-between"
@@ -65,6 +64,20 @@ function Login() {
           : "linear-gradient(108deg, #e5c6ff 0%, #fff 100%)",
       }}
     >
+      <BackgroundCircles isResponsavel={isResponsavel} />
+      <div className="w-full h-1/4 lg:w-1/4">
+        <div className="flex items-start text-start justify-center flex-col relative">
+          <Logo
+            isResponsavel={isResponsavel}
+            isResponsive={false}
+            className={"scale-[.60] lg:-ml-6 xl:scale-[.80] xl:ml-2"}
+          />
+
+          <p className="text-3xl w-4/5 text-cinza font-bold pl-16 lg:text-6xl lg:w-96 xl:text-7xl lg:pl-10">
+            Faça seu login
+          </p>
+        </div>
+      </div>
       {loginError && (
         <ToastContainer
           position="top-center"
@@ -80,20 +93,6 @@ function Login() {
           theme="colored"
         />
       )}
-      <BackgroundCircles isResponsavel={isResponsavel} />
-      <div className="w-full h-1/4 lg:w-1/4">
-        <div className="flex items-start text-start justify-center flex-col relative">
-          <Logo
-            isResponsavel={isResponsavel}
-            isResponsive={false}
-            className={"scale-[.60] lg:-ml-6 xl:scale-[.80] xl:ml-2"}
-          />
-
-          <p className="text-3xl w-4/5 text-cinza font-bold pl-16 lg:text-6xl lg:w-96 xl:text-7xl lg:pl-10">
-            Faça seu login
-          </p>
-        </div>
-      </div>
       <div className="z-20 h-3/4 w-full lg:w-3/5 flex items-center justify-evenly flex-col relative">
         <div className="justify-center w-3/4 flex items-center">
           <button
@@ -148,7 +147,6 @@ function Login() {
           <button
             className={`rounded-xl font-regular uppercase shadow-md shadow-gray-400 w-2/5 h-16 my-8 text-xl text-white hover:opacity-70 active:shadow-inner active:translate-y-1 ${isResponsavel ? "bg-[#4259CF]" : "bg-[#7E1AD4]"}`}
             onClick={handleLogin}
-            type="submit"
           >
             Entrar
           </button>

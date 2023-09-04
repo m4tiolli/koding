@@ -1,3 +1,58 @@
+.codigo {
+    font-family: 'Source Code Pro' !important;
+    letter-spacing: -1px;
+}
+
 .sec{
     border-bottom-left-radius: 30px;
+}
+
+.frente{
+    width: 95%;
+    height: 95%;
+    padding: 2.5%;
+    z-index: 1;
+}
+
+.tras{
+    width: 95%;
+    height: 95%;
+    padding: 2.5%;
+}
+
+.vr-container, .sp-container{
+    width: 20%;
+    height: 20%;
+}
+
+.vr, .sp{
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.vr.verde{
+    background-image: url('.../../../../../Components/lilypad-green.svg');
+}
+
+.vr.vermelho{
+    background-image: url('.../../../../../Components/lilypad-red.svg');
+}
+
+.vr.amarelo{
+    background-image: url('.../../../../../Components/lilypad-yellow.svg');
+}
+
+.sp.verde{
+    background-image: url('.../../../../../Components/frog-green.svg');
+}
+
+.sp.vermelho{
+    background-image: url('.../../../../../Components/frog-red.svg');
+}
+
+.sp.amarelo{
+    background-image: url('.../../../../../Components/frog-yellow.svg');
 }
