@@ -19,11 +19,13 @@ export default {
       },
       width: {
         "40vw": "40vw",
-        "50": "12.5rem"
+        "50": "12.5rem",
+        "50vw": "50vw"
       },
       height: {
         "35vh": "35vw",
         "45vh": "44vw",
+        "50vw": "50vw"
       },
       screens: {
 
