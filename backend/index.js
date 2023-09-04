@@ -13,6 +13,8 @@ const db = mysql.createPool({
   database: "koding",
 });
 
+const port = 3005;
+
 app.use(cors());
 app.use(express.json());
 
@@ -170,7 +172,7 @@ app.post("/responsavel/login", (req, res) => {
 });
 
 //verifica email existente
-app.get("/responsavel/email/:email", (req, res) => {
+app.get("/email/:email", (req, res) => {
   const { email } = req.params;
 
   db.query(
@@ -213,6 +215,12 @@ app.post("/crianca/login", (req, res) => {
   );
 });
 
-app.listen(3005, () => {
-  console.log("rodando servidor");
+app.get("/", (req, res) => {
+  res.json({
+    status: "Servidor executando!",
+  });
+});
+
+app.listen(port, () => {
+  console.log(`Servidor executando na porta ${port}!`);
 });

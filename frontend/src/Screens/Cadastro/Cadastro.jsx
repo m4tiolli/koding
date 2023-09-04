@@ -24,6 +24,7 @@ function Cadastro() {
     const [email, setEmail] = useState("")
     const [senha, setSenha] = useState("")
     const [confirmarSenha, setConfirmarSenha] = useState("");
+    const [notSenhas, setNotSenhas] = useState(false)
 
     const [isResponsive, setResponsive] = useState()
 
@@ -42,6 +43,13 @@ function Cadastro() {
     }, []);
 
     const Cadastrar = (e) => {
+        if (invalid) {
+            setShake(true);
+            setTimeout(() => {
+                setShake(false);
+            }, 1000);
+            return;
+        }
         e.preventDefault();
         if (emailExists) {
             return;
@@ -73,7 +81,7 @@ function Cadastro() {
 
     const verificaEmail = async () => {
         try {
-            const response = await fetch(`http://localhost:3005/responsavel/email/${email}`, {
+            const response = await fetch(`http://localhost:3005/email/${email}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -88,10 +96,10 @@ function Cadastro() {
                     setEmailExists(false);
                 }
             } else {
-                console.error('Erro ao verificar e-mail:', response.status);
+                console.log('Email ok!', response.status);
             }
         } catch (error) {
-            console.error('Erro ao verificar e-mail:', error);
+            console.error('Erro no servidor:', error);
         }
     };
 
@@ -112,33 +120,41 @@ function Cadastro() {
             return;
         }
     };
+    const handleSenhas = () => {
+        if (senha !== confirmarSenha) {
+            setNotSenhas(true)
+        } else {
+            setNotSenhas(false)
+        }
+    }
 
     return (
         <div
-            className="absolute w-full h-full z-20 flex flex-col-reverse xl:flex-row xl:justify-between items-start justify-start overflow-hidden"
+            className="absolute w-full h-fit xl:h-full z-20 flex flex-col-reverse xl:flex-row xl:justify-between gap-4 items-start justify-start xl:overflow-hidden"
             style={{ backgroundImage: "linear-gradient(108deg, #C6D6FF 0%, #FFF 100%)" }}>
             <BackgroundCircles isResponsavel={true} />
             <div className="z-20 h-full w-full flex items-end justify-center flex-col relative">
                 <div className="flex items-center justify-evenly flex-col h-full w-full">
-                    <div className={`before:bg-verdeclaro bg-verde z-10 relative w-4/5 md:w-3/5 h-[90%] rounded-2xl flex flex-col justify-between items-center before:block before:content-[' '] before:w-full before:h-full before:rotate-[-8deg] before:radius-x before:-z-20 before:shadow-lg shadow-lg before:rounded-2xl`}>
-                        <h1 className="text-cinza font-bold text-2xl absolute top-6 xl:text-3xl">Crie sua conta</h1>
-                        <div className="flex flex-col items-center w-full absolute top-16">
-                            <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} className="bg-input px-10 py-1 w-3/4 placeholder:opacity-70 rounded-lg text-lg placeholder:text-black my-1 outline-0 text-cinza" placeholder="Nome" />
+                    <div className={`before:bg-verdeclaro bg-verde z-10 relative w-4/5 md:w-3/5 rounded-2xl flex flex-col justify-center items-center gap-4 before:block before:content-[' '] before:w-full before:absolute before:top-0 before:h-full before:rotate-[-8deg] before:radius-x before:-z-20 before:shadow-lg shadow-lg before:rounded-2xl h-fit py-4`}>
+                        <h1 className="text-cinza font-bold text-2xl xl:text-3xl">Crie sua conta</h1>
+                        <div className="flex flex-col gap-3 items-center w-full">
+                            <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} className="bg-input px-4 py-1 w-3/4 placeholder:opacity-70 rounded-lg text-lg placeholder:text-black my-1 outline-0 text-cinza" placeholder="Nome" />
 
-                            <input type="text" value={cpf} onChange={(e) => setCpf(e.target.value)} className="bg-input px-10 py-1 w-3/4 placeholder:opacity-70 rounded-lg text-lg placeholder:text-black my-1 outline-0 text-cinza" placeholder="CPF" />
-                            <input type="text" value={telefone} onChange={(e) => setTelefone(e.target.value)} className="bg-input px-10 py-1 w-3/4 placeholder:opacity-70 rounded-lg text-lg placeholder:text-black my-1 outline-0 text-cinza" placeholder="Telefone" />
-                            <input type="text" onInput={verificaEmail} value={email} onChange={(e) => setEmail(e.target.value)} className={`${emailExists ? "bg-red-400" : "bg-input"} px-10 py-1 w-3/4 placeholder:opacity-70 rounded-lg text-lg placeholder:text-black my-1 outline-0 text-cinza`} placeholder="E-mail" />
-                            <p className={`${emailExists ? "opacity-1" : "opacity-0"} w-3/4 font-medium text-red-600 h-0`}>*Este email já está em uso, utilize outro.</p>
-                            <div className={`${invalid ? "bg-red-400" : "bg-input"} ${shake ? "invalid" : ""} px-10 py-1 w-3/4 my-1 placeholder:opacity-70 rounded-lg text-lg flex items-center justify-between`}>
+                            <input type="text" value={cpf} onChange={(e) => setCpf(e.target.value)} className="bg-input px-4 py-1 w-3/4 placeholder:opacity-70 rounded-lg text-lg placeholder:text-black my-1 outline-0 text-cinza" placeholder="CPF" />
+                            <input type="text" value={telefone} onChange={(e) => setTelefone(e.target.value)} className="bg-input px-4 py-1 w-3/4 placeholder:opacity-70 rounded-lg text-lg placeholder:text-black my-1 outline-0 text-cinza" placeholder="Telefone" />
+                            <input type="text" onBlur={verificaEmail} onInvalid={handleInvalid} value={email} onChange={(e) => setEmail(e.target.value)} className={`${emailExists ? "bg-red-400" : "bg-input"} ${shake ? "invalid" : ""} px-4 py-1 w-3/4 placeholder:opacity-70 rounded-lg text-lg placeholder:text-black my-1 outline-0 text-cinza relative`} placeholder="E-mail" />
+                            <p className={`${emailExists ? "opacity-1" : "opacity-0"} w-3/4 font-medium text-xs text-red-600 h-0 absolute bottom-[18.5em]`}>*Este email já está em uso.</p>
+                            <div className={`${invalid ? "bg-red-400" : "bg-input"} ${shake ? "invalid" : ""} relative px-4 py-1 w-3/4 my-1 placeholder:opacity-70 rounded-lg text-lg flex items-center justify-between`}>
                                 <input type={isPassVisible ? "text" : "password"} className="w-4/5 outline-0 bg-transparent placeholder:opacity-70 placeholder:text-black text-cinza" placeholder="Senha" value={senha} onChange={(e) => setSenha(e.target.value)} onBlur={handleInput}
                                     onInvalid={handleInvalid} minLength={8} />
                                 {isPassVisible ? <AiFillEyeInvisible className="text-2xl text-cinza cursor-pointer" onClick={TogglePassVisible} /> : <AiFillEye className="text-2xl text-cinza cursor-pointer" onClick={TogglePassVisible} />}
                             </div>
-                            <p className={`${invalid ? "opacity-1" : "opacity-0"} w-3/4 my-0 font-medium text-red-600 h-0`}>*Digite uma senha válida.</p>
-                            <div className="bg-input px-10 py-1 w-3/4 my-1 placeholder:opacity-70 rounded-lg text-lg flex items-center justify-between">
-                                <input type={isPassVisible ? "text" : "password"} className="w-4/5 outline-0 bg-transparent placeholder:opacity-70 placeholder:text-black text-cinza" placeholder="Confirmar senha" value={confirmarSenha} onChange={(e) => setConfirmarSenha(e.target.value)} />
+                            <p className={`${invalid ? "opacity-1" : "opacity-0"} w-3/4 text-xs font-medium text-red-600 absolute bottom-[12.5em]`}>*Digite uma senha válida.</p>
+                            <div className={`${notSenhas ? "bg-red-400" : "bg-input"} ${shake ? "invalid" : ""} px-4 py-1 w-3/4 my-1 placeholder:opacity-70 rounded-lg text-lg flex items-center justify-between`}>
+                                <input type={isPassVisible ? "text" : "password"} className="w-5/6 outline-0 bg-transparent placeholder:opacity-70 placeholder:text-black text-cinza" placeholder="Confirmar senha" onBlur={handleSenhas} value={confirmarSenha} onChange={(e) => setConfirmarSenha(e.target.value)} />
                                 {isPassVisible ? <AiFillEyeInvisible className="text-2xl text-cinza cursor-pointer" onClick={TogglePassVisible} /> : <AiFillEye className="text-2xl text-cinza cursor-pointer" onClick={TogglePassVisible} />}
                             </div>
+                            <p className={`${notSenhas ? "opacity-1" : "opacity-0"} w-3/4 text-xs font-medium text-red-600 absolute bottom-[8em]`}>*As senhas não coincidem.</p>
                             <button className={`bg-[#4259CF] rounded-lg shadow-md shadow-gray-400 w-3/5 h-12 my-4 text-xl text-white hover:opacity-70 active:shadow-inner active:translate-y-1`} onClick={Cadastrar}>Cadastrar</button>
                         </div>
                     </div>
@@ -147,10 +163,12 @@ function Cadastro() {
             <div className="z-20 h-1/4 xl:h-fit w-full xl:w-2/3 m-auto flex items-start justify-center gap-0 flex-col">
                 <Logo isResponsavel={true} className={"scale-[.50] -ml-20 lg:-ml-6 xl:scale-[.60] "} />
                 <p className={`text-2xl xl:text-6xl w-4/5 ml-4 xl:ml-0 font-bold text-cinza md:text-3xl ${isResponsive ? 'titleregister bg-gradient1' : ''}`}>{isResponsive ? "Junte-se a nós e faça a diferença!" : "Faça seu cadastro"}</p>
-                <div className="flex items-center my-2 text-cinza">
-                    <BsArrowLeft className="text-xl font-bold mx-3" />
-                    <p className="text-xl">Voltar ao <Link to={"/login"} className={`linkresponsavel cursor-pointer font-bold hover:opacity-70`}>Login</Link></p>
-                </div>
+                <Link to={"/login"}>
+                    <div className="flex items-center my-2 text-cinza">
+                        <BsArrowLeft className="text-xl font-bold mx-3" />
+                        <p className="text-xl">Voltar ao <span className={`linkresponsavel cursor-pointer font-bold hover:opacity-70`}>Login</span></p>
+                    </div>
+                </Link>
             </div>
         </div>
     );
