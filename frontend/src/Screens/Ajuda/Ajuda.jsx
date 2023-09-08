@@ -27,17 +27,17 @@ function Ajuda(){
                     <div className="flex flex-col items-center justify-center mt-20 w-5/12">
                         <div className="txt w-full flex items-center p-4 border-1 border-solid border-black/60 text-xl font-semibold">Koding</div>   
                         <details className="details w-full flex items-center p-4 border-1 border-solid border-black/60">
-                            <summary className="outline-none cursor-pointer">Quem Somos?</summary>
+                            <summary className="outline-none cursor-pointer text-lg">Quem Somos?</summary>
                             <div className="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</div>
                         </details>
 
                         <details className="details w-full flex items-center p-4 border-1 border-solid border-black/60">
-                            <summary className="outline-none cursor-pointer">Missão, Visão e Valores</summary>
+                            <summary className="outline-none cursor-pointer text-lg">Missão, Visão e Valores</summary>
                             <div className="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</div>
                         </details>
 
                         <details className="radius details w-full flex items-center p-4 border-1 border-solid border-black/60">
-                            <summary className="outline-none cursor-pointer">Nosso Contato</summary>
+                            <summary className="outline-none cursor-pointer text-lg">Nosso Contato</summary>
                             <div className="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</div>
                         </details>
                     </div>
@@ -45,22 +45,22 @@ function Ajuda(){
                     <div className="flex flex-col items-center justify-center w-5/12">
                         <div className="txt w-full flex items-center p-4 border-1 border-solid border-black/60 text-xl font-semibold">Material de Apoio</div>   
                         <details className="details w-full flex items-center p-4 border-1 border-solid border-black/60">
-                            <summary className="outline-none cursor-pointer">Conceitos Básicos: HTML</summary>
+                            <summary className="outline-none cursor-pointer text-lg">Conceitos Básicos: HTML</summary>
                             <div className="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</div>
                         </details>
 
                         <details className="details w-full flex items-center p-4 border-1 border-solid border-black/60">
-                            <summary className="outline-none cursor-pointer">Conceitos Básicos: CSS</summary>
+                            <summary className="outline-none cursor-pointer text-lg">Conceitos Básicos: CSS</summary>
                             <div className="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</div>
                         </details>
 
                         <details className="details w-full flex items-center p-4 border-1 border-solid border-black/60">
-                            <summary className="outline-none cursor-pointer">Conceitos Básicos: JavaScript</summary>
+                            <summary className="outline-none cursor-pointer text-lg">Conceitos Básicos: JavaScript</summary>
                             <div className="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</div>
                         </details>
 
                         <details className="details w-full flex items-center p-4 border-1 border-solid border-black/60">
-                            <summary className="outline-none cursor-pointer">Conceitos Básicos: PHP</summary>
+                            <summary className="outline-none cursor-pointer text-lg">Conceitos Básicos: PHP</summary>
                             <div className="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</div>
                         </details>
                     </div>
@@ -68,17 +68,17 @@ function Ajuda(){
                     <div className="flex flex-col items-center justify-center w-5/12">
                         <div className="txt w-full flex items-center p-4 border-1 border-solid border-black/60 text-xl font-semibold">Gerenciamento da Conta</div>   
                         <details className="details w-full flex items-center p-4 border-1 border-solid border-black/60">
-                            <summary className="outline-none cursor-pointer">Como editar meu perfi?</summary>
+                            <summary className="outline-none cursor-pointer text-lg">Como editar meu perfi?</summary>
                             <div className="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</div>
                         </details>
 
                         <details className="details w-full flex items-center p-4 border-1 border-solid border-black/60">
-                            <summary className="outline-none cursor-pointer">Como excluir minha conta?</summary>
+                            <summary className="outline-none cursor-pointer text-lg">Como excluir minha conta?</summary>
                             <div className="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</div>
                         </details>
 
                         <details className="radius details w-full flex items-center p-4 border-1 border-solid border-black/60 mb-16">
-                            <summary className="outline-none cursor-pointer">Como restaurar minha senha?</summary>
+                            <summary className="outline-none cursor-pointer text-lg">Como restaurar minha senha?</summary>
                             <div className="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</div>
                         </details>
                     </div>
