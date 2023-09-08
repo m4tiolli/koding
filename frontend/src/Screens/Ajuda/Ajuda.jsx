@@ -1,6 +1,7 @@
 import { IoIosArrowBack } from "react-icons/io";
 
 import Logo1 from '../../Components/Logo1';
+import { Link } from 'react-router-dom';
 import "../Ajuda/Ajuda.css";
 
 function Ajuda(){
@@ -12,10 +13,12 @@ function Ajuda(){
                     <Logo1/>
                 </div>
 
+                <Link to={'/home'}>
                 <div className="flex items-center justify-center w-20 h-10 mt-16 ml-10 font-semibold text-lg text-zinc-800">
                     <IoIosArrowBack className=""/>
                     <span className="">Voltar</span>
                 </div>
+                </Link>
 
                 <div className="flex justify-center">
                     <span className="font-semibold text-2xl text-zinc-800">Perguntas Frequentes</span>
