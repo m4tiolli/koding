@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import BackgroundCircles from "../../Components/BackgroundCircles";
@@ -55,14 +55,20 @@ function Login() {
   };
 
 
+  const [dark, setDark] = useState(false)
+  useEffect(() => {
+    if (localStorage.theme === "dark") {
+      document.documentElement.classList.add("dark");
+      setDark(true)
+    } else {
+      document.documentElement.classList.remove("dark");
+      setDark(false)
+    }
+  }, []);
+
   return (
     <div
-      className="absolute w-full h-screen z-20 overflow-hidden lg:flex lg:flex-row lg:items-center lg:justify-between"
-      style={{
-        backgroundImage: isResponsavel
-          ? "linear-gradient(108deg, #C6D6FF 0%, #FFF 100%)"
-          : "linear-gradient(108deg, #e5c6ff 0%, #fff 100%)",
-      }}
+      className={`absolute w-full h-screen z-20 overflow-hidden lg:flex lg:flex-row lg:items-center lg:justify-between ${isResponsavel ? 'bg-verdeclaro' : 'bg-roxoclaro'} ${dark && isResponsavel ? 'bg-[#173032]' : dark && !isResponsavel ? 'bg-[#2A0C42]' : !dark && isResponsavel ? 'bg-[#c4e1d5]' : 'bg-[#e1cbf4]'}`}
     >
       <BackgroundCircles isResponsavel={isResponsavel} />
       <div className="w-full h-1/4 lg:w-1/4">
@@ -71,9 +77,10 @@ function Login() {
             isResponsavel={isResponsavel}
             isResponsive={false}
             className={"scale-[.60] lg:-ml-6 xl:scale-[.80] xl:ml-2"}
+            isDark={dark}
           />
 
-          <p className="text-3xl w-4/5 text-cinza font-bold pl-16 lg:text-6xl lg:w-96 xl:text-7xl lg:pl-10">
+          <p className="text-3xl w-4/5 text-cinza dark:text-white font-bold pl-16 lg:text-6xl lg:w-96 xl:text-7xl lg:pl-10">
             Faça seu login
           </p>
         </div>
@@ -96,14 +103,14 @@ function Login() {
       <div className="z-20 h-3/4 w-full lg:w-3/5 flex items-center justify-evenly flex-col relative">
         <div className="justify-center w-3/4 flex items-center">
           <button
-            className={`text-2xl font-bold text-cinza hover:opacity-80 active:translate-y-1 active:shadow-inner px-3 py2 rounded-2xl after:content-[' '] after:block after:w-4/5 after:h-[1px] after:m-auto ${!isResponsavel ? "after:bg-cinza" : "after:bg-transparent"
+            className={`text-2xl font-bold text-cinza dark:text-white hover:opacity-80 active:translate-y-1 active:shadow-inner px-3 py2 rounded-2xl after:content-[' '] after:block after:w-4/5 after:h-[1px] after:m-auto ${!isResponsavel ? "after:bg-cinza dark:after:bg-white" : "after:bg-transparent"
               }`}
             onClick={() => setIsResponsavel(false)}
           >
             Criança
           </button>
           <button
-            className={`text-2xl font-bold text-cinza hover:opacity-80 active:translate-y-1 active:shadow-inner px-3 py2 rounded-2xl after:content-[' '] after:block after:w-4/5 after:h-[1px] after:m-auto ${isResponsavel ? "after:bg-cinza" : "after:bg-transparent"
+            className={`text-2xl font-bold text-cinza dark:text-white hover:opacity-80 active:translate-y-1 active:shadow-inner px-3 py2 rounded-2xl after:content-[' '] after:block after:w-4/5 after:h-[1px] after:m-auto ${isResponsavel ? "after:bg-cinza dark:after:bg-white" : "after:bg-transparent"
               }`}
             onClick={() => setIsResponsavel(true)}
           >
@@ -111,9 +118,9 @@ function Login() {
           </button>
         </div>
         <div
-          className={`${isResponsavel
+          className={`${isResponsavel && dark ? 'before:bg-[#21393B] bg-[#00224A]' : isResponsavel && !dark
             ? "before:bg-verdeclaro bg-verde"
-            : "before:bg-roxoclaro bg-roxo"
+            : !isResponsavel && !dark ? "before:bg-roxoclaro bg-roxo" : "bg-[#4A2766] before:bg-[#301545] "
             } z-10 relative w-5/6 xl:w-4/6 h-3/4 lg:h-5/6 rounded-2xl flex flex-col items-center justify-center before:block before:absolute before:top-0 before:content-[' '] before:w-full before:h-full before:rotate-[-8deg] before:radius-x before:-z-50 before:shadow-lg shadow-lg before:rounded-2xl`}
         >
           <input
