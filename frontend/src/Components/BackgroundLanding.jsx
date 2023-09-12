@@ -119,7 +119,7 @@ export function BackgroundLanding1() {
 export function BackgroundLanding2() {
     return (
         <>
-            <svg width="199" height="300" className="absolute -top-8 left-0" viewBox="0 0 199 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="199" height="300" className="absolute -top-8 left-0 xl:scale-150" viewBox="0 0 199 300" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <ellipse cx="36.1131" cy="148.531" rx="66.586" ry="81.9102" transform="rotate(65.5726 36.1131 148.531)" fill="url(#paint0_radial_375_73)" fillOpacity="0.6" />
                 <g filter="url(#filter0_bf_375_73)">
                     <ellipse cx="39.45" cy="149.709" rx="66.586" ry="81.9102" transform="rotate(65.5726 39.45 149.709)" fill="url(#paint1_radial_375_73)" fillOpacity="0.6" />
@@ -145,7 +145,7 @@ export function BackgroundLanding2() {
                 </defs>
             </svg>
 
-            <svg width="133" height="309" className="absolute top-36 right-0" viewBox="0 0 133 309" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="133" height="309" className="absolute top-36 right-0 xl:scale-150 xl:right-8 xl:top-24" viewBox="0 0 133 309" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <ellipse cx="155.602" cy="166.677" rx="66.586" ry="81.9102" transform="rotate(-47.5782 155.602 166.677)" fill="url(#paint0_radial_375_79)" fillOpacity="0.6" />
                 <g filter="url(#filter0_bf_375_79)">
                     <ellipse cx="155.373" cy="154.391" rx="66.586" ry="81.9102" transform="rotate(-47.5782 155.373 154.391)" fill="url(#paint1_radial_375_79)" fillOpacity="0.6" />
@@ -170,8 +170,8 @@ export function BackgroundLanding2() {
                     </radialGradient>
                 </defs>
             </svg>
-
-            <svg width="165" height="299" className="absolute bottom-12 right-0" viewBox="0 0 165 299" fill="none" xmlns="http://www.w3.org/2000/svg">
+            xl:scale-150
+            <svg width="165" height="299" className="absolute bottom-12 right-0 xl:scale-150" viewBox="0 0 165 299" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <ellipse cx="142.932" cy="148.26" rx="66.586" ry="81.9102" transform="rotate(67.9215 142.932 148.26)" fill="url(#paint0_radial_375_224)" fillOpacity="0.6" />
                 <g filter="url(#filter0_bf_375_224)">
                     <ellipse cx="160.058" cy="149.649" rx="66.586" ry="81.9102" transform="rotate(67.9215 160.058 149.649)" fill="url(#paint1_radial_375_224)" fillOpacity="0.6" />
@@ -197,7 +197,7 @@ export function BackgroundLanding2() {
                 </defs>
             </svg>
 
-            <svg width="173" height="299" className="absolute -bottom-12 left-0" viewBox="0 0 173 299" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="173" height="299" className="absolute -bottom-12 left-0 xl:scale-150" viewBox="0 0 173 299" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <ellipse cx="-4.64123" cy="147.954" rx="66.586" ry="81.9102" transform="rotate(67.9215 -4.64123 147.954)" fill="url(#paint0_radial_375_208)" fillOpacity="0.6" />
                 <g filter="url(#filter0_bf_375_208)">
                     <ellipse cx="12.4847" cy="149.342" rx="66.586" ry="81.9102" transform="rotate(67.9215 12.4847 149.342)" fill="url(#paint1_radial_375_208)" fillOpacity="0.6" />
