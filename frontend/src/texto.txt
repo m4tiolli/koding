@@ -1,0 +1,11 @@
+const buttonElement = document.querySelector('button')
+
+function addCSS(){
+  const textAreaELement = document.querySelector('textarea')
+  const css = textAreaELement.value
+  const Frente = document.querySelector('#frente')
+  Frente.style.cssText = css
+  console.log(Frente)
+}
+
+buttonElement.addEventListener('click', addCSS)
