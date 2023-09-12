@@ -23,9 +23,6 @@ details.radius{
     border-radius: 0px 0px 10px 10px;
 }
 
-:nth-child(5n){
+details:nth-child(5n){
     border-radius: 0px 0px 10px 10px;
 }
-
-
-

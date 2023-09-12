@@ -2,14 +2,14 @@ import './Landing.css'
 import { BackgroundLanding1, BackgroundLanding2 } from "../../Components/BackgroundLanding";
 import Header from "../../Components/Header/Header";
 import { FaAngleRight } from 'react-icons/fa'
-
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CardCarousel from "../../Components/CardCarousel";
-
 import svgs from '../../Components/SvgLanding';
 import Logo from '../../Components/Logo';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 const settings = {
   dots: true,
@@ -23,8 +23,18 @@ const settings = {
 };
 
 function Landing() {
+  const [dark, setDark] = useState(false);
+  useEffect(() => {
+    if (localStorage.theme === "dark") {
+      document.documentElement.classList.add("dark");
+      setDark(true)
+    } else {
+      document.documentElement.classList.remove("dark");
+      setDark(false)
+    }
+  }, []);
   return (
-    <div className="absolute w-full h-fit overflow-hidden" style={{ background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)" }}>
+    <div className="absolute w-full h-fit overflow-hidden bg-[#e5c6ff] dark:bg-darkcinzaclaro">
       <div className="h-screen w-full flex flex-col items-center justify-center relative z-0">
         <BackgroundLanding1 />
         <Header />
@@ -33,8 +43,8 @@ function Landing() {
 
 
         <div className="flex flex-col gap-6 md:gap-8 xl:gap-10 items-center justify-center relative">
-          <h1 className="text-center text-4xl md:text-6xl xl:text-[5rem] w-4/5 text-cinza font-semibold">Aprenda a programar!</h1>
-          <h1 className="text-center text-lg md:text-xl xl:text-3xl md:w-4/5 w-7/8 text-cinza font-semibold">Conheça os conceitos básicos para iniciar sua jornada dev!</h1>
+          <h1 className="text-center text-4xl md:text-6xl xl:text-[5rem] w-4/5 text-cinza dark:text-white font-semibold">Aprenda a programar!</h1>
+          <h1 className="text-center text-lg md:text-xl xl:text-3xl md:w-4/5 w-7/8 text-cinza dark:text-[#cacaca] font-semibold">Conheça os conceitos básicos para iniciar sua jornada dev!</h1>
           <button className=" text-center uppercase bg-[#EE9765] w-fit h-14 rounded-xl shadow-md text-white flex justify-evenly items-center relative my-2 px-2 text-xs md:text-lg xl:text-2xl xl:px-4 font-semibold">Comece agora <FaAngleRight className="text-2xl" /></button>
         </div>
 
@@ -61,7 +71,7 @@ function Landing() {
 
         <div className='w-4/5 flex flex-col gap-5'>
           <h1 className='text-[#AD3347] font-bold text-2xl w-full'>Nosso processo</h1>
-          <p className='font-bold text-[1.65rem] leading-8'>Seguimos um modelo simples e prático para a sua aprendizagem!</p>
+          <p className='font-bold text-[1.65rem] leading-8 dark:text-white'>Seguimos um modelo simples e prático para a sua aprendizagem!</p>
         </div>
 
         <div className='bg-[#C16574] w-full h-[18em]'>

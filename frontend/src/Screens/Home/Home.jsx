@@ -6,7 +6,7 @@ import { BiSearch, BiHelpCircle } from "react-icons/bi";
 import { LuPaintBucket } from "react-icons/lu";
 import { ImContrast } from "react-icons/im";
 import Logo from "../../Components/Logo";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Materiais from "../Materiais/Materiais";
 import Perfil from "../Perfil/Perfil";
 import "./Home.css";
@@ -30,28 +30,26 @@ export default function Home() {
 
   const [isChecked, setIsChecked] = useState(false);
 
-  const isBrowserDefaultDark = () =>
-    window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-  const getDefaultTheme = () => {
-    const localStorageTheme = localStorage.getItem("default-theme");
-    const browserDefault = isBrowserDefaultDark() ? "dark" : "light";
-    return localStorageTheme || browserDefault;
-  };
-
-  const [theme, setTheme] = useState(getDefaultTheme());
-
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
-    const isCurrentDark = theme === "dark";
-    setTheme(isCurrentDark ? "light" : "dark");
-    localStorage.setItem("theme", isCurrentDark ? "light" : "dark");
+    if (!isChecked) {
+      localStorage.setItem("theme", "dark");
+      document.documentElement.classList.add("dark");
+    } else {
+      localStorage.setItem("theme", "light");
+      document.documentElement.classList.remove("dark");
+    }
   };
 
-  const toggleDarkMode = () => {
-    const html = document.getElementsByTagName("html")[0];
-    html.className.add("dark")
-  }
+  useEffect(() => {
+    if (localStorage.theme === "dark") {
+      setIsChecked(true);
+      document.documentElement.classList.add("dark");
+    } else {
+      setIsChecked(false);
+      document.documentElement.classList.remove("dark");
+    }
+  }, []);
 
   return (
     <ChakraProvider>
@@ -61,18 +59,19 @@ export default function Home() {
           background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)",
         }}
       >
-        <aside
-          className="h-screen w-52 p-5 fixed top-0 flex flex-col items-start justify-center shadow-lg"
-          style={{ background: "#EDD8FF" }}
-        >
+        <aside className="dark:bg-darkcinza bg-[#EDD8FF] h-screen w-52 p-5 fixed top-0 flex flex-col items-start justify-center shadow-lg">
           <header className="w-full mb-12">
-            <Logo className="absolute -top-4 -left-20 scale-50" />
+            <Logo
+              className="absolute -top-4 -left-20 scale-50"
+              isDark={localStorage.theme === "dark"}
+            />
           </header>
 
           <nav className="flex flex-col flex-auto justify-start pt-24 w-full">
             <button
-              className={`h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 ${button == "materiais" ? "bg-white/50" : ""
-                }`}
+              className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-[#332C44] ${
+                button == "materiais" ? "bg-white/50 dark:bg-[#332C44]" : ""
+              }`}
               style={{ transition: "150ms ease-in" }}
               onClick={() => toggleButton("materiais")}
             >
@@ -83,8 +82,9 @@ export default function Home() {
             </button>
 
             <button
-              className={`h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 ${button == "perfil" ? "bg-white/50" : ""
-                }`}
+              className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-[#332C44] ${
+                button == "perfil" ? "bg-white/50 dark:bg-[#332C44]" : ""
+              }`}
               style={{ transition: "150ms ease-in" }}
               onClick={() => toggleButton("perfil")}
             >
@@ -97,8 +97,9 @@ export default function Home() {
             </button>
 
             <button
-              className={`h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 ${button == "desafios" ? "bg-white/50" : ""
-                }`}
+              className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-[#332C44] ${
+                button == "desafios" ? "bg-white/50 dark:bg-[#332C44]" : ""
+              }`}
               style={{ transition: "150ms ease-in" }}
               onClick={() => toggleButton("desafios")}
             >
@@ -110,7 +111,7 @@ export default function Home() {
 
             <button
               onClick={onMaisOpen}
-              className="h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50"
+              className="h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-[#332C44] dark:text-white"
               style={{ transition: "150ms ease-in" }}
             >
               <span className="inline-flex items-center gap-5">
@@ -121,10 +122,7 @@ export default function Home() {
           </nav>
         </aside>
 
-        <header
-          className="fixed width-header h-16 flex items-center justify-end shadow-sm z-10"
-          style={{ background: "#EDD8FF" }}
-        >
+        <header className="bg-[#EDD8FF] dark:bg-darkcinza fixed width-header h-16 flex items-center justify-end shadow-sm z-10">
           <div className="h-3/5 w-2/5 flex items-center justify-end pr-4">
             <form
               className="flex w-fit items-center justify-center  "
@@ -135,11 +133,11 @@ export default function Home() {
                 type="text"
               />
               <a href="">
-                <BiSearch className="text-3xl text-cinza" />
+                <BiSearch className="text-3xl text-cinza dark:text-white" />
               </a>
             </form>
             <div
-              className={`w-10 h-10 flex items-center justify-center rounded-full hover:opacity-60  text-white bg-cinza`}
+              className={`w-10 h-10 flex items-center justify-center rounded-full hover:opacity-60  text-white bg-cinza dark:bg-white dark:text-darkcinza`}
             >
               <LuPaintBucket
                 onClick={onOpen}
@@ -178,8 +176,9 @@ export default function Home() {
                     className={`box block h-6 w-10 rounded-full bg-[#e4d9ed]`}
                   ></div>
                   <div
-                    className={`absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded-full transition bg-[#56505B] ${isChecked ? "translate-x-full" : ""
-                      }`}
+                    className={`absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded-full transition bg-[#56505B] ${
+                      isChecked ? "translate-x-full" : ""
+                    }`}
                   ></div>
                 </div>
               </label>
@@ -199,8 +198,9 @@ export default function Home() {
                     className={`box block h-6 w-10 rounded-full bg-[#56505B]`}
                   ></div>
                   <div
-                    className={`absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded-full transition bg-[#e4d9ed] ${!isChecked ? "translate-x-full" : ""
-                      }`}
+                    className={`absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded-full transition bg-[#e4d9ed] ${
+                      !isChecked ? "translate-x-full" : ""
+                    }`}
                   ></div>
                 </div>
               </label>
@@ -214,7 +214,7 @@ export default function Home() {
           blockScrollOnMount={false}
         >
           <ModalContent
-            w="container.xl"
+            w={"20vw"}
             position="fixed"
             bottom="0"
             left="10rem"

@@ -18,7 +18,7 @@ export default function SideBar() {
       style={{ background: "#E5E9F9" }}
     >
       <header className="w-full xl:mt-3 laptop:-mb-8 mb-20">
-        <Logo className="absolute -top-4 -left-20 scale-50" />
+        <Logo isResponsive={true} className="absolute -top-4 -left-20 scale-50" />
       </header>
 
       <nav className="flex flex-col flex-auto justify-center w-full -mt-40">
