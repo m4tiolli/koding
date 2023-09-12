@@ -1,6 +1,19 @@
 import "../Flexbox/Flexbox.css"
 
 function Flexbox(){
+
+    // const buttonElement = document.querySelector('button')
+
+    // function addCSS(){
+    // const textAreaELement = document.querySelector('textarea')
+    // const css = textAreaELement.value
+    // const Frente = document.querySelector('#frente')
+    // Frente.style.cssText = css
+    // console.log(Frente)
+    // }
+
+    // buttonElement.addEventListener('click', addCSS)
+    
     return(
         <div className="flex h-full w-full" style={{ background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)" }}> 
 
@@ -169,3 +182,4 @@ function Flexbox(){
 }
 
 export default Flexbox;
+
