@@ -59,7 +59,7 @@ function Flexbox() {
         {/* Editor */}
 
         <div
-          className="relative h-72 pt-5 pl-10 pb-5 rounded-md text-md leading-6 text-gray-700"
+          className="relative h-72 pt-3 pl-10 pb-5 rounded-md text-md leading-6 text-gray-700"
           style={{ background: "#CEC8D3" }}
         >
           <div
@@ -74,7 +74,7 @@ function Flexbox() {
             <span className="ml-5">display: flex;</span>
           </pre>
           <textarea
-            className="w-11/12 h-10 text ml-5 border-none outline-none resize-none overflow-auto"
+            className="w-11/12 h-14 text ml-5 border-none outline-none resize-none overflow-auto"
             value={inputValue}
             onChange={inputChanged}
           ></textarea>
@@ -97,7 +97,7 @@ function Flexbox() {
         style={{ background: "#E79D67" }}
       >
         {/* sapos */}
-        <div className="flex absolute frente left-0 top-0" id="frente">
+        <div className="flex justify-center items-center absolute frente top-0" id="frente">
           {/* sapo container */}
           <div className="sp-container">
             {/* sapo verde */}
