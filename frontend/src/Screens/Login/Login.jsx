@@ -68,7 +68,7 @@ function Login() {
 
   return (
     <div
-      className={`absolute w-full h-screen z-20 overflow-hidden lg:flex lg:flex-row lg:items-center lg:justify-between ${isResponsavel ? 'bg-verdeclaro' : 'bg-roxoclaro'} ${dark && isResponsavel ? 'bg-[#173032]' : dark && !isResponsavel ? 'bg-[#2A0C42]' : !dark && isResponsavel ? 'bg-[#c4e1d5]' : 'bg-[#e1cbf4]'}`}
+      className={`absolute w-full h-screen z-20 overflow-hidden lg:flex lg:flex-row lg:items-center lg:justify-between ${dark && isResponsavel ? 'bg-[#173032]' : dark && !isResponsavel ? 'bg-[#2A0C42]' : !dark && isResponsavel ? 'bg-[#c4e1d5]' : 'bg-[#e1cbf4]'}`}
     >
       <BackgroundCircles isResponsavel={isResponsavel} />
       <div className="w-full h-1/4 lg:w-1/4">
@@ -125,13 +125,13 @@ function Login() {
         >
           <input
             type="text"
-            className="bg-input px-10 my-8 py-5 w-3/4 placeholder:opacity-70 rounded-lg text-xl placeholder:text-black outline-0 text-cinza"
+            className={`${!isResponsavel && dark ? "bg-[#7D6D94]" : "bg-input"} px-10 my-8 py-5 w-3/4 placeholder:opacity-70 rounded-lg text-xl placeholder:text-black outline-0 text-cinza`}
             placeholder="E-mail"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
 
-          <div className="bg-input  px-10 py-5 w-3/4 placeholder:opacity-70 placeholder:font-regular rounded-lg text-xl flex items-center justify-between">
+          <div className={`${!isResponsavel && dark ? "bg-[#7D6D94]" : "bg-input"}  px-10 py-5 w-3/4 placeholder:opacity-70 placeholder:font-regular rounded-lg text-xl flex items-center justify-between`}>
             <input
               type={isPassVisible ? "text" : "password"}
               className="w-4/5 outline-0 bg-transparent placeholder:opacity-70 placeholder:text-black text-cinza"
@@ -152,12 +152,12 @@ function Login() {
             )}
           </div>
           <button
-            className={`rounded-xl font-regular uppercase shadow-md shadow-gray-400 w-2/5 h-16 my-8 text-xl text-white hover:opacity-70 active:shadow-inner active:translate-y-1 ${isResponsavel ? "bg-[#4259CF]" : "bg-[#7E1AD4]"}`}
+            className={`rounded-xl font-regular uppercase shadow-md shadow-gray-400 w-2/5 h-16 my-8 text-xl text-white hover:opacity-70 active:shadow-inner active:translate-y-1 ${isResponsavel && !dark ? "bg-[#4259CF]" : !isResponsavel && !dark ? "bg-[#7E1AD4]" : !isResponsavel && dark ? "bg-[#4A2766]" : "bg-[#00224A]"} dark:shadow-none`}
             onClick={handleLogin}
           >
             Entrar
           </button>
-          <p className="text-md md:text-xl font-semibold text-cinza">
+          <p className="text-md md:text-xl font-semibold text-cinza dark:text-white">
             Não tem conta?
             <Link
               to={"/criar-conta"}

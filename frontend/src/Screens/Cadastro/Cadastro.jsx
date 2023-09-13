@@ -128,15 +128,25 @@ function Cadastro() {
         }
     }
 
+    const [dark, setDark] = useState(false)
+    useEffect(() => {
+        if (localStorage.theme === "dark") {
+            document.documentElement.classList.add("dark");
+            setDark(true)
+        } else {
+            document.documentElement.classList.remove("dark");
+            setDark(false)
+        }
+    }, []);
+
     return (
         <div
-            className="absolute w-full h-fit xl:h-full z-20 flex flex-col-reverse xl:flex-row xl:justify-between gap-4 items-start justify-start xl:overflow-hidden"
-            style={{ backgroundImage: "linear-gradient(108deg, #C6D6FF 0%, #FFF 100%)" }}>
+            className={`${dark ? 'bg-[#173032]' : 'bg-[#c4e1d5]'} absolute w-full h-fit xl:h-full z-20 flex flex-col-reverse xl:flex-row xl:justify-between gap-4 items-start justify-start xl:overflow-hidden`}>
             <BackgroundCircles isResponsavel={true} />
             <div className="z-20 h-full w-full flex items-end justify-center flex-col relative">
                 <div className="flex items-center justify-evenly flex-col h-full w-full">
-                    <div className={`before:bg-verdeclaro bg-verde z-10 relative w-4/5 md:w-3/5 rounded-2xl flex flex-col justify-center items-center gap-4 before:block before:content-[' '] before:w-full before:absolute before:top-0 before:h-full before:rotate-[-8deg] before:radius-x before:-z-20 before:shadow-lg shadow-lg before:rounded-2xl h-fit py-4`}>
-                        <h1 className="text-cinza font-bold text-2xl xl:text-3xl">Crie sua conta</h1>
+                    <div className={`${dark ? 'before:bg-[#21393B] bg-[#00224A]' : "before:bg-verdeclaro bg-verde"} z-10 relative w-4/5 md:w-3/5 rounded-2xl flex flex-col justify-center items-center gap-4 before:block before:content-[' '] before:w-full before:absolute before:top-0 before:h-full before:rotate-[-8deg] before:radius-x before:-z-20 before:shadow-lg shadow-lg before:rounded-2xl h-fit py-4`}>
+                        <h1 className="text-cinza dark:text-white font-bold text-2xl xl:text-3xl">Crie sua conta</h1>
                         <div className="flex flex-col gap-3 items-center w-full">
                             <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} className="bg-input px-4 py-1 w-3/4 placeholder:opacity-70 rounded-lg text-lg placeholder:text-black my-1 outline-0 text-cinza" placeholder="Nome" />
 
@@ -155,16 +165,16 @@ function Cadastro() {
                                 {isPassVisible ? <AiFillEyeInvisible className="text-2xl text-cinza cursor-pointer" onClick={TogglePassVisible} /> : <AiFillEye className="text-2xl text-cinza cursor-pointer" onClick={TogglePassVisible} />}
                             </div>
                             <p className={`${notSenhas ? "opacity-1" : "opacity-0"} w-3/4 text-xs font-medium text-red-600 absolute bottom-[8em]`}>*As senhas não coincidem.</p>
-                            <button className={`bg-[#4259CF] rounded-lg shadow-md shadow-gray-400 w-3/5 h-12 my-4 text-xl text-white hover:opacity-70 active:shadow-inner active:translate-y-1`} onClick={Cadastrar}>Cadastrar</button>
+                            <button className={`${!dark ? "bg-[#4259CF]" : "bg-[#00224A]"}  dark:shadow-none rounded-lg shadow-md shadow-gray-400 w-3/5 h-12 my-4 text-xl text-white hover:opacity-70 active:shadow-inner active:translate-y-1`} onClick={Cadastrar}>Cadastrar</button>
                         </div>
                     </div>
                 </div>
             </div>
             <div className="z-20 h-1/4 xl:h-fit w-full xl:w-2/3 m-auto flex items-start justify-center gap-0 flex-col">
-                <Logo isResponsavel={true} className={"scale-[.50] -ml-20 lg:-ml-6 xl:scale-[.60] "} />
+                <Logo isResponsavel={true} isDark={dark} className={"scale-[.50] -ml-20 lg:-ml-6 xl:scale-[.60] "} />
                 <p className={`text-2xl xl:text-6xl w-4/5 ml-4 xl:ml-0 font-bold text-cinza md:text-3xl ${isResponsive ? 'titleregister bg-gradient1' : ''}`}>{isResponsive ? "Junte-se a nós e faça a diferença!" : "Faça seu cadastro"}</p>
                 <Link to={"/login"}>
-                    <div className="flex items-center my-2 text-cinza">
+                    <div className="flex items-center my-2 text-cinza dark:text-white">
                         <BsArrowLeft className="text-xl font-bold mx-3" />
                         <p className="text-xl">Voltar ao <span className={`linkresponsavel cursor-pointer font-bold hover:opacity-70`}>Login</span></p>
                     </div>

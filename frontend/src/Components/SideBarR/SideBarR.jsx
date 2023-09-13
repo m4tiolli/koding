@@ -1,4 +1,4 @@
-import { AiOutlineUser, AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { AiOutlineUser } from "react-icons/ai";
 import { BsGraphUp } from "react-icons/bs";
 import { IoSettingsOutline } from "react-icons/io5";
 import Logo from "../Logo";
@@ -51,41 +51,6 @@ export default function SideBar() {
             <IoSettingsOutline className="relative text-3xl">Configurações</IoSettingsOutline>
           </span>
         </button>
-
-        <button className="">
-          <AiOutlineMenu/>
-          <span>Menu</span>
-        </button>
-
-        <nav>
-          <button>
-            <span>
-              <AiOutlineClose/> 
-            </span>
-          </button>
-
-          <button>
-            <span>
-              <AiOutlineUser/>
-              <span className="">Perfil</span>
-            </span>
-          </button>
-
-          <button>
-            <span>
-              <BsGraphUp/>
-              <span className="">Desempenho</span>
-            </span>
-          </button>
-
-          <button>
-            <span>
-              <IoSettingsOutline/>
-              <span className="">Configurações</span>
-            </span>
-          </button>
-
-        </nav>
 
       </nav>
     </aside>
