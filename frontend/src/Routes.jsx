@@ -11,6 +11,7 @@ import Aprender from "./Screens/Aprender/Aprender";
 import Configuracao from "./Screens/Configuracao/Configuracao";
 import Flexbox from "./Screens/Jogos/Flexbox/Flexbox";
 import Desempenho from "./Screens/Desempenho/Desempenho";
+import ConfiguracaoR from "./Screens/ConfiguracaoR/ConfiguracaoR";
 
 
 function AppRoutes() {
@@ -29,6 +30,7 @@ function AppRoutes() {
         <Route exact path="/configuracao" element={<Configuracao />} /> 
         <Route exact path="/flexbox" element={<Flexbox />} /> 
         <Route exact path="/desempenho" element={<Desempenho />} /> 
+        <Route exact path="/configuracaor" element={<ConfiguracaoR />} /> 
       </Routes>
     </HashRouter>
   );

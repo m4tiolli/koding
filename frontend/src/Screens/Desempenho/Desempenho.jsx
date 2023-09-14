@@ -1,7 +1,3 @@
-// import { AiOutlineUser, AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-// import { BsGraphUp } from "react-icons/bs";
-// import { IoSettingsOutline } from "react-icons/io5";
-
 import SideBarR from "../../Components/SideBarR/SideBarR";
 
 function Desempenho(){
