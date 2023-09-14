@@ -1,5 +1,4 @@
 import SideBarR from "../../Components/SideBarR/SideBarR";
-import { BiSearch } from "react-icons/bi";
 
 function Desempenho(){
     return(

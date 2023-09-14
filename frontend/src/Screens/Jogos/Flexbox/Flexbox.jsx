@@ -74,7 +74,7 @@ function Flexbox() {
             <span className="ml-5">display: flex;</span>
           </pre>
           <textarea
-            className="w-11/12 h-14 text ml-5 border-none outline-none resize-none overflow-auto"
+            className="w-11/12 h-12 text ml-5 border-none outline-none resize-none overflow-auto"
             value={inputValue}
             onChange={inputChanged}
           ></textarea>

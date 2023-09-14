@@ -2,8 +2,16 @@ import { BsFilter } from "react-icons/bs";
 import { BiSearch } from "react-icons/bi";
 
 import SideBar from '../../Components/SideBar/SideBar';
+import { useEffect } from 'react';
 
 function Aulas(){
+    useEffect(() => {
+        if (localStorage.theme === "dark") {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      }, []);
     return(
         <div className="flex h-full w-full" style={{ background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)" }}>   
 
@@ -11,9 +19,9 @@ function Aulas(){
 
          {/* Conteudo */}
 
-            <main className="w-full ml-56 mr-2 overflow-hidden">
+            <main className="w-full ml-52 mr-2 overflow-hidden dark:bg-darkcinzaclaro">
 
-                {/* Barra de pesquisa */}
+                {/* Barra de pesquisa */} 
                 <container className="flex h-64 w-5/12 ml-10 mt-10 items-center justify-center gap-3">
                     <form action="" className="flex rounded-xl w-full items-center justify-center text-white text-xl p-2" style={{ background: "#811CD7" }}>
                         <input type="text" className="bg-transparent outline-none text-2xl" />
@@ -43,7 +51,7 @@ function Aulas(){
                                 <div className="w-80 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)" }}>
                                 </div>
                                 <div className="flex flex-col">
-                                    <span className="w-80 flex items-center justify-start text-xl text-black font-semibold truncate">
+                                    <span className="w-80 flex items-center justify-start text-xl text-black font-semibold truncate dark:text-white">
                                     Aula 00 - Estrutura HTML
                                     </span>
                                     {/* Filtro */}
@@ -63,7 +71,7 @@ function Aulas(){
                                 <div className="w-80 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)" }}>
                                 </div>
                                 <div className="flex flex-col">
-                                    <span className="w-80 flex items-center justify-start text-xl text-black font-semibold truncate">
+                                    <span className="w-80 flex items-center justify-start text-xl text-black font-semibold truncate dark:text-white">
                                     Aula 00 - Estrutura HTML
                                     </span>
                                     {/* Filtro */}
@@ -90,7 +98,7 @@ function Aulas(){
                                 <div className="w-80 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)" }}>
                                 </div>
                                 <div className="flex flex-col">
-                                    <span className="w-80 flex items-center justify-start text-xl text-black font-semibold truncate">
+                                    <span className="w-80 flex items-center justify-start text-xl text-black font-semibold truncate dark:text-white">
                                     Aula 00 - Estrutura HTML
                                     </span>
                                     {/* Filtro */}
@@ -110,7 +118,7 @@ function Aulas(){
                                 <div className="w-80 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)" }}>
                                 </div>
                                 <div className="flex flex-col">
-                                    <span className="w-80 flex items-center justify-start text-xl text-black font-semibold truncate">
+                                    <span className="w-80 flex items-center justify-start text-xl text-black font-semibold truncate dark:text-white">
                                     Aula 00 - Estrutura HTML
                                     </span>
                                     {/* Filtro */}
