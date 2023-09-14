@@ -25,6 +25,7 @@ export default {
         "40vw": "40vw",
         50: "12.5rem",
         "50vw": "50vw",
+        73: "19rem",
       },
       height: {
         "35vh": "35vw",
@@ -35,9 +36,9 @@ export default {
         notebook: "1280px",
         laptop: "1440px",
         // => @media (min-width: 1440px) { ... }
-
         "4k": "2560px",
         // => @media (min-width: 2560px) { ... }
+        mobile375: "375px"
       },
       borderWidth: {
         1: "1px",
