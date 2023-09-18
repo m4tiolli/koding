@@ -1,0 +1,5 @@
+.width-header {
+    width: calc(100vw - 14rem);
+    margin-left: 13rem;
+  }
+  

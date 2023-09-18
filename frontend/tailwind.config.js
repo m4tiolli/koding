@@ -13,6 +13,8 @@ export default {
         darkcinza: "#230d35",
         darkcinzaclaro: "#2A0C42",
         darkpesquisa: "#503168",
+        darkcinzaR: "#343434",
+        darkfundoR: "#173032"
       },
       backgroundImage: {
         gradient1:

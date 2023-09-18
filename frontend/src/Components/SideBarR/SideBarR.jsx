@@ -1,12 +1,14 @@
-import { AiOutlineUser, AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-import { BsGraphUp } from "react-icons/bs";
-import { IoSettingsOutline } from "react-icons/io5";
-
-import "../SideBarR/SideBarR.css";
+import { BiLineChart } from "react-icons/bi";
+import { AiOutlineUser } from "react-icons/ai";
+import { CiCircleMore } from "react-icons/ci";
 import Logo from "../Logo";
 import { useState } from "react";
 
 export default function SideBar() {
+  const [isResponsavel] = useState(true);
+
+  const [open, setOpen] = useState(false);
+
   const [button, setButton] = useState();
 
   const toggleButton = (type) => {
@@ -14,102 +16,47 @@ export default function SideBar() {
   };
 
   return (
-    <div>
+    <aside
+      className="h-screen w-52 p-5 fixed top-0 flex flex-col items-start justify-center shadow-lg bg['#E5E9F9']"
+    >
+      <header className="w-full xl:mt-3 laptop:-mb-8 mb-5">
+        <Logo isResponsavel={isResponsavel} className="absolute -top-4 -left-20 scale-50" />
+      </header>
 
-      <aside
-        className="hidden h-screen w-16 p-5 fixed top-0 flex-col items-start justify-center shadow-lg"
-        style={{ background: "#E5E9F9" }}
-      >
-        <header className="w-full xl:mt-3 laptop:-mb-8 mb-20">
-          <Logo
-            isResponsive={true}
-            className="absolute -top-4 -left-20 scale-50"
-          />
-        </header>
-
-        <nav className="flex flex-col flex-auto justify-center w-full -mt-40">
-          <button
-            className={`h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 ${
-              button == "perfil" ? "bg-white/50" : ""
-            }`}
-            style={{ transition: "150ms ease-in" }}
-            onClick={() => toggleButton("perfil")}
-          >
-            <span className="inline-flex items-center gap-5">
-              <AiOutlineUser className="relative text-3xl">
-                Perfil
-              </AiOutlineUser>
-            </span>
-          </button>
-
-          <button
-            className={`h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 ${
-              button == "desempenho" ? "bg-white/50" : ""
-            }`}
-            style={{ transition: "150ms ease-in" }}
-            onClick={() => toggleButton("desempenho")}
-          >
-            <span className="inline-flex items-center gap-5">
-              <BsGraphUp className="relative text-3xl">Desempenho</BsGraphUp>
-            </span>
-          </button>
-
-          <button
-            className={`h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 ${
-              button == "config" ? "bg-white/50" : ""
-            }`}
-            style={{ transition: "150ms ease-in" }}
-            onClick={() => toggleButton("config")}
-          >
-            <span className="inline-flex items-center gap-5">
-              <IoSettingsOutline className="relative text-3xl">
-                Configurações
-              </IoSettingsOutline>
-            </span>
-          </button>
-        </nav>
-      </aside>
-
-      <div className="">
-
-        {/* menu-bar */}
-        <button className="self-start items-center m-4 bg-transparent text-white border-0">
-          <AiOutlineMenu className="" />
-          <span>Menu</span>
+      <nav className="flex flex-col flex-auto justify-center w-full">
+        <button
+          className={`h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 ${button == "materiais" ? "bg-white/50" : ""}`}
+          style={{ transition: "150ms ease-in" }}
+          onClick={() => toggleButton("materiais")}
+        >
+          <span className="inline-flex items-center gap-5">
+            <BiLineChart className="relative text-3xl">desempenho</BiLineChart>
+            <span className="text-lg">Desempenho</span>
+          </span>
         </button>
 
-        {/* menu-mobile */}
-        {/* <nav className="menu-mobile-active">
-          <button>
-            <span>
-              <AiOutlineClose className="" />
-            </span>
-          </button>
+        <button
+          className={`h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 ${button == "perfil" ? "bg-white/50" : ""}`}
+          style={{ transition: "150ms ease-in" }}
+          onClick={() => toggleButton("perfil")}
+        >
+          <span className="inline-flex items-center gap-5">
+            <AiOutlineUser className="relative text-3xl">perfil</AiOutlineUser>
+            <span className="text-lg">Perfil</span>
+          </span>
+        </button>
 
-          <button>
-            <span>
-              <AiOutlineUser className="" />
-              <span className="">Perfil</span>
-            </span>
-          </button>
-
-          <button>
-            <span>
-              <BsGraphUp className="" />
-              <span className="">Desempenho</span>
-            </span>
-          </button>
-
-          <button>
-            <span>
-              <IoSettingsOutline className="" />
-              <span className="">Configurações</span>
-            </span>
-          </button>
-        </nav> */}
-      </div>
-
-      
-    </div>
+        <button
+          onClick={() => setOpen(!open)}
+          className="h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50"
+          style={{ transition: "150ms ease-in" }}
+        >
+          <span className="inline-flex items-center gap-5">
+            <CiCircleMore className="relative text-3xl">mais</CiCircleMore>
+            <span className="text-lg">Mais</span>
+          </span>
+        </button>
+      </nav>
+    </aside>
   );
 }
