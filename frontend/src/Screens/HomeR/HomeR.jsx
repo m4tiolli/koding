@@ -1,5 +1,5 @@
-import { BsBook, BsFillMoonFill } from "react-icons/bs";
-import { AiOutlineUser } from "react-icons/ai";
+import { BsFillMoonFill } from "react-icons/bs";
+import { AiOutlineUser, AiOutlineLineChart } from "react-icons/ai";
 import { CiCircleMore } from "react-icons/ci";
 import { BiSearch, BiHelpCircle } from "react-icons/bi";
 import { LuPaintBucket } from "react-icons/lu";
@@ -138,7 +138,7 @@ export default function Home() {
               onClick={() => toggleButton("desempenho")}
             >
               <span className="inline-flex items-center gap-5">
-                <BsBook className="relative text-3xl">desempenho</BsBook>
+                <AiOutlineLineChart className="relative text-3xl">desempenho</AiOutlineLineChart>
                 <span className="text-lg">Desempenho</span>
               </span>
             </button>
