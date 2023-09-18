@@ -13,7 +13,11 @@ import "./Home.css";
 import { useDisclosure } from "@chakra-ui/react";
 import { Modal, ModalContent } from "@chakra-ui/react";
 import { ChakraProvider } from "@chakra-ui/react";
-import { protanomaly, tritanomaly, deuteranomaly } from "../../Components/ColorBlind";
+import {
+  protanomaly,
+  tritanomaly,
+  deuteranomaly,
+} from "../../Components/ColorBlind";
 
 export default function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -43,7 +47,8 @@ export default function Home() {
   };
 
   useEffect(() => {
-    if (localStorage.theme === "dark") {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme === "dark") {
       setIsChecked(true);
       document.documentElement.classList.add("dark");
     } else {
@@ -52,29 +57,54 @@ export default function Home() {
     }
   }, []);
 
-  const [mode, setMode] = useState('')
+
+  // --- Color Blind --- //
+
+  const [mode, setMode] = useState("");
+  const [blindChecked, setBlindChecked] = useState(false);
 
   /**
-   * 
-   * @param {string} mode 
-   * @param {string} color 
-   * @returns 
+   *
+   * @param {string} type
+   * @returns
    */
 
-  function Color(mode, color) { 
+  const toggleButtonColorBlind = (type) => {
+    mode === type ? setMode("") : setMode(type);
+    setBlindChecked((prev) => !prev);
+  };
+
+  /**
+   *
+   * @param {string} mode
+   * @param {string} color  
+   * @returns
+   */
+
+  function Color(mode, color) {
     var newcolor;
-    if (mode === 'protanomaly') {
-      protanomaly(color);
-      newcolor = localStorage.theme = 'protanomaly';
-    } else if (mode === 'deuteranomaly') {
-      deuteranomaly(color);
-      newcolor = localStorage.theme = 'deuteranomaly';
-    } else if (mode === 'tritanomaly') {
+    if (mode === "protanomaly") {
+      newcolor = protanomaly(color);
+      localStorage.theme = "protanomaly";
+    } else if (mode === "deuteranomaly") {
+      newcolor = deuteranomaly(color);
+      localStorage.theme = "deuteranomaly";
+    } else if (mode === "tritanomaly") {
       newcolor = tritanomaly(color);
-      localStorage.theme = 'tritanomaly';
+      localStorage.theme = "tritanomaly";
+    } else {
+      newcolor = color;
+      localStorage.theme = "light";
     }
-    else newcolor = color;
     return newcolor;
+  }
+
+  function darkNotAllowed() {
+    return blindChecked === true ? true : false;
+  }
+
+  function blindNotAllowed() {
+    return isChecked ? true : false;
   }
 
   return (
@@ -85,7 +115,12 @@ export default function Home() {
           background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)",
         }}
       >
-        <aside className="dark:bg-darkcinza bg-[#EDD8FF] h-screen w-52 p-5 fixed top-0 flex flex-col items-start justify-center shadow-lg">
+        <aside
+          className={`dark:bg-darkcinza bg-[${Color(
+            mode,
+            "#EDD8FF"
+          )}] h-screen w-52 p-5 fixed top-0 flex flex-col items-start justify-center shadow-lg`}
+        >
           <header className="w-full mb-12">
             <Logo
               className="absolute -top-4 -left-20 scale-50"
@@ -134,7 +169,7 @@ export default function Home() {
 
             <button
               onClick={onMaisOpen}
-              className="h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-[#332C44] dark:text-white"
+              className={`h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-[#332C44] dark:text-white`}
               style={{ transition: "150ms ease-in" }}
             >
               <span className="inline-flex items-center gap-5">
@@ -145,7 +180,12 @@ export default function Home() {
           </nav>
         </aside>
 
-        <header className="bg-[#EDD8FF] dark:bg-darkcinza fixed width-header h-16 flex items-center justify-end shadow-sm z-10">
+        <header
+          className={`bg-[${Color(
+            mode,
+            "#EDD8FF"
+          )}] dark:bg-darkcinza fixed width-header h-16 flex items-center justify-end shadow-sm z-10`}
+        >
           <div className="h-3/5 w-2/5 flex items-center justify-end pr-4">
             <form
               className="flex w-fit items-center justify-center  "
@@ -156,11 +196,11 @@ export default function Home() {
                 type="text"
               />
               <a href="">
-                <BiSearch className="text-3xl text-cinza dark:text-white" />
+                <BiSearch className={`text-3xl text-cinza dark:text-white`} />
               </a>
             </form>
             <div
-              className={`w-10 h-10 flex items-center justify-center rounded-full hover:opacity-60  text-white bg-cinza dark:bg-white dark:text-darkcinza`}
+              className={`w-10 h-10 flex items-center justify-center rounded-full hover:opacity-60 text-white bg-cinza dark:bg-white dark:text-darkcinza`}
             >
               <LuPaintBucket
                 onClick={onOpen}
@@ -184,16 +224,22 @@ export default function Home() {
             zIndex={100}
             borderRadius="100"
           >
-            <div className="bg-[#56505B] w-full py-3 flex justify-evenly items-center rounded-t-xl">
+            <div
+              className={`bg-[#56505B] w-full py-3 flex justify-evenly items-center rounded-t-xl`}
+            >
               <BsFillMoonFill className="text-[#e4d9ed] text-xl" />
               <p className="text-[#e4d9ed]">Modo escuro</p>
-              <label className="flex cursor-pointer select-none items-center">
+              <label
+                className={`flex cursor-pointer select-none items-center ${darkNotAllowed() ? "cursor-not-allowed opacity-60" : ""
+                  }`}
+              >
                 <div className="relative">
                   <input
                     type="checkbox"
-                    checked={isChecked}
+                    checked={isChecked && !blindChecked}
                     onChange={handleCheckboxChange}
                     className="sr-only"
+                    disabled={darkNotAllowed()}
                   />
                   <div
                     className={`box block h-6 w-10 rounded-full bg-[#e4d9ed]`}
@@ -208,19 +254,23 @@ export default function Home() {
             <div className="bg-[#e4d9ed] w-full py-3 flex justify-evenly items-center rounded-b-xl">
               <ImContrast className="text-[#56505B] text-xl" />
               <p className="text-[#56505B]">Alto contraste</p>
-              <label className="flex cursor-pointer select-none items-center">
+              <label
+                className={`flex cursor-pointer select-none items-center ${blindNotAllowed() ? "cursor-not-allowed opacity-60" : ""
+                  }`}
+              >
                 <div className="relative">
                   <input
                     type="checkbox"
-                    checked={!isChecked}
-                    onChange={handleCheckboxChange}
+                    checked={blindChecked && !isChecked}
+                    onChange={() => toggleButtonColorBlind("deuteranomaly")}
                     className="sr-only"
+                    disabled={blindNotAllowed()}
                   />
                   <div
                     className={`box block h-6 w-10 rounded-full bg-[#56505B]`}
                   ></div>
                   <div
-                    className={`absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded-full transition bg-[#e4d9ed] ${!isChecked ? "translate-x-full" : ""
+                    className={`absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded-full transition bg-[#e4d9ed] ${blindChecked ? "translate-x-full" : ""
                       }`}
                   ></div>
                 </div>
