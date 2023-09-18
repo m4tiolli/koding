@@ -13,6 +13,7 @@ import "./Home.css";
 import { useDisclosure } from "@chakra-ui/react";
 import { Modal, ModalContent } from "@chakra-ui/react";
 import { ChakraProvider } from "@chakra-ui/react";
+import { protanomaly, tritanomaly, deuteranomaly } from "../../Components/ColorBlind";
 
 export default function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -51,6 +52,31 @@ export default function Home() {
     }
   }, []);
 
+  const [mode, setMode] = useState('')
+
+  /**
+   * 
+   * @param {string} mode 
+   * @param {string} color 
+   * @returns 
+   */
+
+  function Color(mode, color) { 
+    var newcolor;
+    if (mode === 'protanomaly') {
+      protanomaly(color);
+      newcolor = localStorage.theme = 'protanomaly';
+    } else if (mode === 'deuteranomaly') {
+      deuteranomaly(color);
+      newcolor = localStorage.theme = 'deuteranomaly';
+    } else if (mode === 'tritanomaly') {
+      newcolor = tritanomaly(color);
+      localStorage.theme = 'tritanomaly';
+    }
+    else newcolor = color;
+    return newcolor;
+  }
+
   return (
     <ChakraProvider>
       <div
@@ -69,9 +95,8 @@ export default function Home() {
 
           <nav className="flex flex-col flex-auto justify-start pt-24 w-full">
             <button
-              className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-[#332C44] ${
-                button == "materiais" ? "bg-white/50 dark:bg-[#332C44]" : ""
-              }`}
+              className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-[#332C44] ${button == "materiais" ? "bg-white/50 dark:bg-[#332C44]" : ""
+                }`}
               style={{ transition: "150ms ease-in" }}
               onClick={() => toggleButton("materiais")}
             >
@@ -82,9 +107,8 @@ export default function Home() {
             </button>
 
             <button
-              className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-[#332C44] ${
-                button == "perfil" ? "bg-white/50 dark:bg-[#332C44]" : ""
-              }`}
+              className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-[#332C44] ${button == "perfil" ? "bg-white/50 dark:bg-[#332C44]" : ""
+                }`}
               style={{ transition: "150ms ease-in" }}
               onClick={() => toggleButton("perfil")}
             >
@@ -97,9 +121,8 @@ export default function Home() {
             </button>
 
             <button
-              className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-[#332C44] ${
-                button == "desafios" ? "bg-white/50 dark:bg-[#332C44]" : ""
-              }`}
+              className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-[#332C44] ${button == "desafios" ? "bg-white/50 dark:bg-[#332C44]" : ""
+                }`}
               style={{ transition: "150ms ease-in" }}
               onClick={() => toggleButton("desafios")}
             >
@@ -176,9 +199,8 @@ export default function Home() {
                     className={`box block h-6 w-10 rounded-full bg-[#e4d9ed]`}
                   ></div>
                   <div
-                    className={`absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded-full transition bg-[#56505B] ${
-                      isChecked ? "translate-x-full" : ""
-                    }`}
+                    className={`absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded-full transition bg-[#56505B] ${isChecked ? "translate-x-full" : ""
+                      }`}
                   ></div>
                 </div>
               </label>
@@ -198,9 +220,8 @@ export default function Home() {
                     className={`box block h-6 w-10 rounded-full bg-[#56505B]`}
                   ></div>
                   <div
-                    className={`absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded-full transition bg-[#e4d9ed] ${
-                      !isChecked ? "translate-x-full" : ""
-                    }`}
+                    className={`absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded-full transition bg-[#e4d9ed] ${!isChecked ? "translate-x-full" : ""
+                      }`}
                   ></div>
                 </div>
               </label>
