@@ -71,6 +71,7 @@ export default function Home() {
 
   const toggleButtonColorBlind = (type) => {
     mode === type ? setMode("") : setMode(type);
+    localStorage.getItem("theme") === type ? localStorage.setItem("theme", "light") : localStorage.setItem("theme", type);
     setBlindChecked((prev) => !prev);
   };
 
@@ -94,7 +95,6 @@ export default function Home() {
       localStorage.theme = "tritanomaly";
     } else {
       newcolor = color;
-      localStorage.theme = "light";
     }
     return newcolor;
   }
@@ -112,14 +112,12 @@ export default function Home() {
       <div
         className="flex h-full w-full"
         style={{
-          background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)",
+          background: `linear-gradient(108deg, ${Color(mode, '#E5C6FF')} 0%, ${Color(mode, '#E4EBFF')} 100%)`,
         }}
       >
         <aside
-          className={`dark:bg-darkcinza bg-[${Color(
-            mode,
-            "#EDD8FF"
-          )}] h-screen w-52 p-5 fixed top-0 flex flex-col items-start justify-center shadow-lg`}
+          className={`dark:bg-darkcinza h-screen w-52 p-5 fixed top-0 flex flex-col items-start justify-center shadow-lg`}
+          style={{ backgroundColor: Color(mode, '#EDD8FF') }}
         >
           <header className="w-full mb-12">
             <Logo
@@ -181,10 +179,8 @@ export default function Home() {
         </aside>
 
         <header
-          className={`bg-[${Color(
-            mode,
-            "#EDD8FF"
-          )}] dark:bg-darkcinza fixed width-header h-16 flex items-center justify-end shadow-sm z-10`}
+          className={`dark:bg-darkcinza fixed width-header h-16 flex items-center justify-end shadow-sm z-10`}
+          style={{ backgroundColor: Color(mode, '#EDD8FF') }}
         >
           <div className="h-3/5 w-2/5 flex items-center justify-end pr-4">
             <form

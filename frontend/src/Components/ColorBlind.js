@@ -5,7 +5,7 @@ export function protanomaly(color) {
 }
 
 export function deuteranomaly(color) {
-  return blinder.deuteranopia(color);
+  return blinder.deuteranomaly(color);
 }
 
 export function tritanomaly(color) {
