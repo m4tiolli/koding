@@ -109,13 +109,13 @@ function Landing() {
           </div>
         </div>
 
-        <button className=" text-center bg-[#8654AD] w-fit h-14 rounded-xl shadow-md text-white flex justify-evenly items-center my-2 px-2 text-xl xl:text-2xl xl:px-4 font-regular absolute bottom-0 lg:left-10 xl:left-[8.5rem] lg:bottom-[30%]">Ver mais <FaAngleRight className="text-2xl" /></button>
+        <button className=" text-center bg-[#8654AD] w-fit h-14 rounded-xl shadow-md text-white flex justify-evenly items-center my-2 px-2 text-xl xl:text-2xl xl:px-4 font-regular absolute bottom-0 lg:left-10 xl:left-[8.5rem] lg:bottom-[20%]">Ver mais <FaAngleRight className="text-2xl" /></button>
       </div>
 
       <div className='bg-[#53A6D1] dark:bg-[#3C7693] w-full h-[80vh] flex flex-col lg:flex-row-reverse items-center relative z-[100] justify-evenly'>
         <p className='text-white font-regular w-4/5 lg:w-2/5 text-center text-2xl'>Acompanhe o desempenho do usuário por meio de gráficos</p>
         <img src="#" alt="" className='w-11/12 h-2/5 lg:w-2/5' />
-        <button className="absolute bottom-2 lg:right-[10rem] lg:bottom-[10rem] xl:right-[18.5rem] text-center bg-[#4BC2A6] w-fit h-14 rounded-xl shadow-md text-white flex justify-evenly items-center my-2 px-2 text-xl xl:text-2xl xl:px-4 font-regular">Ver mais <FaAngleRight className="text-2xl" /></button>
+        <button className="absolute bottom-2 lg:right-[10rem] lg:bottom-[10rem] xl:right-[18.5rem] text-center bg-[#4BC2A6] xl:bottom-[20%] w-fit h-14 rounded-xl shadow-md text-white flex justify-evenly items-center my-2 px-2 text-xl xl:text-2xl xl:px-4 font-regular">Ver mais <FaAngleRight className="text-2xl" /></button>
       </div>
 
       <div className='relative w-full h-[100vh] flex flex-col gap-5 items-center justify-center z-10'>

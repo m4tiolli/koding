@@ -19,8 +19,6 @@ import {
 } from "../../Components/ColorBlind";
 
 export default function Home() {
-
-  const [isResponsavel] = useState(true);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const {
     isOpen: isMaisOpen,
@@ -95,7 +93,6 @@ export default function Home() {
       localStorage.theme = "tritanomaly";
     } else {
       newcolor = color;
-      localStorage.theme = "light";
     }
     return newcolor;
   }
@@ -124,7 +121,7 @@ export default function Home() {
         >
           <header className="w-full mb-12">
             <Logo
-                isResponsavel={isResponsavel}
+              isResponsavel={true}
               className="absolute -top-4 -left-20 scale-50"
               isDark={localStorage.theme === "dark"}
             />

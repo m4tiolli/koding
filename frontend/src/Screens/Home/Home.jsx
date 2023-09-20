@@ -2,7 +2,7 @@ import { BsBook, BsFillMoonFill } from "react-icons/bs";
 import { PiSword } from "react-icons/pi";
 import { AiOutlineUser } from "react-icons/ai";
 import { CiCircleMore } from "react-icons/ci";
-import { BiSearch, BiHelpCircle } from "react-icons/bi";
+import { BiSearch, BiHelpCircle, BiChevronLeft } from "react-icons/bi";
 import { LuPaintBucket } from "react-icons/lu";
 import { ImContrast } from "react-icons/im";
 import Logo from "../../Components/Logo";
@@ -25,6 +25,11 @@ export default function Home() {
     isOpen: isMaisOpen,
     onOpen: onMaisOpen,
     onClose: onMaisClose,
+  } = useDisclosure();
+  const {
+    isOpen: isDalOpen,
+    onOpen: onDalOpen,
+    onClose: onDalClose,
   } = useDisclosure();
 
   const [button, setButton] = useState("materiais");
@@ -218,7 +223,7 @@ export default function Home() {
             top="0"
             right="1rem"
             zIndex={100}
-            borderRadius="100"
+            borderRadius="0.75rem"
           >
             <div
               className={`bg-[#56505B] w-full py-3 flex justify-evenly items-center rounded-t-xl`}
@@ -247,31 +252,49 @@ export default function Home() {
                 </div>
               </label>
             </div>
-            <div className="bg-[#e4d9ed] w-full py-3 flex justify-evenly items-center rounded-b-xl">
+            <div className="bg-[#e4d9ed] w-full py-3 flex flex-row-reverse justify-evenly items-center rounded-b-xl hover:cursor-pointer hover:opacity-60" onClick={onDalOpen}>
               <ImContrast className="text-[#56505B] text-xl" />
-              <p className="text-[#56505B]">Alto contraste</p>
-              <label
-                className={`flex cursor-pointer select-none items-center ${blindNotAllowed() ? "cursor-not-allowed opacity-60" : ""
-                  }`}
-              >
-                <div className="relative">
-                  <input
-                    type="checkbox"
-                    checked={blindChecked && !isChecked}
-                    onChange={() => toggleButtonColorBlind("deuteranomaly")}
-                    className="sr-only"
-                    disabled={blindNotAllowed()}
-                  />
-                  <div
-                    className={`box block h-6 w-10 rounded-full bg-[#56505B]`}
-                  ></div>
-                  <div
-                    className={`absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded-full transition bg-[#e4d9ed] ${blindChecked ? "translate-x-full" : ""
-                      }`}
-                  ></div>
-                </div>
-              </label>
+              <p className="text-[#56505B]">Modo daltonismo</p>
+              <div className="text-2xl text-[#56505B]"><BiChevronLeft /></div>
             </div>
+            <Modal
+          isOpen={isDalOpen}
+          onClose={onDalClose}
+          motionPreset="slideInBottom"
+          blockScrollOnMount={false}
+        >
+          <ModalContent
+            w="14vw"
+            position="fixed"
+            top="3rem"
+            right="14rem"
+            zIndex={100}
+            borderRadius="0.75rem"
+          ><div className="">
+
+            <div
+              className={`bg-[#e4d9ed] text-[#56505B] hover:opacity-70 w-full py-3 flex justify-evenly items-center rounded-t-xl`}
+              onClick={() => toggleButtonColorBlind('protanomaly')}
+            >
+              <p>Protanomalia</p>
+            </div>
+            
+            <div
+              className={`bg-[#e4d9ed] text-[#56505B] hover:opacity-70 w-full py-3 flex justify-evenly items-center`}
+              onClick={() => toggleButtonColorBlind('deuteranomaly')}
+            >
+              <p>Deuteranopia</p>
+            </div>
+            
+            <div
+              className={`bg-[#e4d9ed] text-[#56505B] hover:opacity-70 w-full py-3 flex justify-evenly items-center rounded-b-xl`}
+              onClick={() => toggleButtonColorBlind('tritanomaly')}
+            >
+              <p>Tritanomalia</p>
+            </div>
+          </div>
+          </ModalContent>
+        </Modal>
           </ModalContent>
         </Modal>
         <Modal

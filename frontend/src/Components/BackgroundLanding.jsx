@@ -170,7 +170,6 @@ export function BackgroundLanding2() {
                     </radialGradient>
                 </defs>
             </svg>
-            xl:scale-150
             <svg width="165" height="299" className="absolute bottom-12 right-0 xl:scale-150" viewBox="0 0 165 299" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <ellipse cx="142.932" cy="148.26" rx="66.586" ry="81.9102" transform="rotate(67.9215 142.932 148.26)" fill="url(#paint0_radial_375_224)" fillOpacity="0.6" />
                 <g filter="url(#filter0_bf_375_224)">
