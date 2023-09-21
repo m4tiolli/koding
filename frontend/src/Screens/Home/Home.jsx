@@ -18,6 +18,9 @@ import {
   tritanomaly,
   deuteranomaly,
 } from "../../Components/ColorBlind";
+import blue from "../../Components/blue.png"
+import green from "../../Components/green.png"
+import red from "../../Components/red.png"
 
 export default function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -258,43 +261,28 @@ export default function Home() {
               <div className="text-2xl text-[#56505B]"><BiChevronLeft /></div>
             </div>
             <Modal
-          isOpen={isDalOpen}
-          onClose={onDalClose}
-          motionPreset="slideInBottom"
-          blockScrollOnMount={false}
-        >
-          <ModalContent
-            w="14vw"
-            position="fixed"
-            top="3rem"
-            right="14rem"
-            zIndex={100}
-            borderRadius="0.75rem"
-          ><div className="">
-
-            <div
-              className={`bg-[#e4d9ed] text-[#56505B] hover:opacity-70 w-full py-3 flex justify-evenly items-center rounded-t-xl`}
-              onClick={() => toggleButtonColorBlind('protanomaly')}
+              isOpen={isDalOpen}
+              onClose={onDalClose}
+              motionPreset="slideInBottom"
+              blockScrollOnMount={false}
             >
-              <p>Protanomalia</p>
-            </div>
-            
-            <div
-              className={`bg-[#e4d9ed] text-[#56505B] hover:opacity-70 w-full py-3 flex justify-evenly items-center`}
-              onClick={() => toggleButtonColorBlind('deuteranomaly')}
-            >
-              <p>Deuteranopia</p>
-            </div>
-            
-            <div
-              className={`bg-[#e4d9ed] text-[#56505B] hover:opacity-70 w-full py-3 flex justify-evenly items-center rounded-b-xl`}
-              onClick={() => toggleButtonColorBlind('tritanomaly')}
-            >
-              <p>Tritanomalia</p>
-            </div>
-          </div>
-          </ModalContent>
-        </Modal>
+              <ModalContent
+                w="14vw"
+                h="8vw"
+                position="fixed"
+                top="3rem"
+                right="14rem"
+                zIndex={100}
+                borderRadius="0.75rem"
+              >
+                <div className="grid grid-rows-2 grid-cols-2 h-full w-full rounded-xl">
+                  <div className="bg-white grid place-items-center rounded-tl-xl" title="Sem daltonismo">n</div>
+                  <div className="bg-[#3b63ac] grid place-items-center rounded-tr-xl" title="Tritanomalia"><img src={blue} className="h-3/5 w-auto" /></div>
+                  <div className="bg-[#65b32e] grid place-items-center rounded-bl-xl" title="Deuteranomalia"><img src={green} className="h-3/5 w-auto" /></div>
+                  <div className="bg-[#e83c3b] grid place-items-center rounded-br-xl" title="Protanomalia"><img src={red} className="h-3/5 w-auto" /></div>
+                </div>
+              </ModalContent>
+            </Modal>
           </ModalContent>
         </Modal>
         <Modal
