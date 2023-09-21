@@ -4,7 +4,7 @@ import { AiOutlineUser } from "react-icons/ai";
 import { CiCircleMore } from "react-icons/ci";
 import { BiSearch, BiHelpCircle, BiChevronLeft } from "react-icons/bi";
 import { LuPaintBucket } from "react-icons/lu";
-import { ImContrast } from "react-icons/im";
+import { ImContrast, ImBlocked } from "react-icons/im";
 import Logo from "../../Components/Logo";
 import { useState, useEffect } from "react";
 import Materiais from "../Materiais/Materiais";
@@ -276,10 +276,10 @@ export default function Home() {
                 borderRadius="0.75rem"
               >
                 <div className="grid grid-rows-2 grid-cols-2 h-full w-full rounded-xl">
-                  <div className="bg-white grid place-items-center rounded-tl-xl" title="Sem daltonismo">n</div>
-                  <div className="bg-[#3b63ac] grid place-items-center rounded-tr-xl" title="Tritanomalia"><img src={blue} className="h-3/5 w-auto" /></div>
-                  <div className="bg-[#65b32e] grid place-items-center rounded-bl-xl" title="Deuteranomalia"><img src={green} className="h-3/5 w-auto" /></div>
-                  <div className="bg-[#e83c3b] grid place-items-center rounded-br-xl" title="Protanomalia"><img src={red} className="h-3/5 w-auto" /></div>
+                  <div className="bg-white grid place-items-center rounded-tl-xl active:shadow-inner" title="Sem daltonismo"><ImBlocked size={30} color="#56505B" /></div>
+                  <div className="bg-[#3b63ac] grid place-items-center rounded-tr-xl active:shadow-inner-xl" title="Tritanomalia"><img src={blue} className="h-2/5 w-auto" /></div>
+                  <div className="bg-[#65b32e] grid place-items-center rounded-bl-xl active:shadow-inner-xl" title="Deuteranomalia"><img src={green} className="h-2/5 w-auto" /></div>
+                  <div className="bg-[#e83c3b] grid place-items-center rounded-br-xl active:shadow-inner-xl" title="Protanomalia"><img src={red} className="h-2/5 w-auto" /></div>
                 </div>
               </ModalContent>
             </Modal>

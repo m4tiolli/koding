@@ -14,6 +14,7 @@ import Desempenho from "./Screens/Desempenho/Desempenho";
 import ConfiguracaoR from "./Screens/ConfiguracaoR/ConfiguracaoR";
 import HomeR from "./Screens/HomeR/HomeR";
 import PerfilR from "./Screens/PerfilR/PerfilR";
+import CadastroCrianca from "./Screens/CadastroCrianca/CadastroCrianca";
 
 
 function AppRoutes() {
@@ -35,6 +36,8 @@ function AppRoutes() {
         <Route exact path="/configuracaor" element={<ConfiguracaoR />} /> 
         <Route exact path="/homer" element={<HomeR />} /> 
         <Route exact path="/perfilr" element={<PerfilR />} /> 
+        <Route exact path="/criar-conta-crianca" element={<CadastroCrianca />} /> 
+
       </Routes>
     </HashRouter>
   );
