@@ -18,11 +18,11 @@ function Desempenho(){
 
                 <container className="flex flex-col lg:ml-72 ml-48 mt-40 ">
 
-                    <span className="-ml-24 lg:-ml-14 notebook:-ml-3 -mt-16 text-4xl font-semibold dark:text-white">Desempenho</span>
+                    <span className="-ml-40 lg:-ml-14 notebook:-ml-3 -mt-16 text-4xl font-semibold dark:text-white">Desempenho</span>
 
 
                     {/* Cards */}
-                    <div className="flex flex-col justify-center items-center md:flex-row 2xl:-ml-80 notebook:-ml-14 lg:-ml-14 -ml-8 laptop:gap-44 xl:gap-10 laptop:gap-x-10 gap-x-5">
+                    <div className="flex flex-col justify-center items-center md:flex-row 2xl:-ml-80 notebook:-ml-14 lg:-ml-12 -ml-48 laptop:gap-44 xl:gap-10 laptop:gap-x-10 gap-x-5">
                         <div className="flex flex-col items-center justify-center xl:w-80 lg:w-64 md:w-48 w-64 h-58 p-8 rounded-2xl shadow-md mt-10" style={{ background: "linear-gradient(10deg, #9EE9B2 0%, #38E56B 100%)" }}>
                             <span className="text-white text-6xl font-semibold">900</span>
                             <span className="text-white text-xl text-center">Lições Completadas</span>
@@ -41,7 +41,7 @@ function Desempenho(){
                     </div>
 
                     {/* Gráficos */}
-                    <div className="flex flex-col lg:flex-row lg:-ml-12 -ml-24 xl:mx-5 notebook:-ml-5 lg:gap-x-24 gap-x-64">
+                    <div className="flex flex-col lg:flex-row lg:-ml-12 -ml-40 xl:mx-5 notebook:-ml-5 lg:gap-x-24 gap-x-64">
                         <div className="mt-10 lg:w-11/12 lg:mr-0 w-12/12 mr-5 space-y-3 mb-10">
                             <div className="flex items-center justify-between">
                                 <span className="text-xl dark:text-white">Alguma coisa</span>

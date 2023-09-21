@@ -117,12 +117,12 @@ export default function Home() {
           className={`dark:bg-darkcinzaR bg-[${Color(
             mode,
             "#EDD8FF"
-          )}] h-screen w-52 p-5 fixed top-0 flex flex-col items-start justify-center shadow-lg`}
+          )}] h-screen w-52 p-5 fixed top-0 lg:flex flex-col items-start justify-center shadow-lg hidden`}  style={{ background: "#E5E9F9" }}
         >
           <header className="w-full mb-12">
             <Logo
               isResponsavel={true}
-              className="absolute -top-4 -left-20 scale-50"
+              className="absolute -top-4 -left-20 scale-50" 
               isDark={localStorage.theme === "dark"}
             />
           </header>
@@ -135,7 +135,7 @@ export default function Home() {
               onClick={() => toggleButton("desempenho")}
             >
               <span className="inline-flex items-center gap-5">
-                <AiOutlineLineChart className="relative text-3xl">desempenho</AiOutlineLineChart>
+                <AiOutlineLineChart  className="relative text-3xl">desempenho</AiOutlineLineChart>
                 <span className="text-lg">Desempenho</span>
               </span>
             </button>
@@ -171,7 +171,7 @@ export default function Home() {
           className={`bg-[${Color(
             mode,
             "#EDD8FF"
-          )}] dark:bg-darkcinzaR fixed width-header h-16 flex items-center justify-end shadow-sm z-10`}
+          )}] dark:bg-darkcinzaR fixed width-header h-16 lg:flex items-center justify-end shadow-sm z-10 hidden`} style={{ background: "#E5E9F9" }}
         >
           <div className="h-3/5 w-2/5 flex items-center justify-end pr-4">
             <form
@@ -318,8 +318,6 @@ export default function Home() {
           <Desempenho />
         ) : button === "perfil" ? (
           <PerfilR />
-        ) : button === "desafios" ? (
-          "tchau"
         ) : null}
       </div>
     </ChakraProvider>

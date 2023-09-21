@@ -17,7 +17,7 @@ export default function SideBar() {
 
   return (
     <aside
-      className="h-screen w-52 p-5 fixed top-0 flex flex-col items-start justify-center shadow-lg bg['#E5E9F9']"
+      className="h-screen w-52 p-5 fixed top-0 flex flex-col items-start justify-center shadow-lg"
     >
       <header className="w-full xl:mt-3 laptop:-mb-8 mb-5">
         <Logo isResponsavel={isResponsavel} className="absolute -top-4 -left-20 scale-50" />
