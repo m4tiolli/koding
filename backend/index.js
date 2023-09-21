@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
+const session = require("express-session"); // Importe express-session
 // const jwt = require("jsonwebtoken");
 
 // const jwtSecret = "KodingTOP";
@@ -17,6 +18,14 @@ const port = 3005;
 
 app.use(cors());
 app.use(express.json());
+
+app.use(
+  session({
+    secret: "koding", // Substitua por uma chave secreta adequada
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 
 // function generateToken(user) {
 //   return jwt.sign(user, jwtSecret, { expiresIn: "1m" });
@@ -161,6 +170,8 @@ app.post("/responsavel/login", (req, res) => {
       } else {
         // const user = { id: result[0].id, email: result[0].email };
         // const token = generateToken(user);
+        req.session.responsavelId = result[0].id;
+        console.log("ID do responsável:", req.session.responsavelId);
         res.json({
           message: "Login realizado com sucesso!",
           // token: token,
