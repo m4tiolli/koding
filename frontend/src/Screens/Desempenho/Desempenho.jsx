@@ -13,17 +13,17 @@ function Desempenho(){
     return(
         <div className="flex h-full w-full" style={{ background: "linear-gradient(108deg, #C6D6FF 0%, #FFFFFF 100%)" }}>
 
-            <main className="w-full h-full justify-center overflow-hidden dark:bg-darkfundoR">
+            <main className="w-full h-screen justify-center overflow-hidden dark:bg-darkfundoR">
                 
                 
 
-                <container className="flex flex-col ml-48 mt-40 ">
+                <container className="flex flex-col lg:ml-72 ml-48 mt-40 ">
 
-                    <span className="-ml-24 xl:ml-10 -mt-16 text-4xl font-semibold dark:text-white">Desempenho</span>
+                    <span className="-ml-24 xl:ml-10 lg:-ml-10 -mt-16 text-4xl font-semibold dark:text-white">Desempenho</span>
 
 
                     {/* Cards */}
-                    <div className="flex flex-col justify-center items-center md:flex-row -ml-8 laptop:gap-44 xl:gap-10 lg:gap-24 gap-x-5">
+                    <div className="flex flex-col justify-center items-center md:flex-row 2xl:-ml-80 lg:-ml-10 -ml-8 laptop:gap-44 xl:gap-10 lg:gap-16 gap-x-5">
                         <div className="flex flex-col items-center justify-center xl:w-80 lg:w-64 md:w-48 w-64 h-58 p-8 rounded-2xl shadow-md mt-10" style={{ background: "linear-gradient(10deg, #9EE9B2 0%, #38E56B 100%)" }}>
                             <span className="text-white text-6xl font-semibold">900</span>
                             <span className="text-white text-xl text-center">Lições Completadas</span>
@@ -42,7 +42,7 @@ function Desempenho(){
                     </div>
 
                     {/* Gráficos */}
-                    <div className="flex flex-col lg:flex-row -ml-24 xl:mx-5 xl:ml-10 lg:gap-x-24 gap-x-64">
+                    <div className="flex flex-col lg:flex-row lg:-ml-12 -ml-24 xl:mx-5 xl:ml-10 lg:gap-x-24 gap-x-64">
                         <div className="mt-10 lg:w-11/12 lg:mr-0 w-12/12 mr-5 space-y-3 mb-10">
                             <div className="flex items-center justify-between">
                                 <span className="text-xl dark:text-white">Alguma coisa</span>
