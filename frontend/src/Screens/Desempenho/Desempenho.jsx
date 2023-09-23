@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import Navbar from '../../Components/Navbar/Navbar';
 
 function Desempenho(){
 
@@ -15,6 +16,7 @@ function Desempenho(){
 
             <main className="w-full h-full laptop:h-screen lg:h-screen notebook:h-full justify-center overflow-hidden dark:bg-darkfundoR">
                 
+                <Navbar/>
 
                 <container className="flex flex-col lg:ml-72 ml-48 mt-40 ">
 
