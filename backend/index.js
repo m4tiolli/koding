@@ -2,17 +2,15 @@ const express = require("express");
 const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
-const session = require("express-session"); // Importe express-session
+const session = require("express-session"); 
 const LocalStorage = require("node-localstorage").LocalStorage
 localStorage = new LocalStorage('./index')
-// const jwt = require("jsonwebtoken");
-
-// const jwtSecret = "KodingTOP";
+const jwt = require("jsonwebtoken");
 
 const db = mysql.createPool({
   host: "localhost",
   user: "root",
-  password: "",
+  password: "root",
   database: "koding",
 });
 
@@ -23,18 +21,47 @@ app.use(express.json());
 
 app.use(
   session({
-    secret: "koding", // Substitua por uma chave secreta adequada
+    secret: "koding",
     resave: false,
     saveUninitialized: true,
   })
 );
 
-// function generateToken(user) {
-//   return jwt.sign(user, jwtSecret, { expiresIn: "1m" });
-// }
+// JWT
+
+const jwtSecret = "KodingTOP";
+
+function generateToken(user) {
+  const jwtUser = jwt.sign(user, jwtSecret, { expiresIn: "1d" });
+  console.log(jwtUser);
+  localStorage.setItem('JWT', jwtUser);
+  return jwtUser;
+}
+
+function verifyToken(req, res, next) {
+  const token = localStorage.getItem('JWT');
+  if (!token) {
+    return res.status(401).json({ error: "Token não fornecido" });
+  }
+  jwt.verify(token, jwtSecret, (err, decoded) => {
+    if (err) {
+      if (err.name === 'TokenExpiredError') {
+        localStorage.removeItem('JWT');
+        return res.redirect('/login'); 
+      }
+      return res.status(403).json({ error: "Token inválido" });
+    }
+    req.decoded = decoded;
+    next();
+  });
+}
+
+// app.get("/rota-protegida", verifyToken, (req, res) => {
+//   res.json({ message: "Acesso permitido" });
+// });
 
 // CRUD - responsável
-app.get("/responsavel", (req, res) => {
+app.get("/responsavel", verifyToken, (req, res) => {
   db.query("SELECT * FROM responsavel", (err, result) => {
     if (err) {
       console.error("Erro ao buscar usuários", err);
@@ -96,7 +123,7 @@ app.delete("/responsavel/:id", (req, res) => {
 });
 
 function saveId(id) {
-  localStorage.setItem('idResponsavel', id)
+  localStorage.setItem('idResponsavel', id);
 }
 
 // Login - responsável
@@ -112,8 +139,8 @@ app.post("/responsavel/login", (req, res) => {
       } else if (result.length === 0) {
         res.status(401).json({ error: "Credenciais inválidas" });
       } else {
-        // const user = { id: result[0].id, email: result[0].email };
-        // const token = generateToken(user);
+        const user = { id: result[0].id, email: result[0].email };
+        const token = generateToken(user);
         req.session.responsavelId = result[0].id;
         saveId(req.session.responsavelId)
         console.log("ID do responsável:", req.session.responsavelId);
@@ -128,7 +155,7 @@ app.post("/responsavel/login", (req, res) => {
 });
 
 // CRUD - criança
-app.get("/crianca", (req, res) => {
+app.get("/crianca", verifyToken, (req, res) => {
   db.query("SELECT * FROM crianca", (err, result) => {
     if (err) {
       console.error("Erro ao buscar usuários", err);
@@ -227,8 +254,8 @@ app.post("/crianca/login", (req, res) => {
       } else if (result.length === 0) {
         res.status(401).json({ error: "Credenciais inválidas" });
       } else {
-        // const user = { id: result[0].id, email: result[0].email };
-        // const token = generateToken(user);
+        const user = { id: result[0].id, email: result[0].email };
+        const token = generateToken(user);
         res.json({
           message: "Login realizado com sucesso!",
           // token: token,
@@ -248,5 +275,3 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
   console.log(`Servidor executando na porta ${port}!`);
 });
-
-
