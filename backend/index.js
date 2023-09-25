@@ -3,6 +3,8 @@ const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
 const session = require("express-session"); // Importe express-session
+const LocalStorage = require("node-localstorage").LocalStorage
+localStorage = new LocalStorage('./index')
 // const jwt = require("jsonwebtoken");
 
 // const jwtSecret = "KodingTOP";
@@ -93,6 +95,38 @@ app.delete("/responsavel/:id", (req, res) => {
   });
 });
 
+function saveId(id) {
+  localStorage.setItem('idResponsavel', id)
+}
+
+// Login - responsável
+app.post("/responsavel/login", (req, res) => {
+  const { email, senha } = req.body;
+  db.query(
+    "SELECT * FROM responsavel WHERE email = ? AND senha = ?",
+    [email, senha],
+    (err, result) => {
+      if (err) {
+        console.error("Erro ao fazer login", err);
+        res.status(500).json({ error: "Erro ao fazer login" });
+      } else if (result.length === 0) {
+        res.status(401).json({ error: "Credenciais inválidas" });
+      } else {
+        // const user = { id: result[0].id, email: result[0].email };
+        // const token = generateToken(user);
+        req.session.responsavelId = result[0].id;
+        saveId(req.session.responsavelId)
+        console.log("ID do responsável:", req.session.responsavelId);
+        res.json({
+          message: "Login realizado com sucesso!",
+          // token: token,
+          user: result[0],
+        });
+      }
+    }
+  );
+});
+
 // CRUD - criança
 app.get("/crianca", (req, res) => {
   db.query("SELECT * FROM crianca", (err, result) => {
@@ -105,11 +139,17 @@ app.get("/crianca", (req, res) => {
   });
 });
 
-app.post("/crianca", (req, res) => {
+app.post("/crianca", async (req, res) => {
+  const responsavelId = localStorage.idResponsavel;
   const { nome, username, email, senha } = req.body;
+  if (!responsavelId) {
+    return res.status(401).json({
+      error: "ID do responsável não encontrado"
+    });
+  }
   db.query(
-    "INSERT INTO crianca (nome, username, email, senha) VALUES (?, ?, ?, ?)",
-    [nome, username, email, senha],
+    "INSERT INTO crianca (nome, username, email, senha, responsavel) VALUES (?, ?, ?, ?, ?)",
+    [nome, username, email, senha, responsavelId],
     (err, result) => {
       if (err) {
         console.error("Erro ao cadastrar usuário", err);
@@ -153,33 +193,6 @@ app.delete("/crianca/:id", (req, res) => {
       res.json({ message: "Usuário deletado com sucesso" });
     }
   });
-});
-
-// Login - responsável
-app.post("/responsavel/login", (req, res) => {
-  const { email, senha } = req.body;
-  db.query(
-    "SELECT * FROM responsavel WHERE email = ? AND senha = ?",
-    [email, senha],
-    (err, result) => {
-      if (err) {
-        console.error("Erro ao fazer login", err);
-        res.status(500).json({ error: "Erro ao fazer login" });
-      } else if (result.length === 0) {
-        res.status(401).json({ error: "Credenciais inválidas" });
-      } else {
-        // const user = { id: result[0].id, email: result[0].email };
-        // const token = generateToken(user);
-        req.session.responsavelId = result[0].id;
-        console.log("ID do responsável:", req.session.responsavelId);
-        res.json({
-          message: "Login realizado com sucesso!",
-          // token: token,
-          user: result[0],
-        });
-      }
-    }
-  );
 });
 
 //verifica email existente

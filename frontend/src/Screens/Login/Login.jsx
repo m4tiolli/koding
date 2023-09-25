@@ -23,7 +23,7 @@ function Login() {
   const handleLogin = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3005/${isResponsavel ? "responsavel" : "crianca"}/login`,
+        `https://turbo-dollop-45rwv4x5v472qv5q-3005.app.github.dev/${isResponsavel ? "responsavel" : "crianca"}/login`,
         {
           method: "POST",
           headers: {
