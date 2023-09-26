@@ -75,7 +75,6 @@ export default function Home() {
    * @param {string} type
    * @returns
    */
-useEffect(() => {
   const toggleButtonColorBlind = (type) => {
     mode === type ? setMode("light") : setMode(type);
     localStorage.getItem("theme") === type
@@ -83,7 +82,6 @@ useEffect(() => {
       : localStorage.setItem("theme", type);
     mode !== "light" ? setBlindChecked(true) : setBlindChecked(false);
   };
-}, [mode])
 
   /**
    *

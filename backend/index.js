@@ -2,15 +2,15 @@ const express = require("express");
 const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
-const session = require("express-session"); 
-const LocalStorage = require("node-localstorage").LocalStorage
-localStorage = new LocalStorage('./index')
+const session = require("express-session");
+const LocalStorage = require("node-localstorage").LocalStorage;
+localStorage = new LocalStorage("./index");
 const jwt = require("jsonwebtoken");
 
 const db = mysql.createPool({
-  host: "localhost",
-  user: "root",
-  password: "root",
+  host: "koding.mysql.database.azure.com",
+  user: "tccbarto",
+  password: "Koding2023",
   database: "koding",
 });
 
@@ -34,20 +34,20 @@ const jwtSecret = "KodingTOP";
 function generateToken(user) {
   const jwtUser = jwt.sign(user, jwtSecret, { expiresIn: "1d" });
   console.log(jwtUser);
-  localStorage.setItem('JWT', jwtUser);
+  localStorage.setItem("JWT", jwtUser);
   return jwtUser;
 }
 
 function verifyToken(req, res, next) {
-  const token = localStorage.getItem('JWT');
+  const token = localStorage.getItem("JWT");
   if (!token) {
     return res.status(401).json({ error: "Token não fornecido" });
   }
   jwt.verify(token, jwtSecret, (err, decoded) => {
     if (err) {
-      if (err.name === 'TokenExpiredError') {
-        localStorage.removeItem('JWT');
-        return res.redirect('/login'); 
+      if (err.name === "TokenExpiredError") {
+        localStorage.removeItem("JWT");
+        return res.redirect("/login");
       }
       return res.status(403).json({ error: "Token inválido" });
     }
@@ -123,7 +123,7 @@ app.delete("/responsavel/:id", (req, res) => {
 });
 
 function saveId(id) {
-  localStorage.setItem('idResponsavel', id);
+  localStorage.setItem("idResponsavel", id);
 }
 
 // Login - responsável
@@ -142,7 +142,7 @@ app.post("/responsavel/login", (req, res) => {
         const user = { id: result[0].id, email: result[0].email };
         const token = generateToken(user);
         req.session.responsavelId = result[0].id;
-        saveId(req.session.responsavelId)
+        saveId(req.session.responsavelId);
         console.log("ID do responsável:", req.session.responsavelId);
         res.json({
           message: "Login realizado com sucesso!",
@@ -171,7 +171,7 @@ app.post("/crianca", async (req, res) => {
   const { nome, username, email, senha } = req.body;
   if (!responsavelId) {
     return res.status(401).json({
-      error: "ID do responsável não encontrado"
+      error: "ID do responsável não encontrado",
     });
   }
   db.query(

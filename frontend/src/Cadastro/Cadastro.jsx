@@ -7,7 +7,7 @@ import { BsArrowLeft } from 'react-icons/bs'
 import { Link, useNavigate } from "react-router-dom";
 
 function Cadastro() {
-    const [isResponsavel, setIsResponsavel] = useState(false);
+    const [isResponsavel, setIsResponsavel] = useState(true);
     const [isPassVisible, setPassVisible] = useState(false);
 
     const TogglePassVisible = () => {
