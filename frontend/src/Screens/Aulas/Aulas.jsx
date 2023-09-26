@@ -22,7 +22,7 @@ function Aulas(){
             <main className="w-full ml-52 mr-2 overflow-hidden dark:bg-darkcinzaclaro">
 
                 {/* Barra de pesquisa */} 
-                <container className="flex h-64 w-5/12 ml-10 mt-10 items-center justify-center gap-3">
+                <div className="flex h-64 w-5/12 ml-10 mt-10 items-center justify-center gap-3">
                     <form action="" className="flex rounded-xl w-full items-center justify-center text-white text-xl p-2" style={{ background: "#811CD7" }}>
                         <input type="text" className="bg-transparent outline-none text-2xl" />
                         <a href="">
@@ -31,18 +31,18 @@ function Aulas(){
                     </form>
 
                     {/* Filtro */}
-                    <container className="flex h-10 w-56 space-x-8 items-center justify-center">
+                    <div className="flex h-10 w-56 space-x-8 items-center justify-center">
                         <button>
                             <BsFilter className="flex items-center justify-center text-4xl text-white rounded-md" style={{ background: "#811CD7" }}></BsFilter>
                         </button>
-                    </container>
+                    </div>
 
-                </container>
+                </div>
 
                 {/* Cards */}
 
-                <container className="space-y-32">
-                    <container className="flex flex-col justify-center ml-10">
+                <div className="space-y-32">
+                    <div className="flex flex-col justify-center ml-10">
                         
                         <div className="flex space-x-16 items-center">
                             
@@ -87,9 +87,9 @@ function Aulas(){
                             </div>
                         </div>
 
-                    </container>
+                    </div>
 
-                    <container className="flex flex-col justify-center ml-10">
+                    <div className="flex flex-col justify-center ml-10">
                         
                         <div className="flex space-x-16 items-center mb-32">
                             
@@ -135,8 +135,8 @@ function Aulas(){
 
                         </div>
 
-                    </container>
-                </container>
+                    </div>
+                </div>
               
             
             </main>

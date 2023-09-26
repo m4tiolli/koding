@@ -18,9 +18,9 @@ import {
   tritanomaly,
   deuteranomaly,
 } from "../../Components/ColorBlind";
-import blue from "../../Components/blue.png"
-import green from "../../Components/green.png"
-import red from "../../Components/red.png"
+import blue from "../../Components/blue.png";
+import green from "../../Components/green.png";
+import red from "../../Components/red.png";
 
 export default function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -65,10 +65,9 @@ export default function Home() {
     }
   }, []);
 
-
   // --- Color Blind --- //
 
-  const [mode, setMode] = useState("");
+  const [mode, setMode] = useState("light");
   const [blindChecked, setBlindChecked] = useState(false);
 
   /**
@@ -76,29 +75,32 @@ export default function Home() {
    * @param {string} type
    * @returns
    */
-
+useEffect(() => {
   const toggleButtonColorBlind = (type) => {
-    mode === type ? setMode("") : setMode(type);
-    localStorage.getItem("theme") === type ? localStorage.setItem("theme", "light") : localStorage.setItem("theme", type);
-    setBlindChecked((prev) => !prev);
+    mode === type ? setMode("light") : setMode(type);
+    localStorage.getItem("theme") === type
+      ? localStorage.setItem("theme", "light")
+      : localStorage.setItem("theme", type);
+    mode !== "light" ? setBlindChecked(true) : setBlindChecked(false);
   };
+}, [mode])
 
   /**
    *
    * @param {string} mode
-   * @param {string} color  
+   * @param {string} color
    * @returns
    */
 
   function Color(mode, color) {
     var newcolor;
-    if (mode === "protanomaly") {
+    if (mode === "protanomalia") {
       newcolor = protanomaly(color);
       localStorage.theme = "protanomaly";
-    } else if (mode === "deuteranomaly") {
+    } else if (mode === "deuteranomalia") {
       newcolor = deuteranomaly(color);
       localStorage.theme = "deuteranomaly";
-    } else if (mode === "tritanomaly") {
+    } else if (mode === "tritanomalia") {
       newcolor = tritanomaly(color);
       localStorage.theme = "tritanomaly";
     } else {
@@ -120,12 +122,15 @@ export default function Home() {
       <div
         className="flex h-full w-full"
         style={{
-          background: `linear-gradient(108deg, ${Color(mode, '#E5C6FF')} 0%, ${Color(mode, '#E4EBFF')} 100%)`,
+          background: `linear-gradient(108deg, ${Color(
+            mode,
+            "#E5C6FF"
+          )} 0%, ${Color(mode, "#E4EBFF")} 100%)`,
         }}
       >
         <aside
           className={`dark:bg-darkcinza h-screen w-52 p-5 fixed top-0 flex flex-col items-start justify-center shadow-lg`}
-          style={{ backgroundColor: Color(mode, '#EDD8FF') }}
+          style={{ backgroundColor: Color(mode, "#EDD8FF") }}
         >
           <header className="w-full mb-12">
             <Logo
@@ -188,7 +193,7 @@ export default function Home() {
 
         <header
           className={`dark:bg-darkcinza fixed width-header h-16 flex items-center justify-end shadow-sm z-10`}
-          style={{ backgroundColor: Color(mode, '#EDD8FF') }}
+          style={{ backgroundColor: Color(mode, "#EDD8FF") }}
         >
           <div className="h-3/5 w-2/5 flex items-center justify-end pr-4">
             <form
@@ -240,7 +245,7 @@ export default function Home() {
                 <div className="relative">
                   <input
                     type="checkbox"
-                    checked={isChecked && !blindChecked}
+                    checked={isChecked}
                     onChange={handleCheckboxChange}
                     className="sr-only"
                     disabled={darkNotAllowed()}
@@ -255,10 +260,15 @@ export default function Home() {
                 </div>
               </label>
             </div>
-            <div className="bg-[#e4d9ed] w-full py-3 flex flex-row-reverse justify-evenly items-center rounded-b-xl hover:cursor-pointer hover:opacity-60" onClick={onDalOpen}>
+            <div
+              className="bg-[#e4d9ed] w-full py-3 flex flex-row-reverse justify-evenly items-center rounded-b-xl hover:cursor-pointer hover:opacity-60"
+              onClick={onDalOpen}
+            >
               <ImContrast className="text-[#56505B] text-xl" />
               <p className="text-[#56505B]">Modo daltonismo</p>
-              <div className="text-2xl text-[#56505B]"><BiChevronLeft /></div>
+              <div className="text-2xl text-[#56505B]">
+                <BiChevronLeft />
+              </div>
             </div>
             <Modal
               isOpen={isDalOpen}
@@ -276,10 +286,34 @@ export default function Home() {
                 borderRadius="0.75rem"
               >
                 <div className="grid grid-rows-2 grid-cols-2 h-full w-full rounded-xl">
-                  <div className="bg-white grid place-items-center rounded-tl-xl active:shadow-inner" title="Sem daltonismo"><ImBlocked size={30} color="#56505B" /></div>
-                  <div className="bg-[#3b63ac] grid place-items-center rounded-tr-xl active:shadow-inner-xl" title="Tritanomalia"><img src={blue} className="h-2/5 w-auto" /></div>
-                  <div className="bg-[#65b32e] grid place-items-center rounded-bl-xl active:shadow-inner-xl" title="Deuteranomalia"><img src={green} className="h-2/5 w-auto" /></div>
-                  <div className="bg-[#e83c3b] grid place-items-center rounded-br-xl active:shadow-inner-xl" title="Protanomalia"><img src={red} className="h-2/5 w-auto" /></div>
+                  <div
+                    className={`bg-[#e9e9e9] select-none grid place-items-center rounded-tl-xl active:shadow-inner hover:scale-95 active:opacity-70 ${blindNotAllowed() ? 'opacity-50 scale-95 cursor-not-allowed' : ''} ${localStorage.theme === "light" ? 'opacity-50 scale-95' : ''}`}
+                    title="Sem daltonismo"
+                    onClick={() => toggleButtonColorBlind("light")}
+                  >
+                    <ImBlocked size={30} color="#56505B" />
+                  </div>
+                  <div
+                    className={`bg-[#3b63ac] select-none flex items-center justify-center rounded-tr-xl active:shadow-inner hover:scale-95 active:opacity-70 ${blindNotAllowed() ? 'opacity-50 scale-95 cursor-not-allowed' : ''} ${localStorage.theme === "tritanomaly" ? 'opacity-50 scale-95' : ''}`}
+                    title="Tritanomalia"
+                    onClick={() => toggleButtonColorBlind("tritanomalia")}
+                  >
+                    <img src={blue} className="h-3/5 w-auto" />
+                  </div>
+                  <div
+                    className={`bg-[#65b32e] select-none flex items-center justify-center rounded-bl-xl active:shadow-inner hover:scale-95 active:opacity-70 ${blindNotAllowed() ? 'opacity-50 scale-95 cursor-not-allowed' : ''} ${localStorage.theme === "deuteranomaly" ? 'opacity-50 scale-95' : ''}`}
+                    title="Deuteranomalia"
+                    onClick={() => toggleButtonColorBlind("deuteranomalia")}
+                  >
+                    <img src={green} className="h-4/6 w-auto" />
+                  </div>
+                  <div
+                    className={`bg-[#e83c3b] select-none flex items-center justify-center rounded-br-xl active:shadow-inner hover:scale-95 active:opacity-70 ${blindNotAllowed() ? 'opacity-50 scale-95 cursor-not-allowed' : ''} ${localStorage.theme === "protanomaly" ? 'opacity-50 scale-95' : ''}`}
+                    title="Protanomalia"
+                    onClick={() => toggleButtonColorBlind("protanomalia")}
+                  >
+                    <img src={red} className="h-3/5 w-auto" />
+                  </div>
                 </div>
               </ModalContent>
             </Modal>

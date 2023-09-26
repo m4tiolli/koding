@@ -10,6 +10,7 @@
     display: flex;
     justify-content: flex-start;
     padding: 1em;
+    position: relative;
 }
 
 .burger-menu{
@@ -27,15 +28,15 @@
     height: 0.4em;
     background-color: rgb(37, 39, 53);
     border-radius: 0.5em;
+    z-index: 10;
 }
 
 .menu{
-    width: 50%;
     height: 100vh;
     background: #4a5ca3;
-    position: absolute;
+    position: fixed;
     top: 0;
-    z-index: -1;
+    transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .hidden{

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import Navbar from '../../Components/Navbar/Navbar';
+import { useState } from 'react';
 
 function Desempenho(){
 
@@ -11,14 +12,30 @@ function Desempenho(){
         }
       }, []);
 
+      const [ responsive, setResponsive ] = useState(false)
+
+      useEffect(() => {
+        const handleResize = () => {
+            setResponsive(window.innerWidth < 900);
+        };
+
+        handleResize(); // Set initial state
+
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
     return(
         <div className="flex h-full w-full" style={{ background: "linear-gradient(108deg, #C6D6FF 0%, #FFFFFF 100%)" }}>
 
             <main className="w-full h-full laptop:h-screen lg:h-screen notebook:h-full justify-center overflow-hidden dark:bg-darkfundoR">
                 
-                <Navbar/>
+                {responsive ? <Navbar/> : ''}
 
-                <container className="flex flex-col lg:ml-72 ml-48 mt-40 ">
+                <div className="flex flex-col lg:ml-72 ml-48 mt-40 ">
 
                     <span className="-ml-40 lg:-ml-14 notebook:-ml-3 -mt-16 text-4xl font-semibold dark:text-white">Desempenho</span>
 
@@ -70,7 +87,7 @@ function Desempenho(){
                     </div>
 
                     
-                </container>
+                </div>
 
             </main>
 

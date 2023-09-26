@@ -33,10 +33,10 @@ function AppRoutes() {
         <Route exact path="/configuracao" element={<Configuracao />} /> 
         <Route exact path="/flexbox" element={<Flexbox />} /> 
         <Route exact path="/desempenho" element={<Desempenho />} /> 
-        <Route exact path="/configuracaor" element={<ConfiguracaoR />} /> 
-        <Route exact path="/homer" element={<HomeR />} /> 
-        <Route exact path="/perfilr" element={<PerfilR />} /> 
-        <Route exact path="/criar-conta-crianca" element={<CadastroCrianca />} /> 
+        <Route exact path="/pais/configuracao" element={<ConfiguracaoR />} /> 
+        <Route exact path="/pais/home" element={<HomeR />} /> 
+        <Route exact path="/pais/perfil" element={<PerfilR />} /> 
+        <Route exact path="/pais/criar-conta" element={<CadastroCrianca />} /> 
 
       </Routes>
     </HashRouter>
