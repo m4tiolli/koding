@@ -36,7 +36,7 @@ function AppRoutes() {
         <Route exact path="/pais/configuracao" element={<ConfiguracaoR />} /> 
         <Route exact path="/pais/home" element={<HomeR />} /> 
         <Route exact path="/pais/perfil" element={<PerfilR />} /> 
-        <Route exact path="/pais/criar-conta" element={<CadastroCrianca />} /> 
+        <Route exact path="/pais/criar-conta" element={<CadastroCrianca />} />
 
       </Routes>
     </HashRouter>

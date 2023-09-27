@@ -1,4 +1,4 @@
-import jwt from "jwt-decode";
+import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 
 export async function SalvarJWT(jwtData) {
