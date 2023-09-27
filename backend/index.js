@@ -14,7 +14,7 @@ const db = mysql.createPool({
   database: "koding",
 });
 
-const port = 3005;
+const port = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
@@ -32,7 +32,7 @@ app.use(
 const jwtSecret = "KodingTOP";
 
 function generateToken(user) {
-  const jwtUser = jwt.sign(user, jwtSecret, { expiresIn: "1d" });
+  const jwtUser = jwt.sign(user, jwtSecret, { expiresIn: "2m" });
   console.log(jwtUser);
   localStorage.setItem("JWT", jwtUser);
   return jwtUser;
