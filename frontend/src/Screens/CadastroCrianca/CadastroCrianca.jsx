@@ -62,7 +62,7 @@ function CadastroCrianca() {
             return;
         } else {
             const body = { nome, username, email, senha };
-            fetch(`http://localhost:3005/crianca`, {
+            fetch(`https://tcckoding.azurewebsites.net/crianca`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body),
@@ -80,7 +80,7 @@ function CadastroCrianca() {
 
     const verificaEmail = async () => {
         try {
-            const response = await fetch(`http://localhost:3005/email/${email}`, {
+            const response = await fetch(`https://tcckoding.azurewebsites.net/email/${email}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

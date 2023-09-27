@@ -23,7 +23,7 @@ function Login() {
   const handleLogin = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3005/${isResponsavel ? "responsavel" : "crianca"}/login`,
+        `https://tcckoding.azurewebsites.net/${isResponsavel ? "responsavel" : "crianca"}/login`,
         {
           method: "POST",
           headers: {

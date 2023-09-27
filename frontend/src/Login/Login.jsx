@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { Link, useNavigate  } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import BackgroundCircles from "../assets/BackgroundCircles";
 import Logo from "../assets/Logo";
 import './Login.css'
+import { SalvarJWT } from "../Components/AuthContext";
 
 function Login() {
   const [isResponsavel, setIsResponsavel] = useState(false);
@@ -20,7 +21,7 @@ function Login() {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch(`http://localhost:3005/${isResponsavel ? "responsavel" : "crianca"}/login`, {
+      const response = await fetch(`https://tcckoding.azurewebsites.net/${isResponsavel ? "responsavel" : "crianca"}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -30,6 +31,7 @@ function Login() {
 
       if (response.ok) {
         console.log("Login efetuado");
+        SalvarJWT(response.token)
         navigate("/");
       } else {
         const data = await response.json();

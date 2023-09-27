@@ -63,7 +63,7 @@ function Cadastro() {
             return;
         } else {
             const body = { nome, cpf, telefone, email, senha };
-            fetch(`http://localhost:3005/responsavel`, {
+            fetch(`https://tcckoding.azurewebsites.net/responsavel`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body),
@@ -81,7 +81,7 @@ function Cadastro() {
 
     const verificaEmail = async () => {
         try {
-            const response = await fetch(`http://localhost:3005/email/${email}`, {
+            const response = await fetch(`https://tcckoding.azurewebsites.net/email/${email}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

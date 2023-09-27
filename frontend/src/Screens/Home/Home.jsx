@@ -21,8 +21,19 @@ import {
 import blue from "../../Components/blue.png";
 import green from "../../Components/green.png";
 import red from "../../Components/red.png";
+import { ChecarLoginUsuario } from "../../Components/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const login = ChecarLoginUsuario();
+    if (login == false) {
+      navigate("/login");
+    }
+  }, [navigate]);
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const {
     isOpen: isMaisOpen,

@@ -37,7 +37,7 @@ function Cadastro() {
                 const bodyresponsavel = { nome, cpf, telefone, email, senha };
                 const bodycrianca = { nome, username, email, senha };
                 const body = isResponsavel ? bodyresponsavel : bodycrianca;
-                fetch(`http://localhost:3005/${isResponsavel ? "responsavel" : "crianca"}`, {
+                fetch(`https://tcckoding.azurewebsites.net/${isResponsavel ? "responsavel" : "crianca"}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(body),
@@ -61,7 +61,7 @@ function Cadastro() {
             const bodyresponsavel = { nome, cpf, telefone, email, senha };
             const bodycrianca = { nome, username, email, senha };
             const body = isResponsavel ? bodyresponsavel : bodycrianca;
-            fetch(`http://localhost:3005/${isResponsavel ? "responsavel" : "crianca"}`, {
+            fetch(`https://tcckoding.azurewebsites.net/${isResponsavel ? "responsavel" : "crianca"}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body),
