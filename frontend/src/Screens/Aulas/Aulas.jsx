@@ -3,6 +3,7 @@ import { BiSearch } from "react-icons/bi";
 
 import SideBar from '../../Components/SideBar/SideBar';
 import { useEffect } from 'react';
+import { Link } from "react-router-dom";
 
 function Aulas(){
     useEffect(() => {
@@ -48,8 +49,10 @@ function Aulas(){
                             
                             <div className="space-y-5">
                                 {/* Card */}
+                                <Link to={"/conteudo"}>
                                 <div className="w-80 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)" }}>
                                 </div>
+                                </Link>
                                 <div className="flex flex-col">
                                     <span className="w-80 flex items-center justify-start text-xl text-black font-semibold truncate dark:text-white">
                                     Aula 00 - Estrutura HTML
