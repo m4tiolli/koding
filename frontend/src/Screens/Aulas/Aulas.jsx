@@ -1,7 +1,8 @@
 import { BsFilter } from "react-icons/bs";
 import { BiSearch } from "react-icons/bi";
+
+import SideBar from '../../Components/SideBar/SideBar';
 import { useEffect } from 'react';
-import Menu from "../../Components/Menu/Menu";
 
 function Aulas(){
     useEffect(() => {
@@ -14,11 +15,11 @@ function Aulas(){
     return(
         <div className="flex h-full w-full" style={{ background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)" }}>   
 
-        <Menu />
+        <SideBar />
 
          {/* Conteudo */}
 
-            <main className="w-full ml-52 overflow-hidden dark:bg-darkcinzaclaro">
+            <main className="w-full ml-52 mr-2 overflow-hidden dark:bg-darkcinzaclaro">
 
                 {/* Barra de pesquisa */} 
                 <div className="flex h-64 w-5/12 ml-10 mt-10 items-center justify-center gap-3">
