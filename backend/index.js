@@ -266,6 +266,7 @@ app.post("/crianca/login", (req, res) => {
   );
 });
 
+// Logout
 app.get("/logout", (req, res) => {
   req.session.destroy((err) => {
     if (err) {
@@ -277,6 +278,60 @@ app.get("/logout", (req, res) => {
       res.json({ message: "Logout realizado com sucesso" });
     }
   });
+});
+
+// Sistema pontuações - criança
+app.post("/crianca/pontuacao", (req, res) => {
+  const { crianca, pontuacao } = req.body;
+  db.query(
+      "INSERT INTO pontuacoes (crianca, pontuacao) VALUES (?, ?)",
+      [crianca, pontuacao],
+      (err, result) => {
+          if (err) {
+              console.error("Erro ao registrar a pontuação", err);
+              res.status(500).json({ error: "Erro ao registrar a pontuação" });
+          } else {
+              res.json({ message: "Pontuação registrada com sucesso" });
+          }
+      }
+  );
+});
+
+app.get("/crianca/pontuacao/:crianca", (req, res) => {
+  const crianca = localStorage.idCrianca;
+  // const crianca = req.params.crianca;
+  db.query(
+      "SELECT * FROM pontuacoes WHERE crianca = ?",
+      [crianca],
+      (err, rows) => {
+          if (err) {
+              console.error("Erro ao obter a pontuação", err);
+              res.status(500).json({ error: "Erro ao obter a pontuação" });
+          } else {
+              res.json({ pontuacoes: rows });
+          }
+      }
+  );
+});
+
+app.get("/responsavel/:responsavel/pontuacoes", (req, res) => {
+  const responsavelId = localStorage.idResponsavel;
+  // const responsavelId = req.params.responsavel;
+  db.query(
+    "SELECT crianca.username, pontuacoes.pontuacao AS Pontuacao " +
+    "FROM crianca " +
+    "INNER JOIN pontuacoes ON pontuacoes.crianca = crianca.id " +
+    "WHERE crianca.responsavel = ?",
+    [responsavelId],
+    (err, rows) => {
+      if (err) {
+        console.error("Erro ao obter as pontuações das crianças", err);
+        res.status(500).json({ error: "Erro ao obter as pontuações das crianças" });
+      } else {
+        res.json({ pontuacoes: rows });
+      }
+    }
+  );
 });
 
 app.get("/", (req, res) => {
