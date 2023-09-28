@@ -22,6 +22,7 @@ CREATE TABLE crianca(
 );
 
 CREATE TABLE pontuacoes(
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	crianca INT NOT NULL,
 	pontuacao INT, 
 	FOREIGN KEY (crianca) REFERENCES crianca (id)

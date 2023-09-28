@@ -5,7 +5,7 @@ const cors = require("cors");
 const session = require("express-session");
 const LocalStorage = require("node-localstorage").LocalStorage;
 localStorage = new LocalStorage("./index");
-const jwt = require("jsonwebtoken");
+// const jwt = require("jsonwebtoken");
 
 const db = mysql.createPool({
   host: "koding.mysql.database.azure.com",
@@ -29,39 +29,39 @@ app.use(
 
 // JWT
 
-const jwtSecret = "KodingTOP";
+// const jwtSecret = "KodingTOP";
 
-function generateToken(user) {
-  const jwtUser = jwt.sign(user, jwtSecret, { expiresIn: "2m" });
-  console.log(jwtUser);
-  localStorage.setItem("JWT", jwtUser);
-  return jwtUser;
-}
+// function generateToken(user) {
+//   const jwtUser = jwt.sign(user, jwtSecret, { expiresIn: "2m" });
+//   console.log(jwtUser);
+//   localStorage.setItem("JWT", jwtUser);
+//   return jwtUser;
+// }
 
-function verifyToken(req, res, next) {
-  const token = localStorage.getItem("JWT");
-  if (!token) {
-    return res.status(401).json({ error: "Token não fornecido" });
-  }
-  jwt.verify(token, jwtSecret, (err, decoded) => {
-    if (err) {
-      if (err.name === "TokenExpiredError") {
-        localStorage.removeItem("JWT");
-        // return res.redirect("/login");
-      }
-      return res.status(403).json({ error: "Token inválido" });
-    }
-    req.decoded = decoded;
-    next();
-  });
-}
+// function verifyToken(req, res, next) {
+//   const token = localStorage.getItem("JWT");
+//   if (!token) {
+//     return res.status(401).json({ error: "Token não fornecido" });
+//   }
+//   jwt.verify(token, jwtSecret, (err, decoded) => {
+//     if (err) {
+//       if (err.name === "TokenExpiredError") {
+//         localStorage.removeItem("JWT");
+//         // return res.redirect("/login");
+//       }
+//       return res.status(403).json({ error: "Token inválido" });
+//     }
+//     req.decoded = decoded;
+//     next();
+//   });
+// }
 
 // app.get("/rota-protegida", verifyToken, (req, res) => {
 //   res.json({ message: "Acesso permitido" });
 // });
 
 // CRUD - responsável
-app.get("/responsavel", verifyToken, (req, res) => {
+app.get("/responsavel", (req, res) => {
   db.query("SELECT * FROM responsavel", (err, result) => {
     if (err) {
       console.error("Erro ao buscar usuários", err);
@@ -140,7 +140,7 @@ app.post("/responsavel/login", (req, res) => {
         res.status(401).json({ error: "Credenciais inválidas" });
       } else {
         const user = { id: result[0].id, email: result[0].email };
-        const token = generateToken(user);
+        // const token = generateToken(user);
         req.session.responsavelId = result[0].id;
         saveId(req.session.responsavelId);
         console.log("ID do responsável:", req.session.responsavelId);
@@ -155,7 +155,7 @@ app.post("/responsavel/login", (req, res) => {
 });
 
 // CRUD - criança
-app.get("/crianca", verifyToken, (req, res) => {
+app.get("/crianca", (req, res) => {
   db.query("SELECT * FROM crianca", (err, result) => {
     if (err) {
       console.error("Erro ao buscar usuários", err);
@@ -255,7 +255,7 @@ app.post("/crianca/login", (req, res) => {
         res.status(401).json({ error: "Credenciais inválidas" });
       } else {
         const user = { id: result[0].id, email: result[0].email };
-        const token = generateToken(user);
+        // const token = generateToken(user);
         res.json({
           message: "Login realizado com sucesso!",
           // token: token,
