@@ -47,7 +47,7 @@ function verifyToken(req, res, next) {
     if (err) {
       if (err.name === "TokenExpiredError") {
         localStorage.removeItem("JWT");
-        return res.redirect("/login");
+        // return res.redirect("/login");
       }
       return res.status(403).json({ error: "Token inválido" });
     }
@@ -264,6 +264,19 @@ app.post("/crianca/login", (req, res) => {
       }
     }
   );
+});
+
+app.get("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.error("Erro ao fazer logout", err);
+      res.status(500).json({ error: "Erro ao fazer logout" });
+    } else {
+      localStorage.removeItem("JWT");
+      localStorage.removeItem("idResponsavel");
+      res.json({ message: "Logout realizado com sucesso" });
+    }
+  });
 });
 
 app.get("/", (req, res) => {
