@@ -21,16 +21,23 @@ import {
 import blue from "../../Components/blue.png";
 import green from "../../Components/green.png";
 import red from "../../Components/red.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function Home() {
+  const [button, setButton] = useState("materiais");
   const navigate = useNavigate();
+  const location = useLocation();
+  useEffect(() => {
+    if (location.state?.tela) {
+      setButton(location.state.tela)
+    }
+  }, [location])
   useEffect(() => {
     localStorage.nivel == "responsavel"
       ? navigate("/pais/home")
       : localStorage.nivel == "crianca"
-      ? navigate("/home")
-      : navigate("/");
+        ? navigate("/home")
+        : navigate("/");
   }, [navigate]);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const {
@@ -44,7 +51,6 @@ export default function Home() {
     onClose: onDalClose,
   } = useDisclosure();
 
-  const [button, setButton] = useState("materiais");
 
   const toggleButton = (type) => {
     setButton(type);
@@ -148,9 +154,8 @@ export default function Home() {
 
           <nav className="flex flex-col flex-auto justify-start pt-24 w-full">
             <button
-              className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-[#332C44] ${
-                button == "materiais" ? "bg-white/50 dark:bg-[#332C44]" : ""
-              }`}
+              className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-[#332C44] ${button == "materiais" ? "bg-white/50 dark:bg-[#332C44]" : ""
+                }`}
               style={{ transition: "150ms ease-in" }}
               onClick={() => toggleButton("materiais")}
             >
@@ -161,9 +166,8 @@ export default function Home() {
             </button>
 
             <button
-              className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-[#332C44] ${
-                button == "perfil" ? "bg-white/50 dark:bg-[#332C44]" : ""
-              }`}
+              className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-[#332C44] ${button == "perfil" ? "bg-white/50 dark:bg-[#332C44]" : ""
+                }`}
               style={{ transition: "150ms ease-in" }}
               onClick={() => toggleButton("perfil")}
             >
@@ -176,9 +180,8 @@ export default function Home() {
             </button>
 
             <button
-              className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-[#332C44] ${
-                button == "desafios" ? "bg-white/50 dark:bg-[#332C44]" : ""
-              }`}
+              className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-[#332C44] ${button == "desafios" ? "bg-white/50 dark:bg-[#332C44]" : ""
+                }`}
               style={{ transition: "150ms ease-in" }}
               onClick={() => toggleButton("desafios")}
             >
@@ -249,9 +252,8 @@ export default function Home() {
               <BsFillMoonFill className="text-[#e4d9ed] text-xl" />
               <p className="text-[#e4d9ed]">Modo escuro</p>
               <label
-                className={`flex cursor-pointer select-none items-center ${
-                  darkNotAllowed() ? "cursor-not-allowed opacity-60" : ""
-                }`}
+                className={`flex cursor-pointer select-none items-center ${darkNotAllowed() ? "cursor-not-allowed opacity-60" : ""
+                  }`}
               >
                 <div className="relative">
                   <input
@@ -265,9 +267,8 @@ export default function Home() {
                     className={`box block h-6 w-10 rounded-full bg-[#e4d9ed]`}
                   ></div>
                   <div
-                    className={`absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded-full transition bg-[#56505B] ${
-                      isChecked ? "translate-x-full" : ""
-                    }`}
+                    className={`absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded-full transition bg-[#56505B] ${isChecked ? "translate-x-full" : ""
+                      }`}
                   ></div>
                 </div>
               </label>
@@ -299,60 +300,52 @@ export default function Home() {
               >
                 <div className="grid grid-rows-2 grid-cols-2 h-full w-full rounded-xl">
                   <div
-                    className={`bg-[#e9e9e9] select-none grid place-items-center rounded-tl-xl active:shadow-inner hover:scale-95 active:opacity-70 ${
-                      blindNotAllowed()
-                        ? "opacity-50 scale-95 cursor-not-allowed"
-                        : ""
-                    } ${
-                      localStorage.theme === "light"
+                    className={`bg-[#e9e9e9] select-none grid place-items-center rounded-tl-xl active:shadow-inner hover:scale-95 active:opacity-70 ${blindNotAllowed()
+                      ? "opacity-50 scale-95 cursor-not-allowed"
+                      : ""
+                      } ${localStorage.theme === "light"
                         ? "opacity-50 scale-95"
                         : ""
-                    }`}
+                      }`}
                     title="Sem daltonismo"
                     onClick={() => toggleButtonColorBlind("light")}
                   >
                     <ImBlocked size={30} color="#56505B" />
                   </div>
                   <div
-                    className={`bg-[#3b63ac] select-none flex items-center justify-center rounded-tr-xl active:shadow-inner hover:scale-95 active:opacity-70 ${
-                      blindNotAllowed()
-                        ? "opacity-50 scale-95 cursor-not-allowed"
-                        : ""
-                    } ${
-                      localStorage.theme === "tritanomaly"
+                    className={`bg-[#3b63ac] select-none flex items-center justify-center rounded-tr-xl active:shadow-inner hover:scale-95 active:opacity-70 ${blindNotAllowed()
+                      ? "opacity-50 scale-95 cursor-not-allowed"
+                      : ""
+                      } ${localStorage.theme === "tritanomaly"
                         ? "opacity-50 scale-95"
                         : ""
-                    }`}
+                      }`}
                     title="Tritanomalia"
                     onClick={() => toggleButtonColorBlind("tritanomalia")}
                   >
                     <img src={blue} className="h-3/5 w-auto" />
                   </div>
                   <div
-                    className={`bg-[#65b32e] select-none flex items-center justify-center rounded-bl-xl active:shadow-inner hover:scale-95 active:opacity-70 ${
-                      blindNotAllowed()
-                        ? "opacity-50 scale-95 cursor-not-allowed"
-                        : ""
-                    } ${
-                      localStorage.theme === "deuteranomaly"
+                    className={`bg-[#65b32e] select-none flex items-center justify-center rounded-bl-xl active:shadow-inner hover:scale-95 active:opacity-70 ${blindNotAllowed()
+                      ? "opacity-50 scale-95 cursor-not-allowed"
+                      : ""
+                      } ${localStorage.theme === "deuteranomaly"
                         ? "opacity-50 scale-95"
                         : ""
-                    }`}
+                      }`}
                     title="Deuteranomalia"
                     onClick={() => toggleButtonColorBlind("deuteranomalia")}
                   >
                     <img src={green} className="h-4/6 w-auto" />
                   </div>
                   <div
-                    className={`bg-[#e83c3b] select-none flex items-center justify-center rounded-br-xl active:shadow-inner hover:scale-95 active:opacity-70 ${
-                      blindNotAllowed()
-                        ? "opacity-50 scale-95 cursor-not-allowed"
-                        : ""
-                    } ${
-                      localStorage.theme === "protanomaly"
+                    className={`bg-[#e83c3b] select-none flex items-center justify-center rounded-br-xl active:shadow-inner hover:scale-95 active:opacity-70 ${blindNotAllowed()
+                      ? "opacity-50 scale-95 cursor-not-allowed"
+                      : ""
+                      } ${localStorage.theme === "protanomaly"
                         ? "opacity-50 scale-95"
                         : ""
-                    }`}
+                      }`}
                     title="Protanomalia"
                     onClick={() => toggleButtonColorBlind("protanomalia")}
                   >
@@ -423,7 +416,7 @@ export default function Home() {
         ) : button === "perfil" ? (
           <Perfil />
         ) : button === "desafios" ? (
-          "tchau"
+          () => navigate("/desafios")
         ) : null}
       </div>
     </ChakraProvider>
