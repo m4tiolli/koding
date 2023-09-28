@@ -17,8 +17,19 @@ import {
   tritanomaly,
   deuteranomaly,
 } from "../../Components/ColorBlind";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    localStorage.nivel == "responsavel"
+      ? navigate("/pais/home")
+      : localStorage.nivel == "crianca"
+      ? navigate("/home")
+      : navigate("/");
+  }, [navigate]);
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const {
     isOpen: isMaisOpen,
@@ -56,7 +67,6 @@ export default function Home() {
     }
   }, []);
 
-
   // --- Color Blind --- //
 
   const [mode, setMode] = useState("");
@@ -76,7 +86,7 @@ export default function Home() {
   /**
    *
    * @param {string} mode
-   * @param {string} color  
+   * @param {string} color
    * @returns
    */
 
@@ -117,32 +127,37 @@ export default function Home() {
           className={`dark:bg-darkcinzaR bg-[${Color(
             mode,
             "#EDD8FF"
-          )}] h-screen w-52 p-5 fixed top-0 lg:flex flex-col items-start justify-center shadow-lg hidden`}  style={{ background: "#E5E9F9" }}
+          )}] h-screen w-52 p-5 fixed top-0 lg:flex flex-col items-start justify-center shadow-lg hidden`}
+          style={{ background: "#E5E9F9" }}
         >
           <header className="w-full mb-12">
             <Logo
               isResponsavel={true}
-              className="absolute -top-4 -left-20 scale-50" 
+              className="absolute -top-4 -left-20 scale-50"
               isDark={localStorage.theme === "dark"}
             />
           </header>
 
           <nav className="flex flex-col flex-auto justify-start pt-24 w-full">
             <button
-              className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-white/10 ${button == "desempenho" ? "bg-white/50 dark:bg-[#444444]" : ""
-                }`}
+              className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-white/10 ${
+                button == "desempenho" ? "bg-white/50 dark:bg-[#444444]" : ""
+              }`}
               style={{ transition: "150ms ease-in" }}
               onClick={() => toggleButton("desempenho")}
             >
               <span className="inline-flex items-center gap-5">
-                <AiOutlineLineChart  className="relative text-3xl">desempenho</AiOutlineLineChart>
+                <AiOutlineLineChart className="relative text-3xl">
+                  desempenho
+                </AiOutlineLineChart>
                 <span className="text-lg">Desempenho</span>
               </span>
             </button>
 
             <button
-              className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-white/10 ${button == "perfil" ? "bg-white/50 dark:bg-[#343434 ]" : ""
-                }`}
+              className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-white/10 ${
+                button == "perfil" ? "bg-white/50 dark:bg-[#343434 ]" : ""
+              }`}
               style={{ transition: "150ms ease-in" }}
               onClick={() => toggleButton("perfil")}
             >
@@ -171,7 +186,8 @@ export default function Home() {
           className={`bg-[${Color(
             mode,
             "#EDD8FF"
-          )}] dark:bg-darkcinzaR fixed width-header h-16 lg:flex items-center justify-end shadow-sm z-10 hidden`} style={{ background: "#E5E9F9" }}
+          )}] dark:bg-darkcinzaR fixed width-header h-16 lg:flex items-center justify-end shadow-sm z-10 hidden`}
+          style={{ background: "#E5E9F9" }}
         >
           <div className="h-3/5 w-2/5 flex items-center justify-end pr-4">
             <form
@@ -217,8 +233,9 @@ export default function Home() {
               <BsFillMoonFill className="text-[#BCC2C7] text-xl" />
               <p className="text-[#BCC2C7]">Modo escuro</p>
               <label
-                className={`flex cursor-pointer select-none items-center ${darkNotAllowed() ? "cursor-not-allowed opacity-60" : ""
-                  }`}
+                className={`flex cursor-pointer select-none items-center ${
+                  darkNotAllowed() ? "cursor-not-allowed opacity-60" : ""
+                }`}
               >
                 <div className="relative">
                   <input
@@ -232,8 +249,9 @@ export default function Home() {
                     className={`box block h-6 w-10 rounded-full bg-[#BCC2C7]`}
                   ></div>
                   <div
-                    className={`absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded-full transition bg-[#50535B] ${isChecked ? "translate-x-full" : ""
-                      }`}
+                    className={`absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded-full transition bg-[#50535B] ${
+                      isChecked ? "translate-x-full" : ""
+                    }`}
                   ></div>
                 </div>
               </label>
@@ -242,8 +260,9 @@ export default function Home() {
               <ImContrast className="text-[#50535B] text-xl" />
               <p className="text-[#50535B]">Alto contraste</p>
               <label
-                className={`flex cursor-pointer select-none items-center ${blindNotAllowed() ? "cursor-not-allowed opacity-60" : ""
-                  }`}
+                className={`flex cursor-pointer select-none items-center ${
+                  blindNotAllowed() ? "cursor-not-allowed opacity-60" : ""
+                }`}
               >
                 <div className="relative">
                   <input
@@ -257,8 +276,9 @@ export default function Home() {
                     className={`box block h-6 w-10 rounded-full bg-[#50535B]`}
                   ></div>
                   <div
-                    className={`absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded-full transition bg-[#BCC2C7] ${blindChecked ? "translate-x-full" : ""
-                      }`}
+                    className={`absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded-full transition bg-[#BCC2C7] ${
+                      blindChecked ? "translate-x-full" : ""
+                    }`}
                   ></div>
                 </div>
               </label>

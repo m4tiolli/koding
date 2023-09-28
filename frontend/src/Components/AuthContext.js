@@ -1,46 +1,46 @@
-import jwt_decode from "jwt-decode";
+import jwt from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 
-export async function SalvarJWT(jwtData) {
+export function SalvarJWT(jwtData) {
   const userData = jwt(jwtData);
 
-  await localStorage.setItem("@jwt", jwtData);
-  await localStorage.setItem("@userData", JSON.stringify(userData));
+  localStorage.setItem("jwt", jwtData);
+  localStorage.setItem("userData", JSON.stringify(userData));
 }
 
-export async function HeaderRequisicao() {
-  const usuarioLogado = await ChecarLoginUsuario();
+export function HeaderRequisicao() {
+  const usuarioLogado = ChecarLoginUsuario();
   const navigate = useNavigate();
 
   if (usuarioLogado == false) {
     navigate("/login");
   }
 
-  const token = await localStorage.getItem("@jwt");
+  const token = localStorage.getItem("jwt");
   return new Headers({
     Authorization: "Bearer " + token,
     "Content-Type": "application/json",
   });
 }
 
-export async function ChecarLoginUsuario() {
-  const token = await localStorage.getItem("@jwt");
+export function ChecarLoginUsuario() {
+  const token = localStorage.getItem("jwt");
   if (!token) {
     return false;
   }
 
-  const userData = JSON.parse(await localStorage.getItem("@userData"));
+  const userData = JSON.parse(localStorage.getItem("userData"));
   const actualDate = Date.parse(new Date()) / 1000;
 
   if (actualDate > userData.exp) {
     //usuario expirado
-    await localStorage.removeItem("@jwt");
+    localStorage.removeItem("jwt");
     return false;
   }
 
   return true;
 }
 
-export async function DadosUsuario() {
-  return JSON.parse(await localStorage.getItem("@userData"));
+export function DadosUsuario() {
+  return JSON.parse(localStorage.getItem("userData"));
 }

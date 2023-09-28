@@ -4,7 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 import BackgroundCircles from "../assets/BackgroundCircles";
 import Logo from "../assets/Logo";
 import './Login.css'
-import { SalvarJWT } from "../Components/AuthContext";
+import { ChecarLoginUsuario, SalvarJWT } from "../AuthContext";
+import axios from "axios";
+
 
 function Login() {
   const [isResponsavel, setIsResponsavel] = useState(false);
@@ -19,23 +21,40 @@ function Login() {
     setPassVisible(!isPassVisible);
   }
 
-  const handleLogin = async () => {
-    try {
-      const response = await fetch(`https://tcckoding.azurewebsites.net/${isResponsavel ? "responsavel" : "crianca"}/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, senha }),
-      });
+  useEffect(() => {
+    verificarLogin();
+  });
 
-      if (response.ok) {
-        console.log("Login efetuado");
-        SalvarJWT(response.token)
-        navigate("/");
+  async function verificarLogin() {
+    const usuarioLogado = await ChecarLoginUsuario();
+    if (usuarioLogado) {
+      navigate("/home");
+    }
+  }
+
+  const handleLogin = () => {
+    try {
+      if (email == '' || senha == '') {
+        return
       } else {
-        const data = await response.json();
-        setLoginError(data.error);
+        const formData = new URLSearchParams();
+        formData.append("email", email);
+        formData.append("senha", senha);
+        axios.post(
+          `https://tcckoding.azurewebsites.net/${isResponsavel ? 'responsavel' : 'crianca'}/login`,
+          formData.toString(),
+          {
+            headers: { "Content-type": "application/x-www-form-urlencoded" },
+          }
+        )
+          .then((response) => {
+            console.log(response)
+          })
+          .then(() => navigate("/home"))
+          .catch((err) => {
+            setLoginError(err)
+            console.log(err)
+          })
       }
     } catch (error) {
       console.error('Erro ao fazer login:', error);
