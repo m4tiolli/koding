@@ -1,6 +1,7 @@
 import { BsFilter } from "react-icons/bs";
 import { BiSearch } from "react-icons/bi";
 import { useEffect } from 'react';
+import { Link } from "react-router-dom";
 import Menu from "../../Components/Menu/Menu";
 
 function Aulas(){
@@ -44,26 +45,27 @@ function Aulas(){
                     <div className="flex flex-col justify-center ml-10">
                         
                         <div className="flex space-x-16 items-center">
-                            
-                            <div className="space-y-5">
-                                {/* Card */}
-                                <div className="w-80 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)" }}>
-                                </div>
-                                <div className="flex flex-col">
-                                    <span className="w-80 flex items-center justify-start text-xl text-black font-semibold truncate dark:text-white">
-                                    Aula 00 - Estrutura HTML
-                                    </span>
-                                    {/* Filtro */}
-                                    <div className="w-80 flex flex-wrap gap-x-3 gap-y-3">
-                                        <div className="w-16 p-1 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)" }}>
-                                            <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate">HTML</span>
-                                        </div>
-                                        <div className="w-32 p-1 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)" }}>
-                                            <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate">Estrutura</span>
+                            <Link to={"/conteudo"}>
+                                <div className="space-y-5">
+                                    {/* Card */}
+                                    <div className="w-80 h-52 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)" }}>
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <span className="w-80 flex items-center justify-start text-xl text-black font-semibold truncate dark:text-white">
+                                        Aula 00 - Estrutura HTML
+                                        </span>
+                                        {/* Filtro */}
+                                        <div className="w-80 flex flex-wrap gap-x-3 gap-y-3">
+                                            <div className="w-16 p-1 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)" }}>
+                                                <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate">HTML</span>
+                                            </div>
+                                            <div className="w-32 p-1 rounded-xl" style={{ background: "linear-gradient(108deg, #E87331 0%, #E88D59 100%)" }}>
+                                                <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate">Estrutura</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
 
                             <div className="space-y-5">
                                 {/* Card */}

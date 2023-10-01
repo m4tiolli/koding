@@ -1,5 +1,7 @@
 import Menu from './../../Components/Menu/Menu';
 
+import { Link } from "react-router-dom";
+
 function Desafios() {
     return (
         <div className="flex h-screen w-full" style={{ background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)" }}>
@@ -23,19 +25,21 @@ function Desafios() {
                     {/* Cards Jogo */}
 
                     <div className="mt-20">
-                        <div>
-                            <span className="text-3xl font-semibold">Flexbox</span>
-                            <div className="w-64 h-32 bg-[#2774CE] rounded-xl mb-5"></div>
-                            <span></span>
-                            <div className="w-80 flex flex-wrap gap-x-3 gap-y-3">
-                                <div className="w-16 p-1 rounded-xl" style={{ background: "linear-gradient(108deg, #4189DC 0%, #1768C5 100%)" }}>
-                                    <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate">CSS</span>
-                                </div>
-                                <div className="w-32 p-1 rounded-xl" style={{ background: "linear-gradient(108deg, #4189DC 0%, #1768C5 100%)" }}>
-                                    <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate">Flexbox</span>
+                        <Link to={"/flexbox"}>
+                            <div>
+                                <span className="text-3xl font-semibold">Flexbox</span>
+                                <div className="w-64 h-32 bg-[#2774CE] rounded-xl mb-5"></div>
+                                <span></span>
+                                <div className="w-80 flex flex-wrap gap-x-3 gap-y-3">
+                                    <div className="w-16 p-1 rounded-xl" style={{ background: "linear-gradient(108deg, #4189DC 0%, #1768C5 100%)" }}>
+                                        <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate">CSS</span>
+                                    </div>
+                                    <div className="w-32 p-1 rounded-xl" style={{ background: "linear-gradient(108deg, #4189DC 0%, #1768C5 100%)" }}>
+                                        <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate">Flexbox</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     </div>
                 </div>
 
