@@ -15,6 +15,8 @@ import ConfiguracaoR from "./Screens/ConfiguracaoR/ConfiguracaoR";
 import HomeR from "./Screens/HomeR/HomeR";
 import PerfilR from "./Screens/PerfilR/PerfilR";
 import CadastroCrianca from "./Screens/CadastroCrianca/CadastroCrianca";
+import Desafios from "./Screens/Desafios/Desafios";
+import Conteudo from "./Screens/Conteudo/Conteudo";
 
 
 function AppRoutes() {
@@ -37,6 +39,8 @@ function AppRoutes() {
         <Route exact path="/pais/home" element={<HomeR />} /> 
         <Route exact path="/pais/perfil" element={<PerfilR />} /> 
         <Route exact path="/pais/criar-conta" element={<CadastroCrianca />} /> 
+        <Route exact path="/desafios" element={<Desafios />} /> 
+        <Route exact path="/conteudo" element={<Conteudo />} /> 
 
       </Routes>
     </HashRouter>
