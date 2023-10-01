@@ -260,7 +260,7 @@ module.exports = function (app) {
           console.error("Erro ao obter a pontuação", err);
           res.status(500).json({ error: "Erro ao obter a pontuação" });
         } else {
-            res.json(result);
+          res.json(result);
         }
       }
     );
@@ -304,11 +304,12 @@ module.exports = function (app) {
   app.get("/capitulos", (req, res) => {
     const { linguagem } = req.body;
     db.query(
-      "SELECT * FROM capitulos WHERE linguagem = ?"[linguagem],
+      "SELECT * FROM capitulos WHERE linguagem = ?",
+      [linguagem],
       (err, result) => {
         if (err) {
-          console.error("Erro ao obter as linguagens", err);
-          res.status(500).json({ error: "Erro ao obter as linguagens" });
+          console.error("Erro ao obter os capítulos", err);
+          res.status(500).json({ error: "Erro ao obter os capítulos" });
         } else {
           res.json(result);
         }
