@@ -1,6 +1,10 @@
+import Menu from './../../Components/Menu/Menu';
+
 function Desafios() {
     return (
         <div className="flex h-screen w-full" style={{ background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)" }}>
+
+            <Menu />
 
             <main className="w-full ml-52 mr-2 overflow-hidden dark:bg-darkcinzaclaro">
 

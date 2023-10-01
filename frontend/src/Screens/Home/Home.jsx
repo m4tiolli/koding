@@ -183,7 +183,7 @@ export default function Home() {
               className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-[#332C44] ${button == "desafios" ? "bg-white/50 dark:bg-[#332C44]" : ""
                 }`}
               style={{ transition: "150ms ease-in" }}
-              onClick={() => toggleButton("desafios")}
+              onClick={() => navigate("/desafios")}
             >
               <span className="inline-flex items-center gap-5">
                 <PiSword className="relative text-3xl">desafios</PiSword>

@@ -2,7 +2,7 @@ DROP DATABASE if EXISTS koding;
 CREATE DATABASE koding;
 USE koding;
 
-CREATE TABLE responsavel(
+CREATE TABLE IF NOT EXISTS responsavel(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255),
     cpf VARCHAR(255),
@@ -11,7 +11,7 @@ CREATE TABLE responsavel(
     senha VARCHAR(255)
 );
  
-CREATE TABLE crianca(
+CREATE TABLE IF NOT EXISTS crianca(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255),
     username VARCHAR(255),
@@ -21,53 +21,64 @@ CREATE TABLE crianca(
     FOREIGN KEY (responsavel) REFERENCES responsavel (id)
 );
 
-CREATE TABLE pontuacoes(
+CREATE TABLE IF NOT EXISTS pontuacoes(
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	crianca INT NOT NULL,
 	pontuacao INT, 
 	FOREIGN KEY (crianca) REFERENCES crianca (id)
 );
 
-CREATE TABLE linguagens(
+CREATE TABLE IF NOT EXISTS linguagens(
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	nome VARCHAR(255)
 );
 
-CREATE TABLE tags(
+CREATE TABLE IF NOT EXISTS capitulos(
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255),
+    linguagem INT,
+    FOREIGN KEY (linguagem) REFERENCES linguagens(id)
+);
+
+CREATE TABLE IF NOT EXISTS tags(
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	nome VARCHAR(255)
 );
 
-CREATE TABLE aulas(
+CREATE TABLE IF NOT EXISTS aulas(
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	nome VARCHAR(255),
 	descricao VARCHAR(255),
 	conteudo LONGTEXT,
-	imagem LONGTEXT 
+	imagem LONGTEXT,
+    capitulo INT,
+    linguagem INT,
+    FOREIGN KEY (capitulo) REFERENCES capitulos(id),
+    FOREIGN KEY (linguagem) REFERENCES linguagens(id)
 );
 
-CREATE TABLE LinguagensCrianca(
+CREATE TABLE IF NOT EXISTS LinguagensCrianca(
 	crianca INT, 
 	linguagens INT,
-	FOREIGN KEY (crianca) REFERENCES crianca (id),
-	FOREIGN KEY (linguagens) REFERENCES linguagens (id)
+	FOREIGN KEY (crianca) REFERENCES crianca(id),
+	FOREIGN KEY (linguagens) REFERENCES linguagens(id)
 );
 
-CREATE TABLE TagsAula(
+CREATE TABLE IF NOT EXISTS TagsAula(
 	tag INT,
 	aula INT,
 	FOREIGN KEY (tag) REFERENCES tags (id),
 	FOREIGN KEY (aula) REFERENCES aulas (id)
 );
 
-CREATE TABLE jogos(
+CREATE TABLE IF NOT EXISTS jogos(
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	nome VARCHAR(255),
 	linguagem INT,
 	FOREIGN KEY (linguagem) REFERENCES linguagens (id)
 );
 
-CREATE TABLE JogosCrianca(
+CREATE TABLE IF NOT EXISTS JogosCrianca(
 	crianca INT, 
 	jogo INT, 
 	situacao BOOL,
@@ -79,15 +90,15 @@ INSERT INTO responsavel VALUES (DEFAULT, 'ju', '13142413', '7236294', 'ju@gmail.
 
 INSERT INTO crianca VALUES (DEFAULT, 'matias', 'marcao', 'koding@gmail.com', '123', 1);
 
-INSERT INTO pontuacoes VALUES (1, 100);
+INSERT INTO pontuacoes VALUES (DEFAULT, 1, 100);
 
 INSERT INTO linguagens VALUES (DEFAULT, 'HTML');
 
 INSERT INTO tags VALUES (DEFAULT, 'HTML');
 
-INSERT INTO aulas VALUES (DEFAULT, 'Aula 00', 'Aula referente a HTML e suas tags', 'longlonglonglonglonglongloblob', 'html.png');
+INSERT INTO capitulos VALUES (DEFAULT, 'Introdução ao HTML', 1);
 
-INSERT INTO LinguagensCrianca VALUES (1, 1);
+INSERT INTO aulas VALUES (DEFAULT, 'Aula 00', 'Aula referente a HTML e suas tags', 'longlonglonglonglonglongloblob', 'html.png', 1, 1);
 
 INSERT INTO TagsAula VALUES (1, 1);
 
