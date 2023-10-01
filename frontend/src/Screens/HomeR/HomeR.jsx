@@ -318,12 +318,7 @@ export default function Home() {
                 </span>
               </button>
 
-              <button 
-                className="text-left rounded-t-lg leading-none text-cinza py-3 w-full hover:opacity-70"
-                onClick={() => {
-                  localStorage.removeItem("nivel");
-                  location.reload();
-                }}>
+              <button className="text-left rounded-t-lg leading-none text-cinza py-3 w-full hover:opacity-70">
                 <span className="inline-flex items-center gap-2 w-full">
                   <BiHelpCircle className="relative 2xl:text-3xl text-lg w-1/4 "></BiHelpCircle>
                   <span className="2xl:text-xl text-lg w-3/4">Sair</span>
