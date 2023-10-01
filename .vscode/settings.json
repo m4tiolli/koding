@@ -14,5 +14,8 @@
       "database": "koding",
       "password": ""
     }
-  ]
+  ],
+  "appService.zipIgnorePattern": ["node_modules{,/**}", ".vscode{,/**}"],
+  "appService.defaultWebAppToDeploy": "/subscriptions/82de23de-6eb5-4e1c-98fc-f907a8be628a/resourceGroups/tcckoding_group/providers/Microsoft.Web/sites/tcckoding",
+  "appService.deploySubpath": "backend"
 }
