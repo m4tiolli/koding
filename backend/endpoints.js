@@ -218,7 +218,7 @@ module.exports = function (app) {
     );
   });
 
-  // Logout
+  // LogoutcriancaId
   app.get("/logout", (req, res) => {
     req.session.destroy((err) => {
       if (err) {
@@ -227,6 +227,7 @@ module.exports = function (app) {
       } else {
         localStorage.removeItem("JWT");
         localStorage.removeItem("idResponsavel");
+        localStorage.removeItem("idCrianca");
         res.json({ message: "Logout realizado com sucesso" });
       }
     });
@@ -298,6 +299,27 @@ module.exports = function (app) {
         res.json(result);
       }
     });
+  });
+
+  app.get("/crianca/:crianca/linguagensAprendidas", (req, res) => {
+    const criancaId = localStorage.idCrianca;
+    // const criancaId = req.params.crianca;
+    
+    db.query(
+      "SELECT COUNT(*) AS quantidadeLinguagens " +
+      "FROM LinguagensCrianca " +
+      "WHERE crianca = ?",
+      [criancaId],
+      (err, result) => {
+        if (err) {
+          console.error("Erro ao obter o número de linguagens aprendidas pela criança", err);
+          res.status(500).json({ error: "Erro ao obter o número de linguagens aprendidas" });
+        } else {
+          const quantidadeLinguagens = result[0].quantidadeLinguagens;
+          res.json({ quantidadeLinguagens });
+        }
+      }
+    );
   });
 
   //capitulos

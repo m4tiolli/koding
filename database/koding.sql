@@ -93,6 +93,12 @@ INSERT INTO crianca VALUES (DEFAULT, 'matias', 'marcao', 'koding@gmail.com', '12
 INSERT INTO pontuacoes VALUES (DEFAULT, 1, 100);
 
 INSERT INTO linguagens VALUES (DEFAULT, 'HTML');
+INSERT INTO linguagens VALUES (DEFAULT, 'JavaScript');
+INSERT INTO linguagens VALUES (DEFAULT, 'PHP');
+
+INSERT INTO LinguagensCrianca VALUES (1, 1);
+INSERT INTO LinguagensCrianca VALUES (1, 2);
+INSERT INTO LinguagensCrianca VALUES (1, 3);
 
 INSERT INTO tags VALUES (DEFAULT, 'HTML');
 
@@ -109,3 +115,7 @@ SELECT responsavel.nome, crianca.username, pontuacoes.pontuacao
 FROM responsavel 
 INNER JOIN crianca ON crianca.responsavel = responsavel.id
 INNER JOIN pontuacoes ON pontuacoes.crianca = crianca.id; 
+
+SELECT COUNT(*) AS quantidadeLinguagens 
+FROM LinguagensCrianca  
+WHERE crianca = 1;
