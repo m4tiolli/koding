@@ -323,7 +323,7 @@ module.exports = function (app) {
   });
 
   //capitulos
-  app.get("/capitulos", (req, res) => {
+  app.post("/capitulos", (req, res) => {
     const { linguagem } = req.body;
     db.query(
       "SELECT * FROM capitulos WHERE linguagem = ?",

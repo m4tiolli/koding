@@ -7,7 +7,9 @@
   },
   "host": "tcckoding.azurewebsites.net",
   "basePath": "/",
-  "schemes": ["https"],
+  "schemes": [
+    "https"
+  ],
   "paths": {
     "/responsavel": {
       "get": {
@@ -404,9 +406,44 @@
         }
       }
     },
-    "/capitulos": {
+    "/crianca/{crianca}/linguagensAprendidas": {
       "get": {
         "description": "",
+        "parameters": [
+          {
+            "name": "crianca",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/capitulos": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "linguagem": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
