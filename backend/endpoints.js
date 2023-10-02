@@ -251,8 +251,8 @@ module.exports = function (app) {
   });
 
   app.get("/crianca/pontuacao/:crianca", (req, res) => {
-    const crianca = localStorage.idCrianca;
-    // const crianca = req.params.crianca;
+    // const crianca = localStorage.idCrianca;
+    const crianca = req.params.crianca;
     db.query(
       "SELECT * FROM pontuacoes WHERE crianca = ?",
       [crianca],
@@ -268,8 +268,8 @@ module.exports = function (app) {
   });
 
   app.get("/responsavel/:responsavel/pontuacoes", (req, res) => {
-    const responsavelId = localStorage.idResponsavel;
-    // const responsavelId = req.params.responsavel;
+    // const responsavelId = localStorage.idResponsavel;
+    const responsavelId = req.params.responsavel;
     db.query(
       "SELECT crianca.username, pontuacoes.pontuacao AS Pontuacao " +
         "FROM crianca " +
@@ -302,8 +302,8 @@ module.exports = function (app) {
   });
 
   app.get("/crianca/:crianca/linguagensAprendidas", (req, res) => {
-    const criancaId = localStorage.idCrianca;
-    // const criancaId = req.params.crianca;
+    // const criancaId = localStorage.idCrianca;
+    const criancaId = req.params.crianca;
     
     db.query(
       "SELECT COUNT(*) AS quantidadeLinguagens " +
@@ -315,16 +315,15 @@ module.exports = function (app) {
           console.error("Erro ao obter o número de linguagens aprendidas pela criança", err);
           res.status(500).json({ error: "Erro ao obter o número de linguagens aprendidas" });
         } else {
-          const quantidadeLinguagens = result[0].quantidadeLinguagens;
-          res.json({ quantidadeLinguagens });
+          res.json(result);
         }
       }
     );
   });
 
   //capitulos
-  app.post("/capitulos", (req, res) => {
-    const { linguagem } = req.body;
+  app.get("/capitulos/:id", (req, res) => {
+    const linguagem = req.params.id;
     db.query(
       "SELECT * FROM capitulos WHERE linguagem = ?",
       [linguagem],

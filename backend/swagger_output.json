@@ -427,21 +427,15 @@
         }
       }
     },
-    "/capitulos": {
-      "post": {
+    "/capitulos/{id}": {
+      "get": {
         "description": "",
         "parameters": [
           {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "linguagem": {
-                  "example": "any"
-                }
-              }
-            }
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {
