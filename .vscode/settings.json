@@ -13,6 +13,20 @@
       "username": "root",
       "database": "koding",
       "password": ""
+    },
+    {
+      "mysqlOptions": {
+        "authProtocol": "default",
+        "enableSsl": "Disabled"
+      },
+      "previewLimit": 50,
+      "server": "koding.mysql.database.azure.com",
+      "port": 3306,
+      "driver": "MySQL",
+      "name": "koding online",
+      "database": "koding",
+      "username": "tccbarto",
+      "askForPassword": true
     }
   ],
   "appService.zipIgnorePattern": ["node_modules{,/**}", ".vscode{,/**}"],
