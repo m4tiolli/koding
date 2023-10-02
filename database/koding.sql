@@ -51,10 +51,8 @@ CREATE TABLE IF NOT EXISTS aulas(
 	descricao VARCHAR(255),
 	conteudo LONGTEXT,
 	imagem LONGTEXT,
-    capitulo INT,
-    linguagem INT,
-    FOREIGN KEY (capitulo) REFERENCES capitulos(id),
-    FOREIGN KEY (linguagem) REFERENCES linguagens(id)
+   capitulo INT,
+   FOREIGN KEY (capitulo) REFERENCES capitulos(id)
 );
 
 CREATE TABLE IF NOT EXISTS LinguagensCrianca(
@@ -93,18 +91,12 @@ INSERT INTO crianca VALUES (DEFAULT, 'matias', 'marcao', 'koding@gmail.com', '12
 INSERT INTO pontuacoes VALUES (DEFAULT, 1, 100);
 
 INSERT INTO linguagens VALUES (DEFAULT, 'HTML');
-INSERT INTO linguagens VALUES (DEFAULT, 'JavaScript');
-INSERT INTO linguagens VALUES (DEFAULT, 'PHP');
-
-INSERT INTO LinguagensCrianca VALUES (1, 1);
-INSERT INTO LinguagensCrianca VALUES (1, 2);
-INSERT INTO LinguagensCrianca VALUES (1, 3);
 
 INSERT INTO tags VALUES (DEFAULT, 'HTML');
 
 INSERT INTO capitulos VALUES (DEFAULT, 'Introdução ao HTML', 1);
 
-INSERT INTO aulas VALUES (DEFAULT, 'Aula 00', 'Aula referente a HTML e suas tags', 'longlonglonglonglonglongloblob', 'html.png', 1, 1);
+INSERT INTO aulas VALUES (DEFAULT, 'Aula 00', 'Aula referente a HTML e suas tags', 'longlonglonglonglonglongloblob', 'html.png', 1);
 
 INSERT INTO TagsAula VALUES (1, 1);
 
@@ -115,7 +107,3 @@ SELECT responsavel.nome, crianca.username, pontuacoes.pontuacao
 FROM responsavel 
 INNER JOIN crianca ON crianca.responsavel = responsavel.id
 INNER JOIN pontuacoes ON pontuacoes.crianca = crianca.id; 
-
-SELECT COUNT(*) AS quantidadeLinguagens 
-FROM LinguagensCrianca  
-WHERE crianca = 1;
