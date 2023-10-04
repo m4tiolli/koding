@@ -1,6 +1,6 @@
 const mysql = require("mysql");
-const LocalStorage = require("node-localstorage").LocalStorage;
-localStorage = new LocalStorage("./index");
+// const LocalStorage = require("node-localstorage").LocalStorage;
+// localStorage = new LocalStorage("./index");
 module.exports = function (app) {
   const db = mysql.createPool({
     host: "koding.mysql.database.azure.com",
@@ -40,12 +40,12 @@ module.exports = function (app) {
   });
 
   app.put("/responsavel/:id", (req, res) => {
-    const { nome, senha } = req.body;
+    const { senha } = req.body;
     const userId = req.params.id;
 
     db.query(
-      "UPDATE responsavel SET nome = ?, senha = ? WHERE id = ?",
-      [nome, senha, userId],
+      "UPDATE responsavel SET senha = ? WHERE id = ?",
+      [senha, userId],
       (err, result) => {
         if (err) {
           console.error("Erro ao alterar usuário", err);
@@ -74,9 +74,9 @@ module.exports = function (app) {
     );
   });
 
-  function saveId(id) {
-    localStorage.setItem("idResponsavel", id);
-  }
+  // function saveId(id) {
+  //   localStorage.setItem("idResponsavel", id);
+  // }
 
   // Login - responsável
   app.post("/responsavel/login", (req, res) => {
@@ -119,7 +119,8 @@ module.exports = function (app) {
   });
 
   app.post("/crianca", async (req, res) => {
-    const responsavelId = localStorage.idResponsavel;
+    // const responsavelId = localStorage.idResponsavel;
+    const responsavelId = req.session.responsavelId;
     const { nome, username, email, senha } = req.body;
     if (!responsavelId) {
       return res.status(401).json({
@@ -144,12 +145,12 @@ module.exports = function (app) {
   });
 
   app.put("/crianca/:id", (req, res) => {
-    const { nome, senha } = req.body;
+    const { username, senha } = req.body;
     const userId = req.params.id;
 
     db.query(
-      "UPDATE crianca SET nome = ?, senha = ? WHERE id = ?",
-      [nome, senha, userId],
+      "UPDATE crianca SET username = ?, senha = ? WHERE id = ?",
+      [username, senha, userId],
       (err, result) => {
         if (err) {
           console.error("Erro ao alterar usuário", err);
@@ -225,9 +226,9 @@ module.exports = function (app) {
         console.error("Erro ao fazer logout", err);
         res.status(500).json({ error: "Erro ao fazer logout" });
       } else {
-        localStorage.removeItem("JWT");
-        localStorage.removeItem("idResponsavel");
-        localStorage.removeItem("idCrianca");
+        // localStorage.removeItem("JWT");
+        // localStorage.removeItem("idResponsavel");
+        // localStorage.removeItem("idCrianca");
         res.json({ message: "Logout realizado com sucesso" });
       }
     });
