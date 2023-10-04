@@ -16,7 +16,7 @@ import {
 
 // import {Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton,} from '@chakra-ui/react';
 
-import SideBar from "../../Components/SideBar/SideBar";
+import Menu from "../../Components/Menu/Menu";
 
 function Configuracao() {
   const {
@@ -32,29 +32,29 @@ function Configuracao() {
 
   return (
     <div
-      className="flex h-full w-full"
+      className="flex h-fat w-full"
       style={{
         background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)",
       }}
     >
-      <SideBar />
+      <Menu />
 
-      <main className="w-full ml-60 mr-2 mt-7 overflow-hidden">
+      <main className="w-full ml-60 mr-2 mt-24 overflow-hidden">
         <div className="mb-10">
           <span className="text-3xl font-semibold">Configurações</span>
         </div>
 
         {/* Dados */}
 
-        <container className="w-full h-full flex flex-col gap-y-10 ml-16">
+        <container className="w-full h-screen flex flex-col gap-y-10 ml-16">
           {/* Enviar Foto */}
 
-          <form action="" method="" className="flex gap-x-96">
+          <form action="" method="" className="flex gap-x-32 xl:gap-x-64">
             <div className="flex items-center gap-6">
               <span className="text-lg">Personalizar Avatar</span>
               <label
                 className="p-2 w-42 rounded-xl border-solid border-black cursor-pointer shadow-lg text-center"
-                style={{ background: "#F0B49B" }}
+                style={{ background: "#1010e10e" }}
                 htmlFor="image"
               >
                 {" "}
@@ -80,7 +80,7 @@ function Configuracao() {
             method="post"
             className="flex flex-col gap-y-5 text-lg"
           >
-            <div className="w-2/5 flex items-center">
+            <div className="w-6/12 lg:w-[430px] flex items-center">
               <div className="w-full">
                 <span>Nome</span>
               </div>
@@ -88,14 +88,14 @@ function Configuracao() {
               <label className="">
                 <input
                   className="p-2 w-42 rounded-xl border-solid border-black outline-none shadow-lg"
-                  style={{ background: "#F0B49B" }}
+                  style={{ background: "#1010e10e" }}
                   name="name"
                   type="text"
                 />
               </label>
             </div>
 
-            <div className="w-2/5 flex items-center">
+            <div className="w-6/12 lg:w-[430px] flex items-center">
               <div className="w-full">
                 <span>Username</span>
               </div>
@@ -103,14 +103,14 @@ function Configuracao() {
               <label>
                 <input
                   className="p-2 rounded-xl border-solid border-black outline-none shadow-lg"
-                  style={{ background: "#F0B49B" }}
+                  style={{ background: "#1010e10e" }}
                   name="username"
                   type="text"
                 />
               </label>
             </div>
 
-            <div className="w-2/5 flex items-center">
+            <div className="w-6/12 lg:w-[430px] flex items-center">
               <div className="w-full">
                 <span>E-mail</span>
               </div>
@@ -118,14 +118,14 @@ function Configuracao() {
               <label>
                 <input
                   className="p-2 rounded-xl border-solid border-black outline-none shadow-lg"
-                  style={{ background: "#F0B49B" }}
+                  style={{ background: "#1010e10e" }}
                   name="email"
                   type="email"
                 />
               </label>
             </div>
 
-            <div className="w-2/5 flex items-center">
+            <div className="w-6/12 lg:w-[430px] flex items-center">
               <div className="w-full">
                 <span>Senha</span>
               </div>
@@ -133,14 +133,14 @@ function Configuracao() {
               <label>
                 <input
                   className="p-2 rounded-xl border-solid border-black outline-none shadow-lg"
-                  style={{ background: "#F0B49B" }}
+                  style={{ background: "#1010e10e" }}
                   name="password"
                   type="password"
                 />
               </label>
             </div>
 
-            <div className="w-2/5 flex items-center">
+            <div className="w-6/12 lg:w-[430px] flex items-center">
               <div className="w-full">
                 <span>Confirmar senha</span>
               </div>
@@ -148,7 +148,7 @@ function Configuracao() {
               <label>
                 <input
                   className="p-2 rounded-xl border-solid border-black outline-none shadow-lg"
-                  style={{ background: "#F0B49B" }}
+                  style={{ background: "#1010e10e" }}
                   name="password"
                   type="password"
                 />
@@ -160,13 +160,13 @@ function Configuracao() {
 
           <div className="flex flex-col gap-y-5 text-lg">
             <div className="flex">
-              <div className="w-52">
+              <div className="w-36 lg:w-48">
                 <span>Modo Escuro</span>
               </div>
 
               <select
                 className="p-2 w-42 rounded-xl border-solid border-black outline-none shadow-lg cursor-pointer"
-                style={{ background: "#F0B49B" }}
+                style={{ background: "#1010e10e" }}
                 name="darkMode"
                 id="darkMode"
               >
@@ -177,13 +177,13 @@ function Configuracao() {
             </div>
 
             <div className="flex">
-              <div className="w-52">
+              <div className="w-36 lg:w-48">
                 <span>Alto Contraste</span>
               </div>
 
               <select
                 className="p-2 w-42 rounded-xl border-solid border-black outline-none shadow-lg cursor-pointer"
-                style={{ background: "#F0B49B" }}
+                style={{ background: "#1010e10e" }}
                 name="contraste"
                 id="contraste"
               >
@@ -220,7 +220,9 @@ function Configuracao() {
                   <ModalCloseButton />
                   <ModalBody>Você deseja mesmo excluir sua conta?</ModalBody>
                   <ModalFooter>
-                    <Button variant={"ghost"} onClick={closeDeleteAccountModal}>Voltar</Button>
+                    <Button variant={"ghost"} onClick={closeDeleteAccountModal}>
+                      Voltar
+                    </Button>
                     <Button variant={"ghost"} colorScheme={"red"}>
                       Excluir
                     </Button>
@@ -239,7 +241,9 @@ function Configuracao() {
                   <ModalCloseButton />
                   <ModalBody>Você deseja mesmo sair?</ModalBody>
                   <ModalFooter>
-                    <Button variant={"ghost"} onClick={closeLogoutModal}>Voltar</Button>
+                    <Button variant={"ghost"} onClick={closeLogoutModal}>
+                      Voltar
+                    </Button>
                     <Button variant={"ghost"} colorScheme={"red"}>
                       Sair
                     </Button>
