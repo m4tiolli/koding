@@ -1,4 +1,5 @@
-import { IoIosLogOut } from "react-icons/io";
+import { IoIosLogOut} from "react-icons/io";
+import { IoArrowBack} from "react-icons/io5";
 import { BsTrash3 } from "react-icons/bs";
 import {
   Button,
@@ -13,6 +14,7 @@ import {
   ModalHeader,
   ModalCloseButton,
 } from "@chakra-ui/react";
+import {useNavigate} from 'react-router-dom';
 // import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 // import {Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton,} from '@chakra-ui/react';
@@ -30,6 +32,7 @@ function Configuracao() {
     onOpen: openDeleteAccountModal,
     onClose: closeDeleteAccountModal,
   } = useDisclosure();
+  const navigate = useNavigate();
 
   return (
     <ChakraProvider>
@@ -40,8 +43,11 @@ function Configuracao() {
         }}
       >
         <Menu />
-
+        
         <main className="w-full ml-60 mr-2 mt-[5.8rem] overflow-hidden">
+
+        <IoArrowBack onClick={() => navigate(-1)} className="flex mt-2 mb-5 text-3xl cursor-pointer"/>
+        
           <div className="mb-10">
             <span className="text-3xl font-semibold">Configurações</span>
           </div>

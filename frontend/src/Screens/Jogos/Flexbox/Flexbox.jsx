@@ -1,5 +1,8 @@
 import "../Flexbox/Flexbox.css";
 import { useState } from "react";
+import {useNavigate} from 'react-router-dom';
+
+import { IoArrowBack} from "react-icons/io5";
 
 function Flexbox() {
   const [disabled, setDisabled] = useState(true);
@@ -17,6 +20,7 @@ function Flexbox() {
     }
   }
 
+  const navigate = useNavigate();
   const [inputValue, setInputValue] = useState("");
   const [timer, setTimer] = useState(null);
 
@@ -31,6 +35,7 @@ function Flexbox() {
 
     setTimer(newTimer);
   };
+
   return (
     <div
       className="flex h-full w-full"
@@ -40,7 +45,9 @@ function Flexbox() {
     >
       {/* Instruções */}
 
-      <section className="w-3/6 p-16">
+      <IoArrowBack onClick={() => navigate(-1)} className="flex mb-5 text-3xl ml-10 mt-5 cursor-pointer"/>
+
+      <section className="w-3/6 p-16 mt-5 -ml-16">
         <h1 className="text-3xl uppercase font-semibold text-gray-600">
           Flexbox
         </h1>

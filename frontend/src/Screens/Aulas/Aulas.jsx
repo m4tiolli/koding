@@ -1,8 +1,10 @@
 import { BsFilter } from "react-icons/bs";
 import { BiSearch } from "react-icons/bi";
+import { IoArrowBack} from "react-icons/io5";
 import { useEffect } from 'react';
 import { Link } from "react-router-dom";
 import Menu from "../../Components/Menu/Menu";
+import {useNavigate} from 'react-router-dom';
 
 function Aulas(){
     useEffect(() => {
@@ -12,6 +14,8 @@ function Aulas(){
           document.documentElement.classList.remove("dark");
         }
       }, []);
+
+      const navigate = useNavigate();
     return(
         <div className="flex h-full w-full" style={{ background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)" }}>   
 
@@ -19,10 +23,12 @@ function Aulas(){
 
          {/* Conteudo */}
 
-            <main className="w-full ml-52 overflow-hidden dark:bg-darkcinzaclaro">
+            <main className="w-full ml-60 overflow-hidden dark:bg-darkcinzaclaro">
+
+                <IoArrowBack onClick={() => navigate(-1)} className="flex mt-28 mb-5 text-3xl cursor-pointer"/>
 
                 {/* Barra de pesquisa */} 
-                <div className="flex h-64 w-5/12 ml-10 mt-10 items-center justify-center gap-3">
+                <div className="flex h-64 w-5/12 ml-12 -m-20 mb-2 items-center justify-center gap-3">
                     <form action="" className="flex rounded-xl w-full items-center justify-center text-white text-xl p-2" style={{ background: "#811CD7" }}>
                         <input type="text" className="bg-transparent outline-none text-2xl" />
                         <a href="">
