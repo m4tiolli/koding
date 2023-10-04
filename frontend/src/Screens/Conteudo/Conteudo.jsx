@@ -1,6 +1,13 @@
 import Menu from "../../Components/Menu/Menu";
+import { useRef } from "react";
 
 function Conteudo() {
+
+  const ref =  useRef()
+
+  const ref1 = () => {
+    this.ref.current?.scrollIntoView({behavior: 'smooth'})
+  }
   return (
     <div
       className="flex h-full w-full"
@@ -19,7 +26,7 @@ function Conteudo() {
           <div className="flex w-10/12 mt-10 mb-10 gap-x-10">
             {/* Conteudo */}
             <div className="">
-              <div>
+              <div ref={this.ref1}>
                 <h1 className="text-2xl font-semibold text-[#BB5E7E] mb-3">
                   1. Introdução ao HTML
                 </h1>
@@ -41,7 +48,7 @@ function Conteudo() {
                     As "tags" HTML são como os tijolos da web. Elas fornecem
                     instruções para o navegador sobre como exibir o conteúdo.
                     Uma tag HTML é composta por um nome entre colchetes
-                    angulares ("()"), por exemplo:
+                    angulares "&lt;&gt;", por exemplo:
                   </span>
                 </div>
                 <div className="mb-5">
@@ -56,12 +63,12 @@ function Conteudo() {
                       1 <br /> 2 <br />
                     </div>
                     <pre className="m-0">
-                      <span className="">(p)Isso é um parágrafo.(/p)</span>
+                      <span className="">&lt;p&gt;Isso é um parágrafo.&lt;/p&gt;</span>
                     </pre>
                   </div>
                 </div>
                 <span className="">
-                  Neste exemplo, "(p)" é a tag de parágrafo.
+                  Neste exemplo, "&lt;p&gt;" é a tag de parágrafo.
                 </span>
               </div>
 
@@ -87,7 +94,7 @@ function Conteudo() {
                     >
                       1 <br /> 2 <br />
                     </div>
-                    <span className="">(h1)Este é um título.(/h1)</span>
+                    <span className="">&lt;h1&gt;Este é um título.&lt;/h1&gt;</span>
                   </div>
                 </div>
               </div>
@@ -116,29 +123,29 @@ function Conteudo() {
                         <br /> 8 <br /> 9 <br /> 10
                       </div>
                       <pre>
-                        (!DOCTYPE html) <br />
+                        &lt;!DOCTYPE html&gt; <br />
                         <span className="">
-                          (html) <br />
-                          (head) <br />
-                          (title)Minha Página(/title) <br />
-                          (/head) <br />
-                          (body) <br />
-                          (h1)Olá, Mundo!(/h1) <br />
-                          (p)Bem-vindo à minha página.(/p) <br />
-                          (/body) <br />
-                          (/html)
+                          &lt;html&gt; <br />
+                          &emsp;&lt;head&gt; <br />
+                          &emsp;&ensp;&lt;title&gt;Minha Página&lt;/title&gt; <br />
+                          &emsp;&lt;/head&gt; <br />
+                          &emsp;&lt;body&gt; <br />
+                          &emsp;&ensp;&lt;h1&gt;Olá, Mundo!&lt;/h1&gt; <br />
+                          &emsp;&ensp;&lt;p&gt;Bem-vindo à minha página.&lt;/p&gt; <br />
+                          &emsp;&lt;/body&gt; <br />
+                          &lt;/html&gt;
                         </span>
                       </pre>
                     </div>
                   </div>
                 </div>
                 <span className="">
-                  (!DOCTYPE html): Declara o tipo de documento HTML. <br />
-                  (html): É o elemento raiz que contém todo o conteúdo da
+                  &lt;!DOCTYPE html&gt;: Declara o tipo de documento HTML. <br />
+                  &lt;html&gt;: É o elemento raiz que contém todo o conteúdo da
                   página. <br />
-                  (head): Contém metadados, como o título da página. <br />
-                  (title): Define o título da guia do navegador. <br />
-                  (body): Contém o conteúdo visível da página, como texto,
+                  &lt;head&gt;: Contém metadados, como o título da página. <br />
+                  &lt;title&gt;: Define o título da guia do navegador. <br />
+                  &lt;body&gt;: Contém o conteúdo visível da página, como texto,
                   imagens, etc.
                 </span>
               </div>
@@ -150,7 +157,7 @@ function Conteudo() {
                   </h1>
                   <span className="">
                     As tags HTML podem ter atributos que fornecem informações
-                    adicionais sobre a tag. Por exemplo, a tag de imagem (img)
+                    adicionais sobre a tag. Por exemplo, a tag de imagem &lt;img&gt;
                     pode ter um atributo "src" para especificar o arquivo de
                     imagem a ser exibido:
                   </span>
@@ -167,7 +174,7 @@ function Conteudo() {
                       1 <br /> 2 <br />
                     </div>
                     <span className="">
-                      (img src="imagem.jpg" alt="Minha Imagem")
+                      &lt;img src="imagem.jpg" alt="Minha Imagem"&gt;
                     </span>
                   </div>
                 </div>
@@ -195,16 +202,16 @@ function Conteudo() {
                       1 <br /> 2 <br /> 3 <br /> 4 <br />
                     </div>
                     <span className="">
-                      (ul) <br />
-                        (li)tem 1(/li) <br />
-                        (li)tem 2(/li) <br />
-                      (/ul)
+                      &lt;ul&gt; <br />
+                      &lt;li&gt;tem 1&lt;/li&gt; <br />
+                      &lt;li&gt;tem 2&lt;/li&gt; <br />
+                      &lt;/ul&gt;
                     </span>
                   </div>
                 </div>
                 <span className="">
-                  Neste exemplo, (ul) é uma lista não ordenada que contém dois
-                  itens de lista (li).
+                  Neste exemplo, &lt;ul&gt; é uma lista não ordenada que contém dois
+                  itens de lista &lt;li&gt;.
                 </span>
               </div>
 
@@ -218,38 +225,38 @@ function Conteudo() {
                   </span>
                 </div>
                 <div className="mb-5">
-                <div
-                      className="relative h-96 pt-3 pl-10 pb-5 rounded-md text-md leading-6 text-gray-700"
-                      style={{ background: "#CEC8D3" }}
+                  <div
+                    className="relative h-96 pt-3 pl-10 pb-5 rounded-md text-md leading-6 text-gray-700"
+                    style={{ background: "#CEC8D3" }}
+                  >
+                    <div
+                      className="h-full text-right absolute top-0 left-0 text-white pt-3 pl-2 pr-2"
+                      style={{ background: "#A692B8" }}
                     >
-                      <div
-                        className="h-full text-right absolute top-0 left-0 text-white pt-3 pl-2 pr-2"
-                        style={{ background: "#A692B8" }}
-                      >
-                        1 <br /> 2 <br /> 3 <br /> 4 <br /> 5 <br /> 6 <br /> 7
-                        <br /> 8 <br /> 9 <br /> 10 <br /> 11 <br /> 12 <br /> 13
-                        <br /> 14 <br /> 15 
-                      </div>
-                      <pre>
-                        (!DOCTYPE html) <br />
-                        <span className="">
-                          (html) <br />
-                          (head) <br />
-                          (title)Minha Página(/title) <br />
-                          (/head) <br />
-                          (body) <br />
-                          (h1)Olá, Mundo!(/h1) <br />
-                          (p)Bem-vindo à minha página.(/p) <br />
-                          (img src="imagem.jpg" alt="Minha Imagem") <br />
-                          (ul) <br />
-                          (li)tem 1(/li) <br />
-                          (li)tem 2(/li) <br />
-                          (/ul)
-                          (/body) <br />
-                          (/html)
-                        </span>
-                      </pre>
+                      1 <br /> 2 <br /> 3 <br /> 4 <br /> 5 <br /> 6 <br /> 7
+                      <br /> 8 <br /> 9 <br /> 10 <br /> 11 <br /> 12 <br /> 13
+                      <br /> 14 <br /> 15
                     </div>
+                    <pre>
+                      &lt;!DOCTYPE html&gt; <br />
+                      <span className="">
+                        &lt;html&gt; <br />
+                        &lt;head&gt; <br />
+                        &lt;title&gt;Minha Página&lt;/title&gt; <br />
+                        &lt;/head&gt; <br />
+                        &lt;body&gt; <br />
+                        &lt;h1&gt;Olá, Mundo!&lt;/h1&gt; <br />
+                        &lt;p&gt;Bem-vindo à minha página.&lt;/p&gt; <br />
+                        &lt;img src="imagem.jpg" alt="Minha Imagem"&gt; <br />
+                        &lt;ul&gt; <br />
+                        &lt;li&gt;tem 1&lt;/li&gt; <br />
+                        &lt;li&gt;tem 2&lt;/li&gt; <br />
+                        &lt;/ul&gt;
+                        &lt;/body&gt; <br />
+                        &lt;/html&gt;
+                      </span>
+                    </pre>
+                  </div>
                 </div>
               </div>
             </div>
@@ -258,7 +265,7 @@ function Conteudo() {
             <div className="flex w-64 h-32">
               <div className="border-l-2 h-32 border-black/50"></div>
               <div className="flex flex-col space-y-5 justify-center ml-5">
-                <div className="hover:bg-[#CE9FF5] rounded-md p-2 cursor-pointer">
+                <div className="hover:bg-[#CE9FF5] rounded-md p-2 cursor-pointer" onClick={ref1}>
                   O que é
                 </div>
                 <div className="hover:bg-[#E08A98] rounded-md p-2 cursor-pointer">

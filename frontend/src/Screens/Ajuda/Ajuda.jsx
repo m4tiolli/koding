@@ -36,7 +36,7 @@ function Ajuda(){
 
                         <details className="details w-full flex items-center p-4 border-1 border-solid border-black/60">
                             <summary className="outline-none cursor-pointer text-lg">Missão, Visão e Valores</summary>
-                            <div className="text-gray-700"><b>&emsp;Missão: </b> promover o ensino de programação para crianças e jovens através de jogos  interativos,  além  de  promover  a  inclusão  de  usuários  com  deficiências visuais e transtornos neurocomportamentais. <br/> <b>&emsp;Visão: </b>  ser  referência  no  mundo  do  ensino  da  programação,  tendo  como público-alvo crianças e jovens. <br/><b>&emsp;Valores: </b>acessibilidade; qualidade de ensino; proatividade; boas condutas. </div>
+                            <div className="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</div>
                         </details>
 
                         <details className="radius details w-full flex items-center p-4 border-1 border-solid border-black/60">
