@@ -41,7 +41,7 @@ function Ajuda() {
 
                         <details className="radius details w-full flex items-center p-4 border-1 border-solid border-black/60">
                             <summary className="outline-none cursor-pointer text-lg">Nosso Contato</summary>
-                            <div className="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</div>
+                            <div className="text-gray-700"><b>&emsp;Gabriel Matiolli: </b> gabriel.fernandes114@etec.sp.gov.br <br/> <b>&emsp;Julia Gabriela: </b> julia.almeida101@etec.sp.gov.br <br/> <b>&emsp;Marcos Alves:</b> marcos.alves117@etec.sp.gov.br</div>
                         </details>
                     </div>
 
