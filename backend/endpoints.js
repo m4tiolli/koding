@@ -322,7 +322,18 @@ module.exports = function (app) {
     );
   });
 
-  //capitulos
+  //capitulos e aulas
+  app.get("/capitulos", (req, res) => {
+    db.query("SELECT * FROM capitulos", (err, result) => {
+      if (err) {
+        console.error("Erro ao buscar capítulos", err);
+        res.status(500).json({ error: "Erro ao buscar capítulos" });
+      } else {
+        res.json(result);
+      }
+    });
+  });
+
   app.get("/capitulos/:id", (req, res) => {
     const linguagem = req.params.id;
     db.query(
@@ -332,6 +343,22 @@ module.exports = function (app) {
         if (err) {
           console.error("Erro ao obter os capítulos", err);
           res.status(500).json({ error: "Erro ao obter os capítulos" });
+        } else {
+          res.json(result);
+        }
+      }
+    );
+  });
+
+  app.get("/aulas/:id", (req, res) => {
+    const capitulo = req.params.id;
+    db.query(
+      "SELECT * FROM aulas WHERE capitulo = ?",
+      [capitulo],
+      (err, result) => {
+        if (err) {
+          console.error("Erro ao obter as aulas", err);
+          res.status(500).json({ error: "Erro ao obter as aulas" });
         } else {
           res.json(result);
         }
