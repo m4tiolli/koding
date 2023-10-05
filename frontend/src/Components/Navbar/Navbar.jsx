@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "./navbar.css";
+import "./Navbar.css";
 
-const   Navbar = () => {
+const  Navbar = () => {
   const [burger_class, setBurgerClass] = useState("burger-bar unclicked");
   const [menu_class, setMenuClass] = useState("w-0 invisible");
   const [isMenuClicked, setIsMenuClicked] = useState(false);
