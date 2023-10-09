@@ -237,9 +237,11 @@ module.exports = function (app) {
   // Sistema pontuações - criança
   app.post("/crianca/pontuacao", (req, res) => {
     const { crianca, pontuacao } = req.body;
+    const data = new Date();
+
     db.query(
-      "INSERT INTO pontuacoes (crianca, pontuacao) VALUES (?, ?)",
-      [crianca, pontuacao],
+      "INSERT INTO pontuacoes (crianca, pontuacao, data) VALUES (?, ?, ?)",
+      [crianca, pontuacao, data],
       (err, result) => {
         if (err) {
           console.error("Erro ao registrar a pontuação", err);
@@ -272,10 +274,10 @@ module.exports = function (app) {
     // const responsavelId = localStorage.idResponsavel;
     const responsavelId = req.params.responsavel;
     db.query(
-      "SELECT crianca.username, pontuacoes.pontuacao AS Pontuacao " +
-        "FROM crianca " +
-        "INNER JOIN pontuacoes ON pontuacoes.crianca = crianca.id " +
-        "WHERE crianca.responsavel = ?",
+      "SELECT crianca.username, pontuacoes.pontuacao, pontuacoes.data " +
+      "FROM crianca " +
+      "INNER JOIN pontuacoes ON pontuacoes.crianca = crianca.id " +
+      "WHERE crianca.responsavel = ?",
       [responsavelId],
       (err, result) => {
         if (err) {

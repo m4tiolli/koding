@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS pontuacoes(
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	crianca INT NOT NULL,
 	pontuacao INT, 
+    data DATE,
 	FOREIGN KEY (crianca) REFERENCES crianca (id)
 );
 
@@ -88,7 +89,7 @@ INSERT INTO responsavel VALUES (DEFAULT, 'ju', '13142413', '7236294', 'ju@gmail.
 
 INSERT INTO crianca VALUES (DEFAULT, 'matias', 'marcao', 'koding@gmail.com', '123', 1);
 
-INSERT INTO pontuacoes VALUES (DEFAULT, 1, 100);
+INSERT INTO pontuacoes VALUES (DEFAULT, 1, 100, '2023-10-08');
 
 INSERT INTO linguagens VALUES (DEFAULT, 'HTML');
 
@@ -103,7 +104,7 @@ INSERT INTO TagsAula VALUES (1, 1);
 SELECT crianca.username, crianca.responsavel, pontuacoes.pontuacao AS Pontuação
 FROM crianca INNER JOIN pontuacoes ON pontuacoes.crianca = crianca.id;
 
-SELECT responsavel.nome, crianca.username, pontuacoes.pontuacao
+SELECT responsavel.nome, crianca.username, pontuacoes.pontuacao, pontuacoes.data
 FROM responsavel 
 INNER JOIN crianca ON crianca.responsavel = responsavel.id
 INNER JOIN pontuacoes ON pontuacoes.crianca = crianca.id; 
