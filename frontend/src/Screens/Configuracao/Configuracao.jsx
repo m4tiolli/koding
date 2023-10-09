@@ -19,9 +19,17 @@ import {useNavigate} from 'react-router-dom';
 
 // import {Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton,} from '@chakra-ui/react';
 
+import { useEffect, useState } from 'react';
 import Menu from "../../Components/Menu/Menu";
 
 function Configuracao() {
+  useEffect(() => {
+    if (localStorage.theme === "dark") {
+        document.documentElement.classList.add("dark");
+    } else {
+        document.documentElement.classList.remove("dark");
+    }
+}, []);
   const {
     isOpen: logoutModalOpen,
     onOpen: openLogoutModal,
@@ -44,22 +52,22 @@ function Configuracao() {
       >
         <Menu />
         
-        <main className="w-full ml-60 mr-2 mt-[5.8rem] overflow-hidden">
+        <main className="w-full ml-[208px] mr-2 mt-[3.8rem] overflow-hidden dark:bg-darkcinzaclaro">
 
-        <IoArrowBack onClick={() => navigate(-1)} className="flex mt-2 mb-5 text-3xl cursor-pointer"/>
+        <IoArrowBack onClick={() => navigate(-1)} className="flex mt-10 ml-5 mb-5 text-3xl cursor-pointer dark:text-white"/>
         
           <div className="mb-10">
-            <span className="text-3xl font-semibold">Configurações</span>
+            <span className="text-3xl font-semibold dark:text-white ml-5">Configurações</span>
           </div>
 
           {/* Dados */}
 
-          <container className="w-full h-full flex flex-col gap-y-10 ml-16">
+          <container className="w-full h-full flex flex-col gap-y-10 ml-20">
             {/* Enviar Foto */}
 
             <form action="" method="" className="flex flex-col lg:flex-row gap-x-32 lg:gap-x-64">
               <div className="flex items-center gap-6">
-                <span className="text-lg">Personalizar Avatar</span>
+                <span className="text-lg dark:text-white">Personalizar Avatar</span>
                 <label
                   className="p-2 w-42 rounded-xl border-solid border-black cursor-pointer shadow-lg text-center"
                   style={{ background: "#efefef" }}
@@ -89,7 +97,7 @@ function Configuracao() {
               className="flex flex-col gap-y-5 text-lg"
             >
               <div className="w-2/5 lg:w-[440px] flex flex-col lg:flex-row items-center">
-                <div className="w-full">
+                <div className="w-full dark:text-white">
                   <span>Nome</span>
                 </div>
 
@@ -104,8 +112,8 @@ function Configuracao() {
               </div>
 
               <div className="w-2/5 lg:w-[440px] flex flex-col lg:flex-row items-center">
-                <div className="w-full">
-                  <span>Username</span>
+                <div className="w-full dark:text-white">
+                 <span>Username</span>
                 </div>
 
                 <label>
@@ -119,7 +127,7 @@ function Configuracao() {
               </div>
 
               <div className="w-2/5 lg:w-[440px] flex flex-col lg:flex-row items-center">
-                <div className="w-full">
+                <div className="w-full dark:text-white">
                   <span>E-mail</span>
                 </div>
 
@@ -134,7 +142,7 @@ function Configuracao() {
               </div>
 
               <div className="w-2/5 lg:w-[440px] flex flex-col lg:flex-row items-center">
-                <div className="w-full">
+                <div className="w-full dark:text-white">
                   <span>Senha</span>
                 </div>
 
@@ -149,7 +157,7 @@ function Configuracao() {
               </div>
 
               <div className="w-2/5 lg:w-[440px] flex flex-col lg:flex-row items-center">
-                <div className="w-full">
+                <div className="w-full dark:text-white">
                   <span>Confirmar senha</span>
                 </div>
 
@@ -168,7 +176,7 @@ function Configuracao() {
 
             <div className="flex flex-col gap-y-5 text-lg">
               <div className="flex flex-col">
-                <div className="w-52">
+                <div className="w-52 dark:text-white">
                   <span>Modo Escuro</span>
                 </div>
 
@@ -185,7 +193,7 @@ function Configuracao() {
               </div>
 
               <div className="flex flex-col">
-                <div className="w-52">
+                <div className="w-52 dark:text-white">
                   <span>Alto Contraste</span>
                 </div>
 
@@ -205,8 +213,8 @@ function Configuracao() {
 
             <div className="flex flex-col items-center justify-center py-10 w-96 text-gray-700 gap-3">
               <div className="flex items-center gap-3 w-full">
-                <IoIosLogOut className="text-2xl"></IoIosLogOut>
-                <button className="text-xl" onClick={openLogoutModal}>
+                <IoIosLogOut className="text-2xl dark:text-white"></IoIosLogOut>
+                <button className="text-xl dark:text-white" onClick={openLogoutModal}>
                   Sair
                 </button>
               </div>

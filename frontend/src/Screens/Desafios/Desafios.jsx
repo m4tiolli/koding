@@ -27,7 +27,7 @@ function Desafios() {
                     <div className="mt-20">
                         <Link to={"/flexbox"}>
                             <div>
-                                <span className="text-3xl font-semibold">Flexbox</span>
+                                <span className="text-3xl font-semibold dark:text-white">Flexbox</span>
                                 <div className="w-80 h-48 bg-[#2774CE] rounded-xl mb-5"></div>
                                 <span></span>
                                 <div className="w-80 flex flex-wrap gap-x-3 gap-y-3">
