@@ -1,8 +1,27 @@
 import Menu from './../../Components/Menu/Menu';
 
 import { Link } from "react-router-dom";
+import {
+    protanomaly,
+    tritanomaly,
+    deuteranomaly,
+} from "./../../Components/ColorBlind";
 
-function Desafios() {
+const Desafios = () => {
+    const mode = localStorage.getItem("theme");
+
+    function Color(mode, color) {
+        var newcolor;
+        if (mode === "protanomaly") {
+            newcolor = protanomaly(color);
+        } else if (mode === "deuteranomaly") {
+            newcolor = deuteranomaly(color);
+        } else if (mode === "tritanomaly") {
+            newcolor = tritanomaly(color);
+        } else newcolor = color;
+        return newcolor;
+    }
+
     return (
         <div className="flex h-screen w-full" style={{ background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)" }}>
 
