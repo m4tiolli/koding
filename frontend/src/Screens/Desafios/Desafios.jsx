@@ -6,9 +6,13 @@ import {
     tritanomaly,
     deuteranomaly,
 } from "./../../Components/ColorBlind";
+import { useEffect } from 'react';
 
 const Desafios = () => {
-    const mode = localStorage.getItem("theme");
+    
+    useEffect(() => {
+        var mode = localStorage.getItem("theme");
+    }, [])
 
     function Color(mode, color) {
         var newcolor;
@@ -35,7 +39,7 @@ const Desafios = () => {
                     {/* Cards Filtro */}
 
                     <div className="flex gap-x-10 mt-10 text-xl">
-                        <div className="flex justify-center items-center w-32 h-16 p-5 text-white bg-[#EB884F] rounded-xl drop-shadow-md  cursor-pointer">HTML</div>
+                        <div className="flex justify-center items-center w-32 h-16 p-5 text-white rounded-xl drop-shadow-md  cursor-pointer" style={{background: Color(mode,'#EB884F')}}>HTML</div>
                         <div className="flex justify-center align-center w-32 h-16 p-5 text-white bg-[#2774CE] rounded-xl drop-shadow-md  cursor-pointer">CSS</div>
                         <div className="flex justify-center align-center w-32 h-16 p-5 text-white bg-[#EECC43] rounded-xl drop-shadow-md  cursor-pointer">JavaScript</div>
                         <div className="flex justify-center align-center w-32 h-16 p-5 text-white bg-[#6D7AC6] rounded-xl drop-shadow-md  cursor-pointer">PHP</div>
