@@ -23,7 +23,7 @@ function Aulas(){
 
          {/* Conteudo */}
 
-            <main className="w-full ml-60 overflow-hidden dark:bg-darkcinzaclaro">
+            <main className="w-full ml-52 overflow-hidden dark:bg-darkcinzaclaro">
 
                 <IoArrowBack onClick={() => navigate(-1)} className="flex mt-28 mb-5 text-3xl cursor-pointer"/>
 

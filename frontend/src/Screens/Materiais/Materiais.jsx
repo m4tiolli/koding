@@ -1,12 +1,14 @@
 import { BsFilter } from "react-icons/bs";
 import { BiSearch } from "react-icons/bi";
-import { Link } from "react-router-dom";
 import "./Materiais.css";
 import {
     protanomaly,
     tritanomaly,
     deuteranomaly,
 } from "./../../Components/ColorBlind";
+import { useEffect, useState } from "react";
+import CardCapitulo from "../../Components/CardCapitulo/CardCapitulo";
+import { Spinner } from '@chakra-ui/react'
 
 const Materiais = () => {
     const mode = localStorage.getItem("theme");
@@ -22,10 +24,63 @@ const Materiais = () => {
         } else newcolor = color;
         return newcolor;
     }
+    const [isLoading, setIsLoading] = useState(true)
+    const [linguagem, setLinguagem] = useState([]);
+    const [capitulo, setCapitulos] = useState([]);
+
+    useEffect(() => {
+        const linguagemData = localStorage.getItem("linguagemData");
+        const capituloData = localStorage.getItem("capituloData");
+
+        if (linguagemData) {
+            setLinguagem(JSON.parse(linguagemData));
+        } else {
+            fetch("https://tcckoding.azurewebsites.net/linguagens", {
+                method: "GET",
+            })
+                .then((response) => response.json())
+                .then((json) => {
+                    setLinguagem(json);
+                    localStorage.setItem("linguagemData", JSON.stringify(json));
+                })
+                .catch((error) => {
+                    console.log(error);
+                    alert("Erro ao buscar linguagens");
+                });
+        }
+
+        if (capituloData) {
+            setCapitulos(JSON.parse(capituloData));
+            setIsLoading(false);
+        } else {
+            setIsLoading(true);
+        }
+    }, []);
+
+    useEffect(() => {
+        const fetchCapitulos = async (linguagemId) => {
+            try {
+                const response = await fetch(`https://tcckoding.azurewebsites.net/capitulos/${linguagemId}`, {
+                    method: "GET",
+                });
+                const json = await response.json();
+                setCapitulos(json);
+                localStorage.setItem("capituloData", JSON.stringify(json));
+                setIsLoading(false);
+            } catch (error) {
+                console.log(error);
+                alert("Erro ao buscar capítulos");
+                setIsLoading(false);
+            }
+        };
+        linguagem.forEach((linguagem) => {
+            fetchCapitulos(linguagem.id);
+        });
+    }, [linguagem]);
 
     return (
         <div className={`flex h-full w-full dark:bg-darkcinzaclaro`}>
-            <main className={`w-full ml-56 mr-2 overflow-hidden`}>
+            <main className={`w-full min-h-screen ml-56 mr-2 overflow-hidden`}>
                 {/* Barra de pesquisa */}
                 <div className="flex h-64 w-5/12 ml-10 mt-10 items-center justify-center gap-3">
                     <form
@@ -54,158 +109,27 @@ const Materiais = () => {
                 </div>
 
                 {/* Cards */}
-
-                {/* HTML */}
-                <div className="flex flex-col justify-center ml-10 space-y-8">
-                    <span
-                        className={`text-2xl font-semibold ${Color(
-                            mode,
-                            "dark:text-white"
-                        )}`}
-                    >
-                        Aprendendo HTML
-                    </span>
-                    <div className="flex space-x-16 items-center">
-                        <Link to={"/aulas"}>
-                            <div
-                                className={`w-72 h-52 rounded-xl`}
-                                style={{ background: `linear-gradient(108deg, ${Color(mode, '#E87331')} 0%, ${Color(mode, '#E88D59')} 100%)` }}
-                            />
-                        </Link>
-                        <Link to={"/aulas"}>
-                            <div
-                                className={`w-72 h-52 rounded-xl`}
-                                style={{ background: `linear-gradient(108deg, ${Color(mode, '#E87331')} 0%, ${Color(mode, '#E88D59')} 100%)` }}
-                            />
-                        </Link>
-                        <Link to={"/aulas"}>
-                            <div
-                                className={`w-72 h-52 rounded-xl`}
-                                style={{ background: `linear-gradient(108deg, ${Color(mode, '#E87331')} 0%, ${Color(mode, '#E88D59')} 100%)` }}
-                            />
-                        </Link>
-                        <Link to={"/aulas"}>
-                            <div
-                                className={`w-72 h-52 rounded-xl`}
-                                style={{ background: `linear-gradient(108deg, ${Color(mode, '#E87331')} 0%, ${Color(mode, '#E88D59')} 100%)` }}
-                            />
-                        </Link>
+                {linguagem.map((linguagem, index) => (
+                    <div className="flex flex-col justify-center ml-10 space-y-8 mb-20" key={index}>
+                        <span
+                            className={`text-2xl font-semibold ${Color(
+                                mode,
+                                "dark:text-white"
+                            )}`}
+                        >
+                            Aprendendo {linguagem.nome}
+                        </span>
+                        <div className="flex space-x-16 items-center">
+                            {capitulo.length === 0 || isLoading ? (
+                                <Spinner color='white' />
+                            ) : (
+                                capitulo.map((capitulo, index) => (
+                                    <CardCapitulo capitulo={capitulo} key={index} />
+                                ))
+                            )}
+                        </div>
                     </div>
-                </div>
-
-                {/* CSS */}
-                <div className="flex flex-col justify-center ml-10 mt-32 space-y-8">
-                    <span
-                        className={`text-2xl font-semibold ${Color(
-                            mode,
-                            "dark:text-white"
-                        )}`}
-                    >
-                        Aprendendo CSS
-                    </span>
-                    <div className="flex space-x-16 items-center">
-                        <Link to={"/aulas"}>
-                            <div
-                                className={`w-72 h-52 rounded-xl`}
-                                style={{ background: `linear-gradient(108deg, ${Color(mode, '#1566C4')} 0%, ${Color(mode, '#438ADD')} 100%)` }}
-                            />
-                        </Link>
-                        <Link to={"/aulas"}>
-                            <div
-                                className={`w-72 h-52 rounded-xl`}
-                                style={{ background: `linear-gradient(108deg, ${Color(mode, '#1566C4')} 0%, ${Color(mode, '#438ADD')} 100%)` }}
-                            />
-                        </Link>
-                        <Link to={"/aulas"}>
-                            <div
-                                className={`w-72 h-52 rounded-xl`}
-                                style={{ background: `linear-gradient(108deg, ${Color(mode, '#1566C4')} 0%, ${Color(mode, '#438ADD')} 100%)` }}
-                            />
-                        </Link>
-                        <Link to={"/aulas"}>
-                            <div
-                                className={`w-72 h-52 rounded-xl`}
-                                style={{ background: `linear-gradient(108deg, ${Color(mode, '#1566C4')} 0%, ${Color(mode, '#438ADD')} 100%)` }}
-                            />
-                        </Link>
-                    </div>
-                </div>
-
-                {/* JS */}
-                <div className="flex flex-col justify-center ml-10 mt-32 space-y-8">
-                    <span
-                        className={`text-2xl font-semibold ${Color(
-                            mode,
-                            "dark:text-white"
-                        )}`}
-                    >
-                        Aprendendo JavaSript
-                    </span>
-                    <div className="flex space-x-16 items-center">
-                        <Link to={"/aulas"}>
-                            <div
-                                className={`w-72 h-52 rounded-xl`}
-                                style={{ background: `linear-gradient(108deg, ${Color(mode, '#F2D01F')} 0%, ${Color(mode, '#E3BA4F')} 100%)` }}
-                            />
-                        </Link>
-                        <Link to={"/aulas"}>
-                            <div
-                                className={`w-72 h-52 rounded-xl`}
-                                style={{ background: `linear-gradient(108deg, ${Color(mode, '#F2D01F')} 0%, ${Color(mode, '#E3BA4F')} 100%)` }}
-                            />
-                        </Link>
-                        <Link to={"/aulas"}>
-                            <div
-                                className={`w-72 h-52 rounded-xl`}
-                                style={{ background: `linear-gradient(108deg, ${Color(mode, '#F2D01F')} 0%, ${Color(mode, '#E3BA4F')} 100%)` }}
-                            />
-                        </Link>
-                        <Link to={"/aulas"}>
-                            <div
-                                className={`w-72 h-52 rounded-xl`}
-                                style={{ background: `linear-gradient(108deg, ${Color(mode, '#F2D01F')} 0%, ${Color(mode, '#E3BA4F')} 100%)` }}
-                            />
-                        </Link>
-                    </div>
-                </div>
-
-                {/* PHP */}
-                <div className="flex flex-col justify-center ml-10 mt-32 mb-32 space-y-8">
-                    <span
-                        className={`text-2xl font-semibold ${Color(
-                            mode,
-                            "dark:text-white"
-                        )}`}
-                    >
-                        Aprendendo PHP
-                    </span>
-                    <div className="flex space-x-16 items-center">
-                        <Link to={"/aulas"}>
-                            <div
-                                className={`w-72 h-52 rounded-xl`}
-                                style={{ background: `linear-gradient(108deg, ${Color(mode, '#485BBB')} 0%, ${Color(mode, '#707EC6')} 100%)` }}
-                            />
-                        </Link>
-                        <Link to={"/aulas"}>
-                            <div
-                                className={`w-72 h-52 rounded-xl`}
-                                style={{ background: `linear-gradient(108deg, ${Color(mode, '#485BBB')} 0%, ${Color(mode, '#707EC6')} 100%)` }}
-                            />
-                        </Link>
-                        <Link to={"/aulas"}>
-                            <div
-                                className={`w-72 h-52 rounded-xl`}
-                                style={{ background: `linear-gradient(108deg, ${Color(mode, '#485BBB')} 0%, ${Color(mode, '#707EC6')} 100%)` }}
-                            />
-                        </Link>
-                        <Link to={"/aulas"}>
-                            <div
-                                className={`w-72 h-52 rounded-xl`}
-                                style={{ background: `linear-gradient(108deg, ${Color(mode, '#485BBB')} 0%, ${Color(mode, '#707EC6')} 100%)` }}
-                            />
-                        </Link>
-                    </div>
-                </div>
+                ))}
             </main>
         </div>
     );
