@@ -8,9 +8,13 @@ import {
 } from "./../../Components/ColorBlind";
 import { useEffect, useState } from "react";
 import CardCapitulo from "../../Components/CardCapitulo/CardCapitulo";
-import { Spinner } from '@chakra-ui/react'
+import { Spinner } from '@chakra-ui/react';
+import { useDisclosure } from "@chakra-ui/react";
+import { Modal, ModalContent } from "@chakra-ui/react";
 
 const Materiais = () => {
+    const { isOpen, onOpen, onClose } = useDisclosure();
+
     const mode = localStorage.getItem("theme");
 
     function Color(mode, color) {
@@ -99,7 +103,7 @@ const Materiais = () => {
 
                     {/* Filtro */}
                     <div className="flex h-10 w-56 space-x-8 items-center justify-center">
-                        <button>
+                        <button onClick={onOpen}>
                             <BsFilter
                                 className={`flex items-center justify-center text-4xl text-white rounded-md dark:bg-darkpesquisa`}
                                 style={{ backgroundColor: Color(mode, '#811CD7') }}
@@ -128,7 +132,26 @@ const Materiais = () => {
                                 ))
                             )}
                         </div>
+                        
+                        <Modal
+                            isCentered
+                            onClose={onClose}
+                            isOpen={isOpen}
+                            motionPreset='slideInBottom'
+                        >
+                            <ModalContent
+                            w="16vw"
+                            display='flex'
+                            justifyContent='center'
+                            zIndex={100}
+                            borderRadius="0.75rem"
+                            >
+                               <div>ola</div>
+                            </ModalContent>
+                        </Modal>
+
                     </div>
+
                 ))}
             </main>
         </div>
