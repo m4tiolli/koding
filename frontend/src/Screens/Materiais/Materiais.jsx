@@ -1,5 +1,6 @@
 import { BsFilter } from "react-icons/bs";
 import { BiSearch } from "react-icons/bi";
+import { AiOutlineClose } from "react-icons/ai";
 import "./Materiais.css";
 import {
     protanomaly,
@@ -13,6 +14,7 @@ import { useDisclosure } from "@chakra-ui/react";
 import { Modal, ModalContent } from "@chakra-ui/react";
 
 const Materiais = () => {
+
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     const mode = localStorage.getItem("theme");
@@ -133,20 +135,41 @@ const Materiais = () => {
                             )}
                         </div>
                         
-                        <Modal
+                        <Modal 
                             isCentered
                             onClose={onClose}
                             isOpen={isOpen}
                             motionPreset='slideInBottom'
                         >
                             <ModalContent
-                            w="16vw"
+                            w="30vw"
+                            h="10vw"
                             display='flex'
-                            justifyContent='center'
+                            marginBottom="20vw"
                             zIndex={100}
-                            borderRadius="0.75rem"
+                            background="#f1f1f1"
+                            borderRadius="0.9em"
                             >
-                               <div>ola</div>
+                                {/* Tags */}
+                               <div className="h-full flex justify-center items-center gap-x-5 flex-wrap">
+                                    <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-orange-300">
+                                        <AiOutlineClose className="text-xl"/>
+                                        <span id="filter" className="text-lg">html</span>
+                                    </button>
+                                    <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-blue-300">
+                                        <AiOutlineClose className="text-xl"/>
+                                        <span className="text-lg">css</span>
+                                    </button>
+                                    <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-yellow-300">
+                                        <AiOutlineClose className="text-xl"/>
+                                        <span className="text-lg">javascript</span>
+                                    </button>
+                                    <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-purple-300">
+                                        <AiOutlineClose className="text-xl"/>
+                                        <span className="text-lg">php</span>
+                                    </button>
+                                    
+                               </div>
                             </ModalContent>
                         </Modal>
 
