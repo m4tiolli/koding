@@ -16,7 +16,7 @@ import green from "../green.png";
 import red from "../red.png";
 import { useNavigate } from "react-router-dom";
 
-export default function Menu() {
+export default function Menu({ screen }) {
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const {
@@ -30,7 +30,7 @@ export default function Menu() {
     onClose: onDalClose,
   } = useDisclosure();
 
-  const [button, setButton] = useState("materiais");
+  const [button, setButton] = useState("");
 
   const toggleButton = (type) => {
     setButton(type);
@@ -43,6 +43,10 @@ export default function Menu() {
     if (!isChecked) {
       localStorage.setItem("theme", "dark");
       document.documentElement.classList.add("dark");
+      if (blindChecked) {
+        setBlindChecked(false);
+        localStorage.setItem("theme", "light");
+      }
     } else {
       localStorage.setItem("theme", "light");
       document.documentElement.classList.remove("dark");
@@ -76,11 +80,16 @@ export default function Menu() {
    * @returns
    */
   const toggleButtonColorBlind = (type) => {
-    mode === type ? setMode("light") : setMode(type);
-    localStorage.getItem("theme") === type
-      ? localStorage.setItem("theme", "light")
-      : localStorage.setItem("theme", type);
-    mode !== "light" ? setBlindChecked(true) : setBlindChecked(false);
+    if (localStorage.getItem("theme") === "dark") {
+      setMode("light");
+      localStorage.setItem("theme", "light");
+      setBlindChecked(false);
+    } else {  
+      setMode(type);
+      localStorage.setItem("theme", type);
+      location.reload();
+      setBlindChecked(type === "light" ? false : true);
+    }
   };
 
   /**
@@ -130,9 +139,8 @@ export default function Menu() {
 
         <nav className="flex flex-col flex-auto justify-start pt-24 w-full">
           <button
-            className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-[#332C44] ${
-              button == "materiais" ? "bg-white/50 dark:bg-[#332C44]" : ""
-            }`}
+            className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-[#332C44] ${button == "materiais" ? "bg-white/50 dark:bg-[#332C44]" : ""
+              }`}
             style={{ transition: "150ms ease-in" }}
             onClick={() => navigate("/home")}
           >
@@ -143,9 +151,8 @@ export default function Menu() {
           </button>
 
           <button
-            className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-[#332C44] ${
-              button == "perfil" ? "bg-white/50 dark:bg-[#332C44]" : ""
-            }`}
+            className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-[#332C44] ${button == "perfil" ? "bg-white/50 dark:bg-[#332C44]" : ""
+              }`}
             style={{ transition: "150ms ease-in" }}
             onClick={() => navigate("/home", { state: { tela: "perfil" } })}
           >
@@ -158,9 +165,8 @@ export default function Menu() {
           </button>
 
           <button
-            className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-[#332C44] ${
-              button == "desafios" ? "bg-white/50 dark:bg-[#332C44]" : ""
-            }`}
+            className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-[#332C44] ${screen || button == "desafios" ? "bg-white/50 dark:bg-[#332C44]" : ""
+              }`}
             style={{ transition: "150ms ease-in" }}
             onClick={() => navigate("/desafios")}
           >
@@ -228,9 +234,8 @@ export default function Menu() {
             <BsFillMoonFill className="text-[#e4d9ed] text-xl" />
             <p className="text-[#e4d9ed]">Modo escuro</p>
             <label
-              className={`flex cursor-pointer select-none items-center ${
-                darkNotAllowed() ? "cursor-not-allowed opacity-60" : ""
-              }`}
+              className={`flex cursor-pointer select-none items-center ${darkNotAllowed() ? "cursor-not-allowed opacity-60" : ""
+                }`}
             >
               <div className="relative">
                 <input
@@ -244,9 +249,8 @@ export default function Menu() {
                   className={`box block h-6 w-10 rounded-full bg-[#e4d9ed]`}
                 ></div>
                 <div
-                  className={`absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded-full transition bg-[#56505B] ${
-                    isChecked ? "translate-x-full" : ""
-                  }`}
+                  className={`absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded-full transition bg-[#56505B] ${isChecked ? "translate-x-full" : ""
+                    }`}
                 ></div>
               </div>
             </label>
@@ -278,58 +282,50 @@ export default function Menu() {
             >
               <div className="grid grid-rows-2 grid-cols-2 h-full w-full rounded-xl">
                 <div
-                  className={`bg-[#e9e9e9] select-none grid place-items-center rounded-tl-xl active:shadow-inner hover:scale-95 active:opacity-70 ${
-                    blindNotAllowed()
-                      ? "opacity-50 scale-95 cursor-not-allowed"
-                      : ""
-                  } ${
-                    localStorage.theme === "light" ? "opacity-50 scale-95" : ""
-                  }`}
+                  className={`bg-[#e9e9e9] select-none grid place-items-center rounded-tl-xl active:shadow-inner hover:scale-95 active:opacity-70 ${blindNotAllowed()
+                    ? "opacity-50 scale-95 cursor-not-allowed"
+                    : ""
+                    } ${localStorage.theme === "light" ? "opacity-50 scale-95" : ""
+                    }`}
                   title="Sem daltonismo"
                   onClick={() => toggleButtonColorBlind("light")}
                 >
                   <ImBlocked size={30} color="#56505B" />
                 </div>
                 <div
-                  className={`bg-[#3b63ac] select-none flex items-center justify-center rounded-tr-xl active:shadow-inner hover:scale-95 active:opacity-70 ${
-                    blindNotAllowed()
-                      ? "opacity-50 scale-95 cursor-not-allowed"
-                      : ""
-                  } ${
-                    localStorage.theme === "tritanomaly"
+                  className={`bg-[#3b63ac] select-none flex items-center justify-center rounded-tr-xl active:shadow-inner hover:scale-95 active:opacity-70 ${blindNotAllowed()
+                    ? "opacity-50 scale-95 cursor-not-allowed"
+                    : ""
+                    } ${localStorage.theme === "tritanomaly"
                       ? "opacity-50 scale-95"
                       : ""
-                  }`}
+                    }`}
                   title="Tritanomalia"
                   onClick={() => toggleButtonColorBlind("tritanomalia")}
                 >
                   <img src={blue} className="h-3/5 w-auto" />
                 </div>
                 <div
-                  className={`bg-[#65b32e] select-none flex items-center justify-center rounded-bl-xl active:shadow-inner hover:scale-95 active:opacity-70 ${
-                    blindNotAllowed()
-                      ? "opacity-50 scale-95 cursor-not-allowed"
-                      : ""
-                  } ${
-                    localStorage.theme === "deuteranomaly"
+                  className={`bg-[#65b32e] select-none flex items-center justify-center rounded-bl-xl active:shadow-inner hover:scale-95 active:opacity-70 ${blindNotAllowed()
+                    ? "opacity-50 scale-95 cursor-not-allowed"
+                    : ""
+                    } ${localStorage.theme === "deuteranomaly"
                       ? "opacity-50 scale-95"
                       : ""
-                  }`}
+                    }`}
                   title="Deuteranomalia"
                   onClick={() => toggleButtonColorBlind("deuteranomalia")}
                 >
                   <img src={green} className="h-4/6 w-auto" />
                 </div>
                 <div
-                  className={`bg-[#e83c3b] select-none flex items-center justify-center rounded-br-xl active:shadow-inner hover:scale-95 active:opacity-70 ${
-                    blindNotAllowed()
-                      ? "opacity-50 scale-95 cursor-not-allowed"
-                      : ""
-                  } ${
-                    localStorage.theme === "protanomaly"
+                  className={`bg-[#e83c3b] select-none flex items-center justify-center rounded-br-xl active:shadow-inner hover:scale-95 active:opacity-70 ${blindNotAllowed()
+                    ? "opacity-50 scale-95 cursor-not-allowed"
+                    : ""
+                    } ${localStorage.theme === "protanomaly"
                       ? "opacity-50 scale-95"
                       : ""
-                  }`}
+                    }`}
                   title="Protanomalia"
                   onClick={() => toggleButtonColorBlind("protanomalia")}
                 >

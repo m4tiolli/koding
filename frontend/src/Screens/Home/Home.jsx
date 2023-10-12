@@ -68,11 +68,16 @@ export default function Home() {
     if (!isChecked) {
       localStorage.setItem("theme", "dark");
       document.documentElement.classList.add("dark");
+      if (blindChecked) {
+        setBlindChecked(false);
+        localStorage.setItem("theme", "light");
+      }
     } else {
       localStorage.setItem("theme", "light");
       document.documentElement.classList.remove("dark");
     }
   };
+
 
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
@@ -95,13 +100,19 @@ export default function Home() {
    * @param {string} type
    * @returns
    */
+  
   const toggleButtonColorBlind = (type) => {
-    mode === type ? setMode("light") : setMode(type);
-    localStorage.getItem("theme") === type
-      ? localStorage.setItem("theme", "light")
-      : localStorage.setItem("theme", type);
-    mode !== "light" ? setBlindChecked(true) : setBlindChecked(false);
+    if (localStorage.getItem("theme") === "dark") {
+      setMode("light");
+      localStorage.setItem("theme", "light");
+      setBlindChecked(false);
+    } else {
+      setMode(type);
+      localStorage.setItem("theme", type);
+      setBlindChecked(type === "light" ? false : true);
+    }
   };
+
 
   /**
    *

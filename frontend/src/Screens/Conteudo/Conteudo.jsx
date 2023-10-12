@@ -1,13 +1,8 @@
 import Menu from "../../Components/Menu/Menu";
-import { useRef } from "react";
+
 
 function Conteudo() {
 
-  const ref =  useRef()
-
-  const ref1 = () => {
-    this.ref.current?.scrollIntoView({behavior: 'smooth'})
-  }
   return (
     <div
       className="flex h-full w-full"
@@ -26,7 +21,7 @@ function Conteudo() {
           <div className="flex w-10/12 mt-10 mb-10 gap-x-10">
             {/* Conteudo */}
             <div className="">
-              <div ref={this.ref1}>
+              <div>
                 <h1 className="text-2xl font-semibold text-[#BB5E7E] mb-3">
                   1. Introdução ao HTML
                 </h1>
@@ -215,7 +210,7 @@ function Conteudo() {
                 </span>
               </div>
 
-              <div className="flex flex-col w-10/12 mt-10 mb-10">
+              <div className="flex flex-col w-10/12 mt-10 mb-10" id="div7">
                 <div className="mb-5">
                   <h1 className="text-2xl font-semibold text-[#BB5E7E] mb-3">
                     7. Exemplo completo
@@ -265,7 +260,7 @@ function Conteudo() {
             <div className="flex w-64 h-32">
               <div className="border-l-2 h-32 border-black/50"></div>
               <div className="flex flex-col space-y-5 justify-center ml-5">
-                <div className="hover:bg-[#CE9FF5] rounded-md p-2 cursor-pointer" onClick={ref1}>
+                <div className="hover:bg-[#CE9FF5] rounded-md p-2 cursor-pointer">
                   O que é
                 </div>
                 <div className="hover:bg-[#E08A98] rounded-md p-2 cursor-pointer">

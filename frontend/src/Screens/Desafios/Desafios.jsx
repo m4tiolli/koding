@@ -6,13 +6,10 @@ import {
     tritanomaly,
     deuteranomaly,
 } from "./../../Components/ColorBlind";
-import { useEffect } from 'react';
 
 const Desafios = () => {
-    
-    useEffect(() => {
-        var mode = localStorage.getItem("theme");
-    }, [])
+
+    const mode = localStorage.getItem("theme");
 
     function Color(mode, color) {
         var newcolor;
@@ -29,7 +26,7 @@ const Desafios = () => {
     return (
         <div className="flex h-screen w-full" style={{ background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)" }}>
 
-            <Menu />
+            <Menu screen={"desafios"} />
 
             <main className="w-full ml-52 mr-2 overflow-hidden dark:bg-darkcinzaclaro">
 
@@ -39,10 +36,10 @@ const Desafios = () => {
                     {/* Cards Filtro */}
 
                     <div className="flex gap-x-10 mt-10 text-xl">
-                        <div className="flex justify-center items-center w-32 h-16 p-5 text-white rounded-xl drop-shadow-md  cursor-pointer" style={{background: Color(mode,'#EB884F')}}>HTML</div>
-                        <div className="flex justify-center align-center w-32 h-16 p-5 text-white bg-[#2774CE] rounded-xl drop-shadow-md  cursor-pointer">CSS</div>
-                        <div className="flex justify-center align-center w-32 h-16 p-5 text-white bg-[#EECC43] rounded-xl drop-shadow-md  cursor-pointer">JavaScript</div>
-                        <div className="flex justify-center align-center w-32 h-16 p-5 text-white bg-[#6D7AC6] rounded-xl drop-shadow-md  cursor-pointer">PHP</div>
+                        <div className="flex justify-center items-center w-32 h-16 p-5 text-white rounded-xl drop-shadow-md  cursor-pointer" style={{ background: Color(mode, '#EB884F') }}>HTML</div>
+                        <div className="flex justify-center align-center w-32 h-16 p-5 text-white rounded-xl drop-shadow-md  cursor-pointer" style={{ background: Color(mode, '#2774CE') }}>CSS</div>
+                        <div className="flex justify-center align-center w-32 h-16 p-5 text-white rounded-xl drop-shadow-md  cursor-pointer" style={{ background: Color(mode, '#EECC43') }}>JavaScript</div>
+                        <div className="flex justify-center align-center w-32 h-16 p-5 text-white rounded-xl drop-shadow-md  cursor-pointer" style={{ background: Color(mode, '#6D7AC6') }}>PHP</div>
                     </div>
 
                     {/* Cards Jogo */}
