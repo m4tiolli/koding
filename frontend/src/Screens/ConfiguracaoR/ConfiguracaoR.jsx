@@ -1,5 +1,5 @@
-import { IoIosLogOut} from "react-icons/io";
-import { IoArrowBack} from "react-icons/io5";
+import { IoIosLogOut } from "react-icons/io";
+import { IoArrowBack } from "react-icons/io5";
 import { BsTrash3 } from "react-icons/bs";
 import {
   Button,
@@ -14,22 +14,41 @@ import {
   ModalHeader,
   ModalCloseButton,
 } from "@chakra-ui/react";
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import {
+  protanomaly,
+  tritanomaly,
+  deuteranomaly,
+} from "./../../Components/ColorBlind";
 // import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 // import {Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton,} from '@chakra-ui/react';
 
-import { useEffect, useState } from 'react';
-import Menu from "../../Components/Menu/Menu";
+import { useEffect, useState } from "react";
+import MenuR from "../../Components/MenuR/MenuR";
 
 function Configuracao() {
+  const mode = localStorage.getItem("theme");
+
+  function Color(mode, color) {
+    var newcolor;
+    if (mode === "protanomaly") {
+      newcolor = protanomaly(color);
+    } else if (mode === "deuteranomaly") {
+      newcolor = deuteranomaly(color);
+    } else if (mode === "tritanomaly") {
+      newcolor = tritanomaly(color);
+    } else newcolor = color;
+    return newcolor;
+  }
+
   useEffect(() => {
     if (localStorage.theme === "dark") {
-        document.documentElement.classList.add("dark");
+      document.documentElement.classList.add("dark");
     } else {
-        document.documentElement.classList.remove("dark");
+      document.documentElement.classList.remove("dark");
     }
-}, []);
+  }, []);
   const {
     isOpen: logoutModalOpen,
     onOpen: openLogoutModal,
@@ -47,17 +66,21 @@ function Configuracao() {
       <div
         className="flex h-full w-full"
         style={{
-          background: "#E5E9F9",
+          background: "linear-gradient(108deg, #C6D6FF 0%, #FFFFFF 100%)",
         }}
       >
-        <Menu />
-        
-        <main className="w-full ml-[208px] mr-2 mt-[3.8rem] overflow-hidden dark:bg-darkfundoR">
+        <MenuR />
 
-        <IoArrowBack onClick={() => navigate(-1)} className="flex mt-10 ml-5 mb-5 text-3xl cursor-pointer dark:text-white"/>
-        
+        <main className="w-full ml-[208px] mr-2 mt-[3.8rem] overflow-hidden dark:bg-darkfundoR">
+          <IoArrowBack
+            onClick={() => navigate(-1)}
+            className="flex mt-10 ml-10 mb-5 text-3xl cursor-pointer dark:text-white"
+          />
+
           <div className="mb-10">
-            <span className="text-3xl font-semibold dark:text-white ml-5">Configurações</span>
+            <span className="text-3xl font-semibold dark:text-white ml-10">
+              Configurações
+            </span>
           </div>
 
           {/* Dados */}
@@ -65,9 +88,15 @@ function Configuracao() {
           <container className="w-full h-full flex flex-col gap-y-10 ml-20">
             {/* Enviar Foto */}
 
-            <form action="" method="" className="flex flex-col lg:flex-row gap-x-32 lg:gap-x-64">
+            <form
+              action=""
+              method=""
+              className="flex flex-col lg:flex-row gap-x-32 lg:gap-x-64"
+            >
               <div className="flex items-center gap-6">
-                <span className="text-lg dark:text-white">Personalizar Avatar</span>
+                <span className="text-lg dark:text-white">
+                  Personalizar Avatar
+                </span>
                 <label
                   className="p-2 w-42 rounded-xl border-solid border-black cursor-pointer shadow-lg text-center"
                   style={{ background: "#efefef" }}
@@ -75,13 +104,19 @@ function Configuracao() {
                 >
                   {" "}
                   Selecionar arquivo
-                  <input className="hidden" name="image" type="file" id="image" />
+                  <input
+                    className="hidden"
+                    name="image"
+                    type="file"
+                    id="image"
+                  />
                 </label>
               </div>
 
               <div>
                 <button
-                  className="bg-green-500 w-auto h-10 p-3 mt-5 lg:mt-0 flex items-center rounded-xl shadow-lg text-white"
+                  className="w-auto h-10 p-3 mt-5 lg:mt-0 flex items-center rounded-xl shadow-lg text-white"
+                  style={{ background: Color(mode, "#22C55E") }}
                   type="submit"
                 >
                   Salvar Alterações
@@ -113,7 +148,7 @@ function Configuracao() {
 
               <div className="w-2/5 lg:w-[440px] flex flex-col lg:flex-row items-center">
                 <div className="w-full dark:text-white">
-                 <span>Username</span>
+                  <span>Username</span>
                 </div>
 
                 <label>
@@ -214,12 +249,15 @@ function Configuracao() {
             <div className="flex flex-col items-center justify-center py-10 w-96 text-gray-700 gap-3">
               <div className="flex items-center gap-3 w-full">
                 <IoIosLogOut className="text-2xl dark:text-white"></IoIosLogOut>
-                <button className="text-xl dark:text-white" onClick={openLogoutModal}>
+                <button
+                  className="text-xl dark:text-white"
+                  onClick={openLogoutModal}
+                >
                   Sair
                 </button>
               </div>
 
-              <div className="flex items-center gap-3 w-full text-red-600">
+              <div className="flex items-center gap-3 w-full" style={{ color: Color(mode, '#DC2626') }}>
                 <BsTrash3 className="text-2xl"></BsTrash3>
                 <button className="text-xl" onClick={openDeleteAccountModal}>
                   Excluir minha conta
@@ -236,7 +274,12 @@ function Configuracao() {
                     <ModalCloseButton />
                     <ModalBody>Você deseja mesmo excluir sua conta?</ModalBody>
                     <ModalFooter>
-                      <Button variant={"ghost"} onClick={closeDeleteAccountModal}>Voltar</Button>
+                      <Button
+                        variant={"ghost"}
+                        onClick={closeDeleteAccountModal}
+                      >
+                        Voltar
+                      </Button>
                       <Button variant={"ghost"} colorScheme={"red"}>
                         Excluir
                       </Button>
@@ -255,7 +298,9 @@ function Configuracao() {
                     <ModalCloseButton />
                     <ModalBody>Você deseja mesmo sair?</ModalBody>
                     <ModalFooter>
-                      <Button variant={"ghost"} onClick={closeLogoutModal}>Voltar</Button>
+                      <Button variant={"ghost"} onClick={closeLogoutModal}>
+                        Voltar
+                      </Button>
                       <Button variant={"ghost"} colorScheme={"red"}>
                         Sair
                       </Button>

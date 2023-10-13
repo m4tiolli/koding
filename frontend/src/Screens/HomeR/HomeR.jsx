@@ -1,13 +1,11 @@
 import { BsFillMoonFill } from "react-icons/bs";
-import { AiOutlineUser, AiOutlineLineChart } from "react-icons/ai";
-import { CiCircleMore } from "react-icons/ci";
 import { BiSearch, BiHelpCircle } from "react-icons/bi";
 import { LuPaintBucket } from "react-icons/lu";
 import { ImContrast } from "react-icons/im";
-import Logo from "../../Components/Logo";
 import { useState, useEffect } from "react";
 import Desempenho from "../Desempenho/Desempenho";
 import PerfilR from "../PerfilR/PerfilR";
+import MenuR from "../../Components/MenuR/MenuR"
 import "./HomeR.css";
 import { useDisclosure } from "@chakra-ui/react";
 import { Modal, ModalContent } from "@chakra-ui/react";
@@ -18,6 +16,7 @@ import {
   deuteranomaly,
 } from "../../Components/ColorBlind";
 import { useNavigate } from "react-router-dom";
+import Header from "../../Components/Header/Header";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -124,99 +123,9 @@ export default function Home() {
     <ChakraProvider>
       <div
         className="flex h-full w-full"
-        style={{
-          background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)",
-        }}
+        style={{ background: "linear-gradient(108deg, #C6D6FF 0%, #FFFFFF 100%)" }}
       >
-        <aside
-          className={`dark:bg-darkcinzaR bg-[${Color(
-            mode,
-            "#EDD8FF"
-          )}] h-screen w-52 p-5 fixed top-0 lg:flex flex-col items-start justify-center shadow-lg hidden`}
-          style={{ background: "#E5E9F9" }}
-        >
-          <header className="w-full mb-12">
-            <Logo
-              isResponsavel={true}
-              className="absolute -top-4 -left-20 scale-50"
-              isDark={localStorage.theme === "dark"}
-            />
-          </header>
-
-          <nav className="flex flex-col flex-auto justify-start pt-24 w-full">
-            <button
-              className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-white/10 ${
-                button == "desempenho" ? "bg-white/50 dark:bg-[#444444]" : ""
-              }`}
-              style={{ transition: "150ms ease-in" }}
-              onClick={() => toggleButton("desempenho")}
-            >
-              <span className="inline-flex items-center gap-5">
-                <AiOutlineLineChart className="relative text-3xl">
-                  desempenho
-                </AiOutlineLineChart>
-                <span className="text-lg">Desempenho</span>
-              </span>
-            </button>
-
-            <button
-              className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-white/10 ${
-                button == "perfil" ? "bg-white/50 dark:bg-[#343434 ]" : ""
-              }`}
-              style={{ transition: "150ms ease-in" }}
-              onClick={() => toggleButton("perfil")}
-            >
-              <span className="inline-flex items-center gap-5">
-                <AiOutlineUser className="relative text-3xl">
-                  perfil
-                </AiOutlineUser>
-                <span className="text-lg">Perfil</span>
-              </span>
-            </button>
-
-            <button
-              onClick={onMaisOpen}
-              className={`h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-white/10 dark:text-white`}
-              style={{ transition: "150ms ease-in" }}
-            >
-              <span className="inline-flex items-center gap-5">
-                <CiCircleMore className="relative text-3xl">mais</CiCircleMore>
-                <span className="text-lg">Mais</span>
-              </span>
-            </button>
-          </nav>
-        </aside>
-
-        <header
-          className={`bg-[${Color(
-            mode,
-            "#EDD8FF"
-          )}] dark:bg-darkcinzaR fixed width-header h-16 lg:flex items-center justify-end shadow-sm z-10 hidden`}
-          style={{ background: "#E5E9F9" }}
-        >
-          <div className="h-3/5 w-2/5 flex items-center justify-end pr-4">
-            <form
-              className="flex w-fit items-center justify-center  "
-              action=""
-            >
-              <input
-                className="bg-transparent outline-none w-7/12 text-2xl"
-                type="text"
-              />
-              <a href="">
-                <BiSearch className={`text-3xl text-cinza dark:text-white`} />
-              </a>
-            </form>
-            <div
-              className={`w-10 h-10 flex items-center justify-center rounded-full hover:opacity-60 text-white bg-cinza dark:bg-white dark:text-darkcinzaR`}
-            >
-              <LuPaintBucket
-                onClick={onOpen}
-                className="text-2xl cursor-pointer relative"
-              />
-            </div>
-          </div>
-        </header>
+        <MenuR/>
 
         <Modal
           isOpen={isOpen}
