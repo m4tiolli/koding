@@ -40,7 +40,7 @@ function AppRoutes() {
         <Route exact path="/pais/perfil" element={<PerfilR />} /> 
         <Route exact path="/pais/criar-conta" element={<CadastroCrianca />} /> 
         <Route exact path="/desafios" element={<Desafios />} /> 
-        <Route exact path="/conteudo" element={<Conteudo />} /> 
+        <Route exact path="/conteudo" element={<Conteudo />} />  
 
       </Routes>
     </HashRouter>

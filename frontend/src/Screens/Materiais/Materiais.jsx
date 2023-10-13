@@ -143,31 +143,39 @@ const Materiais = () => {
                         >
                             <ModalContent
                             w="30vw"
-                            h="10vw"
+                            h="12vw"
                             display='flex'
-                            marginBottom="20vw"
+                            marginBottom="17vw"
                             zIndex={100}
-                            background="#f1f1f1"
+                            background="#E4D9ED"
                             borderRadius="0.9em"
                             >
                                 {/* Tags */}
-                               <div className="h-full flex justify-center items-center gap-x-5 flex-wrap">
-                                    <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-orange-300">
-                                        <AiOutlineClose className="text-xl"/>
-                                        <span id="filter" className="text-lg">html</span>
-                                    </button>
-                                    <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-blue-300">
-                                        <AiOutlineClose className="text-xl"/>
-                                        <span className="text-lg">css</span>
-                                    </button>
-                                    <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-yellow-300">
-                                        <AiOutlineClose className="text-xl"/>
-                                        <span className="text-lg">javascript</span>
-                                    </button>
-                                    <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-purple-300">
-                                        <AiOutlineClose className="text-xl"/>
-                                        <span className="text-lg">php</span>
-                                    </button>
+                               
+                               <div className="h-full flex flex-col justify-center items-center gap-x-5 flex-wrap">
+                                    <div className="mb-5">
+                                        <span className="flex justify-center text-lg">Filtrar por:</span>  
+                                        <div className="border-b-2 w-32 border-black/50"></div> 
+                                    </div>
+                                    <div className="flex justify-center gap-y-2 gap-x-3 flex-wrap">
+                                        <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-orange-300">
+                                            <AiOutlineClose className="text-xl"/>
+                                            <span id="filter" className="text-lg">html</span>
+                                        </button>
+                                        <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-blue-300">
+                                            <AiOutlineClose className="text-xl"/>
+                                            <span className="text-lg">css</span>
+                                        </button>
+                                        <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-yellow-300">
+                                            <AiOutlineClose className="text-xl"/>
+                                            <span className="text-lg">javascript</span>
+                                        </button>
+                                        <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-purple-300">
+                                            <AiOutlineClose className="text-xl"/>
+                                            <span className="text-lg">php</span>
+                                        </button>
+                                    </div>
+                                    
                                     
                                </div>
                             </ModalContent>
