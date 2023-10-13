@@ -77,9 +77,6 @@
             "schema": {
               "type": "object",
               "properties": {
-                "nome": {
-                  "example": "any"
-                },
                 "senha": {
                   "example": "any"
                 }
@@ -215,7 +212,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "nome": {
+                "username": {
                   "example": "any"
                 },
                 "senha": {
@@ -427,7 +424,41 @@
         }
       }
     },
+    "/capitulos": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/capitulos/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/aulas/{id}": {
       "get": {
         "description": "",
         "parameters": [

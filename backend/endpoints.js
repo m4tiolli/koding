@@ -1,7 +1,10 @@
 const mysql = require("mysql");
+const cors = require("cors");
 // const LocalStorage = require("node-localstorage").LocalStorage;
 // localStorage = new LocalStorage("./index");
 module.exports = function (app) {
+  app.use(cors());
+
   const db = mysql.createPool({
     host: "koding.mysql.database.azure.com",
     user: "tccbarto",
@@ -275,9 +278,9 @@ module.exports = function (app) {
     const responsavelId = req.params.responsavel;
     db.query(
       "SELECT crianca.username, pontuacoes.pontuacao, pontuacoes.data " +
-      "FROM crianca " +
-      "INNER JOIN pontuacoes ON pontuacoes.crianca = crianca.id " +
-      "WHERE crianca.responsavel = ?",
+        "FROM crianca " +
+        "INNER JOIN pontuacoes ON pontuacoes.crianca = crianca.id " +
+        "WHERE crianca.responsavel = ?",
       [responsavelId],
       (err, result) => {
         if (err) {
@@ -307,16 +310,21 @@ module.exports = function (app) {
   app.get("/crianca/:crianca/linguagensAprendidas", (req, res) => {
     // const criancaId = localStorage.idCrianca;
     const criancaId = req.params.crianca;
-    
+
     db.query(
       "SELECT COUNT(*) AS quantidadeLinguagens " +
-      "FROM LinguagensCrianca " +
-      "WHERE crianca = ?",
+        "FROM LinguagensCrianca " +
+        "WHERE crianca = ?",
       [criancaId],
       (err, result) => {
         if (err) {
-          console.error("Erro ao obter o número de linguagens aprendidas pela criança", err);
-          res.status(500).json({ error: "Erro ao obter o número de linguagens aprendidas" });
+          console.error(
+            "Erro ao obter o número de linguagens aprendidas pela criança",
+            err
+          );
+          res
+            .status(500)
+            .json({ error: "Erro ao obter o número de linguagens aprendidas" });
         } else {
           res.json(result);
         }
