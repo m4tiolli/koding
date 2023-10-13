@@ -12,6 +12,10 @@ import CardCapitulo from "../../Components/CardCapitulo/CardCapitulo";
 import { Spinner } from '@chakra-ui/react';
 import { useDisclosure } from "@chakra-ui/react";
 import { Modal, ModalContent } from "@chakra-ui/react";
+import axios from 'axios';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const Materiais = () => {
 
@@ -30,59 +34,45 @@ const Materiais = () => {
         } else newcolor = color;
         return newcolor;
     }
-    const [isLoading, setIsLoading] = useState(true)
-    const [linguagem, setLinguagem] = useState([]);
-    const [capitulo, setCapitulos] = useState([]);
+    const [isLoading, setIsLoading] = useState([true, true])
+
+    const [linguagens, setLinguagens] = useState([]);
+    const [capitulos, setCapitulos] = useState([]);
 
     useEffect(() => {
-        const linguagemData = localStorage.getItem("linguagemData");
-        const capituloData = localStorage.getItem("capituloData");
-
-        if (linguagemData) {
-            setLinguagem(JSON.parse(linguagemData));
-        } else {
-            fetch("https://tcckoding.azurewebsites.net/linguagens", {
-                method: "GET",
-            })
-                .then((response) => response.json())
-                .then((json) => {
-                    setLinguagem(json);
-                    localStorage.setItem("linguagemData", JSON.stringify(json));
-                })
-                .catch((error) => {
-                    console.log(error);
-                    alert("Erro ao buscar linguagens");
+        // Busca todas as linguagens
+        axios.get('https://tcckoding.azurewebsites.net/linguagens')
+            .then((response) => {
+                setLinguagens(response.data);
+                response.data.forEach(linguagem => {
+                    handleLinguagemClick(linguagem.id);
                 });
-        }
-
-        if (capituloData) {
-            setCapitulos(JSON.parse(capituloData));
-            setIsLoading(false);
-        } else {
-            setIsLoading(true);
-        }
+                setIsLoading([false, true])
+            })
+            .catch(error => {
+                console.error(error);
+            });
     }, []);
 
-    useEffect(() => {
-        const fetchCapitulos = async (linguagemId) => {
-            try {
-                const response = await fetch(`https://tcckoding.azurewebsites.net/capitulos/${linguagemId}`, {
-                    method: "GET",
-                });
-                const json = await response.json();
-                setCapitulos(json);
-                localStorage.setItem("capituloData", JSON.stringify(json));
-                setIsLoading(false);
-            } catch (error) {
-                console.log(error);
-                alert("Erro ao buscar capítulos");
-                setIsLoading(false);
-            }
-        };
-        linguagem.forEach((linguagem) => {
-            fetchCapitulos(linguagem.id);
-        });
-    }, [linguagem]);
+    const handleLinguagemClick = (linguagemId) => {
+        axios.get(`https://tcckoding.azurewebsites.net/capitulos/${linguagemId}`)
+            .then((response) => {
+                setCapitulos(prevCapitulos => [...prevCapitulos, ...response.data]);
+                setIsLoading([false, false])
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    };
+
+    const settings = {
+        dots: false,
+        infinite: true,
+        speed: 1000,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false
+    };
 
     return (
         <div className={`flex h-full w-full dark:bg-darkcinzaclaro`}>
@@ -115,7 +105,7 @@ const Materiais = () => {
                 </div>
 
                 {/* Cards */}
-                {linguagem.map((linguagem, index) => (
+                {isLoading[0] == true ? <Spinner color={'white'} /> : linguagens.map((linguagem, index) => (
                     <div className="flex flex-col justify-center ml-10 space-y-8 mb-20" key={index}>
                         <span
                             className={`text-2xl font-semibold ${Color(
@@ -125,81 +115,81 @@ const Materiais = () => {
                         >
                             Aprendendo {linguagem.nome}
                         </span>
-                        <div className="flex space-x-16 items-center">
-                            {capitulo.length === 0 || isLoading ? (
-                                <Spinner color='white' />
-                            ) : (
-                                capitulo.map((capitulo, index) => (
-                                    <CardCapitulo capitulo={capitulo} key={index} />
-                                ))
-                            )}
-                        </div>
-                        
-                        <Modal 
-                            isCentered
-                            onClose={onClose}
-                            isOpen={isOpen}
-                            motionPreset='slideInBottom'
-                        >
-                            <ModalContent
-                            w="30vw"
-                            h="15vw"
-                            display='flex'
-                            marginBottom="17vw"
-                            zIndex={100}
-                            background="#E4D9ED"
-                            borderRadius="0.9em"
-                            >
-                                {/* Tags */}
-                               
-                               <div className="h-full flex justify-center items-center gap-x-5 flex-wrap">
-                                    <div className="mb-5">
-                                        <span className="flex justify-center text-lg">Filtrar por:</span>  
-                                        <div className="border-b-2 w-32 border-black/50"></div> 
+                        {isLoading[1] == true ? <Spinner color={'white'} /> :
+                            <Slider {...settings}>
+                                {capitulos.filter(capitulo => capitulo.linguagem === linguagem.id).map((capitulo, index) => (
+                                    <div key={index}>
+                                        <CardCapitulo capituloId={capitulo.id} />
                                     </div>
-                                    <div className="flex justify-center gap-y-2 gap-x-3 flex-wrap">
-                                        <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-orange-300">
-                                            <AiOutlineClose className="text-xl"/>
-                                            <span id="filter" className="text-lg">html</span>
-                                        </button>
-                                        <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-blue-300">
-                                            <AiOutlineClose className="text-xl"/>
-                                            <span className="text-lg">css</span>
-                                        </button>
-                                        <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-yellow-300">
-                                            <AiOutlineClose className="text-xl"/>
-                                            <span className="text-lg">javascript</span>
-                                        </button>
-                                        <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-purple-300">
-                                            <AiOutlineClose className="text-xl"/>
-                                            <span className="text-lg">php</span>
-                                        </button>
-                                        <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-orange-300">
-                                            <AiOutlineClose className="text-xl"/>
-                                            <span id="filter" className="text-lg">estrutura</span>
-                                        </button>
-                                        <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-blue-300">
-                                            <AiOutlineClose className="text-xl"/>
-                                            <span className="text-lg">flexbox</span>
-                                        </button>
-                                        <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-yellow-300">
-                                            <AiOutlineClose className="text-xl"/>
-                                            <span className="text-lg">input</span>
-                                        </button>
-                                        <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-purple-300">
-                                            <AiOutlineClose className="text-xl"/>
-                                            <span className="text-lg">introdução</span>
-                                        </button>
-                                    </div>
-                                    
-                                    
-                               </div>
-                            </ModalContent>
-                        </Modal>
-
+                                ))}
+                            </Slider>
+                        }
                     </div>
 
+
                 ))}
+                <Modal
+                    isCentered
+                    onClose={onClose}
+                    isOpen={isOpen}
+                    motionPreset='slideInBottom'
+                >
+                    <ModalContent
+                        w="30vw"
+                        h="15vw"
+                        display='flex'
+                        marginBottom="17vw"
+                        zIndex={100}
+                        background="#E4D9ED"
+                        borderRadius="0.9em"
+                    >
+                        {/* Tags */}
+
+                        <div className="h-full flex justify-center items-center gap-x-5 flex-wrap">
+                            <div className="mb-5">
+                                <span className="flex justify-center text-lg">Filtrar por:</span>
+                                <div className="border-b-2 w-32 border-black/50"></div>
+                            </div>
+                            <div className="flex justify-center gap-y-2 gap-x-3 flex-wrap">
+                                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-orange-300">
+                                    <AiOutlineClose className="text-xl" />
+                                    <span id="filter" className="text-lg">html</span>
+                                </button>
+                                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-blue-300">
+                                    <AiOutlineClose className="text-xl" />
+                                    <span className="text-lg">css</span>
+                                </button>
+                                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-yellow-300">
+                                    <AiOutlineClose className="text-xl" />
+                                    <span className="text-lg">javascript</span>
+                                </button>
+                                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-purple-300">
+                                    <AiOutlineClose className="text-xl" />
+                                    <span className="text-lg">php</span>
+                                </button>
+                                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-orange-300">
+                                    <AiOutlineClose className="text-xl" />
+                                    <span id="filter" className="text-lg">estrutura</span>
+                                </button>
+                                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-blue-300">
+                                    <AiOutlineClose className="text-xl" />
+                                    <span className="text-lg">flexbox</span>
+                                </button>
+                                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-yellow-300">
+                                    <AiOutlineClose className="text-xl" />
+                                    <span className="text-lg">input</span>
+                                </button>
+                                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-purple-300">
+                                    <AiOutlineClose className="text-xl" />
+                                    <span className="text-lg">introdução</span>
+                                </button>
+                            </div>
+
+
+                        </div>
+                    </ModalContent>
+                </Modal>
+
             </main>
         </div>
     );

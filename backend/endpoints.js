@@ -77,10 +77,6 @@ module.exports = function (app) {
     );
   });
 
-  // function saveId(id) {
-  //   localStorage.setItem("idResponsavel", id);
-  // }
-
   // Login - responsável
   app.post("/responsavel/login", (req, res) => {
     const { email, senha } = req.body;
@@ -95,13 +91,9 @@ module.exports = function (app) {
           res.status(401).json({ error: "Credenciais inválidas" });
         } else {
           const user = { id: result[0].id, email: result[0].email };
-          // const token = generateToken(user);
-          req.session.responsavelId = result[0].id;
-          saveId(req.session.responsavelId);
           console.log("ID do responsável:", req.session.responsavelId);
           res.json({
             message: "Login realizado com sucesso!",
-            // token: token,
             user: result[0],
           });
         }

@@ -3,7 +3,7 @@ import { BiSearch } from "react-icons/bi";
 import { IoArrowBack } from "react-icons/io5";
 
 import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Menu from "../../Components/Menu/Menu";
 
 import {
@@ -11,9 +11,13 @@ import {
   tritanomaly,
   deuteranomaly,
 } from "./../../Components/ColorBlind";
+import CardAula from "../../Components/CardAula/CardAula";
 
 function Aulas() {
   const mode = localStorage.getItem("theme");
+
+  const location = useLocation()
+  const aulas = location.state.aulas
 
   function Color(mode, color) {
     var newcolor;
@@ -47,7 +51,7 @@ function Aulas() {
 
       {/* Conteudo */}
 
-      <main className="w-full ml-52 overflow-hidden dark:bg-darkcinzaclaro">
+      <main className="w-full ml-52 overflow-hidden dark:bg-darkcinzaclaro min-h-screen">
         <IoArrowBack
           onClick={() => navigate(-1)}
           className="flex mt-28 ml-8 mb-5 text-3xl cursor-pointer dark:text-white"
@@ -80,61 +84,11 @@ function Aulas() {
         </div>
 
         {/* Cards */}
-
-        <div className="space-y-32">
-          <div className="flex flex-col justify-center ml-10">
-            <div className="flex space-x-16 items-center mb-10">
-              <Link to={"/conteudo"}>
-                <div className="space-y-5">
-                  {/* Card */}
-                  <div
-                    className="w-80 h-52 rounded-xl"
-                    style={{
-                      backgroundImage: `linear-gradient(10deg, ${Color(
-                        mode,
-                        "#E87331"
-                      )} 0%, ${Color(mode, "#E88D59")} 100%`,
-                    }}
-                  ></div>
-                  <div className="flex flex-col">
-                    <span className="w-80 flex items-center justify-start text-xl text-black font-semibold truncate dark:text-white">
-                      Aula 00 - Estrutura HTML
-                    </span>
-                    {/* Filtro */}
-                    <div className="w-80 flex flex-wrap gap-x-3 gap-y-3">
-                      <div
-                        className="w-16 p-1 rounded-xl"
-                        style={{
-                          backgroundImage: `linear-gradient(10deg, ${Color(
-                            mode,
-                            "#E87331"
-                          )} 0%, ${Color(mode, "#E88D59")} 100%`,
-                        }}
-                      >
-                        <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate dark:text-white">
-                          HTML
-                        </span>
-                      </div>
-                      <div
-                        className="w-32 p-1 rounded-xl"
-                        style={{
-                          backgroundImage: `linear-gradient(10deg, ${Color(
-                            mode,
-                            "#E87331"
-                          )} 0%, ${Color(mode, "#E88D59")} 100%`,
-                        }}
-                      >
-                        <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate dark:text-white">
-                          Estrutura
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </div>
-          </div>
-        </div>
+        {
+          aulas.map((aula, index) => (
+            <CardAula aula={aula} key={index} />
+          ))
+        }
       </main>
     </div>
   );
