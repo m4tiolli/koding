@@ -15,6 +15,11 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react";
 import {useNavigate} from 'react-router-dom';
+import {
+  protanomaly,
+  tritanomaly,
+  deuteranomaly,
+} from "./../../Components/ColorBlind";
 // import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 // import {Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton,} from '@chakra-ui/react';
@@ -23,6 +28,20 @@ import { useEffect, useState } from 'react';
 import Menu from "../../Components/Menu/Menu";
 
 function Configuracao() {
+  const mode = localStorage.getItem("theme");
+
+    function Color(mode, color) {
+        var newcolor;
+        if (mode === "protanomaly") {
+            newcolor = protanomaly(color);
+        } else if (mode === "deuteranomaly") {
+            newcolor = deuteranomaly(color);
+        } else if (mode === "tritanomaly") {
+            newcolor = tritanomaly(color);
+        } else newcolor = color;
+        return newcolor;
+    }
+
   useEffect(() => {
     if (localStorage.theme === "dark") {
         document.documentElement.classList.add("dark");
@@ -46,18 +65,16 @@ function Configuracao() {
     <ChakraProvider>
       <div
         className="flex h-full w-full"
-        style={{
-          background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)",
-        }}
+        style={{ background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)" }}
       >
         <Menu />
         
         <main className="w-full ml-[208px] mr-2 mt-[3.8rem] overflow-hidden dark:bg-darkcinzaclaro">
 
-        <IoArrowBack onClick={() => navigate(-1)} className="flex mt-10 ml-5 mb-5 text-3xl cursor-pointer dark:text-white"/>
+        <IoArrowBack onClick={() => navigate(-1)} className="flex mt-10 ml-10 mb-5 text-3xl cursor-pointer dark:text-white"/>
         
           <div className="mb-10">
-            <span className="text-3xl font-semibold dark:text-white ml-5">Configurações</span>
+            <span className="text-3xl font-semibold dark:text-white ml-10">Configurações</span>
           </div>
 
           {/* Dados */}
@@ -81,7 +98,7 @@ function Configuracao() {
 
               <div>
                 <button
-                  className="bg-green-500 w-auto h-10 p-3 mt-5 lg:mt-0 flex items-center rounded-xl shadow-lg text-white"
+                  className="w-auto h-10 p-3 mt-5 lg:mt-0 flex items-center rounded-xl shadow-lg text-white" style={{ background: Color(mode, '#22C55E') }}
                   type="submit"
                 >
                   Salvar Alterações
@@ -219,7 +236,7 @@ function Configuracao() {
                 </button>
               </div>
 
-              <div className="flex items-center gap-3 w-full text-red-600">
+              <div className="flex items-center gap-3 w-full" style={{ color: Color(mode, '#DC2626') }}>
                 <BsTrash3 className="text-2xl"></BsTrash3>
                 <button className="text-xl" onClick={openDeleteAccountModal}>
                   Excluir minha conta

@@ -367,7 +367,7 @@ export default function Menu({ screen }) {
             >
               <span className="inline-flex items-center gap-2 w-full">
                 <BiHelpCircle className="relative 2xl:text-3xl text-lg w-1/4 "></BiHelpCircle>
-                <span className="2xl:text-lg text-md w-3/4">
+                <span className="2xl:text-lg text-lg w-3/4">
                   Central de Ajuda
                 </span>
               </span>
