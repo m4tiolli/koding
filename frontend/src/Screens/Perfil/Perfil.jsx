@@ -64,7 +64,7 @@ function Perfil() {
 
                 <container className="flex flex-col items-center justify-center w-72 h-96 xl:mt-40 mt-32 gap-y-5">
 
-                    <span className="xl:text-4xl text-3xl mr-28 text-left font-semibold text-black dark:text-white">Dados</span>
+                    <span className="xl:text-4xl text-3xl font-semibold text-black dark:text-white">Dados</span>
 
                     <div className="flex items-center justify-center xl:p-1 xl:w-60 w-56 rounded-lg text-left border-2 border-solid border-black leading-none hover:bg-white/50 dark:border-white">
                         <div className="inline-flex items-center gap-5">
