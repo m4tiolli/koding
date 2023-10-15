@@ -4,7 +4,27 @@ import { useNavigate } from "react-router-dom";
 
 import { AiOutlineClose } from "react-icons/ai";
 
+import {
+  protanomaly,
+  tritanomaly,
+  deuteranomaly,
+} from "./../../../Components/ColorBlind";
+
 function Flexbox() {
+  const mode = localStorage.getItem("theme");
+
+  function Color(mode, color) {
+    var newcolor;
+    if (mode === "protanomaly") {
+      newcolor = protanomaly(color);
+    } else if (mode === "deuteranomaly") {
+      newcolor = deuteranomaly(color);
+    } else if (mode === "tritanomaly") {
+      newcolor = tritanomaly(color);
+    } else newcolor = color;
+    return newcolor;
+  }
+
   useEffect(() => {
     if (localStorage.theme === "dark") {
       document.documentElement.classList.add("dark");
@@ -12,7 +32,7 @@ function Flexbox() {
       document.documentElement.classList.remove("dark");
     }
   }, []);
-  
+
   const [disabled, setDisabled] = useState(true);
   function addCSS(e) {
     const css = e;
@@ -54,7 +74,10 @@ function Flexbox() {
     >
       {/* Instruções */}
 
-      <AiOutlineClose onClick={() => navigate(-1)} className="flex mb-5 text-3xl ml-10 mt-5 cursor-pointer z-0 dark:text-white"/>
+      <AiOutlineClose
+        onClick={() => navigate(-1)}
+        className="flex mb-5 text-3xl ml-10 mt-5 cursor-pointer z-0 dark:text-white text-gray-600"
+      />
 
       <section className="w-3/6 p-16 -ml-20 dark:bg-darkcinzaclaro dark:text-white">
         <h1 className="text-3xl uppercase font-semibold text-gray-600 dark:text-white">
@@ -62,11 +85,17 @@ function Flexbox() {
         </h1>
         <p className="font-sans mb-5">
           Ajude a alinhar 3 (três) colunas usando uma combinação de{" "}
-          <span className="bg-orange-300/100 border-b-2 border-purple-500 border-solid codigo dark:text-black">
+          <span
+            className="border-b-2 border-purple-500 border-solid codigo dark:text-black"
+            style={{ background: Color(mode, "#FDBA74") }}
+          >
             flex-direction
           </span>{" "}
           e{" "}
-          <span className="bg-orange-300/100 border-b-2 border-purple-500 border-solid codigo dark:text-black">
+          <span
+            className="border-b-2 border-purple-500 border-solid codigo dark:text-black"
+            style={{ background: Color(mode, "#FDBA74") }}
+          >
             flex-wrap
           </span>
           .
@@ -76,11 +105,11 @@ function Flexbox() {
 
         <div
           className="relative h-72 pt-3 pl-10 pb-5 rounded-md text-md leading-6 text-gray-700"
-          style={{ background: "#CEC8D3" }}
+          style={{ background: Color(mode, "#CEC8D3") }}
         >
           <div
             className="h-full text-right absolute top-0 left-0 text-white pt-3 pl-2 pr-2"
-            style={{ background: "#A692B8" }}
+            style={{ background: Color(mode, "#A692B8") }}
           >
             1 <br /> 2 <br /> 3 <br /> 4 <br /> 5 <br /> 6 <br /> 7 <br /> 8{" "}
             <br /> 9 <br /> 10
@@ -96,10 +125,11 @@ function Flexbox() {
           ></textarea>
           <pre className="m-0">)</pre>
           <button
-            className="border-none bg-pink-700 disabled:opacity-60 cursor-pointer disabled:cursor-not-allowed rounded-md text-white p-2 landing-6 absolute right-7 bottom-5"
+            className="border-none disabled:opacity-60 cursor-pointer disabled:cursor-not-allowed rounded-md text-white p-2 landing-6 absolute right-7 bottom-5"
             onChange={addCSS}
             id="avancar"
             disabled={disabled}
+            style={{ background: Color(mode, "#BE175D") }}
           >
             Próximo
           </button>
@@ -109,11 +139,14 @@ function Flexbox() {
       {/* Jogo */}
 
       <section
-        className="relative sec w-50vw h-screen overflow-hidden min-w-[380px] min-h-[380px]"
-        style={{ background: "#E79D67" }}
+        className="relative ml-3 w-50vw h-screen overflow-hidden min-w-[380px] min-h-[380px]"
+        style={{ background: Color(mode, "#E79D67") }}
       >
         {/* sapos */}
-        <div className="flex justify-center items-center absolute frente top-0" id="frente">
+        <div
+          className="flex justify-center items-center absolute frente top-0"
+          id="frente"
+        >
           {/* sapo container */}
           <div className="sp-container">
             {/* sapo verde */}
