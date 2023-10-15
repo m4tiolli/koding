@@ -1,6 +1,5 @@
-import "../Setenca/Setenca.css";
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { AiOutlineClose } from "react-icons/ai";
 
 function palavrasAleatorias(palavras) {
@@ -16,36 +15,62 @@ function palavrasAleatorias(palavras) {
   return shuffled;
 }
 
-function Setenca() {
-  const [sentencaCorreta, setSentencaCorreta] = useState("<img href='imagem'>");
+function Sentenca() {
+  const fases = [
+    {
+      sentencaCorreta: "<img src='imagem.png' alt='Minha Imagem'>",
+      palavrasSelecionadas: ["<", ">", "img", " src=", "'imagem.png'", " alt=", "'Minha Imagem'", "href=", "</img>", "<head>"],
+      titulo: ["Como inserir uma imagem usando HTML?"]
+    },
+    {
+      sentencaCorreta: "<p>Isso é um parágrafo.</p>",
+      palavrasSelecionadas: ["<p>", "</p>", "Isso é", " um parágrafo.", "<h1>", "</h1>"],
+      titulo: ["Como adicionar uma parágrafo em HTML?"]
+    }
+  ];
+
+  const [faseAtual, setFaseAtual] = useState(0);
   const [sentencaAtual, setSentencaAtual] = useState([]);
-  const [palavrasSelecionadas, setPalavrasSelecionadas] = useState([
-    "<",
-    ">",
-    "img",
-    " href=",
-    "'imagem'",
-  ]);
+  const fase = fases[faseAtual];
+  const sentencaCorreta = fase.sentencaCorreta;
+  const [palavrasSelecionadas, setPalavrasSelecionadas] = useState(palavrasAleatorias(fase.palavrasSelecionadas));
+  const titulo = fases[faseAtual].titulo;
 
   useEffect(() => {
-    setPalavrasSelecionadas(palavrasAleatorias(palavrasSelecionadas));
-  }, []);
+    const palavrasEmbaralhadas = palavrasAleatorias([...palavrasSelecionadas]);
+    setPalavrasSelecionadas(palavrasEmbaralhadas);
+  }, [faseAtual]);
 
   const handleWordClick = (palavra) => {
     if (sentencaAtual.includes(palavra)) {
       const newSentencaAtual = sentencaAtual.filter((word) => word !== palavra);
       setSentencaAtual(newSentencaAtual);
-    } else {
+    }
+    else {
       setSentencaAtual([...sentencaAtual, palavra]);
     }
   };
+
+  const avancarFase = () => {
+    if (faseAtual < fases.length - 1) {
+      setFaseAtual(faseAtual + 1);
+      setSentencaAtual([]);
+      setPalavrasSelecionadas(palavrasAleatorias(fases[faseAtual + 1].palavrasSelecionadas)); // Embaralhar palavras para a próxima fase
+    } else {
+      alert("Você completou todas as fases!");
+      navigate("/desafios");
+    }
+  };
+
 
   const verificarSentenca = () => {
     const sentencaAtualStr = sentencaAtual.join("");
     if (sentencaAtualStr === sentencaCorreta) {
       alert("Você acertou!");
+      avancarFase();
     } else {
-      alert("Errado! A setença correta é: " + sentencaCorreta);
+      alert("Errado! A sentença correta é: " + sentencaCorreta);
+      avancarFase();
     }
   };
 
@@ -71,7 +96,7 @@ function Setenca() {
 
         <div className="flex flex-col">
           <h1 className="flex justify-center font-bold text-gray-700 text-2xl dark:text-white">
-            Como inserir uma imagem usando HTML?
+            {titulo}
           </h1>
           <p className="flex justify-center border-b-4 rounded-sm border-gray-400 mt-32 ml-32 mr-32">
             {" "}
@@ -89,7 +114,7 @@ function Setenca() {
             ))}
           </div>
           <div className="flex justify-center mt-20 space-x-[850px]">
-          <button
+            <button
               className="flex justify-center items-center w-20 bg-slate-200 shadow-md rounded-md p-2"
             >
               Pular
@@ -107,4 +132,4 @@ function Setenca() {
   );
 }
 
-export default Setenca;
+export default Sentenca;

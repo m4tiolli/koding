@@ -47,7 +47,7 @@ const Desafios = () => {
                     <div className='flex gap-x-10'>
                         <div className="mt-20">
                                 <div className=''>
-                                    <span className="text-3xl font-semibold dark:text-white">HTML - Input</span>
+                                    <span className="text-3xl font-semibold dark:text-white">HTML - Sentença</span>
                                     <Link to={"/sentenca"}>
                                     <div className="w-80 h-48 rounded-xl mb-5" style={{backgroundColor: Color(mode, "#E88D59")}}>    
                                     </div>
@@ -58,7 +58,7 @@ const Desafios = () => {
                                             <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate dark:text-white">HTML</span>
                                         </div>
                                         <div className="w-32 p-1 rounded-xl" style={{backgroundColor: Color(mode, "#E88D59")}}>
-                                            <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate dark:text-white">Input</span>
+                                            <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate dark:text-white">Sentença</span>
                                         </div>
                                     </div>
                                 </div>
