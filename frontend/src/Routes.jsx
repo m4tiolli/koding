@@ -35,7 +35,7 @@ function AppRoutes() {
         <Route exact path="/aprender" element={<Aprender />} />
         <Route exact path="/configuracao" element={<Configuracao />} /> 
         <Route exact path="/flexbox" element={<Flexbox />} /> 
-        <Route exact path="/Setenca" element={<Setenca />} />
+        <Route exact path="/sentenca" element={<Setenca />} />
         <Route exact path="/desempenho" element={<Desempenho />} /> 
         <Route exact path="/pais/configuracao" element={<ConfiguracaoR />} /> 
         <Route exact path="/pais/home" element={<HomeR />} /> 

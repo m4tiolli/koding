@@ -48,7 +48,7 @@ const Desafios = () => {
                         <div className="mt-20">
                                 <div className=''>
                                     <span className="text-3xl font-semibold dark:text-white">HTML - Input</span>
-                                    <Link to={"/flexbox"}>
+                                    <Link to={"/sentenca"}>
                                     <div className="w-80 h-48 rounded-xl mb-5" style={{backgroundColor: Color(mode, "#E88D59")}}>    
                                     </div>
                                     </Link>
