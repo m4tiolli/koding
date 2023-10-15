@@ -58,7 +58,7 @@ function Setenca() {
         background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)",
       }}
     >
-      <main className="w-full ml-10 mr-10 overflow-hidden dark:bg-darkcinzaclaro min-h-screen">
+      <main className="w-full overflow-hidden dark:bg-darkcinzaclaro min-h-screen ">
         {/* Sair/Barra/Vidas */}
         <div className="flex items-center mt-10 gap-x-48 mb-20">
           <AiOutlineClose
@@ -70,7 +70,7 @@ function Setenca() {
         </div>
 
         <div className="flex flex-col">
-          <h1 className="flex justify-center font-bold text-gray-700 text-2xl">
+          <h1 className="flex justify-center font-bold text-gray-700 text-2xl dark:text-white">
             Como inserir uma imagem usando HTML?
           </h1>
           <p className="flex justify-center border-b-4 rounded-sm border-gray-400 mt-32 ml-32 mr-32">
@@ -88,7 +88,6 @@ function Setenca() {
               </button>
             ))}
           </div>
-          <hr className="mt-10 border-gray-400" />
           <div className="flex justify-center mt-20 space-x-[850px]">
           <button
               className="flex justify-center items-center w-20 bg-slate-200 shadow-md rounded-md p-2"

@@ -1,10 +1,18 @@
 import "../Flexbox/Flexbox.css";
-import { useState } from "react";
-import {useNavigate} from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-import { IoArrowBack} from "react-icons/io5";
+import { AiOutlineClose } from "react-icons/ai";
 
 function Flexbox() {
+  useEffect(() => {
+    if (localStorage.theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, []);
+  
   const [disabled, setDisabled] = useState(true);
   function addCSS(e) {
     const css = e;
@@ -20,7 +28,6 @@ function Flexbox() {
     }
   }
 
-  const navigate = useNavigate();
   const [inputValue, setInputValue] = useState("");
   const [timer, setTimer] = useState(null);
 
@@ -36,28 +43,30 @@ function Flexbox() {
     setTimer(newTimer);
   };
 
+  const navigate = useNavigate();
+
   return (
     <div
-      className="flex h-full w-full"
+      className="flex h-full w-full dark:bg-darkcinzaclaro"
       style={{
         background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)",
       }}
     >
       {/* Instruções */}
 
-      <IoArrowBack onClick={() => navigate(-1)} className="flex mb-5 text-3xl ml-10 mt-5 cursor-pointer"/>
+      <AiOutlineClose onClick={() => navigate(-1)} className="flex mb-5 text-3xl ml-10 mt-5 cursor-pointer z-0 dark:text-white"/>
 
-      <section className="w-3/6 p-16 mt-5 -ml-16">
-        <h1 className="text-3xl uppercase font-semibold text-gray-600">
+      <section className="w-3/6 p-16 -ml-20 dark:bg-darkcinzaclaro dark:text-white">
+        <h1 className="text-3xl uppercase font-semibold text-gray-600 dark:text-white">
           Flexbox
         </h1>
         <p className="font-sans mb-5">
           Ajude a alinhar 3 (três) colunas usando uma combinação de{" "}
-          <span className="bg-orange-300/100 border-b-2 border-purple-500 border-solid codigo">
+          <span className="bg-orange-300/100 border-b-2 border-purple-500 border-solid codigo dark:text-black">
             flex-direction
           </span>{" "}
           e{" "}
-          <span className="bg-orange-300/100 border-b-2 border-purple-500 border-solid codigo">
+          <span className="bg-orange-300/100 border-b-2 border-purple-500 border-solid codigo dark:text-black">
             flex-wrap
           </span>
           .
