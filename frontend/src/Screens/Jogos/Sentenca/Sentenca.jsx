@@ -30,6 +30,7 @@ function Sentenca() {
   ];
 
   const [faseAtual, setFaseAtual] = useState(0);
+  // const [pontuacao, setPontuacao] = useState(0);
   const [sentencaAtual, setSentencaAtual] = useState([]);
   const fase = fases[faseAtual];
   const sentencaCorreta = fase.sentencaCorreta;
@@ -55,8 +56,10 @@ function Sentenca() {
     if (faseAtual < fases.length - 1) {
       setFaseAtual(faseAtual + 1);
       setSentencaAtual([]);
-      setPalavrasSelecionadas(palavrasAleatorias(fases[faseAtual + 1].palavrasSelecionadas)); // Embaralhar palavras para a próxima fase
+      setPalavrasSelecionadas(palavrasAleatorias(fases[faseAtual + 1].palavrasSelecionadas));
+      
     } else {
+      // enviarPontuacao();
       alert("Você completou todas as fases!");
       navigate("/desafios");
     }
@@ -66,13 +69,33 @@ function Sentenca() {
   const verificarSentenca = () => {
     const sentencaAtualStr = sentencaAtual.join("");
     if (sentencaAtualStr === sentencaCorreta) {
+      // setPontuacao(pontuacao + 100);
       alert("Você acertou!");
       avancarFase();
     } else {
       alert("Errado! A sentença correta é: " + sentencaCorreta);
+      // setPontuacao(pontuacao);
       avancarFase();
     }
   };
+
+  // const enviarPontuacao = () => {
+  //   const crianca = 1;
+  //   const data = new Date();
+  //   const body = { crianca, pontuacao, data };
+  //   fetch(`https://tcckoding.azurewebsites.net/crianca/pontuacao`, {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify(body),
+  //   })
+  //     .then(() => {
+  //       alert('Pontuação enviada com sucesso', data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       alert('Erro ao enviar a pontuação');
+  //     });
+  // }
 
   const navigate = useNavigate();
 
