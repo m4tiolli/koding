@@ -80,7 +80,7 @@ module.exports = function (app) {
   app.put("/responsavel/esqueciSenha/:id", (req, res) => {
     const { senha } = req.body;
     const userId = req.params.id;
-  
+
     db.query(
       "UPDATE responsavel SET senha = ? WHERE id = ?",
       [senha, userId],
@@ -191,7 +191,7 @@ module.exports = function (app) {
   app.put("/crianca/esqueciSenha/:id", (req, res) => {
     const { senha } = req.body;
     const userId = req.params.id;
-  
+
     db.query(
       "UPDATE crianca SET senha = ? WHERE id = ?",
       [senha, userId],
@@ -238,13 +238,7 @@ module.exports = function (app) {
         } else if (result.length === 0) {
           res.status(401).json({ error: "Credenciais inválidas" });
         } else {
-          const user = { id: result[0].id, email: result[0].email };
-          // const token = generateToken(user);
-          res.json({
-            message: "Login realizado com sucesso!",
-            // token: token,
-            user: result[0],
-          });
+          res.json({ id: result[0] });
         }
       }
     );
@@ -306,9 +300,9 @@ module.exports = function (app) {
     const responsavelId = req.params.responsavel;
     db.query(
       "SELECT crianca.username, pontuacoes.pontuacao, pontuacoes.data " +
-        "FROM crianca " +
-        "INNER JOIN pontuacoes ON pontuacoes.crianca = crianca.id " +
-        "WHERE crianca.responsavel = ?",
+      "FROM crianca " +
+      "INNER JOIN pontuacoes ON pontuacoes.crianca = crianca.id " +
+      "WHERE crianca.responsavel = ?",
       [responsavelId],
       (err, result) => {
         if (err) {
@@ -341,8 +335,8 @@ module.exports = function (app) {
 
     db.query(
       "SELECT COUNT(*) AS quantidadeLinguagens " +
-        "FROM LinguagensCrianca " +
-        "WHERE crianca = ?",
+      "FROM LinguagensCrianca " +
+      "WHERE crianca = ?",
       [criancaId],
       (err, result) => {
         if (err) {

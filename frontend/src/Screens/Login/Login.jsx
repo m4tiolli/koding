@@ -44,6 +44,10 @@ function Login() {
       if (response.ok) {
         const level = isResponsavel ? "responsavel" : "crianca";
         localStorage.setItem("nivel", level);
+        if (!isResponsavel) {
+          const userId = data.id.id;
+          localStorage.setItem("id", userId)
+        }
         level === "responsavel" ? navigate("/pais/home") : navigate("/home");
       } else {
         setLoginError(data.error);

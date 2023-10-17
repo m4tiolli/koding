@@ -78,7 +78,7 @@ function Sentenca() {
   };
 
   const enviarPontuacao = () => {
-    const crianca = 1;
+    const crianca = localStorage.getItem('id');
     const pontuacao = localStorage.getItem("pontuacao")
     const data = new Date();
     const body = { crianca, pontuacao, data };
