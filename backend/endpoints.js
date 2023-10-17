@@ -43,12 +43,12 @@ module.exports = function (app) {
   });
 
   app.put("/responsavel/:id", (req, res) => {
-    const { senha } = req.body;
+    const { email, senha } = req.body;
     const userId = req.params.id;
 
     db.query(
-      "UPDATE responsavel SET senha = ? WHERE id = ?",
-      [senha, userId],
+      "UPDATE responsavel SET email = ?, senha = ? WHERE id = ?",
+      [email, senha, userId],
       (err, result) => {
         if (err) {
           console.error("Erro ao alterar usuário", err);
@@ -77,24 +77,23 @@ module.exports = function (app) {
     );
   });
 
-  // Está igual ao put normal, se formos atualizar o email, aí esse irá servir, caso não, não servirá!
-  // app.put("/responsavel/esqueciSenha/:id", (req, res) => {
-  //   const { senha } = req.body;
-  //   const userId = req.params.id;
+  app.put("/responsavel/esqueciSenha/:id", (req, res) => {
+    const { senha } = req.body;
+    const userId = req.params.id;
   
-  //   db.query(
-  //     "UPDATE responsavel SET senha = ? WHERE id = ?",
-  //     [senha, userId],
-  //     (err, result) => {
-  //       if (err) {
-  //         console.error("Erro ao alterar senha da criança", err);
-  //         res.status(500).json({ error: "Erro ao alterar senha da criança" });
-  //       } else {
-  //         res.json({ message: "Senha da criança alterada com sucesso" });
-  //       }
-  //     }
-  //   );
-  // });
+    db.query(
+      "UPDATE responsavel SET senha = ? WHERE id = ?",
+      [senha, userId],
+      (err, result) => {
+        if (err) {
+          console.error("Erro ao alterar senha da criança", err);
+          res.status(500).json({ error: "Erro ao alterar senha da criança" });
+        } else {
+          res.json({ message: "Senha da criança alterada com sucesso" });
+        }
+      }
+    );
+  });
 
   // Login - responsável
   app.post("/responsavel/login", (req, res) => {
@@ -159,12 +158,12 @@ module.exports = function (app) {
   });
 
   app.put("/crianca/:id", (req, res) => {
-    const { username, senha } = req.body;
+    const { username, email, senha } = req.body;
     const userId = req.params.id;
 
     db.query(
-      "UPDATE crianca SET username = ?, senha = ? WHERE id = ?",
-      [username, senha, userId],
+      "UPDATE crianca SET username = ?, email = ?, senha = ? WHERE id = ?",
+      [username, email, senha, userId],
       (err, result) => {
         if (err) {
           console.error("Erro ao alterar usuário", err);
