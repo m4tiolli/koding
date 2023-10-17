@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { AiOutlineClose } from "react-icons/ai";
 
 function palavrasAleatorias(palavras) {
@@ -28,9 +28,8 @@ function Sentenca() {
       titulo: ["Como adicionar uma parágrafo em HTML?"]
     }
   ];
-
+  if (!localStorage.getItem("pontuacao")) localStorage.setItem("pontuacao", 0)
   const [faseAtual, setFaseAtual] = useState(0);
-  // const [pontuacao, setPontuacao] = useState(0);
   const [sentencaAtual, setSentencaAtual] = useState([]);
   const fase = fases[faseAtual];
   const sentencaCorreta = fase.sentencaCorreta;
@@ -57,45 +56,46 @@ function Sentenca() {
       setFaseAtual(faseAtual + 1);
       setSentencaAtual([]);
       setPalavrasSelecionadas(palavrasAleatorias(fases[faseAtual + 1].palavrasSelecionadas));
-      
     } else {
-      // enviarPontuacao();
+      enviarPontuacao();
       alert("Você completou todas as fases!");
       navigate("/desafios");
     }
   };
 
-
   const verificarSentenca = () => {
     const sentencaAtualStr = sentencaAtual.join("");
     if (sentencaAtualStr === sentencaCorreta) {
-      // setPontuacao(pontuacao + 100);
       alert("Você acertou!");
+      var local = parseInt(localStorage.pontuacao)
+      local = local + 100
+      localStorage.setItem("pontuacao", local)
       avancarFase();
     } else {
       alert("Errado! A sentença correta é: " + sentencaCorreta);
-      // setPontuacao(pontuacao);
       avancarFase();
     }
   };
 
-  // const enviarPontuacao = () => {
-  //   const crianca = 1;
-  //   const data = new Date();
-  //   const body = { crianca, pontuacao, data };
-  //   fetch(`https://tcckoding.azurewebsites.net/crianca/pontuacao`, {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify(body),
-  //   })
-  //     .then(() => {
-  //       alert('Pontuação enviada com sucesso', data);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //       alert('Erro ao enviar a pontuação');
-  //     });
-  // }
+  const enviarPontuacao = () => {
+    const crianca = 1;
+    const pontuacao = localStorage.getItem("pontuacao")
+    const data = new Date();
+    const body = { crianca, pontuacao, data };
+    fetch(`https://tcckoding.azurewebsites.net/crianca/pontuacao`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    })
+      .then(() => {
+        alert('Pontuação enviada com sucesso');
+        localStorage.removeItem("pontuacao")
+      })
+      .catch((error) => {
+        console.log(error);
+        alert('Erro ao enviar a pontuação');
+      });
+  }
 
   const navigate = useNavigate();
 
@@ -114,7 +114,7 @@ function Sentenca() {
             className="flex ml-8 text-3xl cursor-pointer text-gray-400 dark:text-white"
           />
 
-          <div className="w-7/12 h-5 bg-gray-300 rounded-lg"></div>
+          <div className={`w-7/12 h-5 bg-gray-300 rounded-lg ${faseAtual == 1 ? 'before:bg-green-400 before:block before:absolute before:w-2/6 before:rounded-l-lg before:h-5 before:content-[" "] before:z-20' : ""}`}></div>
         </div>
 
         <div className="flex flex-col">
