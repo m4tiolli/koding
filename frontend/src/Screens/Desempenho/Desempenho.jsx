@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Navbar from "../../Components/Navbar/Navbar";
 import { useState } from "react";
-
+import LineChart from './../../Components/Graficos/Line/Line';
 import {
   protanomaly,
   tritanomaly,
@@ -111,38 +111,9 @@ function Desempenho() {
           </div>
 
           {/* Gráficos */}
-          <div className="flex flex-col lg:flex-row lg:-ml-12 -ml-40 xl:mx-5 notebook:-ml-5 lg:gap-x-24 gap-x-64">
-            <div className="mt-10 lg:w-11/12 lg:mr-0 w-12/12 mr-5 space-y-3 mb-10">
-              <div className="flex items-center justify-between">
-                <span className="text-xl dark:text-white">Alguma coisa</span>
-                <select
-                  className="p-2 w-42 rounded-xl border-solid border-black outline-none shadow-lg cursor-pointer"
-                  name="time"
-                  id="time"
-                >
-                  <option value="24">Últimas 24h</option>
-                  <option value="48">Últimas 48h</option>
-                  <option value="72">Últimas 72h</option>
-                </select>
-              </div>
-              <div className="h-72 rounded-2xl shadow-sm" style={{ background: Color(mode, "#6B7280") }}></div>
-            </div>
-
-            <div className="mt-10 lg:w-7/12 w-12/12 mr-5 space-y-3 mb-10">
-              <div className="flex items-center justify-between">
-                <span className="text-xl dark:text-white">Alguma coisa</span>
-                <select
-                  className="p-2 w-42 rounded-xl border-solid border-black outline-none shadow-lg cursor-pointer"
-                  name="time"
-                  id="time"
-                >
-                  <option value="24">Últimas 24h</option>
-                  <option value="48">Últimas 48h</option>
-                  <option value="72">Últimas 72h</option>
-                </select>
-              </div>
-              <div className="h-72 rounded-2xl shadow-sm" style={{ background: Color(mode, "#6B7280") }}></div>
-            </div>
+          <div className="flex w-full justify-evenly">
+            <LineChart />
+            <LineChart />
           </div>
         </div>
       </main>
