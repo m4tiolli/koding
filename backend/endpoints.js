@@ -77,6 +77,25 @@ module.exports = function (app) {
     );
   });
 
+  // Está igual ao put normal, se formos atualizar o email, aí esse irá servir, caso não, não servirá!
+  // app.put("/responsavel/esqueciSenha/:id", (req, res) => {
+  //   const { senha } = req.body;
+  //   const userId = req.params.id;
+  
+  //   db.query(
+  //     "UPDATE responsavel SET senha = ? WHERE id = ?",
+  //     [senha, userId],
+  //     (err, result) => {
+  //       if (err) {
+  //         console.error("Erro ao alterar senha da criança", err);
+  //         res.status(500).json({ error: "Erro ao alterar senha da criança" });
+  //       } else {
+  //         res.json({ message: "Senha da criança alterada com sucesso" });
+  //       }
+  //     }
+  //   );
+  // });
+
   // Login - responsável
   app.post("/responsavel/login", (req, res) => {
     const { email, senha } = req.body;
@@ -168,6 +187,24 @@ module.exports = function (app) {
         res.json({ message: "Usuário deletado com sucesso" });
       }
     });
+  });
+
+  app.put("/crianca/esqueciSenha/:id", (req, res) => {
+    const { senha } = req.body;
+    const userId = req.params.id;
+  
+    db.query(
+      "UPDATE crianca SET senha = ? WHERE id = ?",
+      [senha, userId],
+      (err, result) => {
+        if (err) {
+          console.error("Erro ao alterar senha da criança", err);
+          res.status(500).json({ error: "Erro ao alterar senha da criança" });
+        } else {
+          res.json({ message: "Senha da criança alterada com sucesso" });
+        }
+      }
+    );
   });
 
   //verifica email existente
