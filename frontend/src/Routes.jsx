@@ -11,6 +11,7 @@ import Aprender from "./Screens/Aprender/Aprender";
 import Configuracao from "./Screens/Configuracao/Configuracao";
 import Flexbox from "./Screens/Jogos/Flexbox/Flexbox";
 import Sentenca from "./Screens/Jogos/Sentenca/Sentenca";
+import Input from "./Screens/Jogos/Input/Input";
 import Desempenho from "./Screens/Desempenho/Desempenho";
 import ConfiguracaoR from "./Screens/ConfiguracaoR/ConfiguracaoR";
 import HomeR from "./Screens/HomeR/HomeR";
@@ -36,6 +37,7 @@ function AppRoutes() {
         <Route exact path="/configuracao" element={<Configuracao />} /> 
         <Route exact path="/flexbox" element={<Flexbox />} /> 
         <Route exact path="/sentenca" element={<Sentenca />} />
+        <Route exact path="/input" element={<Input />}/>;
         <Route exact path="/desempenho" element={<Desempenho />} /> 
         <Route exact path="/pais/configuracao" element={<ConfiguracaoR />} /> 
         <Route exact path="/pais/home" element={<HomeR />} /> 
