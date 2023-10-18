@@ -156,3 +156,13 @@ SELECT responsavel.nome, crianca.username, pontuacoes.pontuacao, pontuacoes.data
 FROM responsavel 
 INNER JOIN crianca ON crianca.responsavel = responsavel.id
 INNER JOIN pontuacoes ON pontuacoes.crianca = crianca.id; 
+
+SELECT crianca.id AS 'ID da Criança', crianca.nome AS 'Nome da Criança', crianca.username, 
+crianca.email AS 'E-mail da Criança', crianca.senha AS 'Senha da Criança', responsavel.id AS 'ID do Responsável', 
+responsavel.nome AS 'Nome do Responsável', responsavel.cpf, responsavel.telefone, 
+responsavel.email AS 'E-mail do Responsável', responsavel.senha AS 'Senha do Responsável', 
+pontuacoes.id AS 'ID da Pontuação', pontuacoes.crianca AS 'ID da Criança na Pontuação', 
+pontuacoes.pontuacao, pontuacoes.`data`
+FROM crianca
+INNER JOIN responsavel ON responsavel.id = crianca.responsavel
+INNER JOIN pontuacoes ON pontuacoes.crianca = crianca.id;
