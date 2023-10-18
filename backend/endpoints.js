@@ -108,12 +108,7 @@ module.exports = function (app) {
         } else if (result.length === 0) {
           res.status(401).json({ error: "Credenciais inválidas" });
         } else {
-          const user = { id: result[0].id, email: result[0].email };
-          console.log("ID do responsável:", req.session.responsavelId);
-          res.json({
-            message: "Login realizado com sucesso!",
-            user: result[0],
-          });
+          res.json({ id: result[0] });
         }
       }
     );
