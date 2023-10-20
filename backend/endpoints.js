@@ -126,6 +126,27 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/criancaR/:responsavel", (req, res) => {
+    const responsavelId = req.params.responsavel;
+    db.query("SELECT crianca.id AS 'ID da Criança', crianca.nome AS 'Nome da Criança', crianca.username, " +
+      "crianca.email AS 'E-mail da Criança', crianca.senha AS 'Senha da Criança', responsavel.id AS 'ID do Responsável', " +
+      "responsavel.nome AS 'Nome do Responsável', responsavel.cpf, responsavel.telefone, responsavel.email AS 'E-mail do Responsável', responsavel.senha AS 'Senha do Responsável', pontuacoes.id AS 'ID da Pontuação', " +
+      "pontuacoes.crianca AS 'ID da Criança na Pontuação', pontuacoes.pontuacao, pontuacoes.`data` " +
+      "FROM crianca " +
+      "INNER JOIN responsavel ON responsavel.id = crianca.responsavel " +
+      "INNER JOIN pontuacoes ON pontuacoes.crianca = crianca.id " +
+      "WHERE crianca.responsavel = ?",
+      [responsavelId],
+      (err, result) => {
+        if (err) {
+          console.error("Erro ao buscar criança(as)", err);
+          res.status(500).json({ error: "Erro ao buscar criança(as)" });
+        } else {
+          res.json(result);
+        }
+      });
+  });
+
   app.post("/crianca", async (req, res) => {
     // const responsavelId = localStorage.idResponsavel;
     const responsavelId = req.session.responsavelId;
