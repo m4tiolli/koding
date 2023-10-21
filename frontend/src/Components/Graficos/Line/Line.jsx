@@ -1,21 +1,24 @@
 import { Line } from 'react-chartjs-2';
 import 'chart.js/auto'; // Importe o Chart.js
+import { useState } from 'react';
 
 
-const LineChart = () => {
-    // Dados do gráfico
+const LineChart = ({valores}) => {
+
+const [opcao, setOpcao] = useState('24')
+
     const data = {
         labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
         datasets: [
             {
                 label: 'Pontuação',
-                data: [69, 24, 69, 24, 69, 24, 69], // Substitua esses valores pelos seus próprios dados
+                data: [69, 24, 69, 24, 69, 24, 69],
                 borderColor: (context) => {
                     const chart = context.chart;
                     const { ctx, chartArea } = chart;
 
                     if (!chartArea) {
-                        return null; // O gráfico não foi renderizado ainda
+                        return null;
                     }
 
                     const gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
@@ -29,7 +32,6 @@ const LineChart = () => {
         ],
     };
 
-    // Configurações do gráfico
     const options = {
         scales: {
             y: {
@@ -47,6 +49,8 @@ const LineChart = () => {
                         className="p-2 w-42 rounded-xl border-solid border-black outline-none shadow-lg cursor-pointer"
                         name="time"
                         id="time"
+                        onChange={(e)=>{setOpcao(e.target.value)}}
+                        value={opcao}
                     >
                         <option value="24">Últimas 24h</option>
                         <option value="48">Últimas 48h</option>

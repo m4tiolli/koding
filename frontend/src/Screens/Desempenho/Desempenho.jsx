@@ -7,6 +7,7 @@ import {
   tritanomaly,
   deuteranomaly,
 } from "./../../Components/ColorBlind";
+import axios from 'axios';
 
 function Desempenho() {
   const mode = localStorage.getItem("theme");
@@ -38,7 +39,7 @@ function Desempenho() {
       setResponsive(window.innerWidth < 900);
     };
 
-    handleResize(); // Set initial state
+    handleResize()
 
     window.addEventListener("resize", handleResize);
 
@@ -46,6 +47,18 @@ function Desempenho() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const userId = localStorage.getItem("id");
+
+  const [crianca, setCrianca] = useState([])
+
+  console.log(crianca)
+
+  useEffect(() => {
+    axios.get(`https://tcckoding.azurewebsites.net/criancaR/${userId}`)
+      .then((response) => { setCrianca(response.data) })
+      .catch((err) => console.error(err))
+  }, [userId])
 
   return (
     <div
