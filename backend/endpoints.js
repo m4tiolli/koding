@@ -165,7 +165,7 @@ module.exports = function (app) {
       }
     );
   });
-
+  
   app.post("/crianca", async (req, res) => {
     // const responsavelId = localStorage.idResponsavel;
     const responsavelId = req.session.responsavelId;

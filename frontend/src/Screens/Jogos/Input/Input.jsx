@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Input() {
@@ -18,6 +18,7 @@ function Input() {
     },
   ];
 
+  if (!localStorage.getItem("pontuacao")) localStorage.setItem("pontuacao", 0)
   const [faseAtual, setFaseAtual] = useState(0);
   const [respostaEscolhida, setRespostaEscolhida] = useState(null);
   const [respostaEscrita, setRespostaEscrita] = useState('');
@@ -31,6 +32,7 @@ function Input() {
       setRespostaEscrita('');
       setResposta('');
     } else {
+      enviarPontuacao();
       alert("Você completou todas as fases!");
       navigate("/desafios");
     }
@@ -39,24 +41,50 @@ function Input() {
   const verificarResposta = () => {
     const fase = fases[faseAtual];
     if (fase.tipo === "alternativa" && respostaEscolhida === fase.respostaCorreta) {
-      setResposta("Você acertou!");
+      alert("Você acertou!");
+      var local = parseInt(localStorage.pontuacao)
+      local = local + 100
+      localStorage.setItem("pontuacao", local)
       avancarFase();
     } else if (fase.tipo === "escrita" && respostaEscrita.toLowerCase() === fase.respostaCorreta.toLowerCase()) {
-      setResposta("Você acertou!");
+      alert("Você acertou!");
+      var local = parseInt(localStorage.pontuacao)
+      local = local + 100
+      localStorage.setItem("pontuacao", local)
       avancarFase();
     } else {
-      setResposta("Você errou!");
+      alert("Você errou!");
       avancarFase();
     }
   };
+
+  const enviarPontuacao = () => {
+    const crianca = localStorage.getItem('id');
+    const pontuacao = localStorage.getItem("pontuacao");
+    const data = new Date();
+    const body = { crianca, pontuacao, data };
+    fetch(`https://tcckoding.azurewebsites.net/crianca/pontuacao`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    })
+      .then(() => {
+        alert('Pontuação enviada com sucesso');
+        localStorage.removeItem("pontuacao")
+      })
+      .catch((error) => {
+        console.log(error);
+        alert('Erro ao enviar a pontuação');
+      });
+  }
 
   const navigate = useNavigate();
 
   return (
     <div>
-        <h1 className="flex justify-center font-bold text-gray-700 text-2xl dark:text-white">
-            {titulo} 
-          </h1>
+      <h1 className="flex justify-center font-bold text-gray-700 text-2xl dark:text-white">
+        {titulo}
+      </h1>
       {resposta && <p>{resposta}</p>}
       {faseAtual < fases.length && (
         <div>
