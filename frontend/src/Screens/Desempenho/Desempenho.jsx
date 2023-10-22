@@ -48,21 +48,21 @@ function Desempenho() {
     };
   }, []);
 
-  const userId = localStorage.getItem("id");
+  const user = localStorage.getItem("user");
 
   const [crianca, setCrianca] = useState([])
 
   console.log(crianca)
 
   useEffect(() => {
-    axios.get(`https://tcckoding.azurewebsites.net/criancaR/${userId}`)
-      .then((response) => { setCrianca(response.data) })
+    axios.get(`https://tcckoding.azurewebsites.net/criancaR/${user.id}`)
+      .then((response) => setCrianca(response.data))
       .catch((err) => console.error(err))
-  }, [userId])
+  }, [user])
 
   return (
     <div
-      className="flex h-full w-full"
+      className="flex min-h-screen w-full"
       style={{
         background: "linear-gradient(108deg, #C6D6FF 0%, #FFFFFF 100%)",
       }}

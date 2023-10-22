@@ -1,7 +1,20 @@
 const mysql = require("mysql");
 const cors = require("cors");
-// const LocalStorage = require("node-localstorage").LocalStorage;
-// localStorage = new LocalStorage("./index");
+const multer = require("multer");
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "imagens/"); //destination folder
+  },
+  filename: function (req, file, cb) {
+    const date = new Date();
+    const nome = date.getDate() + "-" + file.originalname;
+    cb(null, nome); //filename
+  },
+});
+
+const upload = multer({ storage });
+
 module.exports = function (app) {
   app.use(cors());
 
@@ -23,11 +36,13 @@ module.exports = function (app) {
     });
   });
 
-  app.post("/responsavel", (req, res) => {
+  app.post("/responsavel", upload.single("imagem"), (req, res) => {
     const { nome, cpf, telefone, email, senha } = req.body;
+    const imagem = req.file.filename; // O nome do arquivo de imagem enviado
+
     db.query(
-      "INSERT INTO responsavel (nome, cpf, telefone, email, senha) VALUES (?, ?, ?, ?, ?)",
-      [nome, cpf, telefone, email, senha],
+      "INSERT INTO responsavel (nome, cpf, telefone, email, senha, imagem) VALUES (?, ?, ?, ?, ?, ?)",
+      [nome, cpf, telefone, email, senha, "imagens/" + imagem],
       (err, result) => {
         if (err) {
           console.error("Erro ao cadastrar usuário", err);
@@ -42,13 +57,14 @@ module.exports = function (app) {
     );
   });
 
-  app.put("/responsavel/:id", (req, res) => {
-    const { email, senha } = req.body;
+  app.put("/responsavel/:id", upload.single("imagem"), (req, res) => {
+    const { nome, cpf, telefone, email, senha } = req.body;
+    const imagem = req.file.filename; // O nome do arquivo de imagem enviado
     const userId = req.params.id;
 
     db.query(
-      "UPDATE responsavel SET email = ?, senha = ? WHERE id = ?",
-      [email, senha, userId],
+      "UPDATE responsavel SET nome = ?, cpf = ?, telefone = ?, email = ?, senha = ?, imagem = ? WHERE id = ?",
+      [nome, cpf, telefone, email, senha, imagem, userId],
       (err, result) => {
         if (err) {
           console.error("Erro ao alterar usuário", err);
@@ -108,7 +124,7 @@ module.exports = function (app) {
         } else if (result.length === 0) {
           res.status(401).json({ error: "Credenciais inválidas" });
         } else {
-          res.json({ id: result[0] });
+          res.json(result[0]);
         }
       }
     );
@@ -128,14 +144,15 @@ module.exports = function (app) {
 
   app.get("/criancaR/:responsavel", (req, res) => {
     const responsavelId = req.params.responsavel;
-    db.query("SELECT crianca.id AS 'ID da Criança', crianca.nome AS 'Nome da Criança', crianca.username, " +
-      "crianca.email AS 'E-mail da Criança', crianca.senha AS 'Senha da Criança', responsavel.id AS 'ID do Responsável', " +
-      "responsavel.nome AS 'Nome do Responsável', responsavel.cpf, responsavel.telefone, responsavel.email AS 'E-mail do Responsável', responsavel.senha AS 'Senha do Responsável', pontuacoes.id AS 'ID da Pontuação', " +
-      "pontuacoes.crianca AS 'ID da Criança na Pontuação', pontuacoes.pontuacao, pontuacoes.`data` " +
-      "FROM crianca " +
-      "INNER JOIN responsavel ON responsavel.id = crianca.responsavel " +
-      "INNER JOIN pontuacoes ON pontuacoes.crianca = crianca.id " +
-      "WHERE crianca.responsavel = ?",
+    db.query(
+      "SELECT crianca.id AS 'ID da Criança', crianca.nome AS 'Nome da Criança', crianca.username, " +
+        "crianca.email AS 'E-mail da Criança', crianca.senha AS 'Senha da Criança', responsavel.id AS 'ID do Responsável', " +
+        "responsavel.nome AS 'Nome do Responsável', responsavel.cpf, responsavel.telefone, responsavel.email AS 'E-mail do Responsável', responsavel.senha AS 'Senha do Responsável', pontuacoes.id AS 'ID da Pontuação', " +
+        "pontuacoes.crianca AS 'ID da Criança na Pontuação', pontuacoes.pontuacao, pontuacoes.`data` " +
+        "FROM crianca " +
+        "INNER JOIN responsavel ON responsavel.id = crianca.responsavel " +
+        "INNER JOIN pontuacoes ON pontuacoes.crianca = crianca.id " +
+        "WHERE crianca.responsavel = ?",
       [responsavelId],
       (err, result) => {
         if (err) {
@@ -144,7 +161,8 @@ module.exports = function (app) {
         } else {
           res.json(result);
         }
-      });
+      }
+    );
   });
 
   app.post("/crianca", async (req, res) => {
@@ -254,7 +272,7 @@ module.exports = function (app) {
         } else if (result.length === 0) {
           res.status(401).json({ error: "Credenciais inválidas" });
         } else {
-          res.json({ id: result[0] });
+          res.json(result[0]);
         }
       }
     );
@@ -316,9 +334,9 @@ module.exports = function (app) {
     const responsavelId = req.params.responsavel;
     db.query(
       "SELECT crianca.username, pontuacoes.pontuacao, pontuacoes.data " +
-      "FROM crianca " +
-      "INNER JOIN pontuacoes ON pontuacoes.crianca = crianca.id " +
-      "WHERE crianca.responsavel = ?",
+        "FROM crianca " +
+        "INNER JOIN pontuacoes ON pontuacoes.crianca = crianca.id " +
+        "WHERE crianca.responsavel = ?",
       [responsavelId],
       (err, result) => {
         if (err) {
@@ -351,8 +369,8 @@ module.exports = function (app) {
 
     db.query(
       "SELECT COUNT(*) AS quantidadeLinguagens " +
-      "FROM LinguagensCrianca " +
-      "WHERE crianca = ?",
+        "FROM LinguagensCrianca " +
+        "WHERE crianca = ?",
       [criancaId],
       (err, result) => {
         if (err) {

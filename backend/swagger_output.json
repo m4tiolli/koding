@@ -5,10 +5,10 @@
     "title": "REST API",
     "description": ""
   },
-  "host": "tcckoding.azurewebsites.net",
+  "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/responsavel": {
@@ -77,6 +77,15 @@
             "schema": {
               "type": "object",
               "properties": {
+                "nome": {
+                  "example": "any"
+                },
+                "cpf": {
+                  "example": "any"
+                },
+                "telefone": {
+                  "example": "any"
+                },
                 "email": {
                   "example": "any"
                 },
@@ -225,6 +234,27 @@
           },
           "401": {
             "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/criancaR/{responsavel}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "responsavel",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
           },
           "500": {
             "description": "Internal Server Error"

@@ -1,8 +1,7 @@
-import { GoPencil } from "react-icons/go";
 import { AiFillStar, AiFillHeart } from "react-icons/ai";
 import { FaPencilAlt } from "react-icons/fa";
-
-import { useEffect } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import MenuR from "../../Components/MenuR/MenuR";
 
 import {
@@ -33,6 +32,34 @@ function Perfil() {
       document.documentElement.classList.remove("dark");
     }
   }, []);
+
+  const [nome, setNome] = useState('')
+  const [cpf, setCpf] = useState('')
+  const [telefone, setTelefone] = useState('')
+  const [email, setEmail] = useState('')
+  const [senha, setSenha] = useState('')
+  const [imagem, setImagem] = useState('')
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setImagem(file)
+  };
+
+  const handleSubmit = async () => {
+    const id = JSON.parse(localStorage.user).id
+    const body = { nome, cpf, telefone, email, senha, imagem }
+    try {
+      const response = await axios.put(`http://localhost:3000/responsavel/${id}`, body, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      console.log('Usuário cadastrado com sucesso:', response.data);
+    } catch (error) {
+      console.error('Erro ao cadastrar usuário:', error);
+    }
+  };
+
   return (
     <div
       className="flex h-full w-full"
@@ -106,102 +133,114 @@ function Perfil() {
             </div>
           </container>
 
-          <form
-            action=""
-            method="post"
-            className="flex flex-col xl:mt-40 xl:gap-y-8 laptop:mt-40 mt-28 laptop:gap-y-8 gap-y-5 laptop:text-xl text-lg"
-          >
-            <span className="flex justify-center xl:text-3xl text-2xl font-semibold dark:text-white">
-              Alterar Dados
-            </span>
+          <span className="flex justify-center xl:text-3xl text-2xl font-semibold dark:text-white">
+            Alterar Dados
+          </span>
 
-            <div className="w-2/5 lg:w-[440px] flex flex-col lg:flex-row items-center">
-              <div className="w-full dark:text-white">
-                <span>Nome</span>
-              </div>
-
-              <label className="">
-                <input
-                  className="ml-8 p-2 w-42 rounded-xl border-solid border-black outline-none shadow-lg"
-                  style={{ background: "#efefef" }}
-                  name="name"
-                  type="text"
-                />
-              </label>
+          <div className="w-2/5 lg:w-[440px] flex flex-col lg:flex-row items-center">
+            <div className="w-full dark:text-white">
+              <span>Nome</span>
             </div>
 
-            <div className="w-2/5 lg:w-[440px] flex flex-col lg:flex-row items-center">
-              <div className="w-full dark:text-white">
-                <span>Username</span>
-              </div>
+            <label className="">
+              <input
+                className="ml-8 p-2 w-42 rounded-xl border-solid border-black outline-none shadow-lg"
+                style={{ background: "#efefef" }}
+                name="name"
+                type="text"
+                value={nome}
+                onChange={(e) => setNome(e.target.value)}
+              />
+            </label>
+          </div>
 
-              <label>
-                <input
-                  className="ml-8 p-2 rounded-xl border-solid border-black outline-none shadow-lg"
-                  style={{ background: "#efefef" }}
-                  name="username"
-                  type="text"
-                />
-              </label>
+          <div className="w-2/5 lg:w-[440px] flex flex-col lg:flex-row items-center">
+            <div className="w-full dark:text-white">
+              <span>Username</span>
             </div>
 
-            <div className="w-2/5 lg:w-[440px] flex flex-col lg:flex-row items-center">
-              <div className="w-full dark:text-white">
-                <span>E-mail</span>
-              </div>
+            <label>
+              <input
+                className="ml-8 p-2 rounded-xl border-solid border-black outline-none shadow-lg"
+                style={{ background: "#efefef" }}
+                name="username"
+                type="text"
+                value={cpf}
+                onChange={(e) => setCpf(e.target.value)}
+              />
+            </label>
+          </div>
 
-              <label>
-                <input
-                  className="ml-8 p-2 rounded-xl border-solid border-black outline-none shadow-lg"
-                  style={{ background: "#efefef" }}
-                  name="email"
-                  type="email"
-                />
-              </label>
+          <div className="w-2/5 lg:w-[440px] flex flex-col lg:flex-row items-center">
+            <div className="w-full dark:text-white">
+              <span>E-mail</span>
             </div>
 
-            <div className="w-2/5 lg:w-[440px] flex flex-col lg:flex-row items-center">
-              <div className="w-full dark:text-white">
-                <span>Senha</span>
-              </div>
+            <label>
+              <input
+                className="ml-8 p-2 rounded-xl border-solid border-black outline-none shadow-lg"
+                style={{ background: "#efefef" }}
+                name="email"
+                value={telefone}
+                onChange={(e) => setTelefone(e.target.value)}
+              />
+            </label>
+          </div>
 
-              <label>
-                <input
-                  className="ml-8 p-2 rounded-xl border-solid border-black outline-none shadow-lg"
-                  style={{ background: "#efefef" }}
-                  name="password"
-                  type="password"
-                />
-              </label>
+          <div className="w-2/5 lg:w-[440px] flex flex-col lg:flex-row items-center">
+            <div className="w-full dark:text-white">
+              <span>Senha</span>
             </div>
 
-            <div className="w-2/5 lg:w-[440px] flex flex-col lg:flex-row items-center">
-              <div className="w-full dark:text-white">
-                <span>Confirmar senha</span>
-              </div>
+            <label>
+              <input
+                className="ml-8 p-2 rounded-xl border-solid border-black outline-none shadow-lg"
+                style={{ background: "#efefef" }}
+                name="password"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </label>
+          </div>
 
-              <label>
-                <input
-                  className="ml-8 p-2 rounded-xl border-solid border-black outline-none shadow-lg"
-                  style={{ background: "#efefef" }}
-                  name="password"
-                  type="password"
-                />
-              </label>
+          <div className="w-2/5 lg:w-[440px] flex flex-col lg:flex-row items-center">
+            <div className="w-full dark:text-white">
+              <span>Confirmar senha</span>
             </div>
-          </form>
+
+            <label>
+              <input
+                className="ml-8 p-2 rounded-xl border-solid border-black outline-none shadow-lg"
+                style={{ background: "#efefef" }}
+                name="password"
+                value={senha}
+                onChange={(e) => setSenha(e.target.value)}
+              />
+            </label>
+
+            <label>
+              <input
+                className="ml-8 p-2 rounded-xl border-solid border-black outline-none shadow-lg"
+                style={{ background: "#efefef" }}
+                name="password"
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+              />
+            </label>
+          </div>
+          <div className="flex items-center justify-center mt-12 mb-14 laptop:ml-[500px] xl:ml-[500px]">
+            <button
+              className="w-auto h-10 p-3 mt-5 lg:mt-0 flex items-center rounded-xl shadow-lg text-white"
+              style={{ background: Color(mode, "#22C55E") }}
+              onClick={handleSubmit}
+            >
+              Salvar Alterações
+            </button>
+          </div>
         </div>
-        <div className="flex items-center justify-center mt-12 mb-14 laptop:ml-[500px] xl:ml-[500px]">
-          <button
-            className="w-auto h-10 p-3 mt-5 lg:mt-0 flex items-center rounded-xl shadow-lg text-white"
-            style={{ background: Color(mode, "#22C55E") }}
-            type="submit"
-          >
-            Salvar Alterações
-          </button>
-        </div>
-      </main>
-    </div>
+      </main >
+    </div >
   );
 }
 
