@@ -5,7 +5,7 @@
     "title": "REST API",
     "description": ""
   },
-  "host": "tcckoding.azurewebsites.com",
+  "host": "tcckoding.azurewebsites.net",
   "basePath": "/",
   "schemes": [
     "https"
