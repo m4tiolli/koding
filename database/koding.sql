@@ -101,6 +101,7 @@ INSERT INTO responsavel VALUES
 INSERT INTO crianca VALUES 
 (DEFAULT, 'matiolli junior', 'matiasjr', 'matiasjr@gmail.com', '123', 1, default),
 (DEFAULT, 'marcos', 'marcos', 'marcos@gmail.com', '123', 2, default),
+(DEFAULT, 'matiolli', 'matiolli', 'marcos1@gmail.com', '123', 2, default),
 (DEFAULT, 'ju', 'ju', 'ju@gmail.com', '123', 3, default);
 
 INSERT INTO pontuacoes VALUES (DEFAULT, 1, 100, '2023-10-07');
