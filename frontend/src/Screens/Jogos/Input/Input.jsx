@@ -20,7 +20,7 @@ function Input() {
 
   if (!localStorage.getItem("pontuacao")) localStorage.setItem("pontuacao", 0)
   const [faseAtual, setFaseAtual] = useState(0);
-  const [respostaEscolhida, setRespostaEscolhida] = useState(null);
+  const [respostaEscolhida, setRespostaEscolhida] = useState([]);
   const [respostaEscrita, setRespostaEscrita] = useState('');
   const [resposta, setResposta] = useState('');
   const titulo = fases[faseAtual].titulo;
@@ -28,7 +28,7 @@ function Input() {
   const avancarFase = () => {
     if (faseAtual < fases.length - 1) {
       setFaseAtual(faseAtual + 1);
-      setRespostaEscolhida(null);
+      setRespostaEscolhida([]);
       setRespostaEscrita('');
       setResposta('');
     } else {
@@ -38,9 +38,27 @@ function Input() {
     }
   };
 
+  const handleWordClick = (opcao) => {
+    if (respostaEscolhida.includes(opcao)) {
+      const newRespostaEscolhida = respostaEscolhida.filter((word) => word !== opcao);
+      setRespostaEscolhida(newRespostaEscolhida);
+    } else {
+      setRespostaEscolhida([opcao]);
+    }
+  };
+
+  const renderFrase = () => {
+    const frase = fases[faseAtual].pergunta;
+    let fraseRenderizada = frase;
+    respostaEscolhida.forEach((opcao) => {
+      fraseRenderizada = fraseRenderizada.replace("____", opcao);
+    });
+    return fraseRenderizada;
+  };
+
   const verificarResposta = () => {
     const fase = fases[faseAtual];
-    if (fase.tipo === "alternativa" && respostaEscolhida === fase.respostaCorreta) {
+    if (fase.tipo === "alternativa" && respostaEscolhida.join("") === fase.respostaCorreta) {
       alert("Você acertou!");
       var local = parseInt(localStorage.pontuacao)
       local = local + 100
@@ -88,12 +106,16 @@ function Input() {
       {resposta && <p>{resposta}</p>}
       {faseAtual < fases.length && (
         <div>
+          <h2>{renderFrase()}</h2>
           {fases[faseAtual].tipo === "alternativa" ? (
             <div>
-              <h2>{fases[faseAtual].pergunta}</h2>
               <div>
                 {fases[faseAtual].opcoes.map((opcao, index) => (
-                  <button key={index} onClick={() => setRespostaEscolhida(opcao)}>
+                  <button
+                    key={index}
+                    onClick={() => handleWordClick(opcao)}
+                    className={respostaEscolhida.includes(opcao) ? 'selected' : ''}
+                  >
                     {opcao}
                   </button>
                 ))}
@@ -101,7 +123,6 @@ function Input() {
             </div>
           ) : (
             <div>
-              <h2>{fases[faseAtual].pergunta}</h2>
               <input
                 type="text"
                 value={respostaEscrita}
@@ -114,6 +135,7 @@ function Input() {
       )}
     </div>
   );
+  
 }
 
 export default Input;
