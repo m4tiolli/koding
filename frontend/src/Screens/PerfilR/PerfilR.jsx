@@ -225,19 +225,6 @@ function Perfil() {
                 />
               </label>
             </div>
-
-            <div className="w-2/5 lg:w-[410px] flex flex-col lg:flex-row items-center">
-              <label>
-                <input
-                  className="ml-8 p-2 rounded-xl border-solid border-black outline-none shadow-lg"
-                  style={{ background: "#efefef" }}
-                  name="password"
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageChange}
-                />
-              </label>
-            </div>
             <div className="w-2/5 lg:w-[410px] flex flex-col lg:flex-row justify-center items-center">
               <button
                 className="w-auto h-10 p-3 mt-5 lg:mt-0 flex items-center rounded-xl shadow-lg text-white"

@@ -8,8 +8,7 @@ CREATE TABLE IF NOT EXISTS responsavel(
     cpf VARCHAR(255),
     telefone VARCHAR(255),
     email VARCHAR(255),
-    senha VARCHAR(255),
-    imagem VARCHAR(255)
+    senha VARCHAR(255)
 );
  
 CREATE TABLE IF NOT EXISTS crianca(
@@ -19,8 +18,8 @@ CREATE TABLE IF NOT EXISTS crianca(
     email VARCHAR(255),
     senha VARCHAR(255), 
     responsavel INT NOT NULL,
-    FOREIGN KEY (responsavel) REFERENCES responsavel (id),
-    imagem VARCHAR(255)
+    imagem LONGTEXT,
+    FOREIGN KEY (responsavel) REFERENCES responsavel (id)
 );
 
 CREATE TABLE IF NOT EXISTS pontuacoes(
@@ -95,9 +94,9 @@ CREATE TABLE feedbacks(
 );
 
 INSERT INTO responsavel VALUES 
-(DEFAULT, 'ju', '13142413', '7236294', 'ju@gmail.com', '321', null),
-(DEFAULT, 'matiolli', '13142413', '7236294', 'matias@gmail.com', '321', null),
-(DEFAULT, 'marcos', '13142413', '7236294', 'marcos@gmail.com', '321', null);
+(DEFAULT, 'ju', '13142413', '7236294', 'ju@gmail.com', '321'),
+(DEFAULT, 'matiolli', '13142413', '7236294', 'matias@gmail.com', '321'),
+(DEFAULT, 'marcos', '13142413', '7236294', 'marcos@gmail.com', '321');
 
 INSERT INTO crianca VALUES 
 (DEFAULT, 'matiolli junior', 'matiasjr', 'matiasjr@gmail.com', '123', 1, default),

@@ -1,17 +1,19 @@
 import { useEffect } from "react";
 import Navbar from "../../Components/Navbar/Navbar";
 import { useState } from "react";
-import LineChart from './../../Components/Graficos/Line/Line';
+import LineChart from "./../../Components/Graficos/Line/Line";
 import {
   protanomaly,
   tritanomaly,
   deuteranomaly,
 } from "./../../Components/ColorBlind";
-import axios from 'axios';
+import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 function Desempenho() {
   const mode = localStorage.getItem("theme");
-
+  const location = useLocation();
+  const dadosCrianca = location.state?.dadosCrianca || {};
   function Color(mode, color) {
     var newcolor;
     if (mode === "protanomaly") {
@@ -39,7 +41,7 @@ function Desempenho() {
       setResponsive(window.innerWidth < 900);
     };
 
-    handleResize()
+    handleResize();
 
     window.addEventListener("resize", handleResize);
 
@@ -49,16 +51,6 @@ function Desempenho() {
   }, []);
 
   const user = localStorage.getItem("user");
-
-  const [crianca, setCrianca] = useState([])
-
-  console.log(crianca)
-
-  useEffect(() => {
-    axios.get(`https://tcckoding.azurewebsites.net/criancaR/${user.id}`)
-      .then((response) => setCrianca(response.data))
-      .catch((err) => console.error(err))
-  }, [user])
 
   return (
     <div
@@ -116,7 +108,7 @@ function Desempenho() {
                 )} 0%, ${Color(mode, "#1E7BD6")} 100%`,
               }}
             >
-              <span className="text-white text-6xl font-semibold">100</span>
+              <span className="text-white text-6xl font-semibold">{dadosCrianca.SomaPontuacao}</span>
               <span className="text-white text-xl text-center">
                 Nível de Experiência
               </span>

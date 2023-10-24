@@ -1,8 +1,8 @@
 import { HashRouter, Route, Routes } from "react-router-dom";
-import Landing from './Screens/Landing/Landing';
-import Cadastro from './Screens/Cadastro/Cadastro';
-import Login from './Screens/Login/Login';
-import Materiais from './Screens/Materiais/Materiais';
+import Landing from "./Screens/Landing/Landing";
+import Cadastro from "./Screens/Cadastro/Cadastro";
+import Login from "./Screens/Login/Login";
+import Materiais from "./Screens/Materiais/Materiais";
 import Home from "./Screens/Home/Home";
 import Aulas from "./Screens/Aulas/Aulas";
 import Perfil from "./Screens/Perfil/Perfil";
@@ -19,7 +19,7 @@ import PerfilR from "./Screens/PerfilR/PerfilR";
 import CadastroCrianca from "./Screens/CadastroCrianca/CadastroCrianca";
 import Desafios from "./Screens/Desafios/Desafios";
 import Conteudo from "./Screens/Conteudo/Conteudo";
-
+import SelectCrianca from "./Screens/SelectCrianca/SelectCrianca";
 
 function AppRoutes() {
   return (
@@ -34,18 +34,18 @@ function AppRoutes() {
         <Route exact path="/perfil" element={<Perfil />} />
         <Route exact path="/ajuda" element={<Ajuda />} />
         <Route exact path="/aprender" element={<Aprender />} />
-        <Route exact path="/configuracao" element={<Configuracao />} /> 
-        <Route exact path="/flexbox" element={<Flexbox />} /> 
+        <Route exact path="/configuracao" element={<Configuracao />} />
+        <Route exact path="/flexbox" element={<Flexbox />} />
         <Route exact path="/sentenca" element={<Sentenca />} />
-        <Route exact path="/input" element={<Input />}/>;
-        <Route exact path="/desempenho" element={<Desempenho />} /> 
-        <Route exact path="/pais/configuracao" element={<ConfiguracaoR />} /> 
-        <Route exact path="/pais/home" element={<HomeR />} /> 
-        <Route exact path="/pais/perfil" element={<PerfilR />} /> 
-        <Route exact path="/pais/criar-conta" element={<CadastroCrianca />} /> 
-        <Route exact path="/desafios" element={<Desafios />} /> 
-        <Route exact path="/conteudo" element={<Conteudo />} />  
-
+        <Route exact path="/input" element={<Input />} />;
+        <Route exact path="/desempenho" element={<Desempenho />} />
+        <Route exact path="/pais/configuracao" element={<ConfiguracaoR />} />
+        <Route exact path="/pais/home" element={<HomeR />} />
+        <Route exact path="/pais/perfil" element={<PerfilR />} />
+        <Route exact path="/pais/criar-conta" element={<CadastroCrianca />} />
+        <Route exact path="/desafios" element={<Desafios />} />
+        <Route exact path="/conteudo" element={<Conteudo />} />
+        <Route exact path="/pais/selecionar" element={<SelectCrianca />} />
       </Routes>
     </HashRouter>
   );

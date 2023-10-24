@@ -1,20 +1,5 @@
 const mysql = require("mysql");
 const cors = require("cors");
-const multer = require("multer");
-
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "imagens/"); //destination folder
-  },
-  filename: function (req, file, cb) {
-    const date = new Date();
-    const nome = date.getDate() + "-" + file.originalname;
-    cb(null, nome); //filename
-  },
-});
-
-const upload = multer({ storage });
-
 module.exports = function (app) {
   app.use(cors());
 
@@ -36,13 +21,12 @@ module.exports = function (app) {
     });
   });
 
-  app.post("/responsavel", upload.single("imagem"), (req, res) => {
+  app.post("/responsavel", (req, res) => {
     const { nome, cpf, telefone, email, senha } = req.body;
-    const imagem = req.file.filename; // O nome do arquivo de imagem enviado
 
     db.query(
-      "INSERT INTO responsavel (nome, cpf, telefone, email, senha, imagem) VALUES (?, ?, ?, ?, ?, ?)",
-      [nome, cpf, telefone, email, senha, "imagens/" + imagem],
+      "INSERT INTO responsavel (nome, cpf, telefone, email, senha, imagem) VALUES (?, ?, ?, ?, ?)",
+      [nome, cpf, telefone, email, senha],
       (err, result) => {
         if (err) {
           console.error("Erro ao cadastrar usuário", err);
@@ -57,14 +41,13 @@ module.exports = function (app) {
     );
   });
 
-  app.put("/responsavel/:id", upload.single("imagem"), (req, res) => {
+  app.put("/responsavel/:id", (req, res) => {
     const { nome, cpf, telefone, email, senha } = req.body;
-    const imagem = req.file.filename; // O nome do arquivo de imagem enviado
     const userId = req.params.id;
 
     db.query(
-      "UPDATE responsavel SET nome = ?, cpf = ?, telefone = ?, email = ?, senha = ?, imagem = ? WHERE id = ?",
-      [nome, cpf, telefone, email, senha, imagem, userId],
+      "UPDATE responsavel SET nome = ?, cpf = ?, telefone = ?, email = ?, senha = ? WHERE id = ?",
+      [nome, cpf, telefone, email, senha, userId],
       (err, result) => {
         if (err) {
           console.error("Erro ao alterar usuário", err);
