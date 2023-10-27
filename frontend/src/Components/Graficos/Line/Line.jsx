@@ -46,8 +46,8 @@ const LineChart = ({ valores }) => {
     };
 
     return (
-        <div className="flex flex-col lg:flex-row lg:-ml-12 -ml-40 xl:mx-5 notebook:-ml-5 lg:gap-x-24 gap-x-64 w-1/2" >
-            <div className="mt-10 lg:w-11/12 lg:mr-0 w-12/12 mr-5 space-y-3 mb-10">
+        <div className="flex flex-col lg:flex-row lg:-ml-1 md:-ml-20 md:w-[500px] lg:w-[700px] -ml-44 xl:mx-5 notebook:-ml-5 lg:gap-x-24 gap-x-64 w-[300px]" >
+            <div className="mt-14 lg:w-11/12 lg:mr-0 w-12/12 mobile375:mr-0 mobile375:ml-5 justify-center mobile425:-mr-16 mr-5 space-y-5 mb-10 flex flex-col">
                 <div className="flex items-center justify-between">
                     <span className="text-xl dark:text-white">Alguma coisa</span>
                     <select

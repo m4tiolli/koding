@@ -1,7 +1,12 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 
-const  Navbar = () => {
+import { BsGraphUp } from "react-icons/bs";
+import { AiOutlineUser } from "react-icons/ai";
+import { BiHelpCircle } from "react-icons/bi";
+
+const Navbar = () => {
   const [burger_class, setBurgerClass] = useState("burger-bar unclicked");
   const [menu_class, setMenuClass] = useState("w-0 invisible");
   const [isMenuClicked, setIsMenuClicked] = useState(false);
@@ -27,8 +32,57 @@ const  Navbar = () => {
         </div>
       </nav>
 
-      <div className={`menu ${menu_class}`}>
-        <p>asdsadasddasdsadd</p>
+      <div
+        className={`menu w-full shadow-lg flex flex-col p-4 text-gray-800 ${menu_class}`}
+      >
+        <div className="flex flex-col mt-20">
+          <div className="flex flex-col space-y-5">
+            <Link to={"/desempenho"}>
+              <span className="inline-flex items-center gap-5">
+                <BsGraphUp className="relative text-3xl">desempenho</BsGraphUp>
+                <span className="text-lg">Desempenho</span>
+              </span>
+            </Link>
+
+            <Link to={"/pais/perfil"}>
+              <span className="inline-flex items-center gap-5">
+                <AiOutlineUser className="relative text-3xl">
+                  perfil
+                </AiOutlineUser>
+                <span className="text-lg">Perfil</span>
+              </span>
+            </Link>
+          </div>
+
+          <div className="flex flex-col space-y-5 mt-5">
+            <Link to={"/pais/configuracao"}>
+              <span className="inline-flex items-center gap-2 w-full">
+                <BiHelpCircle className="relative 2xl:text-3xl text-3xl"></BiHelpCircle>
+                <span className="2xl:text-xl text-lg w-3/4">Configurações</span>
+              </span>
+            </Link>
+
+            <Link to={"/ajuda"}>
+              <span className="inline-flex items-center gap-2 w-full">
+                <BiHelpCircle className="relative 2xl:text-3xl text-3xl"></BiHelpCircle>
+                <span className="2xl:text-lg text-lg w-3/4">
+                  Central de Ajuda
+                </span>
+              </span>
+            </Link>
+            
+            <span className="inline-flex items-center gap-2 w-full">
+              <BiHelpCircle className="relative 2xl:text-3xl text-3xl"></BiHelpCircle>
+              <span className="2xl:text-xl text-lg w-3/4">Sair</span>
+            </span>
+          </div>
+
+          <button className="text-center rounded-lg leading-none bg-[#B0B3C8] px-4 py-2 hover:opacity-70 mt-10">
+            <span className="flex justify-center items-center gap-2 w-full">
+              <span className="2xl:text-xl text-lg">Dar Feedback</span>
+            </span>
+          </button>
+        </div>
       </div>
     </div>
   );

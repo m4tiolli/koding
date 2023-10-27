@@ -41,6 +41,7 @@ export default {
         "4k": "2560px",
         // => @media (min-width: 2560px) { ... }
         mobile375: "375px",
+        mobile425: "425px",
       },
       borderWidth: {
         1: "1px",

@@ -59,7 +59,7 @@ function Desempenho() {
         background: "linear-gradient(108deg, #C6D6FF 0%, #FFFFFF 100%)",
       }}
     >
-      <main className="w-full h-full laptop:h-screen lg:h-screen notebook:h-full justify-center overflow-hidden dark:bg-darkfundoR">
+      <main className="w-full h-full laptop:h-full lg:h-full notebook:h-full justify-center overflow-hidden dark:bg-darkfundoR">
         {responsive ? <Navbar /> : ""}
 
         <div className="flex flex-col lg:ml-72 ml-48 mt-40 ">
@@ -116,9 +116,13 @@ function Desempenho() {
           </div>
 
           {/* Gráficos */}
-          <div className="flex w-full justify-evenly">
-            <LineChart />
-            <LineChart />
+          <div className="flex flex-col w-full justify-evenly">
+            <div>
+              <LineChart />
+            </div>
+            <div>
+              <LineChart />
+            </div>
           </div>
         </div>
       </main>
