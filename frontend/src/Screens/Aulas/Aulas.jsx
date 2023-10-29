@@ -1,10 +1,14 @@
 import { BsFilter } from "react-icons/bs";
 import { BiSearch } from "react-icons/bi";
 import { IoArrowBack } from "react-icons/io5";
+import { AiOutlineClose } from "react-icons/ai";
 
 import { useEffect } from "react";
-import {useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Menu from "../../Components/Menu/Menu";
+
+import { useDisclosure } from "@chakra-ui/react";
+import { Modal, ModalContent } from "@chakra-ui/react";
 
 import {
   protanomaly,
@@ -16,8 +20,10 @@ import CardAula from "../../Components/CardAula/CardAula";
 function Aulas() {
   const mode = localStorage.getItem("theme");
 
-  const location = useLocation()
-  const aulas = location.state.aulas
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const location = useLocation();
+  const aulas = location.state.aulas;
 
   function Color(mode, color) {
     var newcolor;
@@ -61,7 +67,8 @@ function Aulas() {
         <div className="flex h-64 w-5/12 ml-12 -m-20 mb-2 items-center justify-center gap-3">
           <form
             action=""
-            className="flex rounded-xl w-full items-center justify-center text-white text-xl p-2 dark:bg-darkpesquisa" style={{ background: Color(mode, "#811CD7") }}
+            className="flex rounded-xl w-full items-center justify-center text-white text-xl p-2 dark:bg-darkpesquisa"
+            style={{ background: Color(mode, "#811CD7") }}
           >
             <input
               type="text"
@@ -74,7 +81,7 @@ function Aulas() {
 
           {/* Filtro */}
           <div className="flex h-10 w-56 space-x-8 items-center justify-center">
-            <button>
+            <button onClick={onOpen}>
               <BsFilter
                 className="flex items-center justify-center text-4xl text-white rounded-md dark:bg-darkpesquisa"
                 style={{ background: Color(mode, "#811CD7") }}
@@ -84,11 +91,81 @@ function Aulas() {
         </div>
 
         {/* Cards */}
-        {
-          aulas.map((aula, index) => (
-            <CardAula aula={aula} key={index} />
-          ))
-        }
+        {aulas.map((aula, index) => (
+          <CardAula aula={aula} key={index} />
+        ))}
+        
+        <Modal
+          isCentered
+          onClose={onClose}
+          isOpen={isOpen}
+          motionPreset="slideInBottom"
+        >
+          <ModalContent
+            w="30vw"
+            h="15vw"
+            display="flex"
+            marginBottom="20vw"
+            background="#E4D9ED"
+            borderRadius="0.9em"
+            zIndex={100}
+            marginLeft={'auto'}
+            marginTop={'auto'}
+            marginRight={'auto'}
+            marginBottom={'auto'}
+          >
+            {/* Tags */}
+
+            <div className="h-full flex justify-center items-center gap-x-5 flex-wrap">
+              <div className="mb-5">
+                <span className="flex justify-center text-lg">
+                  Filtrar por:
+                </span>
+                <div className="border-b-2 w-32 border-black/50"></div>
+              </div>
+              <div className="flex justify-center gap-y-2 gap-x-3 flex-wrap">
+                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-orange-300">
+                  <AiOutlineClose className="text-xl" />
+                  <span id="filter" className="text-lg">
+                    html
+                  </span>
+                </button>
+                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-blue-300">
+                  <AiOutlineClose className="text-xl" />
+                  <span className="text-lg">css</span>
+                </button>
+                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-yellow-300">
+                  <AiOutlineClose className="text-xl" />
+                  <span className="text-lg">javascript</span>
+                </button>
+                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-purple-300">
+                  <AiOutlineClose className="text-xl" />
+                  <span className="text-lg">php</span>
+                </button>
+                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-orange-300">
+                  <AiOutlineClose className="text-xl" />
+                  <span id="filter" className="text-lg">
+                    estrutura
+                  </span>
+                </button>
+                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-blue-300">
+                  <AiOutlineClose className="text-xl" />
+                  <span className="text-lg">flexbox</span>
+                </button>
+                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-yellow-300">
+                  <AiOutlineClose className="text-xl" />
+                  <span className="text-lg">input</span>
+                </button>
+                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-purple-300">
+                  <AiOutlineClose className="text-xl" />
+                  <span className="text-lg">introdução</span>
+                </button>
+              </div>
+            </div>
+          </ModalContent>
+        </Modal>
+
+      
       </main>
     </div>
   );
