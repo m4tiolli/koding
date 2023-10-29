@@ -97,6 +97,23 @@ const Desafios = () => {
                                     </div>
                                 </div>
                         </div>
+                        <div className="mt-20">
+                                <div className=''>
+                                    <span className="text-3xl font-semibold dark:text-white">PHP - Quiz</span>
+                                    <Link to={"/quiz"}>
+                                    <div className="w-80 h-48 rounded-xl mb-5" style={{ background: Color(mode, "#6D7AC6")}}></div>
+                                    </Link>
+                                    <span></span>
+                                    <div className="w-80 flex flex-wrap gap-x-3 gap-y-3">
+                                        <div className="w-16 p-1 rounded-xl" style={{ background: Color(mode, "#6D7AC6")}}>
+                                            <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate dark:text-white">PHP</span>
+                                        </div>
+                                        <div className="w-32 p-1 rounded-xl" style={{ background: Color(mode, "#6D7AC6")}}>
+                                            <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate dark:text-white">Quiz</span>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
                     </div>
                 </div>
 
