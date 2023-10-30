@@ -128,15 +128,7 @@ module.exports = function (app) {
   app.get("/criancaR/:responsavel", (req, res) => {
     const responsavelId = req.params.responsavel;
     db.query(
-      "SELECT crianca.id AS IdCrianca, crianca.nome AS NomeCrianca, crianca.username, " +
-      "crianca.email AS EmailCrianca, crianca.senha AS SenhaCrianca, responsavel.id AS IdResponsavel, " +
-      "responsavel.nome AS NomeResponsavel, responsavel.cpf, responsavel.telefone, responsavel.email AS EmailResponsavel, responsavel.senha AS SenhaResponsavel, " +
-      "SUM(pontuacoes.pontuacao) AS SomaPontuacao " +
-      "FROM crianca " +
-      "INNER JOIN responsavel ON responsavel.id = crianca.responsavel " +
-      "INNER JOIN pontuacoes ON pontuacoes.crianca = crianca.id " +
-      "WHERE crianca.responsavel = ? " +
-      "GROUP BY crianca.id",
+      "SELECT crianca.id AS IdCrianca, crianca.nome AS NomeCrianca, crianca.username, crianca.email AS EmailCrianca, crianca.senha AS SenhaCrianca, responsavel.id AS IdResponsavel, responsavel.nome AS NomeResponsavel, responsavel.cpf, responsavel.telefone, responsavel.email AS EmailResponsavel, responsavel.senha AS SenhaResponsavel, (SELECT SUM(pontuacao) FROM pontuacoes WHERE pontuacoes.crianca = crianca.id) AS SomaPontuacao FROM crianca INNER JOIN responsavel ON responsavel.id = crianca.responsavel WHERE responsavel = ? GROUP BY crianca.id",
       [responsavelId],
       (err, result) => {
         if (err) {
