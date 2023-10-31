@@ -4,6 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .imagens {
+    @apply rounded-md shadow-md shadow-slate-400 dark:shadow-none w-[10rem] h-[10rem] object-cover hover:opacity-70 hover:scale-95 active:scale-90
+  };
+  .active {
+    @apply ring-4 ring-green-500 opacity-80 scale-95
+  }
+}
+
 * {
   transition: all 0.1s linear;
   box-sizing: border-box;

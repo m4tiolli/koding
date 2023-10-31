@@ -128,7 +128,7 @@ module.exports = function (app) {
   app.get("/criancaR/:responsavel", (req, res) => {
     const responsavelId = req.params.responsavel;
     db.query(
-      "SELECT crianca.id AS IdCrianca, crianca.nome AS NomeCrianca, crianca.username, crianca.email AS EmailCrianca, crianca.senha AS SenhaCrianca, responsavel.id AS IdResponsavel, responsavel.nome AS NomeResponsavel, responsavel.cpf, responsavel.telefone, responsavel.email AS EmailResponsavel, responsavel.senha AS SenhaResponsavel, (SELECT SUM(pontuacao) FROM pontuacoes WHERE pontuacoes.crianca = crianca.id) AS SomaPontuacao FROM crianca INNER JOIN responsavel ON responsavel.id = crianca.responsavel WHERE responsavel = ? GROUP BY crianca.id",
+      "SELECT crianca.id AS IdCrianca, crianca.nome AS NomeCrianca, crianca.username, crianca.imagem, crianca.email AS EmailCrianca, crianca.senha AS SenhaCrianca, responsavel.id AS IdResponsavel,  (SELECT SUM(pontuacao) FROM pontuacoes WHERE pontuacoes.crianca = crianca.id) AS SomaPontuacao FROM crianca INNER JOIN responsavel ON responsavel.id = crianca.responsavel WHERE responsavel = ? GROUP BY crianca.id",
       [responsavelId],
       (err, result) => {
         if (err) {
@@ -142,17 +142,10 @@ module.exports = function (app) {
   });
   
   app.post("/crianca", async (req, res) => {
-    // const responsavelId = localStorage.idResponsavel;
-    const responsavelId = req.session.responsavelId;
-    const { nome, username, email, senha } = req.body;
-    if (!responsavelId) {
-      return res.status(401).json({
-        error: "ID do responsável não encontrado",
-      });
-    }
+    const { nome, username, email, senha, responsavel } = req.body;
     db.query(
       "INSERT INTO crianca (nome, username, email, senha, responsavel) VALUES (?, ?, ?, ?, ?)",
-      [nome, username, email, senha, responsavelId],
+      [nome, username, email, senha, responsavel],
       (err, result) => {
         if (err) {
           console.error("Erro ao cadastrar usuário", err);
@@ -166,6 +159,18 @@ module.exports = function (app) {
       }
     );
   });
+
+  app.post("/crianca/imagem", (req, res) => {
+    const {id, imagem} = req.body;
+    db.query("UPDATE crianca SET imagem = ? WHERE id = ?", [imagem, id], (err, result) => {
+      if (err) {
+        console.error("Erro ao alterar imagem", err);
+        res.status(500).json({ error: "Erro ao alterar imagem" });
+      } else {
+        res.json({ message: "Imagem alterada" });
+      }
+    })
+  })
 
   app.put("/crianca/:id", (req, res) => {
     const { username, email, senha } = req.body;

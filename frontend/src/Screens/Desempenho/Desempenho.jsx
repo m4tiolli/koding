@@ -7,13 +7,10 @@ import {
   tritanomaly,
   deuteranomaly,
 } from "./../../Components/ColorBlind";
-import axios from "axios";
-import { useLocation } from "react-router-dom";
 
 function Desempenho() {
   const mode = localStorage.getItem("theme");
-  const location = useLocation();
-  const dadosCrianca = location.state?.dadosCrianca || {};
+  const dadosCrianca = JSON.parse(localStorage.getItem("dadosCrianca"));
   function Color(mode, color) {
     var newcolor;
     if (mode === "protanomaly") {
@@ -108,7 +105,7 @@ function Desempenho() {
                 )} 0%, ${Color(mode, "#1E7BD6")} 100%`,
               }}
             >
-              <span className="text-white text-6xl font-semibold">{dadosCrianca.SomaPontuacao}</span>
+              <span className="text-white text-6xl font-semibold">{dadosCrianca.SomaPontuacao ?? "0"}</span>
               <span className="text-white text-xl text-center">
                 Nível de Experiência
               </span>

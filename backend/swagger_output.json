@@ -223,6 +223,9 @@
                 },
                 "senha": {
                   "example": "any"
+                },
+                "responsavel": {
+                  "example": "any"
                 }
               }
             }
@@ -231,9 +234,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "401": {
-            "description": "Unauthorized"
           },
           "500": {
             "description": "Internal Server Error"
@@ -250,6 +250,36 @@
             "in": "path",
             "required": true,
             "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/crianca/imagem": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "example": "any"
+                },
+                "imagem": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {

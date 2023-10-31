@@ -10,7 +10,8 @@ const classes = {
   two: "lg:scale-[.5] lg:-bottom-[6rem] lg:-left-[10rem]",
   three: "lg:scale-[.5] lg:-right-[6rem] lg:-bottom-[8rem]",
 };
-import './SelectCrianca.css'
+import "./SelectCrianca.css";
+import boy2 from '../../assets/boy2.jpg'
 
 export default function SelectCrianca() {
   const navigate = useNavigate();
@@ -66,9 +67,9 @@ export default function SelectCrianca() {
 
 export function Card({ crianca }) {
   const navigate = useNavigate();
-  const Navegar = (crianca) => {
-    console.log(crianca)
-    localStorage.setItem("dadosCrianca", crianca);
+  const Navegar = (kid) => {
+    console.log(kid);
+    localStorage.setItem("dadosCrianca", JSON.stringify(kid));
     navigate("/pais/home");
   };
   return (
@@ -77,8 +78,8 @@ export function Card({ crianca }) {
       className="flex flex-col items-center justify-center gap-4 hover:opacity-70 netflix"
     >
       <img
-        src={img}
-        className="bg-red-600 rounded-full w-[10rem] h-[10rem] object-contain"
+        src={crianca.imagem ?? boy2}
+        className="rounded-full w-[10rem] h-[10rem] object-contain"
         alt=""
       />
       <p className="font-regular text-xl text-slate-900">
