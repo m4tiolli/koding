@@ -113,6 +113,8 @@ module.exports = function (app) {
     );
   });
 
+  // COMMIT
+
   // CRUD - criança
   app.get("/crianca", (req, res) => {
     db.query("SELECT * FROM crianca", (err, result) => {
