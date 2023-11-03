@@ -19,21 +19,41 @@ function Sentenca() {
   const fases = [
     {
       sentencaCorreta: "<img src='imagem.png' alt='Minha Imagem'>",
-      palavrasSelecionadas: ["<", ">", "img", " src=", "'imagem.png'", " alt=", "'Minha Imagem'", "href=", "</img>", "<head>"],
-      titulo: ["Como inserir uma imagem usando HTML?"]
+      palavrasSelecionadas: [
+        "<",
+        ">",
+        "img",
+        " src=",
+        "'imagem.png'",
+        " alt=",
+        "'Minha Imagem'",
+        "href=",
+        "</img>",
+        "<head>",
+      ],
+      titulo: ["Como inserir uma imagem usando HTML?"],
     },
     {
       sentencaCorreta: "<p>Isso é um parágrafo.</p>",
-      palavrasSelecionadas: ["<p>", "</p>", "Isso é", " um parágrafo.", "<h1>", "</h1>"],
-      titulo: ["Como adicionar uma parágrafo em HTML?"]
-    }
+      palavrasSelecionadas: [
+        "<p>",
+        "</p>",
+        "Isso é",
+        " um parágrafo.",
+        "<h1>",
+        "</h1>",
+      ],
+      titulo: ["Como adicionar uma parágrafo em HTML?"],
+    },
   ];
-  if (!localStorage.getItem("pontuacao")) localStorage.setItem("pontuacao", 0)
+  if (!localStorage.getItem("pontuacao")) localStorage.setItem("pontuacao", 0);
   const [faseAtual, setFaseAtual] = useState(0);
   const [sentencaAtual, setSentencaAtual] = useState([]);
   const fase = fases[faseAtual];
   const sentencaCorreta = fase.sentencaCorreta;
-  const [palavrasSelecionadas, setPalavrasSelecionadas] = useState(palavrasAleatorias(fase.palavrasSelecionadas));
+  const [palavrasSelecionadas, setPalavrasSelecionadas] = useState(
+    palavrasAleatorias(fase.palavrasSelecionadas)
+  );
   const titulo = fases[faseAtual].titulo;
 
   useEffect(() => {
@@ -45,8 +65,7 @@ function Sentenca() {
     if (sentencaAtual.includes(palavra)) {
       const newSentencaAtual = sentencaAtual.filter((word) => word !== palavra);
       setSentencaAtual(newSentencaAtual);
-    }
-    else {
+    } else {
       setSentencaAtual([...sentencaAtual, palavra]);
     }
   };
@@ -55,7 +74,9 @@ function Sentenca() {
     if (faseAtual < fases.length - 1) {
       setFaseAtual(faseAtual + 1);
       setSentencaAtual([]);
-      setPalavrasSelecionadas(palavrasAleatorias(fases[faseAtual + 1].palavrasSelecionadas));
+      setPalavrasSelecionadas(
+        palavrasAleatorias(fases[faseAtual + 1].palavrasSelecionadas)
+      );
     } else {
       enviarPontuacao();
       alert("Você completou todas as fases!");
@@ -67,9 +88,9 @@ function Sentenca() {
     const sentencaAtualStr = sentencaAtual.join("");
     if (sentencaAtualStr === sentencaCorreta) {
       alert("Você acertou!");
-      var local = parseInt(localStorage.pontuacao)
-      local = local + 100
-      localStorage.setItem("pontuacao", local)
+      var local = parseInt(localStorage.pontuacao);
+      local = local + 100;
+      localStorage.setItem("pontuacao", local);
       avancarFase();
     } else {
       alert("Errado! A sentença correta é: " + sentencaCorreta);
@@ -78,24 +99,24 @@ function Sentenca() {
   };
 
   const enviarPontuacao = () => {
-    const crianca = localStorage.getItem('id');
-    const pontuacao = localStorage.getItem("pontuacao")
+    const crianca = localStorage.getItem("id");
+    const pontuacao = localStorage.getItem("pontuacao");
     const data = new Date();
     const body = { crianca, pontuacao, data };
     fetch(`https://tcckoding.azurewebsites.net/crianca/pontuacao`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     })
       .then(() => {
-        alert('Pontuação enviada com sucesso');
-        localStorage.removeItem("pontuacao")
+        alert("Pontuação enviada com sucesso");
+        localStorage.removeItem("pontuacao");
       })
       .catch((error) => {
         console.log(error);
-        alert('Erro ao enviar a pontuação');
+        alert("Erro ao enviar a pontuação");
       });
-  }
+  };
 
   const navigate = useNavigate();
 
@@ -114,7 +135,13 @@ function Sentenca() {
             className="flex ml-8 text-3xl cursor-pointer text-gray-400 dark:text-white"
           />
 
-          <div className={`w-7/12 h-5 bg-gray-300 rounded-lg ${faseAtual == 1 ? 'before:bg-green-400 before:block before:absolute before:w-2/6 before:rounded-l-lg before:h-5 before:content-[" "] before:z-20' : ""}`}></div>
+          <div
+            className={`w-7/12 h-5 bg-gray-300 rounded-lg ${
+              faseAtual == 1
+                ? 'before:bg-green-400 before:block before:absolute before:w-2/6 before:rounded-l-lg before:h-5 before:content-[" "] before:z-20'
+                : ""
+            }`}
+          ></div>
         </div>
 
         <div className="flex flex-col">
@@ -137,9 +164,7 @@ function Sentenca() {
             ))}
           </div>
           <div className="flex justify-center mt-20 space-x-[850px]">
-            <button
-              className="flex justify-center items-center w-20 bg-slate-200 shadow-md rounded-md p-2"
-            >
+            <button className="flex justify-center items-center w-20 bg-slate-200 shadow-md rounded-md p-2">
               Pular
             </button>
             <button
