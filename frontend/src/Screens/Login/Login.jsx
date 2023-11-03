@@ -89,7 +89,7 @@ function Login() {
     >
       <BackgroundCircles isResponsavel={isResponsavel} />
       <div className="w-full h-1/4 lg:w-1/4">
-        <div className="flex items-start text-start justify-center flex-col relative">
+        <div className="flex items-start text-start justify-center flex-col -mt-14 relative">
           <Logo
             isResponsavel={isResponsavel}
             isResponsive={false}
