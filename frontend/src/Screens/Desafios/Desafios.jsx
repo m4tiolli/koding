@@ -24,11 +24,11 @@ const Desafios = () => {
     }
 
     return (
-        <div className="flex h-screen w-full" style={{ background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)" }}>
+        <div className="flex h-full w-full" style={{ background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)" }}>
 
             <Menu screen={"desafios"} />
 
-            <main className="w-full ml-52 mr-2 overflow-hidden dark:bg-darkcinzaclaro">
+            <main className="w-full ml-52 overflow-hidden dark:bg-darkcinzaclaro">
 
                 <div className="flex flex-col ml-20 mt-24">
                     <span className="font-semibold text-3xl dark:text-white">Desafios</span>
@@ -44,7 +44,7 @@ const Desafios = () => {
 
                     {/* Cards Jogo */}
 
-                    <div className='flex gap-x-10'>
+                    <div className='flex gap-x-10 flex-wrap mb-10'>
                         <div className="mt-20">
                                 <div className=''>
                                     <span className="text-3xl font-semibold dark:text-white">HTML - Sentença</span>

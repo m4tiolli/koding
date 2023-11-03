@@ -79,7 +79,7 @@ function Flexbox() {
         className="flex mb-5 text-3xl ml-10 mt-5 cursor-pointer z-0 dark:text-white text-gray-600"
       />
 
-      <section className="w-3/6 p-16 -ml-20 dark:bg-darkcinzaclaro dark:text-white">
+      <section className="w-3/5 p-16 -ml-20 dark:bg-darkcinzaclaro dark:text-white">
         <h1 className="text-3xl uppercase font-semibold text-gray-600 dark:text-white">
           Flexbox
         </h1>
@@ -139,7 +139,7 @@ function Flexbox() {
       {/* Jogo */}
 
       <section
-        className="relative ml-3 w-50vw h-screen overflow-hidden min-w-[380px] min-h-[380px]"
+        className="relative w-50vw h-screen overflow-hidden min-w-[380px] min-h-[380px]"
         style={{ background: Color(mode, "#E79D67") }}
       >
         {/* sapos */}
