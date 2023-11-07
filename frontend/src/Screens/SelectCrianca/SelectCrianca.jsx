@@ -1,6 +1,6 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import BackgroundCircles from "../../Components/BackgroundCircles";
-import img from "../../Components/frog-green.svg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { BsPlusCircle } from "react-icons/bs";
@@ -79,7 +79,7 @@ export function Card({ crianca }) {
     >
       <img
         src={crianca.imagem ?? boy2}
-        className="rounded-full w-[10rem] h-[10rem] object-contain"
+        className="rounded-full w-[10rem] h-[10rem] object-cover"
         alt=""
       />
       <p className="font-regular text-xl text-slate-900">
