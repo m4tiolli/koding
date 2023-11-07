@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import BackgroundCircles from "../../Components/BackgroundCircles";
+import img from "../../Components/frog-green.svg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { BsPlusCircle } from "react-icons/bs";

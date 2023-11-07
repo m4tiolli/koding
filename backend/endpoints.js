@@ -162,8 +162,9 @@ module.exports = function (app) {
     );
   });
 
-  app.post("/crianca/imagem", (req, res) => {
-    const {id, imagem} = req.body;
+  app.put("/crianca/imagem/:id", (req, res) => {
+    const {imagem} = req.body;
+    const id = req.params.id;
     db.query("UPDATE crianca SET imagem = ? WHERE id = ?", [imagem, id], (err, result) => {
       if (err) {
         console.error("Erro ao alterar imagem", err);

@@ -56,14 +56,13 @@ function Perfil() {
 
   const handleProfileChange = () => {
     const local = JSON.parse(localStorage.getItem("user"));
-    const id = local.id;
-    const data = { id, image };
+    const id = local.id
     axios
-      .post("https://tcckoding.azurewebsites.net/crianca/imagem", data)
+      .put(`https://tcckoding.azurewebsites.net/crianca/imagem/${id}`, image)
       .then((result) => alert("imagem alterada"))
       .catch((err) => console.log(err));
+    local.imagem = image
   };
-
   let img;
   let active;
 

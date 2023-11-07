@@ -262,19 +262,22 @@
         }
       }
     },
-    "/crianca/imagem": {
-      "post": {
+    "/crianca/imagem/{id}": {
+      "put": {
         "description": "",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "body",
             "in": "body",
             "schema": {
               "type": "object",
               "properties": {
-                "id": {
-                  "example": "any"
-                },
                 "imagem": {
                   "example": "any"
                 }
