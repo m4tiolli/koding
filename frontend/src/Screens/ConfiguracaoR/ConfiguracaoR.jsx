@@ -1,6 +1,7 @@
 import { IoIosLogOut } from "react-icons/io";
 import { IoArrowBack } from "react-icons/io5";
 import { BsTrash3 } from "react-icons/bs";
+import Navbar from "../../Components/Navbar/Navbar";
 import {
   Button,
   ChakraProvider,
@@ -28,6 +29,22 @@ import { useEffect, useState } from "react";
 import MenuR from "../../Components/MenuR/MenuR";
 
 function Configuracao() {
+  const [responsive, setResponsive] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setResponsive(window.innerWidth < 900);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const mode = localStorage.getItem("theme");
 
   function Color(mode, color) {
@@ -64,76 +81,40 @@ function Configuracao() {
   return (
     <ChakraProvider>
       <div
-        className="flex h-full w-full"
+        className="flex h-full w-full md:h-screen"
         style={{
           background: "linear-gradient(108deg, #C6D6FF 0%, #FFFFFF 100%)",
         }}
       >
         <MenuR />
 
-        <main className="w-full ml-[208px] mr-2 mt-[3.8rem] overflow-hidden dark:bg-darkfundoR">
+        <main className="w-full mr-2 lg:flex lg:flex-col lg:items-center lg:ml-48 lg:mt- overflow-hidden dark:bg-darkfundoR">
+        {responsive ? <Navbar /> : ""}
           <IoArrowBack
             onClick={() => navigate(-1)}
-            className="flex mt-10 ml-10 mb-5 text-3xl cursor-pointer dark:text-white"
+            className="mt-10 ml-10 mb-5 text-3xl cursor-pointer dark:text-white hidden"
           />
 
-          <div className="mb-10">
-            <span className="text-3xl font-semibold dark:text-white ml-10">
+          <div className="mb-5 mt-20 mobile375:ml-8 mobile425:ml-14 md:flex md:justify-center md:-ml-10 md:mb-14">
+            <span className="text-3xl font-semibold dark:text-white ml-10 xl:mt-5">
               Configurações
             </span>
           </div>
 
           {/* Dados */}
 
-          <container className="w-full h-full flex flex-col gap-y-10 ml-20">
-            {/* Enviar Foto */}
-
-            <form
-              action=""
-              method=""
-              className="flex flex-col lg:flex-row gap-x-32 lg:gap-x-64"
-            >
-              <div className="flex items-center gap-6">
-                <span className="text-lg dark:text-white">
-                  Personalizar Avatar
-                </span>
-                <label
-                  className="p-2 w-42 rounded-xl border-solid border-black cursor-pointer shadow-lg text-center"
-                  style={{ background: "#efefef" }}
-                  htmlFor="image"
-                >
-                  {" "}
-                  Selecionar arquivo
-                  <input
-                    className="hidden"
-                    name="image"
-                    type="file"
-                    id="image"
-                  />
-                </label>
-              </div>
-
-              <div>
-                <button
-                  className="w-auto h-10 p-3 mt-5 lg:mt-0 flex items-center rounded-xl shadow-lg text-white"
-                  style={{ background: Color(mode, "#22C55E") }}
-                  type="submit"
-                >
-                  Salvar Alterações
-                </button>
-              </div>
-            </form>
+          <container className="w-full h-full flex flex-col md:flex-row gap-y-10 ml-20 md:ml-32 lg:gap-x-12 lg:ml-40 lg:mt-5 xl:justify-center xl:gap-x-20">
 
             {/* Dados conta */}
 
             <form
               action=""
               method="post"
-              className="flex flex-col gap-y-5 text-lg"
+              className="flex flex-col gap-y-5 text-lg text-center mobile375:-ml-8 mobile425:-ml-5 -ml-12 lg:-ml-20 lg:mt-8"
             >
-              <div className="w-2/5 lg:w-[440px] flex flex-col lg:flex-row items-center">
+              <div className="md:w-4/5 w-3/5 lg:w-[440px] flex flex-col lg:flex-row items-center">
                 <div className="w-full dark:text-white">
-                  <span>Nome</span>
+                  <span className="ml-7">Nome</span>
                 </div>
 
                 <label className="">
@@ -146,9 +127,9 @@ function Configuracao() {
                 </label>
               </div>
 
-              <div className="w-2/5 lg:w-[440px] flex flex-col lg:flex-row items-center">
+              <div className="md:w-4/5 w-3/5 lg:w-[440px] flex flex-col lg:flex-row items-center">
                 <div className="w-full dark:text-white">
-                  <span>Username</span>
+                  <span className="ml-7">Telefone</span>
                 </div>
 
                 <label>
@@ -161,9 +142,9 @@ function Configuracao() {
                 </label>
               </div>
 
-              <div className="w-2/5 lg:w-[440px] flex flex-col lg:flex-row items-center">
+              <div className="md:w-4/5 w-3/5 lg:w-[440px] flex flex-col lg:flex-row items-center">
                 <div className="w-full dark:text-white">
-                  <span>E-mail</span>
+                  <span className="ml-7">E-mail</span>
                 </div>
 
                 <label>
@@ -176,9 +157,9 @@ function Configuracao() {
                 </label>
               </div>
 
-              <div className="w-2/5 lg:w-[440px] flex flex-col lg:flex-row items-center">
+              <div className="md:w-4/5 w-3/5 lg:w-[440px] flex flex-col lg:flex-row items-center">
                 <div className="w-full dark:text-white">
-                  <span>Senha</span>
+                  <span className="ml-7">Senha</span>
                 </div>
 
                 <label>
@@ -191,9 +172,9 @@ function Configuracao() {
                 </label>
               </div>
 
-              <div className="w-2/5 lg:w-[440px] flex flex-col lg:flex-row items-center">
+              <div className="md:w-4/5 w-3/5 lg:w-[440px] flex flex-col lg:flex-row items-center">
                 <div className="w-full dark:text-white">
-                  <span>Confirmar senha</span>
+                  <span className="ml-7 text-center">Confirmar senha</span>
                 </div>
 
                 <label>
@@ -209,7 +190,7 @@ function Configuracao() {
 
             {/* Modos */}
 
-            <div className="flex flex-col gap-y-5 text-lg">
+            <div className="flex flex-col gap-y-5 text-lg mobile375:-ml-5 mobile425:ml-2 -ml-12">
               <div className="flex flex-col">
                 <div className="w-52 dark:text-white">
                   <span>Modo Escuro</span>
@@ -243,10 +224,27 @@ function Configuracao() {
                 </select>
               </div>
             </div>
+            
+            <form
+              action=""
+              method=""
+              className="flex flex-col lg:flex-row gap-x-32 lg:gap-x-64"
+            >
+
+              <div>
+                <button
+                  className="w-auto h-10 p-3 mobile375:ml-5 mobile425:ml-12 md:-ml-[220px] md:mt-64 -ml-4 lg:mt-52 lg:-ml-64 xl:-ml-72 flex items-center rounded-xl shadow-lg text-white"
+                  style={{ background: Color(mode, "#22C55E") }}
+                  type="submit"
+                >
+                  Salvar Alterações
+                </button>
+              </div>
+            </form>
 
             {/* Logout */}
 
-            <div className="flex flex-col items-center justify-center py-10 w-96 text-gray-700 gap-3">
+            <div className="flex flex-col items-center md:mt-28 md:-ml-64 mobile375:-ml-5 mobile425:ml-2 lg:-ml-[340px] xl:-ml-[400px] xl:mt-52 -ml-12 justify-center py-10 w-96 text-gray-700 gap-3">
               <div className="flex items-center gap-3 w-full">
                 <IoIosLogOut className="text-2xl dark:text-white"></IoIosLogOut>
                 <button

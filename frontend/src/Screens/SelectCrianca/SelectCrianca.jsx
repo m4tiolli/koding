@@ -52,7 +52,7 @@ export default function SelectCrianca() {
           )}
           <button
             onClick={() => navigate("/pais/criar-conta")}
-            className=" flex flex-col gap-4 items-center justify-center hover:opacity-60 hover:cursor:pointer"
+            className="flex flex-col gap-4 items-center justify-center hover:opacity-60 hover:cursor:pointer"
           >
             <span className="">
               <BsPlusCircle size={"4rem"} color="rgb(50,50,50)" />

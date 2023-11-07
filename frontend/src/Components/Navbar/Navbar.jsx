@@ -24,7 +24,7 @@ const Navbar = () => {
 
   return (
     <div style={{ width: "100%", height: "10px" }}>
-      <nav className="nav">
+      <nav className="nav dark:bg-darkfundoR">
         <div className="burger-menu" onClick={updateMenu}>
           <div className={burger_class}></div>
           <div className={burger_class}></div>
@@ -70,11 +70,6 @@ const Navbar = () => {
                 </span>
               </span>
             </Link>
-            
-            <span className="inline-flex items-center gap-2 w-full">
-              <BiHelpCircle className="relative 2xl:text-3xl text-3xl"></BiHelpCircle>
-              <span className="2xl:text-xl text-lg w-3/4">Sair</span>
-            </span>
           </div>
 
           <button className="text-center rounded-lg leading-none bg-[#B0B3C8] px-4 py-2 hover:opacity-70 mt-10">

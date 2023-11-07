@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Navbar from "../../Components/Navbar/Navbar";
+import MenuR from "../../Components/MenuR/MenuR";
 import { useState } from "react";
 import LineChart from "./../../Components/Graficos/Line/Line";
 import {
@@ -54,6 +55,9 @@ function Desempenho() {
         background: "linear-gradient(108deg, #C6D6FF 0%, #FFFFFF 100%)",
       }}
     >
+
+      <MenuR/>
+
       <main className="w-full h-full laptop:h-full lg:h-full notebook:h-full justify-center overflow-hidden dark:bg-darkfundoR">
         {responsive ? <Navbar /> : ""}
 

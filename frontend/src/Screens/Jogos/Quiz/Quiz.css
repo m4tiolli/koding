@@ -1,0 +1,11 @@
+ul{
+    list-style: none;
+}
+
+.div{
+    transition: ease-in-out 250ms;
+}
+
+.div:hover{
+    scale: 1.1 
+}

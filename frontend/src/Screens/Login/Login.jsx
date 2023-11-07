@@ -89,7 +89,7 @@ function Login() {
     >
       <BackgroundCircles isResponsavel={isResponsavel} />
       <div className="w-full h-1/4 lg:w-1/4">
-        <div className="flex items-start text-start justify-center flex-col relative">
+        <div className="flex items-start text-start justify-center flex-col -mt-14 relative">
           <Logo
             isResponsavel={isResponsavel}
             isResponsive={false}
@@ -151,7 +151,7 @@ function Login() {
           <input
             type="text"
             className={`${!isResponsavel && dark ? "bg-[#7D6D94]" : "bg-input"
-              } px-10 my-8 py-5 w-3/4 placeholder:opacity-70 rounded-lg text-xl placeholder:text-black outline-0 text-cinza`}
+              } px-10 my-8 py-5 w-3/4 placeholder:opacity-70 rounded-lg text-xl placeholder:text-black dark:placeholder:text-white outline-0 text-cinza dark:text-white`}
             placeholder="E-mail"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -163,7 +163,7 @@ function Login() {
           >
             <input
               type={isPassVisible ? "text" : "password"}
-              className="w-4/5 outline-0 bg-transparent placeholder:opacity-70 placeholder:text-black text-cinza"
+              className="w-4/5 outline-0 bg-transparent placeholder:opacity-70 placeholder:text-black dark:placeholder:text-white text-cinza dark:text-white"
               placeholder="Senha"
               value={senha}
               onChange={(e) => setSenha(e.target.value)}
@@ -175,7 +175,7 @@ function Login() {
               />
             ) : (
               <AiFillEye
-                className="text-2xl text-cinza cursor-pointer"
+                className="text-2xl text-cinza dark:text-white cursor-pointer"
                 onClick={TogglePassVisible}
               />
             )}
