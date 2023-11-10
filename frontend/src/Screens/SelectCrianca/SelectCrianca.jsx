@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import BackgroundCircles from "../../Components/BackgroundCircles";
-import img from "../../Components/frog-green.svg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { BsPlusCircle } from "react-icons/bs";
@@ -11,7 +10,17 @@ const classes = {
   three: "lg:scale-[.5] lg:-right-[6rem] lg:-bottom-[8rem]",
 };
 import "./SelectCrianca.css";
+<<<<<<< HEAD
 import boy2 from '../../assets/boy2.jpg'
+=======
+import boy1 from "../../assets/boy1.jpg";
+import boy2 from "../../assets/boy2.jpg";
+import boy3 from "../../assets/boy3.jpg";
+import girl1 from "../../assets/girl1.jpg";
+import girl2 from "../../assets/girl2.jpg";
+import girl3 from "../../assets/girl3.jpg";
+
+>>>>>>> cb033b5 (matiolos)
 
 export default function SelectCrianca() {
   const navigate = useNavigate();
@@ -34,7 +43,6 @@ export default function SelectCrianca() {
         .catch((err) => console.error(err));
     }
   }, []);
-
   return (
     <div className="w-screen h-screen grid place-items-center bg-[#c4f1d6] fixed">
       <BackgroundCircles isResponsavel={true} className={classes} />
@@ -46,9 +54,32 @@ export default function SelectCrianca() {
           {loading ? (
             <Spinner width={30} height={30} color="rgb(50,50,50)" />
           ) : (
-            criancas.map((crianca, index) => (
-              <Card crianca={crianca} key={index} />
-            ))
+            criancas.map((crianca, index) => {
+              var img;
+              switch (crianca.imagem) {
+                case "boy1":
+                  img = boy1;
+                  break;
+                case "boy2":
+                  img = boy2;
+                  break;
+                case "boy3":
+                  img = boy3;
+                  break;
+                case "girl1":
+                  img = girl1;
+                  break;
+                case "girl2":
+                  img = girl2;
+                  break;
+                default:
+                  img = girl3;
+                  break;
+              }
+              return (
+                <Card crianca={crianca} img={img} key={index} />
+              )
+            })
           )}
           <button
             onClick={() => navigate("/pais/criar-conta")}
@@ -65,7 +96,7 @@ export default function SelectCrianca() {
   );
 }
 
-export function Card({ crianca }) {
+export function Card({ crianca, img }) {
   const navigate = useNavigate();
   const Navegar = (kid) => {
     console.log(kid);
@@ -78,7 +109,11 @@ export function Card({ crianca }) {
       className="flex flex-col items-center justify-center gap-4 hover:opacity-70 netflix"
     >
       <img
+<<<<<<< HEAD
         src={crianca.imagem ?? boy2}
+=======
+        src={img}
+>>>>>>> cb033b5 (matiolos)
         className="rounded-full w-[10rem] h-[10rem] object-cover"
         alt=""
       />
