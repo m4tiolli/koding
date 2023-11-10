@@ -10,9 +10,6 @@ const classes = {
   three: "lg:scale-[.5] lg:-right-[6rem] lg:-bottom-[8rem]",
 };
 import "./SelectCrianca.css";
-<<<<<<< HEAD
-import boy2 from '../../assets/boy2.jpg'
-=======
 import boy1 from "../../assets/boy1.jpg";
 import boy2 from "../../assets/boy2.jpg";
 import boy3 from "../../assets/boy3.jpg";
@@ -20,7 +17,6 @@ import girl1 from "../../assets/girl1.jpg";
 import girl2 from "../../assets/girl2.jpg";
 import girl3 from "../../assets/girl3.jpg";
 
->>>>>>> cb033b5 (matiolos)
 
 export default function SelectCrianca() {
   const navigate = useNavigate();
@@ -109,11 +105,7 @@ export function Card({ crianca, img }) {
       className="flex flex-col items-center justify-center gap-4 hover:opacity-70 netflix"
     >
       <img
-<<<<<<< HEAD
-        src={crianca.imagem ?? boy2}
-=======
         src={img}
->>>>>>> cb033b5 (matiolos)
         className="rounded-full w-[10rem] h-[10rem] object-cover"
         alt=""
       />
