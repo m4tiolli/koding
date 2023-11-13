@@ -15,6 +15,7 @@ import blue from "../blue.png";
 import green from "../green.png";
 import red from "../red.png";
 import { useNavigate } from "react-router-dom";
+import "../Menu/Menu.css";
 
 export default function Menu({ screen }) {
   const navigate = useNavigate();
@@ -472,12 +473,12 @@ export default function Menu({ screen }) {
               <span className="font-semibold">nos conte mais sobre:</span>
               <textarea
                 onResize={"none"}
-                className="rounded-lg outline-none w-80 h-28 p-3 bg-[#47414D]"
+                className="text rounded-lg outline-none w-80 h-28 p-3 bg-[#47414D]"
               ></textarea>
             </div>
 
             <button className="w-44 flex items-center justify-center text-center rounded-lg bg-[#C4BCC7] px-4 py-2">
-              <span className="iitems-center gap-2 w-full">
+              <span className="items-center gap-2 w-full">
                 <span className="">Enviar Feedback</span>
               </span>
             </button>
