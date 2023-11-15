@@ -115,7 +115,7 @@ function Flexbox() {
             <br /> 9 <br /> 10
           </div>
           <pre className="m-0">
-            #lago ( <br />
+            #code ( <br />
             <span className="ml-5">display: flex;</span>
           </pre>
           <textarea

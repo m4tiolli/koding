@@ -28,6 +28,11 @@ export default function Menu({ screen }) {
     onOpen: onDalOpen,
     onClose: onDalClose,
   } = useDisclosure();
+  const {
+    isOpen: isFeedOpen,
+    onOpen: onFeedOpen,
+    onClose: onFeedClose,
+  } = useDisclosure();
 
   const [button, setButton] = useState("");
 
@@ -83,7 +88,7 @@ export default function Menu({ screen }) {
       setMode("light");
       localStorage.setItem("theme", "light");
       setBlindChecked(false);
-    } else {  
+    } else {
       setMode(type);
       localStorage.setItem("theme", type);
       location.reload();
@@ -139,8 +144,9 @@ export default function Menu({ screen }) {
 
         <nav className="flex flex-col flex-auto justify-start pt-24 w-full">
           <button
-            className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-[#2c4441] ${button == "materiais" ? "bg-white/50 dark:bg-[#2c4441]" : ""
-              }`}
+            className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-[#2c4441] ${
+              button == "materiais" ? "bg-white/50 dark:bg-[#2c4441]" : ""
+            }`}
             style={{ transition: "150ms ease-in" }}
             onClick={() => navigate("/pais/home")}
           >
@@ -151,10 +157,13 @@ export default function Menu({ screen }) {
           </button>
 
           <button
-            className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-[#2c4441] ${button == "pais/perfil" ? "bg-white/50 dark:bg-[#2c4441]" : ""
-              }`}
+            className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-[#2c4441] ${
+              button == "pais/perfil" ? "bg-white/50 dark:bg-[#2c4441]" : ""
+            }`}
             style={{ transition: "150ms ease-in" }}
-            onClick={() => navigate("/pais/perfil", { state: { tela: "perfil" } })}
+            onClick={() =>
+              navigate("/pais/perfil", { state: { tela: "perfil" } })
+            }
           >
             <span className="inline-flex items-center gap-5">
               <AiOutlineUser className="relative text-3xl">
@@ -222,8 +231,9 @@ export default function Menu({ screen }) {
             <BsFillMoonFill className="text-[#e4d9ed] text-xl" />
             <p className="text-[#BCC2C7]">Modo escuro</p>
             <label
-              className={`flex cursor-pointer select-none items-center ${darkNotAllowed() ? "cursor-not-allowed opacity-60" : ""
-                }`}
+              className={`flex cursor-pointer select-none items-center ${
+                darkNotAllowed() ? "cursor-not-allowed opacity-60" : ""
+              }`}
             >
               <div className="relative">
                 <input
@@ -237,8 +247,9 @@ export default function Menu({ screen }) {
                   className={`box block h-6 w-10 rounded-full bg-[#BCC2C7]`}
                 ></div>
                 <div
-                  className={`absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded-full transition bg-[#56505B] ${isChecked ? "translate-x-full" : ""
-                    }`}
+                  className={`absolute left-1 top-1 flex h-4 w-4 items-center justify-center rounded-full transition bg-[#56505B] ${
+                    isChecked ? "translate-x-full" : ""
+                  }`}
                 ></div>
               </div>
             </label>
@@ -270,50 +281,58 @@ export default function Menu({ screen }) {
             >
               <div className="grid grid-rows-2 grid-cols-2 h-full w-full rounded-xl">
                 <div
-                  className={`bg-[#e9e9e9] select-none grid place-items-center rounded-tl-xl active:shadow-inner hover:scale-95 active:opacity-70 ${blindNotAllowed()
-                    ? "opacity-50 scale-95 cursor-not-allowed"
-                    : ""
-                    } ${localStorage.theme === "light" ? "opacity-50 scale-95" : ""
-                    }`}
+                  className={`bg-[#e9e9e9] select-none grid place-items-center rounded-tl-xl active:shadow-inner hover:scale-95 active:opacity-70 ${
+                    blindNotAllowed()
+                      ? "opacity-50 scale-95 cursor-not-allowed"
+                      : ""
+                  } ${
+                    localStorage.theme === "light" ? "opacity-50 scale-95" : ""
+                  }`}
                   title="Sem daltonismo"
                   onClick={() => toggleButtonColorBlind("light")}
                 >
                   <ImBlocked size={30} color="#56505B" />
                 </div>
                 <div
-                  className={`bg-[#3b63ac] select-none flex items-center justify-center rounded-tr-xl active:shadow-inner hover:scale-95 active:opacity-70 ${blindNotAllowed()
-                    ? "opacity-50 scale-95 cursor-not-allowed"
-                    : ""
-                    } ${localStorage.theme === "tritanomaly"
+                  className={`bg-[#3b63ac] select-none flex items-center justify-center rounded-tr-xl active:shadow-inner hover:scale-95 active:opacity-70 ${
+                    blindNotAllowed()
+                      ? "opacity-50 scale-95 cursor-not-allowed"
+                      : ""
+                  } ${
+                    localStorage.theme === "tritanomaly"
                       ? "opacity-50 scale-95"
                       : ""
-                    }`}
+                  }`}
                   title="Tritanomalia"
                   onClick={() => toggleButtonColorBlind("tritanomalia")}
                 >
                   <img src={blue} className="h-3/5 w-auto" />
                 </div>
                 <div
-                  className={`bg-[#65b32e] select-none flex items-center justify-center rounded-bl-xl active:shadow-inner hover:scale-95 active:opacity-70 ${blindNotAllowed()
-                    ? "opacity-50 scale-95 cursor-not-allowed"
-                    : ""
-                    } ${localStorage.theme === "deuteranomaly"
+                  className={`bg-[#65b32e] select-none flex items-center justify-center rounded-bl-xl active:shadow-inner hover:scale-95 active:opacity-70 ${
+                    blindNotAllowed()
+                      ? "opacity-50 scale-95 cursor-not-allowed"
+                      : ""
+                  } ${
+                    localStorage.theme === "deuteranomaly"
                       ? "opacity-50 scale-95"
                       : ""
-                    }`}
+                  }`}
                   title="Deuteranomalia"
                   onClick={() => toggleButtonColorBlind("deuteranomalia")}
                 >
                   <img src={green} className="h-4/6 w-auto" />
                 </div>
                 <div
-                  className={`bg-[#e83c3b] select-none flex items-center justify-center rounded-br-xl active:shadow-inner hover:scale-95 active:opacity-70 ${blindNotAllowed()
-                    ? "opacity-50 scale-95 cursor-not-allowed"
-                    : ""
-                    } ${localStorage.theme === "protanomaly"
+                  className={`bg-[#e83c3b] select-none flex items-center justify-center rounded-br-xl active:shadow-inner hover:scale-95 active:opacity-70 ${
+                    blindNotAllowed()
+                      ? "opacity-50 scale-95 cursor-not-allowed"
+                      : ""
+                  } ${
+                    localStorage.theme === "protanomaly"
                       ? "opacity-50 scale-95"
                       : ""
-                    }`}
+                  }`}
                   title="Protanomalia"
                   onClick={() => toggleButtonColorBlind("protanomalia")}
                 >
@@ -371,9 +390,82 @@ export default function Menu({ screen }) {
               </span>
             </button>
 
-            <button className="text-center rounded-lg leading-none bg-[#B0B3C8] px-4 py-2 hover:opacity-70">
+            <button
+              onClick={onFeedOpen}
+              className="text-center rounded-lg leading-none bg-[#B0B3C8] px-4 py-2 hover:opacity-70"
+            >
               <span className="inline-flex items-center gap-2 w-full">
                 <span className="2xl:text-xl text-lg">Dar Feedback</span>
+              </span>
+            </button>
+          </div>
+        </ModalContent>
+      </Modal>
+
+      <Modal
+        isOpen={isFeedOpen}
+        onClose={onFeedClose}
+        motionPreset="slideInBottom"
+        blockScrollOnMount={false}
+      >
+        <ModalContent
+          w={"100%"}
+          h={"30em"}
+          display={"flex"}
+          justifyContent={"center"}
+          alignItems={"center"}
+          borderRadius="20"
+          top={"2em"}
+          zIndex={"1000"}
+          background={"#4259CF"}
+        >
+          <div className="flex flex-col items-center justify-center space-y-5">
+            {/* texto */}
+            <div className="flex flex-col justify-center items-center text-white gap-y-3">
+              <div className="flex">
+                {/* <AiOutlineClose className="ml-96 -mt-4 text-2xl cursor-pointer"/> */}
+              </div>
+              <span className="uppercase font-bold">
+                Como está a sua experiência?
+              </span>
+            </div>
+
+            {/* feedback */}
+            <div className="flex items-center justify-center gap-x-6 font-semibold">
+              <div className="flex flex-col items-center justify-center gap-y-2 text-white">
+                <div className="w-14 h-14 rounded-full bg-slate-300"></div>
+                <span className="uppercase">péssima</span>
+              </div>
+              <div className="flex flex-col items-center justify-center gap-y-2 text-white">
+                <div className="w-14 h-14 rounded-full bg-slate-300"></div>
+                <span className="uppercase">ruim</span>
+              </div>
+              <div className="flex flex-col items-center justify-center gap-y-2 text-white">
+                <div className="w-14 h-14 rounded-full bg-slate-300"></div>
+                <span className="uppercase">boa</span>
+              </div>
+              <div className="flex flex-col items-center justify-center gap-y-2 text-white">
+                <div className="w-14 h-14 rounded-full bg-slate-300"></div>
+                <span className="uppercase">incrível</span>
+              </div>
+              <div className="flex flex-col items-center justify-center gap-y-2 text-white">
+                <div className="w-14 h-14 rounded-full bg-slate-300"></div>
+                <span className="uppercase">perfeita</span>
+              </div>
+            </div>
+
+            {/* campo-texto */}
+            <div className="flex flex-col items-center text-white gap-y-3">
+              <span className="font-semibold">nos conte mais sobre:</span>
+              <textarea
+                onResize={"none"}
+                className="text rounded-lg outline-none w-80 h-28 p-3 bg-[#41464D]"
+              ></textarea>
+            </div>
+
+            <button className="w-44 flex items-center justify-center text-center rounded-lg bg-[#BCC2C7] px-4 py-2">
+              <span className="items-center gap-2 w-full">
+                <span className="">Enviar Feedback</span>
               </span>
             </button>
           </div>

@@ -1,6 +1,6 @@
 import { BsBook, BsFillMoonFill } from "react-icons/bs";
 import { PiSword } from "react-icons/pi";
-import { AiOutlineUser, AiOutlineClose } from "react-icons/ai";
+import { AiOutlineUser } from "react-icons/ai";
 import { CiCircleMore } from "react-icons/ci";
 import { BiSearch, BiHelpCircle, BiChevronLeft } from "react-icons/bi";
 import { LuPaintBucket } from "react-icons/lu";
@@ -437,7 +437,6 @@ export default function Menu({ screen }) {
             {/* texto */}
             <div className="flex flex-col justify-center items-center text-white gap-y-3">
               <div className="flex">
-                {/* <AiOutlineClose className="ml-96 -mt-4 text-2xl cursor-pointer"/> */}
               </div>
               <span className="uppercase font-bold">
                 Como está a sua experiência?
