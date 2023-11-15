@@ -1,4 +1,5 @@
 import Menu from "./../../Components/Menu/Menu";
+import "../Desafios/Desafios.css"
 
 import { Link } from "react-router-dom";
 import {
@@ -41,25 +42,25 @@ const Desafios = () => {
 
           <div className="flex gap-x-10 mt-10 text-xl">
             <div
-              className="flex justify-center items-center w-32 h-16 p-5 text-white rounded-xl drop-shadow-md  cursor-pointer"
+              className="flex justify-center items-center w-32 h-16 p-5 text-white rounded-xl drop-shadow-md  cursor-pointer div"
               style={{ background: Color(mode, "#EB884F") }}
             >
               HTML
             </div>
             <div
-              className="flex justify-center align-center w-32 h-16 p-5 text-white rounded-xl drop-shadow-md  cursor-pointer"
+              className="flex justify-center align-center w-32 h-16 p-5 text-white rounded-xl drop-shadow-md  cursor-pointer div"
               style={{ background: Color(mode, "#2774CE") }}
             >
               CSS
             </div>
             <div
-              className="flex justify-center align-center w-32 h-16 p-5 text-white rounded-xl drop-shadow-md  cursor-pointer"
+              className="flex justify-center align-center w-32 h-16 p-5 text-white rounded-xl drop-shadow-md  cursor-pointer div"
               style={{ background: Color(mode, "#EECC43") }}
             >
               JavaScript
             </div>
             <div
-              className="flex justify-center align-center w-32 h-16 p-5 text-white rounded-xl drop-shadow-md  cursor-pointer"
+              className="flex justify-center align-center w-32 h-16 p-5 text-white rounded-xl drop-shadow-md  cursor-pointer div"
               style={{ background: Color(mode, "#6D7AC6") }}
             >
               PHP

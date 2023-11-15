@@ -32,7 +32,7 @@ export default function CardCapitulo({ capituloId }) {
 
     return (
         <div
-            className={`w-72 h-52 rounded-xl`}
+            className={`w-72 h-52 rounded-xl cursor-pointer`}
             style={{ background: `linear-gradient(108deg, ${Color(mode, '#E87331')} 0%, ${Color(mode, '#E88D59')} 100%)` }}
             onClick={() => navigate("/aulas", { state: { aulas: aulas } })}
         />
