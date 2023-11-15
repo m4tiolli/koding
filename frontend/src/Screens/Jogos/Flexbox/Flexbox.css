@@ -33,26 +33,33 @@
     background-repeat: no-repeat;
 }
 
+.sp{
+    width: 80%;
+    height: 80%;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
 .vr.verde{
-    background-image: url('.../../../../../Components/lilypad-green.svg');
+    background-image: url('.../../../../../Components/backgroundCSS.svg');
 }
 
 .vr.vermelho{
-    background-image: url('.../../../../../Components/lilypad-red.svg');
+    background-image: url('.../../../../../Components/backgroundHTML.svg');
 }
 
 .vr.amarelo{
-    background-image: url('.../../../../../Components/lilypad-yellow.svg');
+    background-image: url('.../../../../../Components/backgroundJS.svg');
 }
 
 .sp.verde{
-    background-image: url('.../../../../../Components/frog-green.svg');
+    background-image: url('.../../../../../Components/iconCSS.svg');
 }
 
 .sp.vermelho{
-    background-image: url('.../../../../../Components/frog-red.svg');
+    background-image: url('.../../../../../Components/iconHTML.svg');
 }
 
 .sp.amarelo{
-    background-image: url('.../../../../../Components/frog-yellow.svg');
+    background-image: url('.../../../../../Components/iconJS.svg');
 }

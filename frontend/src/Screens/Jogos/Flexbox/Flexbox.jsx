@@ -80,7 +80,7 @@ function Flexbox() {
       />
 
       <section className="w-3/5 p-16 -ml-20 dark:bg-darkcinzaclaro dark:text-white">
-        <h1 className="text-3xl uppercase font-semibold text-gray-600 dark:text-white">
+        <h1 className="text-3xl uppercase font-semibold text-gray-600 dark:text-white mt-10">
           Flexbox
         </h1>
         <p className="font-sans mb-5">
