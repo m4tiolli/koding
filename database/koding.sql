@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS crianca(
     senha VARCHAR(255), 
     responsavel INT NOT NULL,
     imagem LONGTEXT,
+    genero VARCHAR(1),
     FOREIGN KEY (responsavel) REFERENCES responsavel (id)
 );
 
@@ -100,9 +101,9 @@ INSERT INTO responsavel VALUES
 (DEFAULT, 'marcos', '13142413', '7236294', 'marcos@gmail.com', '321');
 
 INSERT INTO crianca VALUES 
-(DEFAULT, 'matiolli junior', 'matiasjr', 'matiasjr@gmail.com', '123', 1, 'boy1'),
-(DEFAULT, 'marcos', 'marcos', 'marcos@gmail.com', '123', 2, 'boy2'),
-(DEFAULT, 'ju', 'ju', 'ju@gmail.com', '123', 3, 'girl3');
+(DEFAULT, 'matiolli junior', 'matiasjr', 'matiasjr@gmail.com', '123', 1, 'boy1', 'm'),
+(DEFAULT, 'marcos', 'marcos', 'marcos@gmail.com', '123', 2, 'boy2', 'm'),
+(DEFAULT, 'ju', 'ju', 'ju@gmail.com', '123', 3, 'girl3', 'f');
 
 INSERT INTO pontuacoes VALUES (DEFAULT, 1, 100, '2023-10-07');
 INSERT INTO pontuacoes VALUES (DEFAULT, 2, 200, '2023-10-08');
@@ -484,9 +485,9 @@ INSERT INTO TagsAula VALUES
 (4, 8);
 
 INSERT INTO feedbacks VALUES
-(DEFAULT, 1, 'Matiolli metidinho, mas é bonzinho e gosta do sistema'),
-(DEFAULT, 2, 'Marcos tá gostando e é bom'),
-(DEFAULT, 3, 'Julinha bem ruim, mas gosta e se diverte com o sistema');
+(DEFAULT, 1, 'Matiolli metidinho, mas é bonzinho e gosta do sistema', 4),
+(DEFAULT, 2, 'Marcos tá gostando e é bom', 5),
+(DEFAULT, 3, 'Julinha bem ruim, mas gosta e se diverte com o sistema', 4);
 
 SELECT crianca.username, crianca.responsavel, pontuacoes.pontuacao AS Pontuação
 FROM crianca INNER JOIN pontuacoes ON pontuacoes.crianca = crianca.id;
