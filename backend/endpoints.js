@@ -415,4 +415,36 @@ module.exports = function (app) {
       }
     );
   });
+  
+  // feedback
+  app.post("/feedback", async (req, res) => {
+    const { responsavel, conteudo, estrela } = req.body;
+    db.query(
+      "INSERT INTO feedback (responsavel, conteudo, estrela) VALUES (?, ?, ? )",
+      [responsavel, conteudo, estrela],
+      (err, result) => {
+        if (err) {
+          console.error("Erro ao cadastrar feedback", err);
+          res.status(500).json({ error: "Erro ao cadastrar feedback" });
+        } else {
+          res.json({
+            message: "Feedback cadastrado com sucesso",
+            id: result.insertId,
+          });
+        }
+      }
+    );
+  });
+
+  app.get("/feedback", (req, res) => {
+    db.query("SELECT * FROM feedback", (err, result) => {
+      if (err) {
+        console.error("Erro ao buscar feedbacks", err);
+        res.status(500).json({ error: "Erro ao buscar feedbacks" });
+      } else {
+        res.json(result);
+      }
+    });
+  });
+  
 };
