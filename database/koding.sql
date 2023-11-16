@@ -100,9 +100,9 @@ INSERT INTO responsavel VALUES
 (DEFAULT, 'marcos', '13142413', '7236294', 'marcos@gmail.com', '321');
 
 INSERT INTO crianca VALUES 
-(DEFAULT, 'matiolli junior', 'matiasjr', 'matiasjr@gmail.com', '123', 1, default),
-(DEFAULT, 'marcos', 'marcos', 'marcos@gmail.com', '123', 2, default),
-(DEFAULT, 'ju', 'ju', 'ju@gmail.com', '123', 3, default);
+(DEFAULT, 'matiolli junior', 'matiasjr', 'matiasjr@gmail.com', '123', 1, 'boy1'),
+(DEFAULT, 'marcos', 'marcos', 'marcos@gmail.com', '123', 2, 'boy2'),
+(DEFAULT, 'ju', 'ju', 'ju@gmail.com', '123', 3, 'girl3');
 
 INSERT INTO pontuacoes VALUES (DEFAULT, 1, 100, '2023-10-07');
 INSERT INTO pontuacoes VALUES (DEFAULT, 2, 200, '2023-10-08');
