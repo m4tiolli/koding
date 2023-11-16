@@ -88,8 +88,9 @@ CREATE TABLE IF NOT EXISTS JogosCrianca(
 
 CREATE TABLE feedbacks(
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    responsavel INT,
-    conteudo LONGTEXT,
+    	responsavel INT,
+    	conteudo LONGTEXT,
+	estrela INT, 
 	FOREIGN KEY (responsavel) REFERENCES responsavel (id)
 );
 
