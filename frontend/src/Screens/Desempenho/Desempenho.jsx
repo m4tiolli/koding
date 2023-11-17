@@ -10,6 +10,7 @@ import {
 } from "./../../Components/ColorBlind";
 
 function Desempenho() {
+    
   const mode = localStorage.getItem("theme");
   const dadosCrianca = JSON.parse(localStorage.getItem("dadosCrianca"));
   function Color(mode, color) {

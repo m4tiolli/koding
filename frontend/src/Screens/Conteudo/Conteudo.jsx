@@ -10,6 +10,14 @@ import {
 } from "./../../Components/ColorBlind";
 
 function Conteudo() {
+  useEffect(() => {
+    localStorage.nivel == "responsavel"
+      ? navigate("/pais/home")
+      : localStorage.nivel == "crianca"
+      ? navigate("/home")
+      : navigate("/");
+  }, [navigate]);
+
   const navigate = useNavigate();
 
   const mode = localStorage.getItem("theme");

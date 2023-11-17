@@ -7,6 +7,7 @@ import { BsArrowLeft } from 'react-icons/bs'
 import { Link, useNavigate } from "react-router-dom";
 
 function Cadastro() {
+    
     const [isPassVisible, setPassVisible] = useState(false);
     const [invalid, setInvalid] = useState(false);
     const [shake, setShake] = useState(false);

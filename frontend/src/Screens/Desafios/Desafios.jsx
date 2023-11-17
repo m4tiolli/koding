@@ -1,5 +1,5 @@
 import Menu from "./../../Components/Menu/Menu";
-import "../Desafios/Desafios.css"
+import "../Desafios/Desafios.css";
 
 import { Link } from "react-router-dom";
 import {
@@ -9,6 +9,7 @@ import {
 } from "./../../Components/ColorBlind";
 
 const Desafios = () => {
+  
   const mode = localStorage.getItem("theme");
 
   function Color(mode, color) {
