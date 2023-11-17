@@ -69,7 +69,7 @@ function Configuracao() {
       >
         <Menu />
         
-        <main className="w-full ml-[208px] mr-2 mt-[3.8rem] overflow-hidden dark:bg-darkcinzaclaro">
+        <main className="w-full ml-[208px] mt-[3.8rem] overflow-hidden dark:bg-darkcinzaclaro">
 
         <IoArrowBack onClick={() => navigate(-1)} className="flex mt-10 ml-10 mb-5 text-3xl cursor-pointer dark:text-white"/>
         

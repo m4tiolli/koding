@@ -192,7 +192,7 @@ export default function Menu({ screen }) {
         <div className="h-3/5 w-2/5 flex items-center justify-end pr-4">
           <form className="flex w-fit items-center justify-center  " action="">
             <input
-              className="bg-transparent outline-none w-7/12 text-2xl"
+              className="bg-transparent outline-none w-7/12 text-2xl dark:text-white"
               type="text"
             />
             <a href="">

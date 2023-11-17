@@ -35,7 +35,7 @@ function Conteudo() {
     >
       <Menu />
 
-      <main className="w-full ml-52 mr-2 overflow-hidden dark:bg-darkcinzaclaro dark:text-white">
+      <main className="w-full ml-52 overflow-hidden dark:bg-darkcinzaclaro dark:text-white">
         <IoArrowBack
           onClick={() => navigate(-1)}
           className="flex mt-28 ml-8 text-3xl cursor-pointer dark:text-white"
