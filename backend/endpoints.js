@@ -144,10 +144,10 @@ module.exports = function (app) {
   });
   
   app.post("/crianca", async (req, res) => {
-    const { nome, username, email, senha, responsavel } = req.body;
+    const { nome, username, email, senha, responsavel, genero } = req.body;
     db.query(
-      "INSERT INTO crianca (nome, username, email, senha, responsavel) VALUES (?, ?, ?, ?, ?)",
-      [nome, username, email, senha, responsavel],
+      "INSERT INTO crianca (nome, username, email, senha, responsavel, genero) VALUES (?, ?, ?, ?, ?, ?)",
+      [nome, username, email, senha, responsavel, genero],
       (err, result) => {
         if (err) {
           console.error("Erro ao cadastrar usuário", err);
@@ -420,7 +420,7 @@ module.exports = function (app) {
   app.post("/feedback", async (req, res) => {
     const { responsavel, conteudo, estrela } = req.body;
     db.query(
-      "INSERT INTO feedback (responsavel, conteudo, estrela) VALUES (?, ?, ? )",
+      "INSERT INTO feedbacks (responsavel, conteudo, estrela) VALUES (?, ?, ? )",
       [responsavel, conteudo, estrela],
       (err, result) => {
         if (err) {
@@ -437,7 +437,7 @@ module.exports = function (app) {
   });
 
   app.get("/feedback", (req, res) => {
-    db.query("SELECT * FROM feedback", (err, result) => {
+    db.query("SELECT * FROM feedbacks", (err, result) => {
       if (err) {
         console.error("Erro ao buscar feedbacks", err);
         res.status(500).json({ error: "Erro ao buscar feedbacks" });
@@ -445,6 +445,22 @@ module.exports = function (app) {
         res.json(result);
       }
     });
+  });
+
+  app.get("/feedbackR/:responsavel", (req, res) => {
+    const responsavelId = req.params.responsavel;
+    db.query(
+      "SELECT feedbacks.id AS feedback, feedbacks.conteudo, feedbacks.estrela FROM feedbacks WHERE feedbacks.responsavel = ?",
+      [responsavelId],
+      (err, result) => {
+        if (err) {
+          console.error("Erro ao buscar feedback(s)", err);
+          res.status(500).json({ error: "Erro ao buscar feedback(s)" });
+        } else {
+          res.json(result);
+        }
+      }
+    );
   });
   
 };
