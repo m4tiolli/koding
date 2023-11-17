@@ -423,7 +423,7 @@ export default function Menu({ screen }) {
         blockScrollOnMount={false}
       >
         <ModalContent
-          w={"100%"}
+          width={"100vw"}
           h={"30em"}
           display={"flex"}
           justifyContent={"center"}
@@ -433,7 +433,7 @@ export default function Menu({ screen }) {
           zIndex={"1000"}
           background={"#7E1AD4"}
         >
-          <div className="flex flex-col items-center justify-center space-y-5">
+          <div className="flex flex-col items-center justify-center space-y-5 w-full">
             {/* texto */}
             <div className="flex flex-col justify-center items-center text-white gap-y-3">
               <div className="flex">

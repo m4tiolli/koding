@@ -6,7 +6,7 @@ import { LuPaintBucket } from "react-icons/lu";
 import { ImContrast, ImBlocked } from "react-icons/im";
 import Logo from "../Logo";
 import { useState, useEffect } from "react";
-import { useDisclosure } from "@chakra-ui/react";
+import { ModalHeader, ModalOverlay, useDisclosure } from "@chakra-ui/react";
 import { Modal, ModalContent } from "@chakra-ui/react";
 import { ChakraProvider } from "@chakra-ui/react";
 import { protanomaly, tritanomaly, deuteranomaly } from "../ColorBlind";
@@ -185,7 +185,6 @@ export default function Menu({ screen }) {
           </button>
         </nav>
       </aside>
-
       <header
         className={`dark:bg-darkcinzaR fixed width-header h-16 lg:flex items-center justify-end z-10 hidden`}
         style={{ backgroundColor: Color(mode, "#E5E9F9") }}
@@ -210,7 +209,6 @@ export default function Menu({ screen }) {
           </div>
         </div>
       </header>
-
       <Modal
         isOpen={isOpen}
         onClose={onClose}
@@ -401,25 +399,25 @@ export default function Menu({ screen }) {
           </div>
         </ModalContent>
       </Modal>
-
       <Modal
         isOpen={isFeedOpen}
         onClose={onFeedClose}
         motionPreset="slideInBottom"
         blockScrollOnMount={false}
       >
+        <ModalOverlay />
         <ModalContent
-          w={"100%"}
+          minWidth={"50vw"}
           h={"30em"}
           display={"flex"}
           justifyContent={"center"}
           alignItems={"center"}
           borderRadius="20"
-          top={"2em"}
+          top={"6em"}
           zIndex={"1000"}
           background={"#4259CF"}
         >
-          <div className="flex flex-col items-center justify-center space-y-5">
+          <div className="flex flex-col items-center justify-center space-y-5 w-full">
             {/* texto */}
             <div className="flex flex-col justify-center items-center text-white gap-y-3">
               <div className="flex">

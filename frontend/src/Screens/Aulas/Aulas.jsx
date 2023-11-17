@@ -112,7 +112,6 @@ function Aulas() {
             marginLeft={'auto'}
             marginTop={'auto'}
             marginRight={'auto'}
-            marginBottom={'auto'}
           >
             {/* Tags */}
 
