@@ -413,7 +413,7 @@ export default function Menu({ screen }) {
           justifyContent={"center"}
           alignItems={"center"}
           borderRadius="20"
-          top={"6em"}
+          top={"2em"}
           zIndex={"1000"}
           background={"#4259CF"}
         >
@@ -423,41 +423,41 @@ export default function Menu({ screen }) {
               <div className="flex">
                 {/* <AiOutlineClose className="ml-96 -mt-4 text-2xl cursor-pointer"/> */}
               </div>
-              <span className="uppercase font-bold">
+              <span className="uppercase font-bold text-xl">
                 Como está a sua experiência?
               </span>
             </div>
 
             {/* feedback */}
-            <div className="flex items-center justify-center gap-x-6 font-semibold">
+            <div className="flex items-center justify-center gap-x-10 font-semibold">
               <div className="flex flex-col items-center justify-center gap-y-2 text-white">
-                <div className="w-14 h-14 rounded-full bg-slate-300"></div>
+                <div className="w-20 h-20 rounded-full bg-slate-300"></div>
                 <span className="uppercase">péssima</span>
               </div>
               <div className="flex flex-col items-center justify-center gap-y-2 text-white">
-                <div className="w-14 h-14 rounded-full bg-slate-300"></div>
+                <div className="w-20 h-20 rounded-full bg-slate-300"></div>
                 <span className="uppercase">ruim</span>
               </div>
               <div className="flex flex-col items-center justify-center gap-y-2 text-white">
-                <div className="w-14 h-14 rounded-full bg-slate-300"></div>
+                <div className="w-20 h-20 rounded-full bg-slate-300"></div>
                 <span className="uppercase">boa</span>
               </div>
               <div className="flex flex-col items-center justify-center gap-y-2 text-white">
-                <div className="w-14 h-14 rounded-full bg-slate-300"></div>
+                <div className="w-20 h-20 rounded-full bg-slate-300"></div>
                 <span className="uppercase">incrível</span>
               </div>
               <div className="flex flex-col items-center justify-center gap-y-2 text-white">
-                <div className="w-14 h-14 rounded-full bg-slate-300"></div>
+                <div className="w-20 h-20 rounded-full bg-slate-300"></div>
                 <span className="uppercase">perfeita</span>
               </div>
             </div>
 
             {/* campo-texto */}
-            <div className="flex flex-col items-center text-white gap-y-3">
+            <div className="flex flex-col items-center text-white gap-y-3 text-lg">
               <span className="font-semibold">nos conte mais sobre:</span>
               <textarea
                 onResize={"none"}
-                className="text rounded-lg outline-none w-80 h-28 p-3 bg-[#41464D]"
+                className="text rounded-lg outline-none w-96 h-32 p-3 bg-[#41464D]"
               ></textarea>
             </div>
 
