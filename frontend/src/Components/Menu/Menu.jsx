@@ -423,8 +423,8 @@ export default function Menu({ screen }) {
         blockScrollOnMount={false}
       >
         <ModalContent
-          width={"100vw"}
-          h={"30em"}
+          minWidth={"40vw"}
+          h={"20em"}
           display={"flex"}
           justifyContent={"center"}
           alignItems={"center"}
@@ -433,47 +433,38 @@ export default function Menu({ screen }) {
           zIndex={"1000"}
           background={"#7E1AD4"}
         >
-          <div className="flex flex-col items-center justify-center space-y-5 w-full">
+          <div className="flex flex-col items-center justify-center space-y-8 w-full">
             {/* texto */}
             <div className="flex flex-col justify-center items-center text-white gap-y-3">
               <div className="flex">
               </div>
-              <span className="uppercase font-bold">
+              <span className="uppercase font-bold text-xl">
                 Como está a sua experiência?
               </span>
             </div>
 
             {/* feedback */}
             <div className="flex items-center justify-center gap-x-6 font-semibold">
-              <div className="flex flex-col items-center justify-center gap-y-2 text-white">
-                <div className="w-14 h-14 rounded-full bg-slate-300"></div>
+              <div className="flex flex-col items-center justify-center gap-y-2 text-white div">
+                <div className="w-20 h-20 rounded-full bg-slate-300"></div>
                 <span className="uppercase">péssima</span>
               </div>
-              <div className="flex flex-col items-center justify-center gap-y-2 text-white">
-                <div className="w-14 h-14 rounded-full bg-slate-300"></div>
+              <div className="flex flex-col items-center justify-center gap-y-2 text-white div">
+                <div className="w-20 h-20 rounded-full bg-slate-300"></div>
                 <span className="uppercase">ruim</span>
               </div>
-              <div className="flex flex-col items-center justify-center gap-y-2 text-white">
-                <div className="w-14 h-14 rounded-full bg-slate-300"></div>
+              <div className="flex flex-col items-center justify-center gap-y-2 text-white div">
+                <div className="w-20 h-20 rounded-full bg-slate-300"></div>
                 <span className="uppercase">boa</span>
               </div>
-              <div className="flex flex-col items-center justify-center gap-y-2 text-white">
-                <div className="w-14 h-14 rounded-full bg-slate-300"></div>
+              <div className="flex flex-col items-center justify-center gap-y-2 text-white div">
+                <div className="w-20 h-20 rounded-full bg-slate-300"></div>
                 <span className="uppercase">incrível</span>
               </div>
-              <div className="flex flex-col items-center justify-center gap-y-2 text-white">
-                <div className="w-14 h-14 rounded-full bg-slate-300"></div>
+              <div className="flex flex-col items-center justify-center gap-y-2 text-white div">
+                <div className="w-20 h-20 rounded-full bg-slate-300"></div>
                 <span className="uppercase">perfeita</span>
               </div>
-            </div>
-
-            {/* campo-texto */}
-            <div className="flex flex-col items-center text-white gap-y-3">
-              <span className="font-semibold">nos conte mais sobre:</span>
-              <textarea
-                onResize={"none"}
-                className="text rounded-lg outline-none w-80 h-28 p-3 bg-[#47414D]"
-              ></textarea>
             </div>
 
             <button className="w-44 flex items-center justify-center text-center rounded-lg bg-[#C4BCC7] px-4 py-2">

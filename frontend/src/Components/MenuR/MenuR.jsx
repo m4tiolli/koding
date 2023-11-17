@@ -15,6 +15,8 @@ import green from "../green.png";
 import red from "../red.png";
 import { useNavigate } from "react-router-dom";
 
+import "../MenuR/MenuR.css";
+
 export default function Menu({ screen }) {
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -431,23 +433,23 @@ export default function Menu({ screen }) {
             {/* feedback */}
             <div className="flex items-center justify-center gap-x-10 font-semibold">
               <div className="flex flex-col items-center justify-center gap-y-2 text-white">
-                <div className="w-20 h-20 rounded-full bg-slate-300"></div>
+                <div className="w-20 h-20 rounded-full bg-slate-300 div"></div>
                 <span className="uppercase">péssima</span>
               </div>
               <div className="flex flex-col items-center justify-center gap-y-2 text-white">
-                <div className="w-20 h-20 rounded-full bg-slate-300"></div>
+                <div className="w-20 h-20 rounded-full bg-slate-300 div"></div>
                 <span className="uppercase">ruim</span>
               </div>
               <div className="flex flex-col items-center justify-center gap-y-2 text-white">
-                <div className="w-20 h-20 rounded-full bg-slate-300"></div>
+                <div className="w-20 h-20 rounded-full bg-slate-300 div"></div>
                 <span className="uppercase">boa</span>
               </div>
               <div className="flex flex-col items-center justify-center gap-y-2 text-white">
-                <div className="w-20 h-20 rounded-full bg-slate-300"></div>
+                <div className="w-20 h-20 rounded-full bg-slate-300 div"></div>
                 <span className="uppercase">incrível</span>
               </div>
               <div className="flex flex-col items-center justify-center gap-y-2 text-white">
-                <div className="w-20 h-20 rounded-full bg-slate-300"></div>
+                <div className="w-20 h-20 rounded-full bg-slate-300 div"></div>
                 <span className="uppercase">perfeita</span>
               </div>
             </div>
