@@ -210,7 +210,7 @@ function Configuracao() {
 
               <div className="flex flex-col">
                 <div className="w-52 dark:text-white">
-                  <span>Alto Contraste</span>
+                  <span>Modo Daltonismo</span>
                 </div>
 
                 <select
@@ -219,8 +219,9 @@ function Configuracao() {
                   name="contraste"
                   id="contraste"
                 >
-                  <option value="on">Habilitado</option>
-                  <option value="off">Desabilitado</option>
+                  <option value="on">Azul</option>
+                  <option value="on">Vermelho</option>
+                  <option value="off">Verde</option>
                 </select>
               </div>
             </div>
