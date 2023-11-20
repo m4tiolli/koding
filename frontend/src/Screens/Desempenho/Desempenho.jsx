@@ -8,9 +8,9 @@ import {
   tritanomaly,
   deuteranomaly,
 } from "./../../Components/ColorBlind";
+import axios from "axios";
 
 function Desempenho() {
-    
   const mode = localStorage.getItem("theme");
   const dadosCrianca = JSON.parse(localStorage.getItem("dadosCrianca"));
   function Color(mode, color) {
@@ -49,7 +49,15 @@ function Desempenho() {
     };
   }, []);
 
-  const user = localStorage.getItem("user");
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  const [dadosPontuacao, setDadosPontuacao] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`https://tcckoding.azurewebsites.net/crianca/pontuacao/${user.id}`)
+      .then((response) => setDadosPontuacao(response.data));
+  }, []);
 
   return (
     <div
@@ -58,8 +66,7 @@ function Desempenho() {
         background: "linear-gradient(108deg, #C6D6FF 0%, #FFFFFF 100%)",
       }}
     >
-
-      <MenuR/>
+      <MenuR />
 
       <main className="w-full h-full laptop:h-full lg:h-full notebook:h-full justify-center overflow-hidden dark:bg-darkfundoR">
         {responsive ? <Navbar /> : ""}
@@ -110,7 +117,9 @@ function Desempenho() {
                 )} 0%, ${Color(mode, "#1E7BD6")} 100%`,
               }}
             >
-              <span className="text-white text-6xl font-semibold">{dadosCrianca.SomaPontuacao ?? "0"}</span>
+              <span className="text-white text-6xl font-semibold">
+                {dadosCrianca.SomaPontuacao ?? "0"}
+              </span>
               <span className="text-white text-xl text-center">
                 Nível de Experiência
               </span>
@@ -120,10 +129,10 @@ function Desempenho() {
           {/* Gráficos */}
           <div className="flex flex-col w-full justify-evenly">
             <div>
-              <LineChart />
+              <LineChart valores={dadosPontuacao} />
             </div>
             <div>
-              <LineChart />
+              <LineChart defaul={'all'} />
             </div>
           </div>
         </div>

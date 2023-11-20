@@ -433,3 +433,5 @@ FROM crianca
 INNER JOIN responsavel ON responsavel.id = crianca.responsavel;
 
 SELECT feedbacks.id AS feedback, feedbacks.conteudo, feedbacks.estrela FROM feedbacks WHERE feedbacks.responsavel = 1;
+
+select *  from pontuacoes where crianca = 1;

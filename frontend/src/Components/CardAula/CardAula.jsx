@@ -92,7 +92,6 @@ export default function CardAula({ aula }) {
           w="44vw"
           h="22vw"
           display="flex"
-          marginBottom="20vw"
           background="#D1B8E9"
           borderRadius="0.9em"
           zIndex={100}
