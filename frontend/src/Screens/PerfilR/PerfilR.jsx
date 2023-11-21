@@ -55,16 +55,11 @@ function Perfil() {
   const [telefone, setTelefone] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const [imagem, setImagem] = useState("");
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setImagem(file);
-  };
 
   const handleSubmit = async () => {
     const id = JSON.parse(localStorage.user).id;
-    const body = { nome, cpf, telefone, email, senha, imagem };
+    const body = { nome, cpf, telefone, email, senha };
     try {
       const response = await axios.put(
         `http://localhost:3000/responsavel/${id}`,
@@ -83,7 +78,7 @@ function Perfil() {
 
   return (
     <div
-      className="flex h-full w-full"
+      className="flex min-h-screen w-full"
       style={{
         background: "linear-gradient(108deg, #C6D6FF 0%, #FFFFFF 100%)",
       }}

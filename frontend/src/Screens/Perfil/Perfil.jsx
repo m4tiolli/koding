@@ -6,7 +6,7 @@ import {
   tritanomaly,
   deuteranomaly,
 } from "../../Components/ColorBlind";
-import { useDisclosure, useStatStyles } from "@chakra-ui/react";
+import { ModalOverlay, useDisclosure, useStatStyles } from "@chakra-ui/react";
 import { Modal, ModalContent } from "@chakra-ui/react";
 import { ChakraProvider } from "@chakra-ui/react";
 import boy1 from "../../assets/boy1.jpg";
@@ -49,7 +49,7 @@ function Perfil() {
     }
     return newcolor;
   }
-  const local = JSON.parse(localStorage.getItem("user"))
+  const local = JSON.parse(localStorage.getItem("user"));
   const [image, setImage] = useState(local.imagem);
 
   const toggleImage = (image) => {
@@ -58,20 +58,22 @@ function Perfil() {
 
   const handleProfileChange = () => {
     const local = JSON.parse(localStorage.getItem("user"));
-    const id = local.id
-    const imagem = { "imagem": image }
+    const id = local.id;
+    const imagem = { imagem: image };
     axios
       .put(`https://tcckoding.azurewebsites.net/crianca/imagem/${id}`, imagem)
-      .then(() => toast.success("Avatar alterado com sucesso!", {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      }))
+      .then(() =>
+        toast.success("Avatar alterado com sucesso!", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        })
+      )
       .then(onClose)
       .catch((err) => console.log(err));
     const updatedUser = { ...local, imagem: image };
@@ -143,7 +145,7 @@ function Perfil() {
             }}
           >
             <div className=" w-full h-full flex flex-col -mt-5 items-center gap-y-8 justify-center">
-              <div className="w-10 h-10 absolute xl:top-56 top-48 ml-28 flex items-center justify-center bg-neutral-500 rounded-full">
+              <div className="w-10 h-10 absolute xl:top-56 top-48 ml-28 flex items-center justify-center z-10 bg-neutral-500 rounded-full">
                 <GoPencil
                   className="text-white text-3xl cursor-pointer"
                   onClick={onOpen}
@@ -174,6 +176,7 @@ function Perfil() {
             blockScrollOnMount={false}
             isCentered={true}
           >
+            <ModalOverlay />
             <ModalContent
               borderRadius={"full"}
               width={"50vw"}

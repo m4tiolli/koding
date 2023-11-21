@@ -1,12 +1,7 @@
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
-
 import { protanomaly, deuteranomaly, tritanomaly } from "./../ColorBlind";
-
 import { useDisclosure } from "@chakra-ui/react";
 import { Modal, ModalContent } from "@chakra-ui/react";
-
-import { AiOutlineClose } from "react-icons/ai";
 
 // eslint-disable-next-line react/prop-types
 export default function CardAula({ aula }) {
@@ -25,8 +20,6 @@ export default function CardAula({ aula }) {
     return newcolor;
   }
 
-  console.log(aula);
-
   return (
     <div className="space-y-32">
       <div className="flex flex-col justify-center ml-10">
@@ -44,9 +37,9 @@ export default function CardAula({ aula }) {
               }}
             ></div>
             <div className="flex flex-col">
-              <marquee>
+              <marquee scrollamount={8}>
                 <span className="w-[250px] flex items-center justify-start text-xl text-black font-semibold dark:text-white">
-                  {aula.nome} - {aula.descricao}
+                  {aula.nome}
                 </span>
               </marquee>
               {/* Filtro */}
@@ -83,7 +76,7 @@ export default function CardAula({ aula }) {
         </div>
       </div>
       <Modal
-        isCentered
+        isCentered={true}
         onClose={onClose}
         isOpen={isOpen}
         motionPreset="slideInBottom"
@@ -107,8 +100,7 @@ export default function CardAula({ aula }) {
               <div
                 className="w-82 h-44 rounded-xl"
                 style={{
-                  backgroundImage: 
-                  `linear-gradient(100deg, ${Color(
+                  backgroundImage: `linear-gradient(100deg, ${Color(
                     mode,
                     "#6800FF"
                   )} 0%, ${Color(mode, "#BB5E7E")} 100%`,
@@ -129,9 +121,9 @@ export default function CardAula({ aula }) {
                   }}
                 >
                   <marquee>
-                  <span className="flex w-64 items-center justify-center text-md text-black font-semibold truncate dark:text-white">
-                    Dificuldade: Iniciante
-                  </span>
+                    <span className="flex w-64 items-center justify-center text-md text-black font-semibold truncate dark:text-white">
+                      Dificuldade: Iniciante
+                    </span>
                   </marquee>
                 </div>
               </div>

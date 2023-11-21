@@ -1,5 +1,5 @@
 import { IoArrowBack } from "react-icons/io5";
-
+import { useEffect } from "react";
 import Menu from "../../Components/Menu/Menu";
 import { useNavigate } from "react-router-dom";
 
@@ -10,15 +10,15 @@ import {
 } from "./../../Components/ColorBlind";
 
 function Conteudo() {
+  const navigate = useNavigate();
   useEffect(() => {
-    localStorage.nivel == "responsavel"
+    localStorage.nivel === "responsavel"
       ? navigate("/pais/home")
-      : localStorage.nivel == "crianca"
-      ? navigate("/home")
-      : navigate("/");
+      : localStorage.nivel !== "crianca"
+      ? navigate("/")
+      : '';
   }, [navigate]);
 
-  const navigate = useNavigate();
 
   const mode = localStorage.getItem("theme");
 

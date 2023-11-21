@@ -7,6 +7,7 @@ import {
   ChakraProvider,
   ModalBody,
   ModalFooter,
+  ModalOverlay,
   useDisclosure,
 } from "@chakra-ui/react";
 import {
@@ -103,7 +104,7 @@ function Configuracao() {
 
           {/* Dados */}
 
-          <container className="w-full h-full flex flex-col md:flex-row gap-y-10 ml-20 md:ml-32 lg:gap-x-12 lg:ml-40 lg:mt-5 xl:justify-center xl:gap-x-20">
+          <div className="w-full h-full flex flex-col md:flex-row gap-y-10 ml-20 md:ml-32 lg:gap-x-12 lg:ml-40 lg:mt-5 xl:justify-center xl:gap-x-20">
 
             {/* Dados conta */}
 
@@ -268,6 +269,7 @@ function Configuracao() {
                   blockScrollOnMount={false}
                   isCentered={true}
                 >
+                  <ModalOverlay />
                   <ModalContent>
                     <ModalHeader>Excluir conta</ModalHeader>
                     <ModalCloseButton />
@@ -292,6 +294,7 @@ function Configuracao() {
                   blockScrollOnMount={false}
                   isCentered={true}
                 >
+                  <ModalOverlay />
                   <ModalContent>
                     <ModalHeader>Sair</ModalHeader>
                     <ModalCloseButton />
@@ -308,7 +311,7 @@ function Configuracao() {
                 </Modal>
               </div>
             </div>
-          </container>
+          </div>
         </main>
       </div>
     </ChakraProvider>

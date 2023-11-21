@@ -8,7 +8,7 @@ import { ImContrast, ImBlocked } from "react-icons/im";
 import Logo from "../Logo";
 import { useState, useEffect } from "react";
 import { useDisclosure } from "@chakra-ui/react";
-import { Modal, ModalContent } from "@chakra-ui/react";
+import { Modal, ModalContent, ModalOverlay } from "@chakra-ui/react";
 import { ChakraProvider } from "@chakra-ui/react";
 import { protanomaly, tritanomaly, deuteranomaly } from "../ColorBlind";
 import blue from "../blue.png";
@@ -422,6 +422,7 @@ export default function Menu({ screen }) {
         motionPreset="slideInBottom"
         blockScrollOnMount={false}
       >
+        <ModalOverlay />
         <ModalContent
           minWidth={"40vw"}
           h={"20em"}

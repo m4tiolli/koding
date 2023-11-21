@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import CardCapitulo from "../../Components/CardCapitulo/CardCapitulo";
 import { Spinner } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/react";
-import { Modal, ModalContent } from "@chakra-ui/react";
+import { Modal, ModalContent, ModalOverlay } from "@chakra-ui/react";
 import axios from "axios";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -39,7 +39,6 @@ const Materiais = () => {
   const [capitulos, setCapitulos] = useState([]);
 
   useEffect(() => {
-    // Busca todas as linguagens
     axios
       .get("https://tcckoding.azurewebsites.net/linguagens")
       .then((response) => {
@@ -58,19 +57,33 @@ const Materiais = () => {
     axios
       .get(`https://tcckoding.azurewebsites.net/capitulos/${linguagemId}`)
       .then((response) => {
-        setCapitulos((prevCapitulos) => [...prevCapitulos, ...response.data]);
         setIsLoading([false, false]);
+        const existingChapters = capitulos.filter(
+          (capitulo) => capitulo.linguagem === linguagemId
+        );
+        if (existingChapters.length === 0) {
+          const capitulosPorLinguagem = response.data.map((capitulo) => ({
+            ...capitulo,
+            linguagem: linguagemId,
+          }));
+          setCapitulos((prevCapitulos) => [
+            ...prevCapitulos,
+            ...capitulosPorLinguagem,
+          ]);
+        }
       })
       .catch((error) => {
         console.error(error);
       });
   };
 
+  console.log(capitulos);
+
   const settings = {
     dots: false,
     infinite: true,
     speed: 1000,
-    slidesToShow: 1,
+    slidesToShow: 3,
     slidesToScroll: 1,
     arrows: false,
   };
@@ -122,7 +135,7 @@ const Materiais = () => {
               >
                 Aprendendo {linguagem.nome}
               </span>
-              {isLoading[1] == true ? (
+              {isLoading[1] === true ? (
                 <Spinner color={"white"} />
               ) : (
                 <Slider {...settings}>
@@ -144,6 +157,7 @@ const Materiais = () => {
           isOpen={isOpen}
           motionPreset="slideInBottom"
         >
+          <ModalOverlay />
           <ModalContent
             w="30vw"
             h="15vw"

@@ -59,6 +59,16 @@ function Desempenho() {
       .then((response) => setDadosPontuacao(response.data));
   }, []);
 
+  const calcularSomaPontuacao = (dataObjects) => {
+    const soma = dataObjects.reduce((acc, item) => {
+      return acc + item.pontuacao;
+    }, 0);
+
+    return soma;
+  };
+
+  const somaPontuacao = calcularSomaPontuacao(dadosPontuacao);
+
   return (
     <div
       className="flex min-h-screen w-full"
@@ -118,7 +128,7 @@ function Desempenho() {
               }}
             >
               <span className="text-white text-6xl font-semibold">
-                {dadosCrianca.SomaPontuacao ?? "0"}
+                {somaPontuacao ?? "0"}
               </span>
               <span className="text-white text-xl text-center">
                 Nível de Experiência

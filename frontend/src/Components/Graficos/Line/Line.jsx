@@ -4,8 +4,7 @@ import "chart.js/auto"; // Importe o Chart.js
 import { useState } from "react";
 
 const LineChart = ({ valores, defaul }) => {
-  const [opcao, setOpcao] = useState("24");
-  console.log(valores?.map((item) => item.data));
+  const [opcao, setOpcao] = useState("all");
 
   function dataFormatada(data) {
     const dateTimeString = data;
@@ -15,6 +14,10 @@ const LineChart = ({ valores, defaul }) => {
     const ano = date.getFullYear();
     return `${dia}/${mes}/${ano}`;
   }
+
+  valores?.sort((a, b) => new Date(a.data) - new Date(b.data));
+
+  const labels = valores?.map((item) => dataFormatada(item.data));
 
   const filtrarUltimas24Horas = (dataObjects) => {
     const agora = new Date();
@@ -46,12 +49,19 @@ const LineChart = ({ valores, defaul }) => {
     return pontuacoesUltimaSemana;
   };
 
+  const dataRetornada =
+    opcao === "dia"
+      ? filtrarUltimas24Horas(valores)
+      : opcao === "semana"
+      ? filtrarUltimaSemana(valores)
+      : valores?.map((item) => item.pontuacao);
+
   const data = {
-    labels: valores?.map((item) => dataFormatada(item.data)),
+    labels: opcao === "all" ? labels : labels.slice(-dataRetornada.length),
     datasets: [
       {
         label: "Pontuação",
-        data: valores?.map((item) => item.pontuacao),
+        data: dataRetornada,
         borderColor: (context) => {
           const chart = context.chart;
           const { ctx, chartArea } = chart;
