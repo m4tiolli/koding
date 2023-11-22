@@ -82,8 +82,8 @@ export default function CardAula({ aula }) {
         motionPreset="slideInBottom"
       >
         <ModalContent
-          w="40vw"
-          h="20vw"
+          w="44vw"
+          h="22vw"
           display="flex"
           background="#D1B8E9"
           borderRadius="0.9em"
@@ -95,7 +95,7 @@ export default function CardAula({ aula }) {
         >
           {/* Card */}
 
-          <div className="h-full flex justify-center items-center gap-x-10">
+          <div className="h-full flex justify-center items-center gap-x-16">
             <div className="flex flex-col space-y-3">
               <div
                 className="w-82 h-44 rounded-xl"
@@ -110,9 +110,30 @@ export default function CardAula({ aula }) {
                 <span className="flex font-bold text-lg mb-2 truncate">
                   Aula 00 - Aprendendo esturuta HTML
                 </span>
+                {/* Filtro */}
+                <div
+                  className="w-32 p-1 rounded-md"
+                  style={{
+                    backgroundImage: `linear-gradient(10deg, ${Color(
+                      mode,
+                      "#E87331"
+                    )} 0%, ${Color(mode, "#E88D59")} 100%`,
+                  }}
+                >
+                  <marquee>
+                    <span className="flex w-64 items-center justify-center text-md text-black font-semibold truncate dark:text-white">
+                      Dificuldade: Iniciante
+                    </span>
+                  </marquee>
+                </div>
               </div>
             </div>
-            <div className="flex flex-col justify-center items-center space-y-10 mt-10">
+            <div className="flex flex-col justify-center items-center space-y-10">
+              <div className="flex flex-col justify-center bg-white/50 w-32 h-8 space-x-20 rounded-md">
+                <span className="flex justify-center items-center">
+                  Nivel 1
+                </span>
+              </div>
               <Link to={"/conteudo"}>
                 <button className="bg-[#3BEF61] text-white w-32 uppercase text-2xl p-2 rounded-lg shadow-md">
                   Iniciar

@@ -79,7 +79,7 @@ function Quiz() {
                   <li key={index} className="mt-10 mb-10 div">
                     <label className="w-10 h-10 border-10px border-black bg-purple-500 border-solid shadow-md rounded-xl p-10 cursor-pointer">
                       <input
-                        className="hidden"
+                        className="list-none"
                         type="radio"
                         name="alternativas"
                         value={alternativa}

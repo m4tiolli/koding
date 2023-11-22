@@ -65,13 +65,11 @@ const Materiais = () => {
       });
   };
 
-  console.log(capitulos);
-
   const settings = {
     dots: false,
     infinite: true,
     speed: 1000,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     arrows: true,
   };
@@ -154,24 +152,21 @@ const Materiais = () => {
             w="30vw"
             h="15vw"
             display="flex"
-            marginBottom={"auto"}
+            marginBottom="17vw"
             zIndex={100}
             background="#E4D9ED"
             borderRadius="0.9em"
-            marginLeft={"auto"}
-            marginTop={"auto"}
-            marginRight={"auto"}
           >
             {/* Tags */}
 
             <div className="h-full flex justify-center items-center gap-x-5 flex-wrap">
-              <div className="mb-5 mt-5">
+              <div className="mb-5">
                 <span className="flex justify-center text-lg">
                   Filtrar por:
                 </span>
                 <div className="border-b-2 w-32 border-black/50"></div>
               </div>
-              <div className="flex justify-center gap-y-2 gap-x-3 flex-wrap mb-10 mt-3">
+              <div className="flex justify-center gap-y-2 gap-x-3 flex-wrap">
                 <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-orange-300">
                   <AiOutlineClose className="text-xl" />
                   <span id="filter" className="text-lg">
@@ -190,10 +185,25 @@ const Materiais = () => {
                   <AiOutlineClose className="text-xl" />
                   <span className="text-lg">php</span>
                 </button>
+                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-orange-300">
+                  <AiOutlineClose className="text-xl" />
+                  <span id="filter" className="text-lg">
+                    estrutura
+                  </span>
+                </button>
+                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-blue-300">
+                  <AiOutlineClose className="text-xl" />
+                  <span className="text-lg">flexbox</span>
+                </button>
+                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-yellow-300">
+                  <AiOutlineClose className="text-xl" />
+                  <span className="text-lg">input</span>
+                </button>
+                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-purple-300">
+                  <AiOutlineClose className="text-xl" />
+                  <span className="text-lg">introdução</span>
+                </button>
               </div>
-              <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 mb-10 text-xl">
-                Confirmar
-              </button>
             </div>
           </ModalContent>
         </Modal>

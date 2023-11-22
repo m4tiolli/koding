@@ -23,7 +23,7 @@ import green from "../../Components/green.png";
 import red from "../../Components/red.png";
 import { useNavigate, useLocation } from "react-router-dom";
 
-export default function Home() {
+export default function Home({prop}) {
   const [button, setButton] = useState("materiais");
   const navigate = useNavigate();
   const location = useLocation();
@@ -441,6 +441,68 @@ export default function Home() {
             </div>
           </ModalContent>
         </Modal>
+
+        <Modal
+        isOpen={isfeedopen}
+        onClose={onfeedclose}
+        motionPreset="slideInBottom"
+        blockScrollOnMount={false}
+      >
+        <ModalOverlay />
+        <ModalContent
+          minWidth={"40vw"}
+          h={"20em"}
+          display={"flex"}
+          justifyContent={"center"}
+          alignItems={"center"}
+          borderRadius="20"
+          top={"2em"}
+          zIndex={"1000"}
+          position={"fixed"}
+          background={"#7E1AD4"}
+        >
+          <div className="flex flex-col items-center justify-center space-y-8 w-full">
+            {/* texto */}
+            <div className="flex flex-col justify-center items-center text-white gap-y-3">
+              <div className="flex">
+              </div>
+              <span className="uppercase font-bold text-xl">
+                Como está a sua experiência?
+              </span>
+            </div>
+
+            {/* feedback */}
+            <div className="flex items-center justify-center gap-x-6 font-semibold">
+              <div className="flex flex-col items-center justify-center gap-y-2 text-white div">
+                <div className="w-20 h-20 rounded-full bg-slate-300"></div>
+                <span className="uppercase">péssima</span>
+              </div>
+              <div className="flex flex-col items-center justify-center gap-y-2 text-white div">
+                <div className="w-20 h-20 rounded-full bg-slate-300"></div>
+                <span className="uppercase">ruim</span>
+              </div>
+              <div className="flex flex-col items-center justify-center gap-y-2 text-white div">
+                <div className="w-20 h-20 rounded-full bg-slate-300"></div>
+                <span className="uppercase">boa</span>
+              </div>
+              <div className="flex flex-col items-center justify-center gap-y-2 text-white div">
+                <div className="w-20 h-20 rounded-full bg-slate-300"></div>
+                <span className="uppercase">incrível</span>
+              </div>
+              <div className="flex flex-col items-center justify-center gap-y-2 text-white div">
+                <div className="w-20 h-20 rounded-full bg-slate-300"></div>
+                <span className="uppercase">perfeita</span>
+              </div>
+            </div>
+
+            <button className="w-44 flex items-center justify-center text-center rounded-lg bg-[#C4BCC7] px-4 py-2">
+              <span className="items-center gap-2 w-full">
+                <span className="">Enviar Feedback</span>
+              </span>
+            </button>
+          </div>
+        </ModalContent>
+      </Modal>
 
         {button === "materiais" ? (
           <Materiais />
