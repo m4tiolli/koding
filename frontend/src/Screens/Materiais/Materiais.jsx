@@ -58,19 +58,7 @@ const Materiais = () => {
       .get(`https://tcckoding.azurewebsites.net/capitulos/${linguagemId}`)
       .then((response) => {
         setIsLoading([false, false]);
-        const existingChapters = capitulos.filter(
-          (capitulo) => capitulo.linguagem === linguagemId
-        );
-        if (existingChapters.length === 0) {
-          const capitulosPorLinguagem = response.data.map((capitulo) => ({
-            ...capitulo,
-            linguagem: linguagemId,
-          }));
-          setCapitulos((prevCapitulos) => [
-            ...prevCapitulos,
-            ...capitulosPorLinguagem,
-          ]);
-        }
+        setCapitulos((prevCapitulos) => [...prevCapitulos, ...response.data]);
       })
       .catch((error) => {
         console.error(error);
@@ -85,7 +73,7 @@ const Materiais = () => {
     speed: 1000,
     slidesToShow: 3,
     slidesToScroll: 1,
-    arrows: false,
+    arrows: true,
   };
 
   return (
@@ -120,7 +108,9 @@ const Materiais = () => {
 
         {/* Cards */}
         {isLoading[0] == true ? (
-          <Spinner color={"white"} />
+          <div className="grid place-items-center h-1/3 w-full">
+            <Spinner color={"white"} size={"xl"} />
+          </div>
         ) : (
           linguagens.map((linguagem, index) => (
             <div
@@ -138,15 +128,17 @@ const Materiais = () => {
               {isLoading[1] === true ? (
                 <Spinner color={"white"} />
               ) : (
-                <Slider {...settings}>
-                  {capitulos
-                    .filter((capitulo) => capitulo.linguagem === linguagem.id)
-                    .map((capitulo, index) => (
-                      <div key={index}>
-                        <CardCapitulo capituloId={capitulo.id} />
-                      </div>
-                    ))}
-                </Slider>
+                <div className="cursor-grab w-[95%]">
+                  <Slider {...settings}>
+                    {capitulos
+                      .filter((capitulo) => capitulo.linguagem === linguagem.id)
+                      .map((capitulo, index) => (
+                        <div key={index}>
+                          <CardCapitulo capitulo={capitulo} />
+                        </div>
+                      ))}
+                  </Slider>
+                </div>
               )}
             </div>
           ))

@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS capitulos(
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255),
     linguagem INT,
+    numerocapitulo INT,
     FOREIGN KEY (linguagem) REFERENCES linguagens(id)
 );
 
@@ -105,7 +106,7 @@ INSERT INTO crianca VALUES
 (DEFAULT, 'marcos', 'marcos', 'marcos@gmail.com', '123', 2, 'boy2', 'm'),
 (DEFAULT, 'ju', 'ju', 'ju@gmail.com', '123', 3, 'girl3', 'f');
 
-INSERT INTO pontuacoes VALUES (DEFAULT, 1, 300, '2023-11-18');
+INSERT INTO pontuacoes VALUES (DEFAULT, 1, 200, '2023-11-21');
 INSERT INTO pontuacoes VALUES (DEFAULT, 2, 200, '2023-10-08');
 INSERT INTO pontuacoes VALUES (DEFAULT, 3, 300, '2023-10-09');
 
@@ -128,18 +129,18 @@ INSERT INTO tags VALUES
 (DEFAULT, 'Introdução');
 
 INSERT INTO capitulos VALUES 
-(DEFAULT, 'HTML - Introdução', 1),
-(DEFAULT, 'HTML - Técnicas Avançadas', 1),
-(DEFAULT, 'HTML - Design Responsivo', 1),
-(DEFAULT, 'CSS - Introdução', 2),
-(DEFAULT, 'CSS - Animações e Transições', 2),
-(DEFAULT, 'CSS - Layouts Flexíveis', 2),
-(DEFAULT, 'JavaScript - Introdução', 3),
-(DEFAULT, 'JavaScript - Programação Assíncrona', 3),
-(DEFAULT, 'JavaScript - Frameworks Front-end', 3),
-(DEFAULT, 'PHP - Introdução', 4),
-(DEFAULT, 'PHP - Programação Orientada a Objetos', 4),
-(DEFAULT, 'PHP - Banco de Dados com MySQL', 4);
+(DEFAULT, 'HTML - Introdução', 1, 1),
+(DEFAULT, 'HTML - Técnicas Avançadas', 2, 1),
+(DEFAULT, 'HTML - Design Responsivo', 3, 1),
+(DEFAULT, 'CSS - Introdução', 1, 2),
+(DEFAULT, 'CSS - Animações e Transições', 2, 2),
+(DEFAULT, 'CSS - Layouts Flexíveis', 3, 2),
+(DEFAULT, 'JavaScript - Introdução', 1, 3),
+(DEFAULT, 'JavaScript - Programação Assíncrona', 2, 3),
+(DEFAULT, 'JavaScript - Frameworks Front-end', 3, 3),
+(DEFAULT, 'PHP - Introdução', 1, 4),
+(DEFAULT, 'PHP - Programação Orientada a Objetos', 2, 4),
+(DEFAULT, 'PHP - Banco de Dados com MySQL', 3, 4);
 
 INSERT INTO aulas VALUES 
 (DEFAULT, 'Aula 00 - Fundamentos do HTML', 'Nesta aula, você irá aprender os conceitos básicos do HTML', 
