@@ -26,7 +26,7 @@ const Desafios = () => {
 
   return (
     <div
-      className="flex h-full w-full"
+      className="flex min-h-screen w-full"
       style={{
         background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)",
       }}
