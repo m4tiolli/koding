@@ -94,7 +94,7 @@ function Aulas() {
         {aulas.map((aula, index) => (
           <CardAula aula={aula} key={index} />
         ))}
-        
+
         <Modal
           isCentered
           onClose={onClose}
@@ -103,20 +103,20 @@ function Aulas() {
         >
           <ModalContent
             w="30vw"
-            h="15vw"
+            h="22vw"
             display="flex"
-            marginBottom="20vw"
+            marginBottom={"auto"}
             background="#E4D9ED"
             borderRadius="0.9em"
             zIndex={100}
-            marginLeft={'auto'}
-            marginTop={'auto'}
-            marginRight={'auto'}
+            marginLeft={"auto"}
+            marginTop={"auto"}
+            marginRight={"auto"}
           >
             {/* Tags */}
 
-            <div className="h-full flex justify-center items-center gap-x-5 flex-wrap">
-              <div className="mb-5">
+            <div className="h-full flex justify-center items-center gap-x-5 gap-y-3 flex-wrap">
+              <div className="mb-5 mt-5">
                 <span className="flex justify-center text-lg">
                   Filtrar por:
                 </span>
@@ -160,11 +160,10 @@ function Aulas() {
                   <span className="text-lg">introdução</span>
                 </button>
               </div>
+              <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 mb-10 mt-5 text-xl">Confirmar</button>
             </div>
           </ModalContent>
         </Modal>
-
-      
       </main>
     </div>
   );

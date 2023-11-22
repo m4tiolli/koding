@@ -27,17 +27,17 @@
 
 .vr, .sp{
     width: 100%;
-    height: 100%;
+    height: 80%;
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
 }
 
 .sp{
-    width: 70%;
-    height: 70%;
+    width: 60%;
+    height: 60%;
     margin-top: 15px;
-    margin-left: 15px;
+    margin-left: 20px;
 }
 
 .vr.verde{

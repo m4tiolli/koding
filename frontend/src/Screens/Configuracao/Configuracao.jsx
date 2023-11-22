@@ -65,7 +65,7 @@ function Configuracao() {
     <ChakraProvider>
       <div
         className="flex h-full w-full"
-        style={{ background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)" }}
+        style={{ background: "linear-gradient(108deg, #C6D6FF 0%, #FFFFFF 100%)" }}
       >
         <Menu />
         
