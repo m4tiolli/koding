@@ -16,6 +16,7 @@ import green from "../green.png";
 import red from "../red.png";
 import { useNavigate } from "react-router-dom";
 import "../Menu/Menu.css";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function Menu({ screen }) {
   const navigate = useNavigate();
