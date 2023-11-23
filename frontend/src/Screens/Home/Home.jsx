@@ -10,7 +10,7 @@ import { useState, useEffect } from "react";
 import Materiais from "../Materiais/Materiais";
 import Perfil from "../Perfil/Perfil";
 import "./Home.css";
-import { useDisclosure } from "@chakra-ui/react";
+import { ModalCloseButton, useDisclosure } from "@chakra-ui/react";
 import { Modal, ModalContent, ModalOverlay } from "@chakra-ui/react";
 import { ChakraProvider } from "@chakra-ui/react";
 import {
@@ -22,8 +22,10 @@ import blue from "../../Components/blue.png";
 import green from "../../Components/green.png";
 import red from "../../Components/red.png";
 import { useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 
-export default function Home({prop}) {
+export default function Home({ prop }) {
   const [button, setButton] = useState("materiais");
   const navigate = useNavigate();
   const location = useLocation();
@@ -49,6 +51,11 @@ export default function Home({prop}) {
     isOpen: isDalOpen,
     onOpen: onDalOpen,
     onClose: onDalClose,
+  } = useDisclosure();
+  const {
+    isOpen: isFeedOpen,
+    onOpen: onFeedOpen,
+    onClose: onFeedClose,
   } = useDisclosure();
 
   const toggleButton = (type) => {
@@ -143,6 +150,36 @@ export default function Home({prop}) {
     return isChecked ? true : false;
   }
 
+  const [avaliacao, setAvaliacao] = useState();
+  const [mensagem, setMensagem] = useState("");
+
+  const handleAvaliacaoChange = (e) => {
+    setAvaliacao(e.target.value);
+  };
+
+  function EnviarFeedback(estrela, conteudo) {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const responsavel = user.responsavel;
+
+    const body = { responsavel, conteudo, estrela };
+    axios
+      .post("https://tcckoding.azurewebsites.net/feedback", body)
+      .then(() =>
+        toast.success("Feedback enviado com sucesso!", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        })
+      )
+      .then(onFeedClose)
+      .then(onMaisClose);
+  }
+
   return (
     <ChakraProvider>
       <div
@@ -154,6 +191,19 @@ export default function Home({prop}) {
           )} 0%, ${Color(mode, "#E4EBFF")} 100%)`,
         }}
       >
+        <ToastContainer
+          position="top-center"
+          autoClose={2000}
+          limit={3}
+          hideProgressBar
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
         <aside
           className={`dark:bg-darkcinza h-screen w-52 p-5 fixed top-0 flex flex-col items-start justify-center shadow-lg`}
           style={{ backgroundColor: Color(mode, "#EDD8FF") }}
@@ -253,6 +303,7 @@ export default function Home({prop}) {
           onClose={onClose}
           motionPreset="slideInBottom"
           blockScrollOnMount={false}
+          closeOnEsc={true}
         >
           <ModalOverlay />
           <ModalContent
@@ -433,7 +484,10 @@ export default function Home({prop}) {
                 </span>
               </button>
 
-              <button className="text-center rounded-lg leading-none bg-[#C4BCC7] px-4 py-2 hover:opacity-70">
+              <button
+                className="text-center rounded-lg leading-none bg-[#C4BCC7] px-4 py-2 hover:opacity-70"
+                onClick={onFeedOpen}
+              >
                 <span className="inline-flex items-center gap-2 w-full">
                   <span className="2xl:text-xl text-lg">Dar Feedback</span>
                 </span>
@@ -443,66 +497,169 @@ export default function Home({prop}) {
         </Modal>
 
         <Modal
-        isOpen={localStorage.isopen}
-        onclose={localStorage.onclose}
-        motionPreset="slideInBottom"
-        blockScrollOnMount={false}
-      >
-        <ModalOverlay />
-        <ModalContent
-          minWidth={"40vw"}
-          h={"20em"}
-          display={"flex"}
-          justifyContent={"center"}
-          alignItems={"center"}
-          borderRadius="20"
-          top={"2em"}
-          zIndex={"1000"}
-          position={"fixed"}
-          background={"#7E1AD4"}
+          isOpen={isFeedOpen}
+          onClose={onFeedClose}
+          motionPreset="slideInBottom"
+          blockScrollOnMount={false}
         >
-          <div className="flex flex-col items-center justify-center space-y-8 w-full">
-            {/* texto */}
-            <div className="flex flex-col justify-center items-center text-white gap-y-3">
-              <div className="flex">
+          <ModalOverlay />
+          <ModalContent
+            minWidth={"40vw"}
+            h={"40vh"}
+            display={"flex"}
+            justifyContent={"center"}
+            alignItems={"center"}
+            borderRadius="20"
+            top={"2em"}
+            zIndex={"1000"}
+            position={"fixed"}
+            background={"#7E1AD4"}
+          >
+            <ModalCloseButton color={"#fff"} />
+            <div className="flex flex-col items-center justify-center w-full gap-4">
+              {/* texto */}
+              <div className="flex flex-col justify-center items-center text-white">
+                <div className="flex"></div>
+                <span className="uppercase font-bold text-xl">
+                  Como está a sua experiência?
+                </span>
               </div>
-              <span className="uppercase font-bold text-xl">
-                Como está a sua experiência?
-              </span>
-            </div>
 
-            {/* feedback */}
-            <div className="flex items-center justify-center gap-x-6 font-semibold">
-              <div className="flex flex-col items-center justify-center gap-y-2 text-white div">
-                <div className="w-20 h-20 rounded-full bg-slate-300"></div>
-                <span className="uppercase">péssima</span>
+              {/* feedback */}
+              <div className="flex items-center justify-center font-semibold gap-x-4">
+                <label
+                  htmlFor="pessima"
+                  className="flex flex-col items-center justify-center gap-y-2 text-white div"
+                >
+                  <div
+                    className={`w-20 h-20 rounded-full ${
+                      avaliacao === "1" ? "bg-blue-400" : "bg-slate-300"
+                    }`}
+                  ></div>
+                  <span className="uppercase">
+                    <p className="ml-1"> péssima</p>
+                    <input
+                      id="pessima"
+                      type="radio"
+                      value={"1"}
+                      checked={avaliacao === "1"}
+                      onChange={handleAvaliacaoChange}
+                      className="invisible"
+                    />
+                  </span>
+                </label>
+                <label
+                  htmlFor="ruim"
+                  className="flex flex-col items-center justify-center gap-y-2 text-white div"
+                >
+                  <div
+                    className={`w-20 h-20 rounded-full ${
+                      avaliacao === "2" ? "bg-blue-400" : "bg-slate-300"
+                    }`}
+                  ></div>
+                  <span className="uppercase">
+                    <p className="ml-1"> ruim</p>
+                    <input
+                      id="ruim"
+                      type="radio"
+                      value={"2"}
+                      checked={avaliacao === "2"}
+                      onChange={handleAvaliacaoChange}
+                      className="invisible"
+                    />
+                  </span>
+                </label>
+                <label
+                  htmlFor="boa"
+                  className="flex flex-col items-center justify-center gap-y-2 text-white div"
+                >
+                  <div
+                    className={`w-20 h-20 rounded-full ${
+                      avaliacao === "3" ? "bg-blue-400" : "bg-slate-300"
+                    }`}
+                  ></div>
+                  <span className="uppercase">
+                    <p className="ml-1"> boa</p>
+                    <input
+                      id="boa"
+                      type="radio"
+                      value={"3"}
+                      checked={avaliacao === "3"}
+                      onChange={handleAvaliacaoChange}
+                      className="invisible"
+                    />
+                  </span>
+                </label>
+                <label
+                  htmlFor="incrivel"
+                  className="flex flex-col items-center justify-center gap-y-2 text-white div"
+                >
+                  <div
+                    className={`w-20 h-20 rounded-full ${
+                      avaliacao === "4" ? "bg-blue-400" : "bg-slate-300"
+                    }`}
+                  ></div>
+                  <span className="uppercase">
+                    <p className="ml-1">incrível</p>
+                    <input
+                      id="incrivel"
+                      type="radio"
+                      value={"4"}
+                      checked={avaliacao === "4"}
+                      onChange={handleAvaliacaoChange}
+                      className="invisible"
+                    />
+                  </span>
+                </label>
+                <label
+                  htmlFor="perfeita"
+                  className="flex flex-col items-center justify-center gap-y-2 text-white div"
+                >
+                  <div
+                    className={`w-20 h-20 rounded-full ${
+                      avaliacao === "5" ? "bg-blue-400" : "bg-slate-300"
+                    }`}
+                  ></div>
+                  <span className="uppercase">
+                    <p className="ml-1">perfeita</p>
+                    <input
+                      id="perfeita"
+                      type="radio"
+                      value={"5"}
+                      checked={avaliacao === "5"}
+                      onChange={handleAvaliacaoChange}
+                      className="invisible"
+                    />
+                  </span>
+                </label>
               </div>
-              <div className="flex flex-col items-center justify-center gap-y-2 text-white div">
-                <div className="w-20 h-20 rounded-full bg-slate-300"></div>
-                <span className="uppercase">ruim</span>
-              </div>
-              <div className="flex flex-col items-center justify-center gap-y-2 text-white div">
-                <div className="w-20 h-20 rounded-full bg-slate-300"></div>
-                <span className="uppercase">boa</span>
-              </div>
-              <div className="flex flex-col items-center justify-center gap-y-2 text-white div">
-                <div className="w-20 h-20 rounded-full bg-slate-300"></div>
-                <span className="uppercase">incrível</span>
-              </div>
-              <div className="flex flex-col items-center justify-center gap-y-2 text-white div">
-                <div className="w-20 h-20 rounded-full bg-slate-300"></div>
-                <span className="uppercase">perfeita</span>
-              </div>
-            </div>
 
-            <button className="w-44 flex items-center justify-center text-center rounded-lg bg-[#C4BCC7] px-4 py-2">
-              <span className="items-center gap-2 w-full">
-                <span className="">Enviar Feedback</span>
-              </span>
-            </button>
-          </div>
-        </ModalContent>
-      </Modal>
+              <div>
+                <p className="font-semibold text-white text-lg text-center py-2">
+                  Nos conte mais sobre
+                </p>
+                <textarea
+                  name=""
+                  id=""
+                  cols="50"
+                  rows="2"
+                  className="rounded-2xl resize-none outline-none p-2 text-lg"
+                  value={mensagem}
+                  onChange={(e) => setMensagem(e.target.value)}
+                ></textarea>
+              </div>
+
+              <button
+                className="w-44 flex items-center justify-center text-center rounded-lg bg-[#C4BCC7] px-4 py-2"
+                onClick={() => EnviarFeedback(parseInt(avaliacao), mensagem)}
+              >
+                <span className="items-center gap-2 w-full">
+                  <span className="">Enviar Feedback</span>
+                </span>
+              </button>
+            </div>
+          </ModalContent>
+        </Modal>
 
         {button === "materiais" ? (
           <Materiais />
