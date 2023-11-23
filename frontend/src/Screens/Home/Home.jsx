@@ -443,8 +443,8 @@ export default function Home({prop}) {
         </Modal>
 
         <Modal
-        isOpen={isfeedopen}
-        onClose={onfeedclose}
+        isOpen={localStorage.isopen}
+        onclose={localStorage.onclose}
         motionPreset="slideInBottom"
         blockScrollOnMount={false}
       >

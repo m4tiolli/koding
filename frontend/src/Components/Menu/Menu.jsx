@@ -7,7 +7,7 @@ import { LuPaintBucket } from "react-icons/lu";
 import { ImContrast, ImBlocked } from "react-icons/im";
 import Logo from "../Logo";
 import { useState, useEffect } from "react";
-import { useDisclosure } from "@chakra-ui/react";
+import { ModalCloseButton, useDisclosure } from "@chakra-ui/react";
 import { Modal, ModalContent, ModalOverlay } from "@chakra-ui/react";
 import { ChakraProvider } from "@chakra-ui/react";
 import { protanomaly, tritanomaly, deuteranomaly } from "../ColorBlind";
@@ -37,10 +37,6 @@ export default function Menu({ screen }) {
   } = useDisclosure();
 
   const [button, setButton] = useState("");
-
-  const toggleButton = (type) => {
-    setButton(type);
-  };
 
   const [isChecked, setIsChecked] = useState(false);
 
@@ -129,10 +125,6 @@ export default function Menu({ screen }) {
   function blindNotAllowed() {
     return isChecked ? true : false;
   }
-
-prop.onopen = onFeedOpen
-prop.onclose = onFeedClose
-prop.isopen = isFeedOpen
 
   return (
     <ChakraProvider>
@@ -420,8 +412,66 @@ prop.isopen = isFeedOpen
         </ModalContent>
       </Modal>
 
-      
+      <Modal
+        isOpen={isFeedOpen}
+        onClose={onFeedClose}
+        motionPreset="slideInBottom"
+        blockScrollOnMount={false}
+        closeOnOverlayClick={true}
+      >
+        <ModalOverlay />
+        <ModalContent
+          minWidth={"40vw"}
+          h={"20em"}
+          display={"flex"}
+          justifyContent={"center"}
+          alignItems={"center"}
+          borderRadius="20"
+          top={"2em"}
+          background={"#7E1AD4"}
+        >
+          <ModalCloseButton color={"#fff"} />
+          <div className="flex flex-col items-center justify-center space-y-8 w-full">
+            {/* texto */}
+            <div className="flex flex-col justify-center items-center text-white gap-y-3">
+              <div className="flex"></div>
+              <span className="uppercase font-bold text-xl">
+                Como está a sua experiência?
+              </span>
+            </div>
+
+            {/* feedback */}
+            <div className="flex items-center justify-center gap-x-6 font-semibold">
+              <div className="flex flex-col items-center justify-center gap-y-2 text-white div">
+                <div className="w-20 h-20 rounded-full bg-slate-300"></div>
+                <span className="uppercase">péssima</span>
+              </div>
+              <div className="flex flex-col items-center justify-center gap-y-2 text-white div">
+                <div className="w-20 h-20 rounded-full bg-slate-300"></div>
+                <span className="uppercase">ruim</span>
+              </div>
+              <div className="flex flex-col items-center justify-center gap-y-2 text-white div">
+                <div className="w-20 h-20 rounded-full bg-slate-300"></div>
+                <span className="uppercase">boa</span>
+              </div>
+              <div className="flex flex-col items-center justify-center gap-y-2 text-white div">
+                <div className="w-20 h-20 rounded-full bg-slate-300"></div>
+                <span className="uppercase">incrível</span>
+              </div>
+              <div className="flex flex-col items-center justify-center gap-y-2 text-white div">
+                <div className="w-20 h-20 rounded-full bg-slate-300"></div>
+                <span className="uppercase">perfeita</span>
+              </div>
+            </div>
+
+            <button className="w-44 flex items-center justify-center text-center rounded-lg bg-[#C4BCC7] px-4 py-2">
+              <span className="items-center gap-2 w-full">
+                <span className="">Enviar Feedback</span>
+              </span>
+            </button>
+          </div>
+        </ModalContent>
+      </Modal>
     </ChakraProvider>
   );
 }
-
