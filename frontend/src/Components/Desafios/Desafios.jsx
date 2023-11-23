@@ -17,7 +17,7 @@ const Desafi = ({ colorMode }) => {
     }
 
     return (
-        <div className="flex h-screen w-full" style={{ background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)" }}>
+        <div className="flex min-h-full w-full" style={{ background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)" }}>
 
             <Menu screen={"desafios"} />
 
