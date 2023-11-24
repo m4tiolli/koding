@@ -65,14 +65,76 @@ const Materiais = () => {
       });
   };
 
+  const [isResponsive, setResponsive] = useState()
+
+  useEffect(() => {
+    const handleResize = () => {
+      setResponsive(window.innerWidth < 1400);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const settings = {
     dots: false,
     infinite: true,
     speed: 1000,
-    slidesToShow: 4,
+    slidesToShow: isResponsive ? 3 : 4,
     slidesToScroll: 1,
     arrows: true,
   };
+
+  const id = capitulos.map(capitulo => capitulo.id)
+
+
+
+
+  useEffect(() => {
+    setTimeout(() => {
+      const slickArrows1 = document.querySelectorAll(".slick-prev");
+      slickArrows1.forEach((arrow, index) => {
+        var color1;
+        switch (id[index]) {
+          case 1: color1 = "#E88D59"
+            break;
+          case 2: color1 = "#4A90E2"
+            break;
+          case 3: color1 = "#F2D237"
+            break;
+          case 4: color1 = "#5D6CC2"
+            break;
+        }
+
+        arrow.style.background = color1;
+      });
+
+      const slickArrows2 = document.querySelectorAll(".slick-next");
+      slickArrows2.forEach((arrow, index) => {
+        var color2;
+        switch (id[index]) {
+          case 1: color2 = "#E88D59"
+            break;
+          case 2: color2 = "#4A90E2"
+            break;
+          case 3: color2 = "#F2D237"
+            break;
+          case 4: color2 = "#5D6CC2"
+            break;
+        }
+
+        arrow.style.background = color2;
+      });
+    }, 0);
+  }, [id]);
+
+
+
 
   return (
     <div className={`flex h-full w-full dark:bg-darkcinzaclaro`}>
@@ -107,12 +169,12 @@ const Materiais = () => {
         {/* Cards */}
         {isLoading[0] == true ? (
           <div className="grid place-items-center h-1/3 w-full">
-            <Spinner color={"white"} size={"xl"} />
+            <Spinner color={`${localStorage.theme == "dark" ? "white" : "#811CD7"}`} thickness="4px" size={"xl"} />
           </div>
         ) : (
           linguagens.map((linguagem, index) => (
             <div
-              className="flex flex-col justify-center ml-10 space-y-8 mb-20"
+              className="flex flex-col relative justify-center ml-10 space-y-8 mb-20"
               key={index}
             >
               <span

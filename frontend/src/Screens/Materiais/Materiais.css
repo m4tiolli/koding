@@ -6,3 +6,44 @@
 .border {
   border: 1px solid red;
 }
+
+.slick-arrow {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  top: -6vh;
+  border-radius: 5px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: white !important;
+  opacity: 1;
+  font-family: "Poppins";
+  font-size: 20pt;
+  font-weight: 800;
+  width: fit-content;
+  aspect-ratio: 1;
+}
+
+.slick-next {
+  right: 3%;
+}
+
+.slick-prev {
+  left: 90%;
+}
+
+.slick-prev:before {
+  content: "<";
+}
+
+.slick-next:before {
+  content: ">";
+}
+
+.slick-arrow:hover {
+  opacity: 0.7;
+}
