@@ -453,7 +453,7 @@ export default function Menu({ screen }) {
         <ModalOverlay />
         <ModalContent
           minWidth={"45vw"}
-          h={"45vh"}
+          h={"75h"}
           display={"flex"}
           justifyContent={"center"}
           alignItems={"center"}
