@@ -88,7 +88,7 @@ function Ajuda() {
               <summary className="outline-none cursor-pointer text-lg">
                 Conceitos Básicos: HTML
               </summary>
-              <div className="text-gray-700">
+              <div className="text-gray-700 dark:text-white">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua
               </div>
@@ -98,7 +98,7 @@ function Ajuda() {
               <summary className="outline-none cursor-pointer text-lg">
                 Conceitos Básicos: CSS
               </summary>
-              <div className="text-gray-700">
+              <div className="text-gray-700 dark:text-white">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua
               </div>
@@ -108,7 +108,7 @@ function Ajuda() {
               <summary className="outline-none cursor-pointer text-lg">
                 Conceitos Básicos: JavaScript
               </summary>
-              <div className="text-gray-700">
+              <div className="text-gray-700 dark:text-white">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua
               </div>
@@ -118,7 +118,7 @@ function Ajuda() {
               <summary className="outline-none cursor-pointer text-lg">
                 Conceitos Básicos: PHP
               </summary>
-              <div className="text-gray-700">
+              <div className="text-gray-700 dark:text-white">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua
               </div>
@@ -133,7 +133,7 @@ function Ajuda() {
               <summary className="outline-none cursor-pointer text-lg">
                 Como editar meu perfi?
               </summary>
-              <div className="text-gray-700">
+              <div className="text-gray-700 dark:text-white">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua
               </div>
@@ -143,7 +143,7 @@ function Ajuda() {
               <summary className="outline-none cursor-pointer text-lg">
                 Como excluir minha conta?
               </summary>
-              <div className="text-gray-700">
+              <div className="text-gray-700 dark:text-white">
               &emsp; Você precisará ir no menu <b>"Mais"</b> e em <b>"Configurações"</b>, lá você poderá excluir ou sair da sua conta. 
               </div>
             </details>
@@ -152,7 +152,7 @@ function Ajuda() {
               <summary className="outline-none cursor-pointer text-lg">
                 Como verificar o desempenho?
               </summary>
-              <div className="text-gray-700">
+              <div className="text-gray-700 dark:text-white">
                &emsp; A tela inicial contém um menu, nesse menu você irá clicar em <b>Desempenho</b>, lá você irá encontrar gráficos de pontuação, erros e acertos, quantos pontos, linguagens e jogos o jovem completou. 
               </div>
             </details>
