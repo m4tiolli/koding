@@ -166,7 +166,7 @@ function Perfil() {
 
                 <label className="">
                   <input
-                    className="ml-8 p-2 w-42 rounded-xl border-solid border-black outline-none shadow-lg"
+                    className="dark:text-black ml-8 p-2 w-42 rounded-xl border-solid border-black outline-none shadow-lg"
                     style={{ background: "#efefef" }}
                     name="name"
                     type="text"
@@ -183,7 +183,7 @@ function Perfil() {
 
                 <label>
                   <input
-                    className="ml-8 p-2 rounded-xl border-solid border-black outline-none shadow-lg"
+                    className="dark:text-black ml-8 p-2 rounded-xl border-solid border-black outline-none shadow-lg"
                     style={{ background: "#efefef" }}
                     name="username"
                     type="text"
@@ -200,7 +200,7 @@ function Perfil() {
 
                 <label>
                   <input
-                    className="ml-8 p-2 rounded-xl border-solid border-black outline-none shadow-lg"
+                    className="dark:text-black ml-8 p-2 rounded-xl border-solid border-black outline-none shadow-lg"
                     style={{ background: "#efefef" }}
                     name="email"
                     value={telefone}
@@ -216,7 +216,7 @@ function Perfil() {
 
                 <label>
                   <input
-                    className="ml-8 p-2 rounded-xl border-solid border-black outline-none shadow-lg"
+                    className="dark:text-black ml-8 p-2 rounded-xl border-solid border-black outline-none shadow-lg"
                     style={{ background: "#efefef" }}
                     name="password"
                     value={email}
@@ -232,7 +232,7 @@ function Perfil() {
 
                 <label>
                   <input
-                    className="ml-8 p-2 rounded-xl border-solid border-black outline-none shadow-lg"
+                    className="dark:text-black ml-8 p-2 rounded-xl border-solid border-black outline-none shadow-lg"
                     style={{ background: "#efefef" }}
                     name="password"
                     value={senha}

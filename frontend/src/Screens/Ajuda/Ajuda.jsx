@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import Logo1 from "../../Components/Logo1";
 import "../Ajuda/Ajuda.css";
 
+import MenuR from "../../Components/MenuR/MenuR";
+
 function Ajuda() {
   const navigate = useNavigate();
     
@@ -14,25 +16,25 @@ function Ajuda() {
         background: "linear-gradient(108deg, #C6D6FF 0%, #FFFFFF 100%)",
       }}
     >
-      <main className="w-full h-full justify-center overflow-hidden">
-        <div className="flex justify-center">
-          <Logo1 />
-        </div>
+
+      <MenuR/>
+
+      <main className="w-full h-full justify-center overflow-hidden mt-10 ml-52 dark:bg-darkfundoR">
         
         <div onClick={() => navigate(-1)} className="flex items-center justify-center w-20 h-10 mt-16 lg:ml-10 ml-4 mb-10 font-semibold text-lg text-zinc-800">
-          <IoIosArrowBack className="" />
-          <span className="cursor-pointer">Voltar</span>
+          <IoIosArrowBack className="dark:text-white" />
+          <span className="cursor-pointer dark:text-white">Voltar</span>
         </div>
 
         <div className="flex justify-center">
-          <span className="font-semibold text-2xl text-zinc-800">
+          <span className="font-semibold text-2xl text-zinc-800 dark:text-white">
             Perguntas Frequentes
           </span>
         </div>
 
         {/* Perguntas */}
 
-        <container className="cnt space-y-10 flex flex-col items-center">
+        <container className="cnt space-y-10 flex flex-col items-center dark:text-white">
           <div className="flex flex-col items-center justify-center mt-20 w-10/12 md:w-7/12 xl:w-6/12">
             <div className="txt w-full flex items-center p-4 border-1 border-solid border-black/60 text-xl font-semibold">
               Koding
@@ -41,7 +43,7 @@ function Ajuda() {
               <summary className="outline-none cursor-pointer text-lg">
                 Quem Somos?
               </summary>
-              <div className="text-gray-700">
+              <div className="text-gray-700 dark:text-white">
                 &emsp;Somos um sistema de ensino de programação feito por meio
                 de jogos interativos. Buscamos despertar o conhecimento e
                 promover a inclusão entre crianças portadoras de deficiências
@@ -53,7 +55,7 @@ function Ajuda() {
               <summary className="outline-none cursor-pointer text-lg">
                 Missão, Visão e Valores
               </summary>
-              <div className="text-gray-700">
+              <div className="text-gray-700 dark:text-white">
                 <b>&emsp;Missão: </b> promover o ensino de programação para
                 crianças e jovens através de jogos interativos, além de promover
                 a inclusão de usuários com deficiências visuais e transtornos
@@ -69,7 +71,7 @@ function Ajuda() {
               <summary className="outline-none cursor-pointer text-lg">
                 Nosso Contato
               </summary>
-              <div className="text-gray-700">
+              <div className="text-gray-700 dark:text-white">
                 <b>&emsp;Gabriel Matiolli: </b>{" "}
                 gabriel.fernandes114@etec.sp.gov.br <br />{" "}
                 <b>&emsp;Julia Gabriela: </b> julia.almeida101@etec.sp.gov.br{" "}
@@ -87,7 +89,8 @@ function Ajuda() {
                 Conceitos Básicos: HTML
               </summary>
               <div className="text-gray-700">
-              &emsp;Para verificar o material de apoio sobre <b>HTML</b> acesse o PDF abaixo: 
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua
               </div>
             </details>
 
@@ -96,7 +99,8 @@ function Ajuda() {
                 Conceitos Básicos: CSS
               </summary>
               <div className="text-gray-700">
-              &emsp;Para verificar o material de apoio sobre <b>CSS</b> acesse o PDF abaixo: 
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua
               </div>
             </details>
 
@@ -105,7 +109,8 @@ function Ajuda() {
                 Conceitos Básicos: JavaScript
               </summary>
               <div className="text-gray-700">
-              &emsp;Para verificar o material de apoio sobre <b>JavaScript</b> acesse o PDF abaixo: 
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua
               </div>
             </details>
 
@@ -114,7 +119,8 @@ function Ajuda() {
                 Conceitos Básicos: PHP
               </summary>
               <div className="text-gray-700">
-              &emsp;Para verificar o material de apoio sobre <b>PHP</b> acesse o PDF abaixo: 
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua
               </div>
             </details>
           </div>
@@ -128,8 +134,8 @@ function Ajuda() {
                 Como editar meu perfi?
               </summary>
               <div className="text-gray-700">
-              &emsp;No menu <b>"perfil"</b> você irá encontrar uma sessão escrita <b>"Alterar Dados"</b>, é nela que você poderá editar seu perfil.<br></br>
-              &emsp; Além disso, você poderá entrar no menu <b>"Mais"</b> e ir em <b>"Configurações"</b>, lá você poderá modificar seus dados e ativar ou desativar a acessibilidade. 
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua
               </div>
             </details>
 

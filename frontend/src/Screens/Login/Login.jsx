@@ -151,7 +151,7 @@ function Login() {
           <input
             type="text"
             className={`${!isResponsavel && dark ? "bg-[#7D6D94]" : "bg-input"
-              } px-10 my-8 py-5 w-3/4 placeholder:opacity-70 rounded-lg text-xl placeholder:text-black dark:placeholder:text-white outline-0 text-cinza dark:text-white`}
+              } px-10 my-8 py-5 w-3/4 placeholder:opacity-70 rounded-lg text-xl placeholder:text-black dark:placeholder:text-grey-500 outline-0 text-cinza dark:text-grey-500`}
             placeholder="E-mail"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -163,7 +163,7 @@ function Login() {
           >
             <input
               type={isPassVisible ? "text" : "password"}
-              className="w-4/5 outline-0 bg-transparent placeholder:opacity-70 placeholder:text-black dark:placeholder:text-white text-cinza dark:text-white"
+              className="w-4/5 outline-0 bg-transparent placeholder:opacity-70 placeholder:text-black dark:placeholder:text-grey-500 text-cinza dark:text-grey-500"
               placeholder="Senha"
               value={senha}
               onChange={(e) => setSenha(e.target.value)}
@@ -175,7 +175,7 @@ function Login() {
               />
             ) : (
               <AiFillEye
-                className="text-2xl text-cinza dark:text-white cursor-pointer"
+                className="text-2xl text-cinza dark:text-grey-500 cursor-pointer"
                 onClick={TogglePassVisible}
               />
             )}

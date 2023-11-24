@@ -148,7 +148,7 @@ function Sentenca() {
           <h1 className="flex justify-center font-bold text-gray-700 text-2xl dark:text-white">
             {titulo}
           </h1>
-          <p className="flex justify-center border-b-4 rounded-sm border-gray-400 mt-32 ml-32 mr-32">
+          <p className="flex justify-center border-b-4 rounded-sm border-gray-400 mt-32 ml-32 mr-32 dark:text-white">
             {" "}
             {sentencaAtual.join("")}
           </p>
