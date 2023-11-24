@@ -87,8 +87,7 @@ function Ajuda() {
                 Conceitos Básicos: HTML
               </summary>
               <div className="text-gray-700">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua
+              &emsp;Para verificar o material de apoio sobre <b>HTML</b> acesse o PDF abaixo: 
               </div>
             </details>
 
@@ -97,8 +96,7 @@ function Ajuda() {
                 Conceitos Básicos: CSS
               </summary>
               <div className="text-gray-700">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua
+              &emsp;Para verificar o material de apoio sobre <b>CSS</b> acesse o PDF abaixo: 
               </div>
             </details>
 
@@ -107,8 +105,7 @@ function Ajuda() {
                 Conceitos Básicos: JavaScript
               </summary>
               <div className="text-gray-700">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua
+              &emsp;Para verificar o material de apoio sobre <b>JavaScript</b> acesse o PDF abaixo: 
               </div>
             </details>
 
@@ -117,8 +114,7 @@ function Ajuda() {
                 Conceitos Básicos: PHP
               </summary>
               <div className="text-gray-700">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua
+              &emsp;Para verificar o material de apoio sobre <b>PHP</b> acesse o PDF abaixo: 
               </div>
             </details>
           </div>
@@ -132,8 +128,8 @@ function Ajuda() {
                 Como editar meu perfi?
               </summary>
               <div className="text-gray-700">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua
+              &emsp;No menu <b>"perfil"</b> você irá encontrar uma sessão escrita <b>"Alterar Dados"</b>, é nela que você poderá editar seu perfil.<br></br>
+              &emsp; Além disso, você poderá entrar no menu <b>"Mais"</b> e ir em <b>"Configurações"</b>, lá você poderá modificar seus dados e ativar ou desativar a acessibilidade. 
               </div>
             </details>
 
@@ -142,18 +138,16 @@ function Ajuda() {
                 Como excluir minha conta?
               </summary>
               <div className="text-gray-700">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua
+              &emsp; Você precisará ir no menu <b>"Mais"</b> e em <b>"Configurações"</b>, lá você poderá excluir ou sair da sua conta. 
               </div>
             </details>
 
             <details className="radius details w-full flex items-center p-4 border-1 border-solid border-black/60 mb-16">
               <summary className="outline-none cursor-pointer text-lg">
-                Como restaurar minha senha?
+                Como verificar o desempenho?
               </summary>
               <div className="text-gray-700">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua
+               &emsp; A tela inicial contém um menu, nesse menu você irá clicar em <b>Desempenho</b>, lá você irá encontrar gráficos de pontuação, erros e acertos, quantos pontos, linguagens e jogos o jovem completou. 
               </div>
             </details>
           </div>
