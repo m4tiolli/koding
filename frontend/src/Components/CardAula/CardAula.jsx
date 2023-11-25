@@ -2,23 +2,32 @@ import { Link } from "react-router-dom";
 import { protanomaly, deuteranomaly, tritanomaly } from "./../ColorBlind";
 import { useDisclosure } from "@chakra-ui/react";
 import { Modal, ModalContent } from "@chakra-ui/react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
+const mode = localStorage.getItem("theme");
+
+function Color(mode, color) {
+  var newcolor;
+  if (mode === "protanomaly") {
+    newcolor = protanomaly(color);
+  } else if (mode === "deuteranomaly") {
+    newcolor = deuteranomaly(color);
+  } else if (mode === "tritanomaly") {
+    newcolor = tritanomaly(color);
+  } else newcolor = color;
+  return newcolor;
+}
 // eslint-disable-next-line react/prop-types
 export default function CardAula({ aula }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const mode = localStorage.getItem("theme");
-
-  function Color(mode, color) {
-    var newcolor;
-    if (mode === "protanomaly") {
-      newcolor = protanomaly(color);
-    } else if (mode === "deuteranomaly") {
-      newcolor = deuteranomaly(color);
-    } else if (mode === "tritanomaly") {
-      newcolor = tritanomaly(color);
-    } else newcolor = color;
-    return newcolor;
-  }
+  const [tags, setTags] = useState([]);
+  const aulaId = aula.id;
+  useEffect(() => {
+    axios
+      .get(`https://tcckoding.azurewebsites.net/tags/${aulaId}`)
+      .then((response) => setTags(response.data));
+  }, [aulaId]);
 
   return (
     <div className="space-y-32">
@@ -44,32 +53,9 @@ export default function CardAula({ aula }) {
               </marquee>
               {/* Filtro */}
               <div className="w-80 flex flex-wrap gap-x-3 gap-y-3">
-                <div
-                  className="w-16 p-1 rounded-xl"
-                  style={{
-                    backgroundImage: `linear-gradient(10deg, ${Color(
-                      mode,
-                      "#E87331"
-                    )} 0%, ${Color(mode, "#E88D59")} 100%`,
-                  }}
-                >
-                  <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate dark:text-white">
-                    HTML
-                  </span>
-                </div>
-                <div
-                  className="w-32 p-1 rounded-xl"
-                  style={{
-                    backgroundImage: `linear-gradient(10deg, ${Color(
-                      mode,
-                      "#E87331"
-                    )} 0%, ${Color(mode, "#E88D59")} 100%`,
-                  }}
-                >
-                  <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate dark:text-white">
-                    Estrutura
-                  </span>
-                </div>
+                {tags.map((tag, index) => (
+                  <Tag tag={tag} key={index} />
+                ))}
               </div>
             </div>
           </div>
@@ -148,6 +134,24 @@ export default function CardAula({ aula }) {
           </div>
         </ModalContent>
       </Modal>
+    </div>
+  );
+}
+
+function Tag({ tag }) {
+  return (
+    <div
+      className="w-32 p-1 rounded-xl"
+      style={{
+        backgroundImage: `linear-gradient(10deg, ${Color(
+          mode,
+          "#E87331"
+        )} 0%, ${Color(mode, "#E88D59")} 100%`,
+      }}
+    >
+      <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate dark:text-white">
+        {tag.nome}
+      </span>
     </div>
   );
 }

@@ -226,6 +226,9 @@
                 },
                 "responsavel": {
                   "example": "any"
+                },
+                "genero": {
+                  "example": "any"
                 }
               }
             }
@@ -599,6 +602,92 @@
         "parameters": [
           {
             "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/feedback": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "responsavel": {
+                  "example": "any"
+                },
+                "conteudo": {
+                  "example": "any"
+                },
+                "estrela": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/feedbackR/{responsavel}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "responsavel",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/tags/{aula}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "aula",
             "in": "path",
             "required": true,
             "type": "string"

@@ -45,6 +45,26 @@ function Aulas() {
     }
   }, []);
 
+  const capitulo = aulas.map((aula) => aula.capitulo)[0];
+  var texto;
+  switch (capitulo) {
+    case 1:
+      texto = "HTML";
+      break;
+    case 2:
+      texto = "CSS";
+      break;
+    case 3:
+      texto = "JavaScript";
+      break;
+    case 4:
+      texto = "PHP";
+      break;
+    default:
+      texto = "";
+      break;
+  }
+
   const navigate = useNavigate();
   return (
     <div
@@ -58,11 +78,13 @@ function Aulas() {
       {/* Conteudo */}
 
       <main className="w-full ml-52 overflow-hidden dark:bg-darkcinzaclaro min-h-screen">
-        <IoArrowBack
-          onClick={() => navigate(-1)}
-          className="flex mt-28 ml-8 mb-5 text-3xl cursor-pointer dark:text-white"
-        />
-
+        <div className="flex mt-28 ml-8 mb-5 items-center">
+          <IoArrowBack
+            onClick={() => navigate(-1)}
+            className="text-3xl cursor-pointer dark:text-white"
+          />
+          <p className="text-white text-2xl font-semibold ml-10">Aprendendo {texto}</p>
+        </div>
         {/* Barra de pesquisa */}
         <div className="flex h-64 w-5/12 ml-12 -m-20 mb-2 items-center justify-center gap-3">
           <form
@@ -89,12 +111,12 @@ function Aulas() {
             </button>
           </div>
         </div>
-
         {/* Cards */}
-        {aulas.map((aula, index) => (
-          <CardAula aula={aula} key={index} />
-        ))}
-        
+        <div className="grid grid-cols-3">
+          {aulas.map((aula, index) => (
+            <CardAula aula={aula} key={index} />
+          ))}
+        </div>
         <Modal
           isCentered
           onClose={onClose}
@@ -109,9 +131,9 @@ function Aulas() {
             background="#E4D9ED"
             borderRadius="0.9em"
             zIndex={100}
-            marginLeft={'auto'}
-            marginTop={'auto'}
-            marginRight={'auto'}
+            marginLeft={"auto"}
+            marginTop={"auto"}
+            marginRight={"auto"}
           >
             {/* Tags */}
 
@@ -163,8 +185,6 @@ function Aulas() {
             </div>
           </ModalContent>
         </Modal>
-
-      
       </main>
     </div>
   );

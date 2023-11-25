@@ -142,7 +142,7 @@ module.exports = function (app) {
       }
     );
   });
-  
+
   app.post("/crianca", async (req, res) => {
     const { nome, username, email, senha, responsavel, genero } = req.body;
     db.query(
@@ -163,17 +163,21 @@ module.exports = function (app) {
   });
 
   app.put("/crianca/imagem/:id", (req, res) => {
-    const {imagem} = req.body;
+    const { imagem } = req.body;
     const id = req.params.id;
-    db.query("UPDATE crianca SET imagem = ? WHERE id = ?", [imagem, id], (err, result) => {
-      if (err) {
-        console.error("Erro ao alterar imagem", err);
-        res.status(500).json({ error: "Erro ao alterar imagem" });
-      } else {
-        res.json({ message: "Imagem alterada" });
+    db.query(
+      "UPDATE crianca SET imagem = ? WHERE id = ?",
+      [imagem, id],
+      (err, result) => {
+        if (err) {
+          console.error("Erro ao alterar imagem", err);
+          res.status(500).json({ error: "Erro ao alterar imagem" });
+        } else {
+          res.json({ message: "Imagem alterada" });
+        }
       }
-    })
-  })
+    );
+  });
 
   app.put("/crianca/:id", (req, res) => {
     const { username, email, senha } = req.body;
@@ -415,7 +419,7 @@ module.exports = function (app) {
       }
     );
   });
-  
+
   // feedback
   app.post("/feedback", async (req, res) => {
     const { responsavel, conteudo, estrela } = req.body;
@@ -462,5 +466,20 @@ module.exports = function (app) {
       }
     );
   });
-  
+
+  app.get("/tags/:aula", (req, res) => {
+    const aula = req.params.aula;
+    db.query(
+      `SELECT * FROM tagsaula INNER JOIN tags ON tags.id = tagsaula.tag WHERE tagsaula.aula = ?`,
+      [aula],
+      (err, result) => {
+        if (err) {
+          console.error("Erro ao buscar tags", err);
+          res.status(500).json({ error: "Erro ao buscar tags" });
+        } else {
+          res.json(result);
+        }
+      }
+    );
+  });
 };
