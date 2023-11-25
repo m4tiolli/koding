@@ -1,6 +1,15 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineClose } from "react-icons/ai";
+import { ToastContainer, toast } from "react-toastify";
+import {
+  ChakraProvider,
+  Modal,
+  ModalContent,
+  useDisclosure,
+  ModalOverlay,
+} from "@chakra-ui/react";
+import { FaRegCheckCircle } from "react-icons/fa";
 
 function palavrasAleatorias(palavras) {
   const shuffled = [...palavras];
@@ -79,104 +88,166 @@ function Sentenca() {
       );
     } else {
       enviarPontuacao();
-      alert("Você completou todas as fases!");
-      navigate("/desafios");
+      setTimeout(() => onOpen(), 2000)
     }
   };
 
   const verificarSentenca = () => {
     const sentencaAtualStr = sentencaAtual.join("");
     if (sentencaAtualStr === sentencaCorreta) {
-      alert("Você acertou!");
+      toast.success("Você acertou!", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
       var local = parseInt(localStorage.pontuacao);
       local = local + 100;
       localStorage.setItem("pontuacao", local);
-      avancarFase();
+      setTimeout(() => {
+        avancarFase();
+      }, 2000);
     } else {
-      alert("Errado! A sentença correta é: " + sentencaCorreta);
+      toast.error("Errado! A sentença correta é: " + sentencaCorreta, {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
       avancarFase();
     }
   };
 
+  function Fechar() {
+    onClose();
+    navigate("/desafios");
+  }
+
   const enviarPontuacao = () => {
-    const crianca = localStorage.getItem("id");
+    const user = JSON.parse(localStorage.getItem("user"));
+    const crianca = user.id;
     const pontuacao = localStorage.getItem("pontuacao");
-    const data = new Date();
-    const body = { crianca, pontuacao, data };
+    const body = { crianca, pontuacao };
     fetch(`https://tcckoding.azurewebsites.net/crianca/pontuacao`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     })
       .then(() => {
-        alert("Pontuação enviada com sucesso");
         localStorage.removeItem("pontuacao");
       })
       .catch((error) => {
         console.log(error);
-        alert("Erro ao enviar a pontuação");
       });
   };
 
   const navigate = useNavigate();
 
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
-    <div
-      className="flex h-screen w-full"
-      style={{
-        background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)",
-      }}
-    >
-      <main className="w-full overflow-hidden dark:bg-darkcinzaclaro min-h-screen ">
-        {/* Sair/Barra/Vidas */}
-        <div className="flex items-center mt-10 gap-x-48 mb-20">
-          <AiOutlineClose
-            onClick={() => navigate(-1)}
-            className="flex ml-8 text-3xl cursor-pointer text-gray-400 dark:text-white"
-          />
+    <ChakraProvider>
+      <div
+        className="flex h-screen w-full"
+        style={{
+          background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)",
+        }}
+      >
+        <ToastContainer
+          position="top-center"
+          autoClose={2000}
+          limit={3}
+          hideProgressBar
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
+        <main className="w-full overflow-hidden dark:bg-darkcinzaclaro min-h-screen ">
+          {/* Sair/Barra/Vidas */}
+          <div className="flex items-center mt-10 gap-x-48 mb-20">
+            <AiOutlineClose
+              onClick={() => navigate(-1)}
+              className="flex ml-8 text-3xl cursor-pointer text-gray-400 dark:text-white"
+            />
 
-          <div
-            className={`w-7/12 h-5 bg-gray-300 rounded-lg ${
-              faseAtual == 1
-                ? 'before:bg-green-400 before:block before:absolute before:w-2/6 before:rounded-l-lg before:h-5 before:content-[" "] before:z-20'
-                : ""
-            }`}
-          ></div>
-        </div>
+            <div
+              className={`w-7/12 h-5 bg-gray-300 rounded-lg ${
+                faseAtual == 1
+                  ? 'before:bg-green-400 before:block before:absolute before:w-2/6 before:rounded-l-lg before:h-5 before:content-[" "] before:z-20'
+                  : ""
+              }`}
+            ></div>
+          </div>
 
-        <div className="flex flex-col">
-          <h1 className="flex justify-center font-bold text-gray-700 text-2xl dark:text-white">
-            {titulo}
-          </h1>
-          <p className="flex justify-center border-b-4 rounded-sm border-gray-400 mt-32 ml-32 mr-32 dark:text-white">
-            {" "}
-            {sentencaAtual.join("")}
-          </p>
-          <div className="flex justify-center gap-x-5 mt-10 no-underline">
-            {palavrasSelecionadas.map((palavra, index) => (
-              <button
-                className="outline-none no-underline border-1 bg-slate-200 rounded-md p-2"
-                key={index}
-                onClick={() => handleWordClick(palavra)}
-              >
-                {palavra}
+          <div className="flex flex-col">
+            <h1 className="flex justify-center font-bold text-gray-700 text-2xl dark:text-white">
+              {titulo}
+            </h1>
+            <p className="flex justify-center border-b-4 rounded-sm border-gray-400 mt-32 ml-32 mr-32 dark:text-white">
+              {" "}
+              {sentencaAtual.join("")}
+            </p>
+            <div className="flex justify-center gap-x-5 mt-10 no-underline">
+              {palavrasSelecionadas.map((palavra, index) => (
+                <button
+                  className="outline-none no-underline border-1 bg-slate-200 rounded-md p-2"
+                  key={index}
+                  onClick={() => handleWordClick(palavra)}
+                >
+                  {palavra}
+                </button>
+              ))}
+            </div>
+            <div className="flex justify-center mt-20 space-x-[850px]">
+              <button className="flex justify-center items-center w-20 bg-slate-200 shadow-md rounded-md p-2">
+                Pular
               </button>
-            ))}
+              <button
+                className="flex justify-center items-center w-20 bg-green-300 shadow-md rounded-md p-2"
+                onClick={verificarSentenca}
+              >
+                Verificar
+              </button>
+            </div>
           </div>
-          <div className="flex justify-center mt-20 space-x-[850px]">
-            <button className="flex justify-center items-center w-20 bg-slate-200 shadow-md rounded-md p-2">
-              Pular
-            </button>
+        </main>
+      </div>
+
+      <Modal isOpen={isOpen} onClose={onClose} motionPreset="scale">
+        <ModalOverlay />
+        <ModalContent
+          borderRadius={"20vw"}
+          w={"40vw"}
+          h={"fit-content"}
+          top={"20vh"}
+        >
+          <div className="w-full h-full flex flex-col justify-center items-center bg-green-700 rounded-2xl gap-6 p-10">
+            <FaRegCheckCircle color="rgb(134, 239, 172)" size={50} />
+            <p className="text-white text-xl font-semibold">
+              Você completou todas as fases!
+            </p>
             <button
-              className="flex justify-center items-center w-20 bg-green-300 shadow-md rounded-md p-2"
-              onClick={verificarSentenca}
+              onClick={Fechar}
+              className="text-green-700 bg-white w-2/5 h-10 rounded-xl text-xl font-semibold hover:opacity-70"
             >
-              Verificar
+              Sair
             </button>
           </div>
-        </div>
-      </main>
-    </div>
+        </ModalContent>
+      </Modal>
+    </ChakraProvider>
   );
 }
 
