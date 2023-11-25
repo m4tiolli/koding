@@ -504,8 +504,8 @@ export default function Home({ prop }) {
         >
           <ModalOverlay />
           <ModalContent
-            minWidth={"40vw"}
-            h={"40vh"}
+            minWidth={"45vw"}
+            h={"75vh"}
             display={"flex"}
             justifyContent={"center"}
             alignItems={"center"}
