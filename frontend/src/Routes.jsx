@@ -21,6 +21,7 @@ import CadastroCrianca from "./Screens/CadastroCrianca/CadastroCrianca";
 import Desafios from "./Screens/Desafios/Desafios";
 import Conteudo from "./Screens/Conteudo/Conteudo";
 import SelectCrianca from "./Screens/SelectCrianca/SelectCrianca";
+import Flexbox2 from "./Screens/Jogos/Flexbox/Flexbox2";
 
 function AppRoutes() {
   return (
@@ -37,6 +38,7 @@ function AppRoutes() {
         <Route exact path="/aprender" element={<Aprender />} />
         <Route exact path="/configuracao" element={<Configuracao />} />
         <Route exact path="/flexbox" element={<Flexbox />} />
+        <Route exact path="/flexbox/nivel2" element={<Flexbox2 />} />
         <Route exact path="/sentenca" element={<Sentenca />} />
         <Route exact path="/input" element={<Input />} />;
         <Route exact path="/quiz" element={<Quiz />} />;

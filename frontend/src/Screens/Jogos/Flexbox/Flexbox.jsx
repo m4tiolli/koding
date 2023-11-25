@@ -1,9 +1,8 @@
 import "../Flexbox/Flexbox.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { AiOutlineClose } from "react-icons/ai";
-
+import { ToastContainer, toast } from "react-toastify";
 import {
   protanomaly,
   tritanomaly,
@@ -65,6 +64,25 @@ function Flexbox() {
 
   const navigate = useNavigate();
 
+  const Verificar = () => {
+    if (!disabled) {
+      toast.success("Você acertou!", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      var local = parseInt(localStorage.pontuacao);
+      local = local + 100;
+      localStorage.setItem("pontuacao", local);
+      setTimeout(() => navigate("/flexbox/nivel2"), 3000);
+    }
+  };
+
   return (
     <div
       className="flex h-full w-full dark:bg-darkcinzaclaro"
@@ -72,6 +90,19 @@ function Flexbox() {
         background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)",
       }}
     >
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        limit={3}
+        hideProgressBar
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       {/* Instruções */}
 
       <AiOutlineClose
@@ -115,7 +146,7 @@ function Flexbox() {
             <br /> 9 <br /> 10
           </div>
           <pre className="m-0">
-            #code ( <br />
+            #code &#123; <br />
             <span className="ml-5">display: flex;</span>
           </pre>
           <textarea
@@ -123,13 +154,14 @@ function Flexbox() {
             value={inputValue}
             onChange={inputChanged}
           ></textarea>
-          <pre className="m-0">)</pre>
+          <pre className="m-0">&#125;</pre>
           <button
             className="border-none disabled:opacity-60 cursor-pointer disabled:cursor-not-allowed rounded-md text-white p-2 landing-6 absolute right-7 bottom-5"
             onChange={addCSS}
             id="avancar"
             disabled={disabled}
             style={{ background: Color(mode, "#BE175D") }}
+            onClick={Verificar}
           >
             Próximo
           </button>

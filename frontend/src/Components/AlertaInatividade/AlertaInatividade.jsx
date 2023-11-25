@@ -1,88 +1,101 @@
-import { useEffect, useState } from "react";
 import som from "../../assets/beep.mp3";
 import {
   ChakraProvider,
   Modal,
   ModalContent,
+  ModalOverlay,
   useDisclosure,
 } from "@chakra-ui/react";
+import Countdown from "react-countdown";
+import { useState, useRef, useEffect } from "react";
+import { LuAlertTriangle } from "react-icons/lu";
 
 const AlertaInatividade = () => {
-  const [exibirAlerta, setExibirAlerta] = useState(false);
-  const [segundos, setSegundos] = useState(10);
-  const [ultimoTempoInteragido, setUltimoTempoInteragido] = useState(
-    new Date().getTime()
-  );
-
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const audio = new Audio(som);
+  const [countdownKey, setCountdownKey] = useState(Date.now());
+  const countdownRef = useRef(null);
+  let timer;
+
+  const handleUserActivity = () => {
+    clearTimeout(timer);
+    setCountdownKey(Date.now());
+    timer = setTimeout(() => {
+      audio.play();
+      onOpen();
+    }, 120000);
+  };
+
+  const handleVisibilityChange = () => {
+    if (!document.hidden) {
+      handleUserActivity();
+    }
+  };
 
   useEffect(() => {
-    const handleInteracao = () => {
-      setUltimoTempoInteragido(new Date().getTime());
-      setExibirAlerta(false);
-      setSegundos(10);
-    };
+    handleUserActivity();
 
-    const temporizadorInativo = setInterval(() => {
-      const tempoAtual = new Date().getTime();
-      const diferencaTempo = Math.floor(
-        (tempoAtual - ultimoTempoInteragido) / 1000
-      );
-      const tempoRestante = 10 - diferencaTempo;
-
-      if (tempoRestante <= 0) {
-        setExibirAlerta(true);
-        const audio = new Audio(som);
-        audio.play();
-        onOpen();
-        clearInterval(temporizadorInativo);
-      }
-    }, 1000);
-
-    window.addEventListener("mousemove", handleInteracao);
-    window.addEventListener("scroll", handleInteracao);
-    window.addEventListener("keydown", handleInteracao);
+    window.addEventListener("mousemove", handleUserActivity);
+    window.addEventListener("keydown", handleUserActivity);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
-      window.removeEventListener("mousemove", handleInteracao);
-      window.removeEventListener("scroll", handleInteracao);
-      window.removeEventListener("keydown", handleInteracao);
+      window.removeEventListener("mousemove", handleUserActivity);
+      window.removeEventListener("keydown", handleUserActivity);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
-  }, [ultimoTempoInteragido]);
+  }, []);
 
-  useEffect(() => {
-    const temporizadorAtivo = setInterval(() => {
-      if (!exibirAlerta) {
-        setSegundos((prevSegundos) => prevSegundos - 1);
-      }
-    }, 1000);
-
-    return () => clearInterval(temporizadorAtivo);
-  }, [exibirAlerta]);
-
-  const resetarTempo = () => {
-    setExibirAlerta(false);
-    setSegundos(10);
-    setUltimoTempoInteragido(new Date().getTime());
+  const Fechar = () => {
+    onClose();
+    handleUserActivity();
   };
 
   return (
     <ChakraProvider>
       <div className="fixed bottom-2 left-2 z-50 flex items-center justify-center flex-col">
-        <p className="text-white">{`${Math.floor(segundos / 60)
-          .toString()
-          .padStart(2, "0")}:${(segundos % 60)
-          .toString()
-          .padStart(2, "0")}`}</p>
+        <p className="text-white">
+          <Countdown
+            key={countdownKey}
+            date={Date.now() + 120000}
+            autoStart={true}
+            ref={countdownRef}
+            renderer={renderer}
+          />
+          <Modal isOpen={isOpen} onClose={Fechar} motionPreset="scale">
+            <ModalOverlay />
+            <ModalContent
+              borderRadius={1000}
+              w={"fit-content"}
+              h={"fit-content"}
+              top={"20vh"}
+            >
+              <div className="bg-red-800 flex flex-col items-center justify-center rounded-2xl px-20 py-4 gap-4">
+                <div className="text-center">
+                  <LuAlertTriangle color="rgb(248, 113, 113)" size={100} />
+                  <p className="text-white font-bold text-xl">Aviso</p>
+                </div>
+                <p className="text-white">Você está inativo.</p>
+                <button
+                  className="bg-white text-red-800 font-semibold w-2/3 h-10 rounded-lg hover:opacity-70"
+                  onClick={Fechar}
+                >
+                  Fechar
+                </button>
+              </div>
+            </ModalContent>
+          </Modal>
+        </p>
       </div>
-
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalContent>
-          <p>aviso: você está inativo</p>
-          <button onClick={onClose}>fechar</button>
-        </ModalContent>
-      </Modal>
     </ChakraProvider>
+  );
+};
+
+const renderer = ({ minutes, seconds }) => {
+  return (
+    <span>{`${minutes.toString().padStart(2, "0")}:${seconds
+      .toString()
+      .padStart(2, "0")}`}</span>
   );
 };
 
