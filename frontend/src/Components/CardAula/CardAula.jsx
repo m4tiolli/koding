@@ -67,20 +67,20 @@ export default function CardAula({ aula, capitulo }) {
               <h1 className="text-white font-bold text-center">{aula.nome}</h1>
             </div>
             <div className="flex flex-col">
-              <span className="w-[250px] flex items-center justify-start text-xl text-black font-semibold dark:text-white">
-                {aula.nome}
-              </span>
+              <marquee>
+                <span className="w-[250px] flex items-center justify-start text-xl text-black font-semibold dark:text-white">
+                  {aula.nome}
+                </span>
+              </marquee>
               {/* Filtro */}
               <div className="w-80 flex flex-wrap gap-x-3 gap-y-3">
-                {tags.map((tag, index) => (
-                  <Tag
-                    tag={tag}
-                    cor1={cor1}
-                    cor2={cor2}
-                    arrayTag={tags}
-                    key={index}
-                  />
-                ))}
+                {tags.length > 0 ? (
+                  tags.map((tag, index) => (
+                    <Tag tag={tag} cor1={cor1} cor2={cor2} key={index} />
+                  ))
+                ) : (
+                  <p className="dark:text-white italic">sem tag</p>
+                )}
               </div>
             </div>
           </div>
@@ -163,7 +163,7 @@ export default function CardAula({ aula, capitulo }) {
   );
 }
 
-function Tag({ tag, cor1, cor2, arrayTag }) {
+function Tag({ tag, cor1, cor2 }) {
   return (
     <div
       className="w-32 p-1 rounded-xl"
@@ -175,7 +175,7 @@ function Tag({ tag, cor1, cor2, arrayTag }) {
       }}
     >
       <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate dark:text-white">
-        {arrayTag.length > 0 ? tag.nome : "sem tag"}
+        {tag.nome}
       </span>
     </div>
   );

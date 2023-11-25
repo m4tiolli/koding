@@ -58,12 +58,14 @@ const Materiais = () => {
       .get(`https://tcckoding.azurewebsites.net/capitulos/${linguagemId}`)
       .then((response) => {
         setIsLoading([false, false]);
-        setCapitulos((prevCapitulos) => [...prevCapitulos, ...response.data]);
+        setCapitulos((prevCapitulos) => [...prevCapitulos, ...response.data]); // Adicionar os novos capítulos à lista atual
       })
       .catch((error) => {
         console.error(error);
       });
   };
+
+  console.log(capitulos);
 
   const [isResponsive, setResponsive] = useState()
 
