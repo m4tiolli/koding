@@ -464,18 +464,6 @@ export default function Home({ prop }) {
 
               <button
                 className="text-left rounded-t-lg leading-none text-cinza py-3 w-full hover:opacity-70"
-                onClick={() => navigate("/ajuda")}
-              >
-                <span className="inline-flex items-center gap-2 w-full">
-                  <BiHelpCircle className="relative 2xl:text-3xl text-lg w-1/4 "></BiHelpCircle>
-                  <span className="2xl:text-lg text-md w-3/4">
-                    Central de Ajuda
-                  </span>
-                </span>
-              </button>
-
-              <button
-                className="text-left rounded-t-lg leading-none text-cinza py-3 w-full hover:opacity-70"
                 onClick={Sair}
               >
                 <span className="inline-flex items-center gap-2 w-full">
@@ -504,8 +492,8 @@ export default function Home({ prop }) {
         >
           <ModalOverlay />
           <ModalContent
-            minWidth={"40vw"}
-            h={"40vh"}
+            minWidth={"45vw"}
+            h={"45vh"}
             display={"flex"}
             justifyContent={"center"}
             alignItems={"center"}
@@ -632,21 +620,6 @@ export default function Home({ prop }) {
                     />
                   </span>
                 </label>
-              </div>
-
-              <div>
-                <p className="font-semibold text-white text-lg text-center py-2">
-                  Nos conte mais sobre
-                </p>
-                <textarea
-                  name=""
-                  id=""
-                  cols="50"
-                  rows="2"
-                  className="rounded-2xl resize-none outline-none p-2 text-lg"
-                  value={mensagem}
-                  onChange={(e) => setMensagem(e.target.value)}
-                ></textarea>
               </div>
 
               <button
