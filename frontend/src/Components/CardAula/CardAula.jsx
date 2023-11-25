@@ -19,10 +19,26 @@ function Color(mode, color) {
   return newcolor;
 }
 // eslint-disable-next-line react/prop-types
-export default function CardAula({ aula }) {
+export default function CardAula({ aula, capitulo }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [tags, setTags] = useState([]);
   const aulaId = aula.id;
+  let cor1 =
+    capitulo.linguagem == 1
+      ? "#E88D59"
+      : capitulo.linguagem == 2
+      ? "#4A90E2"
+      : capitulo.linguagem == 3
+      ? "#F2D237"
+      : "#5D6CC2";
+  let cor2 =
+    capitulo.linguagem == 1
+      ? "#E87331"
+      : capitulo.linguagem == 2
+      ? "#0D54A8"
+      : capitulo.linguagem == 3
+      ? "#B89D1C"
+      : "#29388E";
   useEffect(() => {
     axios
       .get(`https://tcckoding.azurewebsites.net/tags/${aulaId}`)
@@ -37,24 +53,33 @@ export default function CardAula({ aula }) {
             {/* Card */}
             <div
               onClick={onOpen}
-              className="w-80 h-52 rounded-xl cursor-pointer"
+              className="w-80 h-52 rounded-xl cursor-pointer flex justify-center items-center flex-col"
               style={{
                 backgroundImage: `linear-gradient(10deg, ${Color(
                   mode,
-                  "#E87331"
-                )} 0%, ${Color(mode, "#E88D59")} 100%`,
+                  cor2
+                )} 0%, ${Color(mode, cor1)} 100%`,
               }}
-            ></div>
+            >
+              <h1 className="text-white font-black text-3xl text-center">
+                Aula {aula.numeroaula}
+              </h1>
+              <h1 className="text-white font-bold text-center">{aula.nome}</h1>
+            </div>
             <div className="flex flex-col">
-              <marquee scrollamount={8}>
-                <span className="w-[250px] flex items-center justify-start text-xl text-black font-semibold dark:text-white">
-                  {aula.nome}
-                </span>
-              </marquee>
+              <span className="w-[250px] flex items-center justify-start text-xl text-black font-semibold dark:text-white">
+                {aula.nome}
+              </span>
               {/* Filtro */}
               <div className="w-80 flex flex-wrap gap-x-3 gap-y-3">
                 {tags.map((tag, index) => (
-                  <Tag tag={tag} key={index} />
+                  <Tag
+                    tag={tag}
+                    cor1={cor1}
+                    cor2={cor2}
+                    arrayTag={tags}
+                    key={index}
+                  />
                 ))}
               </div>
             </div>
@@ -102,8 +127,8 @@ export default function CardAula({ aula }) {
                   style={{
                     backgroundImage: `linear-gradient(10deg, ${Color(
                       mode,
-                      "#E87331"
-                    )} 0%, ${Color(mode, "#E88D59")} 100%`,
+                      cor2
+                    )} 0%, ${Color(mode, cor1)} 100%`,
                   }}
                 >
                   <marquee>
@@ -138,19 +163,19 @@ export default function CardAula({ aula }) {
   );
 }
 
-function Tag({ tag }) {
+function Tag({ tag, cor1, cor2, arrayTag }) {
   return (
     <div
       className="w-32 p-1 rounded-xl"
       style={{
         backgroundImage: `linear-gradient(10deg, ${Color(
           mode,
-          "#E87331"
-        )} 0%, ${Color(mode, "#E88D59")} 100%`,
+          cor2
+        )} 0%, ${Color(mode, cor1)} 100%`,
       }}
     >
       <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate dark:text-white">
-        {tag.nome}
+        {arrayTag.length > 0 ? tag.nome : "sem tag"}
       </span>
     </div>
   );

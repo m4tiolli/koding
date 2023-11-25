@@ -24,6 +24,7 @@ function Aulas() {
 
   const location = useLocation();
   const aulas = location.state.aulas;
+  const capitulos = location.state.capitulo
 
   function Color(mode, color) {
     var newcolor;
@@ -45,7 +46,7 @@ function Aulas() {
     }
   }, []);
 
-  const capitulo = aulas.map((aula) => aula.capitulo)[0];
+  const capitulo = capitulos.linguagem
   var texto;
   switch (capitulo) {
     case 1:
@@ -114,7 +115,7 @@ function Aulas() {
         {/* Cards */}
         <div className="grid grid-cols-3">
           {aulas.map((aula, index) => (
-            <CardAula aula={aula} key={index} />
+            <CardAula aula={aula} capitulo={capitulos} key={index} />
           ))}
         </div>
         <Modal
