@@ -58,16 +58,19 @@ const Materiais = () => {
       .get(`https://tcckoding.azurewebsites.net/capitulos/${linguagemId}`)
       .then((response) => {
         setIsLoading([false, false]);
-        setCapitulos((prevCapitulos) => [...prevCapitulos, ...response.data]); // Adicionar os novos capítulos à lista atual
+        setCapitulos((prevCapitulos) => {
+          const capitulosFiltrados = prevCapitulos.filter(
+            (capitulo) => capitulo.linguagem !== linguagemId
+          );
+          return [...capitulosFiltrados, ...response.data];
+        });
       })
       .catch((error) => {
         console.error(error);
       });
   };
 
-  console.log(capitulos);
-
-  const [isResponsive, setResponsive] = useState()
+  const [isResponsive, setResponsive] = useState();
 
   useEffect(() => {
     const handleResize = () => {
@@ -92,10 +95,7 @@ const Materiais = () => {
     arrows: true,
   };
 
-  const id = capitulos.map(capitulo => capitulo.id)
-
-
-
+  const id = capitulos.map((capitulo) => capitulo.id);
 
   useEffect(() => {
     setTimeout(() => {
@@ -103,13 +103,17 @@ const Materiais = () => {
       slickArrows1.forEach((arrow, index) => {
         var color1;
         switch (id[index]) {
-          case 1: color1 = "#E88D59"
+          case 1:
+            color1 = "#E88D59";
             break;
-          case 2: color1 = "#4A90E2"
+          case 2:
+            color1 = "#4A90E2";
             break;
-          case 3: color1 = "#F2D237"
+          case 3:
+            color1 = "#F2D237";
             break;
-          case 4: color1 = "#5D6CC2"
+          case 4:
+            color1 = "#5D6CC2";
             break;
         }
 
@@ -120,13 +124,17 @@ const Materiais = () => {
       slickArrows2.forEach((arrow, index) => {
         var color2;
         switch (id[index]) {
-          case 1: color2 = "#E88D59"
+          case 1:
+            color2 = "#E88D59";
             break;
-          case 2: color2 = "#4A90E2"
+          case 2:
+            color2 = "#4A90E2";
             break;
-          case 3: color2 = "#F2D237"
+          case 3:
+            color2 = "#F2D237";
             break;
-          case 4: color2 = "#5D6CC2"
+          case 4:
+            color2 = "#5D6CC2";
             break;
         }
 
@@ -134,9 +142,6 @@ const Materiais = () => {
       });
     }, 0);
   }, [id]);
-
-
-
 
   return (
     <div className={`flex h-full w-full dark:bg-darkcinzaclaro`}>
@@ -171,7 +176,11 @@ const Materiais = () => {
         {/* Cards */}
         {isLoading[0] == true ? (
           <div className="grid place-items-center h-1/3 w-full">
-            <Spinner color={`${localStorage.theme == "dark" ? "white" : "#811CD7"}`} thickness="4px" size={"xl"} />
+            <Spinner
+              color={`${localStorage.theme == "dark" ? "white" : "#811CD7"}`}
+              thickness="4px"
+              size={"xl"}
+            />
           </div>
         ) : (
           linguagens.map((linguagem, index) => (

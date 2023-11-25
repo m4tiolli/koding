@@ -12,7 +12,7 @@ import { LuAlertTriangle } from "react-icons/lu";
 
 const AlertaInatividade = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const audio = new Audio(som);
+  const audio = useRef(new Audio(som));
   const [countdownKey, setCountdownKey] = useState(Date.now());
   const countdownRef = useRef(null);
   let timer;
@@ -21,7 +21,7 @@ const AlertaInatividade = () => {
     clearTimeout(timer);
     setCountdownKey(Date.now());
     timer = setTimeout(() => {
-      audio.play();
+      audio.current.play();
       onOpen();
     }, 120000);
   };
@@ -43,6 +43,7 @@ const AlertaInatividade = () => {
       window.removeEventListener("mousemove", handleUserActivity);
       window.removeEventListener("keydown", handleUserActivity);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
+      clearTimeout(timer);
     };
   }, []);
 
