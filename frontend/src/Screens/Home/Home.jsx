@@ -493,7 +493,7 @@ export default function Home({ prop }) {
           <ModalOverlay />
           <ModalContent
             minWidth={"45vw"}
-            h={"75vh"}
+            h={"45vh"}
             display={"flex"}
             justifyContent={"center"}
             alignItems={"center"}
@@ -620,21 +620,6 @@ export default function Home({ prop }) {
                     />
                   </span>
                 </label>
-              </div>
-
-              <div>
-                <p className="font-semibold text-white text-lg text-center py-2">
-                  Nos conte mais sobre
-                </p>
-                <textarea
-                  name=""
-                  id=""
-                  cols="50"
-                  rows="2"
-                  className="rounded-2xl resize-none outline-none p-2 text-lg"
-                  value={mensagem}
-                  onChange={(e) => setMensagem(e.target.value)}
-                ></textarea>
               </div>
 
               <button
