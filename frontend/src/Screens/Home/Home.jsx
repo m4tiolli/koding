@@ -24,6 +24,7 @@ import red from "../../Components/red.png";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import AlertaInatividade from "../../Components/AlertaInatividade/AlertaInatividade";
 
 export default function Home({ prop }) {
   const [button, setButton] = useState("materiais");
@@ -204,6 +205,8 @@ export default function Home({ prop }) {
           pauseOnHover
           theme="colored"
         />
+
+        <AlertaInatividade />
         <aside
           className={`dark:bg-darkcinza h-screen w-52 p-5 fixed top-0 flex flex-col items-start justify-center shadow-lg`}
           style={{ backgroundColor: Color(mode, "#EDD8FF") }}
