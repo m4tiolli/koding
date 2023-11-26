@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { protanomaly, deuteranomaly, tritanomaly } from "./../ColorBlind";
-import { useDisclosure } from "@chakra-ui/react";
+import { Spinner, useDisclosure } from "@chakra-ui/react";
 import { Modal, ModalContent } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -79,7 +79,13 @@ export default function CardAula({ aula, capitulo }) {
                     <Tag tag={tag} cor1={cor1} cor2={cor2} key={index} />
                   ))
                 ) : (
-                  <p className="dark:text-white italic">sem tag</p>
+                  <Spinner
+                    color={`${
+                      localStorage.theme == "dark" ? "white" : "#811CD7"
+                    }`}
+                    thickness="4px"
+                    size={"xl"}
+                  />
                 )}
               </div>
             </div>
