@@ -79,6 +79,11 @@ function Configuracao() {
   } = useDisclosure();
   const navigate = useNavigate();
 
+  function Sair() {
+    localStorage.removeItem("nivel");
+    document.location.reload()
+  }
+  
   return (
     <ChakraProvider>
       <div
@@ -303,7 +308,7 @@ function Configuracao() {
                       <Button variant={"ghost"} onClick={closeLogoutModal}>
                         Voltar
                       </Button>
-                      <Button variant={"ghost"} colorScheme={"red"}>
+                      <Button variant={"ghost"} colorScheme={"red"} onClick={Sair}>
                         Sair
                       </Button>
                     </ModalFooter>

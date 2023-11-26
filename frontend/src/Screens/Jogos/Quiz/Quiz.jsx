@@ -15,13 +15,13 @@ import { FaRegCheckCircle } from "react-icons/fa";
 function Quiz() {
   const perguntas = [
     {
-      pergunta: "Qual é a extensão de arquivo padrão para scripts PHP?",
-      alternativas: [".ph", ".html", ".php", ".js", ".phtml"],
-      respostaCorreta: ".php",
+      pergunta: "Qual o símbolo para começar uma variável em PHP?",
+      alternativas: ["&", "$", "#", "@", "*"],
+      respostaCorreta: "$",
     },
     {
       pergunta: "Qual função é usada para exibir texto no PHP?",
-      alternativas: ["print()", "echo()", "display()", "output()", "show()"],
+      alternativas: ["print()", "display()", "output()", "show()", "echo()"],
       respostaCorreta: "echo()",
     },
   ];

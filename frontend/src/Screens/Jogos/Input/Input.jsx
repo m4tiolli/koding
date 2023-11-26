@@ -14,11 +14,11 @@ function Input() {
     {
       tipo: "alternativa",
       titulo: [
-        "Usando JavaScript, complete a frase para exibir uma mensagem de informação no console:",
+        "Pensando nos eventos do JavaScript, complete o evento que é disparado quando um elemnto recebe o foco: ",
       ],
-      pergunta: 'console.____("Mensagem informativa!")',
-      opcoes: ["log", "warn", "debug", "info", "error"],
-      respostaCorreta: "info",
+      pergunta: '____ - é disparado quando o elemento recebe o foco',
+      opcoes: ["onKeyUp", "onClick", "onLoad", "onFocus", "onBlur"],
+      respostaCorreta: "onFocus",
     },
     {
       tipo: "escrita",
