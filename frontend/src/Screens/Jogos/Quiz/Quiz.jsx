@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineClose } from "react-icons/ai";
 import { ToastContainer, toast } from "react-toastify";
+import { IoHelpCircleOutline } from "react-icons/io5";
 import "../Quiz/Quiz.css";
 import {
   ChakraProvider,
@@ -46,6 +47,11 @@ function Quiz() {
   };
 
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    isOpen: isHelpOpen,
+    onOpen: onHelpOpen,
+    onClose: onHelpClose,
+  } = useDisclosure();
 
   function Fechar() {
     onClose();
@@ -132,6 +138,12 @@ function Quiz() {
             />
 
             <div className="w-7/12 h-5 bg-gray-300 rounded-lg"></div>
+
+            <IoHelpCircleOutline
+              title="Ajuda"
+              onClick={onHelpOpen}
+              className="text-4xl cursor-pointer z-10 text-gray-400 dark:text-white"
+            />
           </div>
 
           <div className="flex flex-col mt-16">
@@ -195,6 +207,27 @@ function Quiz() {
               >
                 Sair
               </button>
+            </div>
+          </ModalContent>
+        </Modal>
+
+        <Modal
+          isCentered
+          onClose={onHelpClose}
+          isOpen={isHelpOpen}
+          motionPreset="slideInBottom"
+        >
+          <ModalContent
+            w="20vw"
+            h="5vw"
+            display="flex"
+            background="#A555F7"
+            borderRadius="0.9em"
+            marginLeft={"73vw"}
+            marginTop={"7vw"}
+          >
+            <div className="flex flex-col w-full p-3 justify-center text-center items-center space-y-2 text-white">
+              Símbolo muito utilizado em dinheiro!
             </div>
           </ModalContent>
         </Modal>

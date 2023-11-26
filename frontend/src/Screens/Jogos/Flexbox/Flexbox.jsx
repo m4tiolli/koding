@@ -3,14 +3,20 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineClose } from "react-icons/ai";
 import { ToastContainer, toast } from "react-toastify";
+import { IoHelpCircleOutline } from "react-icons/io5";
 import {
   protanomaly,
   tritanomaly,
   deuteranomaly,
 } from "./../../../Components/ColorBlind";
 
+import { useDisclosure } from "@chakra-ui/react";
+import { Modal, ModalContent } from "@chakra-ui/react";
+
 function Flexbox() {
   const mode = localStorage.getItem("theme");
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   function Color(mode, color) {
     var newcolor;
@@ -105,12 +111,21 @@ function Flexbox() {
       />
       {/* Instruções */}
 
-      <AiOutlineClose
-        onClick={() => navigate(-1)}
-        className="flex mb-5 text-3xl ml-10 mt-5 cursor-pointer z-0 dark:text-white text-gray-600"
-      />
+      <section className="w-3/5 p-10 dark:bg-darkcinzaclaro dark:text-white">
 
-      <section className="w-3/5 p-16 -ml-20 dark:bg-darkcinzaclaro dark:text-white">
+        <div className="flex items-center justify-center z-0 h-10 text-gray-600 dark:text-white space-x-[600px]">
+          <AiOutlineClose
+            title="Fechar"
+            onClick={() => navigate(-1)}
+            className="flex text-3xl cursor-pointer dark:text-white"
+          />
+          <IoHelpCircleOutline
+            title="Ajuda"
+            onClick={onOpen}
+            className="flex text-4xl cursor-pointer"
+          />
+        </div>
+
         <h1 className="text-3xl uppercase font-semibold text-gray-600 dark:text-white mt-10">
           Flexbox
         </h1>
@@ -345,6 +360,59 @@ function Flexbox() {
             ></div>
           </div>
         </div>
+
+        <Modal
+          isCentered
+          onClose={onClose}
+          isOpen={isOpen}
+          motionPreset="slideInBottom"
+        >
+          <ModalContent
+            w="30vw"
+            h="10vw"
+            display="flex"
+            background="#A555F7"
+            borderRadius="0.9em"
+            zIndex={1}
+            marginLeft={"22vw"}
+            marginTop={"7vw"}
+          >
+            <div className="flex flex-col w-full p-3 justify-center text-center items-center space-y-2 text-white">
+              <div>
+                <div className="">flex-direction</div>
+                <div className="flex space-x-2">
+                  <div className="bg-zinc-500/100 rounded-md p-1 text-sm">
+                    row
+                  </div>
+                  <div className="bg-zinc-500/100 rounded-md p-1 text-sm">
+                    row-reverse
+                  </div>
+                  <div className="bg-zinc-500/100 rounded-md p-1 text-sm">
+                    column
+                  </div>
+                  <div className="bg-zinc-500/100 rounded-md p-1 text-sm">
+                    column-reverse
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div className="">flex-wrap</div>
+                <div className="flex space-x-2">
+                  <div className="bg-zinc-500/100 rounded-md p-1 text-sm">
+                    no-wrap
+                  </div>
+                  <div className="bg-zinc-500/100 rounded-md p-1 text-sm">
+                    wrap
+                  </div>
+                  <div className="bg-zinc-500/100 rounded-md p-1 text-sm">
+                    wrap-reverse
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ModalContent>
+        </Modal>
       </section>
     </div>
   );

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineClose } from "react-icons/ai";
+import { IoHelpCircleOutline } from "react-icons/io5";
 import { ToastContainer, toast } from "react-toastify";
 import "../Input/Input.css";
 import { ChakraProvider, useDisclosure } from "@chakra-ui/react";
@@ -14,9 +15,9 @@ function Input() {
     {
       tipo: "alternativa",
       titulo: [
-        "Pensando nos eventos do JavaScript, complete o evento que é disparado quando um elemnto recebe o foco: ",
+        "Pensando nos eventos do JavaScript, complete o evento que é disparado quando um elemento recebe o foco: ",
       ],
-      pergunta: '____ - é disparado quando o elemento recebe o foco',
+      pergunta: "____ - é disparado quando o elemento recebe o foco",
       opcoes: ["onKeyUp", "onClick", "onLoad", "onFocus", "onBlur"],
       respostaCorreta: "onFocus",
     },
@@ -121,6 +122,11 @@ function Input() {
   };
 
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    isOpen: isHelpOpen,
+    onOpen: onHelpOpen,
+    onClose: onHelpClose,
+  } = useDisclosure();
 
   function Fechar() {
     onClose();
@@ -177,10 +183,16 @@ function Input() {
             />
 
             <div className="w-7/12 h-5 bg-gray-300 rounded-lg"></div>
+
+            <IoHelpCircleOutline
+              title="Ajuda"
+              onClick={onHelpOpen}
+              className="text-4xl cursor-pointer z-10 text-gray-400 dark:text-white"
+            />
           </div>
 
           <div className="flex flex-col justify-center items-center mt-20">
-            <h1 className="flex ml-10 font-bold text-gray-700 text-2xl dark:text-white">
+            <h1 className="flex px-5 mb-5 font-bold text-center text-gray-700 text-2xl dark:text-white">
               {titulo}
             </h1>
 
@@ -219,7 +231,7 @@ function Input() {
                   )}
                   <div className="flex items-center justify-center mt-24">
                     <button
-                      className="flex rounded-md w-32 text-base bg-green-300 dark:text-gray-800 font-semibold"
+                      className="flex rounded-md w-32 items-center text-base bg-green-300 dark:text-gray-800 font-semibold"
                       onClick={verificarResposta}
                     >
                       Verificar Resposta
@@ -249,6 +261,27 @@ function Input() {
               >
                 Sair
               </button>
+            </div>
+          </ModalContent>
+        </Modal>
+
+        <Modal
+          isCentered
+          onClose={onHelpClose}
+          isOpen={isHelpOpen}
+          motionPreset="slideInBottom"
+        >
+          <ModalContent
+            w="20vw"
+            h="5vw"
+            display="flex"
+            background="#A555F7"
+            borderRadius="0.9em"
+            marginLeft={"73vw"}
+            marginTop={"7vw"}
+          >
+            <div className="flex flex-col w-full p-3 mt-2 justify-center text-center items-center space-y-2 text-white">
+              Foque na pergunta
             </div>
           </ModalContent>
         </Modal>

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineClose } from "react-icons/ai";
 import { ToastContainer, toast } from "react-toastify";
+import { IoHelpCircleOutline } from "react-icons/io5";
 import {
   ChakraProvider,
   Modal,
@@ -88,7 +89,7 @@ function Sentenca() {
       );
     } else {
       enviarPontuacao();
-      setTimeout(() => onOpen(), 2000)
+      setTimeout(() => onOpen(), 2000);
     }
   };
 
@@ -152,6 +153,11 @@ function Sentenca() {
   const navigate = useNavigate();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    isOpen: isHelpOpen,
+    onOpen: onHelpOpen,
+    onClose: onHelpClose,
+  } = useDisclosure();
 
   return (
     <ChakraProvider>
@@ -189,6 +195,12 @@ function Sentenca() {
                   : ""
               }`}
             ></div>
+
+            <IoHelpCircleOutline
+              title="Ajuda"
+              onClick={onHelpOpen}
+              className="text-4xl cursor-pointer z-10 text-gray-400 dark:text-white"
+            />
           </div>
 
           <div className="flex flex-col">
@@ -244,6 +256,27 @@ function Sentenca() {
             >
               Sair
             </button>
+          </div>
+        </ModalContent>
+      </Modal>
+
+      <Modal
+        isCentered
+        onClose={onHelpClose}
+        isOpen={isHelpOpen}
+        motionPreset="slideInBottom"
+      >
+        <ModalContent
+          w="30vw"
+          h="5vw"
+          display="flex"
+          background="#A555F7"
+          borderRadius="0.9em"
+          marginLeft={"63vw"}
+          marginTop={"7vw"}
+        >
+          <div className="flex flex-col w-full p-3 justify-center text-center items-center space-y-2 text-white">
+            Lembre-se que toda imagem se inicia com a tag &lt;img&gt;
           </div>
         </ModalContent>
       </Modal>
