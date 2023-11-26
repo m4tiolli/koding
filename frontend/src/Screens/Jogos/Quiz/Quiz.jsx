@@ -19,17 +19,20 @@ function Quiz() {
       pergunta: "Qual o símbolo para começar uma variável em PHP?",
       alternativas: ["&", "$", "#", "@", "*"],
       respostaCorreta: "$",
+      ajuda: "Símbolo muito utilizado em dinheiro!",
     },
     {
       pergunta: "Qual função é usada para exibir texto no PHP?",
       alternativas: ["print()", "display()", "output()", "show()", "echo()"],
       respostaCorreta: "echo()",
+      ajuda: "marcos", 
     },
   ];
 
   const navigate = useNavigate();
   const [perguntaAtual, setPerguntaAtual] = useState(0);
   const [alternativaSelecionada, setAlternativaSelecionada] = useState("");
+  const [exibirAjuda, setExibirAjuda] = useState(true);
 
   const selecionarAlternativa = (alternativa) => {
     setAlternativaSelecionada(alternativa);
@@ -42,6 +45,7 @@ function Quiz() {
       setPerguntaAtual(perguntaAtual + 1);
     } else {
       enviarPontuacao();
+      setExibirAjuda(true);
       setTimeout(() => onOpen(), 2000);
     }
   };
@@ -227,7 +231,7 @@ function Quiz() {
             marginTop={"7vw"}
           >
             <div className="flex flex-col w-full p-3 justify-center text-center items-center space-y-2 text-white">
-              Símbolo muito utilizado em dinheiro!
+            {exibirAjuda ? perguntas[perguntaAtual].ajuda : ""}
             </div>
           </ModalContent>
         </Modal>

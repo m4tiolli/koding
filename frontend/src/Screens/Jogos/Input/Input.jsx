@@ -20,12 +20,14 @@ function Input() {
       pergunta: "____ - é disparado quando o elemento recebe o foco",
       opcoes: ["onKeyUp", "onClick", "onLoad", "onFocus", "onBlur"],
       respostaCorreta: "onFocus",
+      ajuda: "Foque na pergunta",
     },
     {
       tipo: "escrita",
       titulo: ["Qual a linguagem que está sendo referida abaixo?"],
       pergunta: "Complete a frase: React é uma biblioteca de _____.",
       respostaCorreta: "javascript",
+      ajuda: "marcos", 
     },
   ];
 
@@ -35,6 +37,7 @@ function Input() {
   const [respostaEscrita, setRespostaEscrita] = useState("");
   const [resposta, setResposta] = useState("");
   const titulo = fases[faseAtual].titulo;
+  const [exibirAjuda, setExibirAjuda] = useState(true);
 
   const avancarFase = () => {
     if (faseAtual < fases.length - 1) {
@@ -44,6 +47,7 @@ function Input() {
       setResposta("");
     } else {
       enviarPontuacao();
+      setExibirAjuda(true);
       setTimeout(() => onOpen(), 2000);
     }
   };
@@ -281,7 +285,7 @@ function Input() {
             marginTop={"7vw"}
           >
             <div className="flex flex-col w-full p-3 mt-2 justify-center text-center items-center space-y-2 text-white">
-              Foque na pergunta
+            {exibirAjuda ? fases[faseAtual].ajuda : ""}
             </div>
           </ModalContent>
         </Modal>

@@ -42,6 +42,7 @@ function Sentenca() {
         "<head>",
       ],
       titulo: ["Como inserir uma imagem usando HTML?"],
+      ajuda: "Lembre-se que toda imagem se inicia com a tag <img>;",
     },
     {
       sentencaCorreta: "<p>Isso é um parágrafo.</p>",
@@ -54,6 +55,7 @@ function Sentenca() {
         "</h1>",
       ],
       titulo: ["Como adicionar uma parágrafo em HTML?"],
+      ajuda: "marcos",
     },
   ];
   if (!localStorage.getItem("pontuacao")) localStorage.setItem("pontuacao", 0);
@@ -65,6 +67,7 @@ function Sentenca() {
     palavrasAleatorias(fase.palavrasSelecionadas)
   );
   const titulo = fases[faseAtual].titulo;
+  const [exibirAjuda, setExibirAjuda] = useState(true);
 
   useEffect(() => {
     const palavrasEmbaralhadas = palavrasAleatorias([...palavrasSelecionadas]);
@@ -89,6 +92,7 @@ function Sentenca() {
       );
     } else {
       enviarPontuacao();
+      setExibirAjuda(true);
       setTimeout(() => onOpen(), 2000);
     }
   };
@@ -276,7 +280,7 @@ function Sentenca() {
           marginTop={"7vw"}
         >
           <div className="flex flex-col w-full p-3 justify-center text-center items-center space-y-2 text-white">
-            Lembre-se que toda imagem se inicia com a tag &lt;img&gt;
+          {exibirAjuda ? fases[faseAtual].ajuda : ""}
           </div>
         </ModalContent>
       </Modal>
