@@ -12,8 +12,8 @@ function Color(mode, color) {
   if (mode === "protanomaly") {
     newcolor = protanomaly(color);
   } else if (mode === "deuteranomaly") {
-    newcolor = deuteranomaly(color);
   } else if (mode === "tritanomaly") {
+    newcolor = deuteranomaly(color);
     newcolor = tritanomaly(color);
   } else newcolor = color;
   return newcolor;
@@ -45,6 +45,8 @@ export default function CardAula({ aula, capitulo }) {
       .then((response) => setTags(response.data));
   }, [aulaId]);
 
+  console.log(aula);
+  console.log(capitulo);
   return (
     <div className="space-y-32">
       <div className="flex flex-col justify-center ml-10">
@@ -125,7 +127,7 @@ export default function CardAula({ aula, capitulo }) {
               ></div>
               <div>
                 <span className="flex font-bold text-lg mb-2 truncate">
-                  Aula 00 - Aprendendo esturuta HTML
+                Aula {aula.numeroaula} - {aula.nome}
                 </span>
                 {/* Filtro */}
                 <div
@@ -137,29 +139,19 @@ export default function CardAula({ aula, capitulo }) {
                     )} 0%, ${Color(mode, cor1)} 100%`,
                   }}
                 >
-                  <marquee>
-                    <span className="flex w-64 items-center justify-center text-md text-black font-semibold truncate dark:text-white">
-                      Dificuldade: Iniciante
-                    </span>
-                  </marquee>
+                  
                 </div>
               </div>
             </div>
             <div className="flex flex-col justify-center items-center space-y-10">
-              <div className="flex flex-col justify-center bg-white/50 w-32 h-8 space-x-20 rounded-md">
-                <span className="flex justify-center items-center">
-                  Nivel 1
-                </span>
-              </div>
+             
               <Link to={"/conteudo"}>
                 <button className="bg-[#3BEF61] text-white w-32 uppercase text-2xl p-2 rounded-lg shadow-md">
                   Iniciar
                 </button>
               </Link>
-              <span className="w-32 h-20 truncate">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Maecenas in nisl lacinia, consectetur enim id, auctor massa.
-                Proin consequat ipsum vitae ligula ornare tristique
+              <span className="w-32 h-20">
+                {aula.descricao}
               </span>
             </div>
           </div>
