@@ -8,10 +8,20 @@ li {
   --color: #E88D59
 }
 
-.slick-active button:before {
+ul.slick-dots li.slick-active button:before {
   color: var(--color) !important;
+}
+
+.slick-dots {
+  bottom: -50px !important;
 }
 
 .slick-dots li button:before {
   font-size: 20px !important;
+  color: #d9d9d9 !important;
+  opacity: 1 !important;
+}
+
+.svgindex {
+  z-index: 100 !important;
 }

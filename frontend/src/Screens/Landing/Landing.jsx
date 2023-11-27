@@ -45,35 +45,29 @@ function Landing() {
     }
   }, []);
 
-  // Função para verificar a mudança na classe 'slick-active'
-function checkActiveClass(mutationsList) {
-  for (let mutation of mutationsList) {
+  function checkActiveClass(mutationsList) {
+    mutationsList.forEach(mutation => {
       if (mutation.type === 'attributes' && mutation.attributeName === 'class' && mutation.target.classList.contains('slick-active')) {
-          const buttons = document.querySelectorAll('.slick-active button:before');
-          
-          buttons.forEach((button, index) => {
-              if (button === mutation.target) {
-                  const colors = ["#E88D59", "#4A90E2", "#F2D237", "#5D6CC2"];
-                  document.documentElement.style.setProperty('--color', colors[index]);
-              }
-          });
+        const buttons = document.querySelectorAll('.slick-dots li button');
+        buttons.forEach((button, index) => {
+          if (button.parentElement.classList.contains('slick-active')) {
+            const colors = ["#E88D59", "#4A90E2", "#F2D237", "#5D6CC2"];
+            document.documentElement.style.setProperty('--color', colors[index]);
+          }
+        });
       }
+    });
   }
-}
 
-// Seleciona o elemento que pode mudar a classe
-const targetNode = document.querySelector('.seu-seletor-do-slick-carousel');
+  const targetNode = document.querySelector('.slick-dots');
+  const observer = new MutationObserver(checkActiveClass);
+  const config = { attributes: true, subtree: true };
 
-// Cria um observador para monitorar mudanças no atributo 'class'
-const observer = new MutationObserver(checkActiveClass);
-
-// Configura o observador para observar mudanças de atributo no nó alvo
-const config = { attributes: true };
-
-// Inicia a observação do nó alvo com a configuração especificada
-observer.observe(targetNode, config);
-
-
+  if (targetNode) {
+    observer.observe(targetNode, config);
+  } else {
+    console.error('Elemento não encontrado com o seletor fornecido.');
+  }
 
   return (
     <div className="absolute w-full h-fit overflow-hidden bg-[#e5c6ff] dark:bg-darkcinzaclaro">
@@ -216,11 +210,7 @@ observer.observe(targetNode, config);
       </div>
 
       <div
-        className="w-full h-[20vh] z-50 relative flex flex-col gap-1 justify-center items-center text-white font-light text-sm"
-        style={{
-          background:
-            "linear-gradient(180deg, #54D795 0%, #4ABBAF 51.04%, #53A3D4 100%)",
-        }}
+        className="w-full h-[20vh] shadow-inner bg-[#ECD5FF] relative flex flex-col gap-1 justify-center items-center text-cinza font-light text-sm"
       >
         <Logo isResponsive={true} />
         <p>Koding 2023</p>

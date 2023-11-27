@@ -82,9 +82,9 @@ function Aulas() {
         <div className="flex mt-28 ml-8 mb-5 items-center">
           <IoArrowBack
             onClick={() => navigate(-1)}
-            className="text-3xl cursor-pointer dark:text-white"
+            className="text-3xl cursor-pointer text-cinza dark:text-white"
           />
-          <p className="text-white text-2xl font-semibold ml-10">Aprendendo {texto}</p>
+          <p className="dark:text-white text-cinza text-2xl font-semibold ml-10">Aprendendo {texto}</p>
         </div>
         {/* Barra de pesquisa */}
         <div className="flex h-64 w-5/12 ml-12 -m-20 mb-2 items-center justify-center gap-3">

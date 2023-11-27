@@ -68,7 +68,7 @@ export default function CardAula({ aula, capitulo }) {
             </div>
             <div className="flex flex-col">
               <marquee>
-                <span className="w-[250px] flex items-center justify-start text-xl text-black font-semibold dark:text-white">
+                <span className="w-[250px] flex items-center justify-start text-xl text-cinza font-semibold dark:text-white">
                   {aula.nome}
                 </span>
               </marquee>
@@ -180,7 +180,7 @@ function Tag({ tag, cor1, cor2 }) {
         )} 0%, ${Color(mode, cor1)} 100%`,
       }}
     >
-      <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate dark:text-white">
+      <span className="flex w-auto items-center justify-center text-md text-cinza font-semibold truncate dark:text-white">
         {tag.nome}
       </span>
     </div>

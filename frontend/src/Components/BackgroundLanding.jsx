@@ -1,7 +1,7 @@
 export function BackgroundLanding1() {
     return (
         <>
-            <svg width="560" height="867" viewBox="0 0 560 867" className="absolute -right-36 top-60 scale-50 z-0" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="560" height="867" viewBox="0 0 560 867" className="absolute -right-36 top-60 scale-50 svgindex" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <ellipse cx="442.002" cy="430.305" rx="291.595" ry="358.703" transform="rotate(67.9215 442.002 430.305)" fill="url(#paint0_radial_181_98)" fillOpacity="0.6" />
                 <g filter="url(#filter0_bf_181_98)">
                     <ellipse cx="517.002" cy="436.384" rx="291.595" ry="358.703" transform="rotate(67.9215 517.002 436.384)" fill="url(#paint1_radial_181_98)" fillOpacity="0.6" />
