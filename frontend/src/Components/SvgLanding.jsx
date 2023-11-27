@@ -20,9 +20,9 @@ const svgs = {
         </svg>),
         title: "css",
         items: [
-            "estrutura",
-            "tags",
-            "links",
+            "classes",
+            "seletores",
+            "flexbox",
             "mais..."
         ],
         color: "#4A90E2"
@@ -33,9 +33,9 @@ const svgs = {
         </svg>),
         title: "js",
         items: [
-            "estrutura",
-            "tags",
-            "links",
+            "variáveis",
+            "condições",
+            "funções",
             "mais..."
         ],
         color: "#F2D237"
@@ -47,9 +47,9 @@ const svgs = {
         </svg>),
         title: "php",
         items: [
-            "estrutura",
-            "tags",
-            "links",
+            "variáveis",
+            "laços",
+            "funções",
             "mais..."
         ],
         color: "#5D6CC2"

@@ -13,6 +13,7 @@ import svgs from "../../Components/SvgLanding";
 import Logo from "../../Components/Logo";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import grafico from '../../assets/grafico.png'
 
 const settings = {
   dots: true,
@@ -32,8 +33,8 @@ function Landing() {
     localStorage.nivel == "responsavel"
       ? navigate("/pais/home")
       : localStorage.nivel == "crianca"
-      ? navigate("/home")
-      : navigate("/");
+        ? navigate("/home")
+        : navigate("/");
   }, [navigate]);
 
   useEffect(() => {
@@ -58,7 +59,7 @@ function Landing() {
           <h1 className="text-center text-lg md:text-xl xl:text-3xl md:w-4/5 w-7/8 text-cinza dark:text-[#cacaca] font-semibold">
             Conheça os conceitos básicos para iniciar sua jornada dev!
           </h1>
-          <button className=" text-center uppercase bg-[#EE9765] w-fit h-14 rounded-xl shadow-md text-white flex justify-evenly items-center relative my-2 px-2 text-xs md:text-lg xl:text-2xl xl:px-4 font-semibold">
+          <button onClick={() => navigate("/criar-conta")} className=" text-center uppercase bg-[#EE9765] w-fit h-14 rounded-xl shadow-md text-white flex justify-evenly items-center relative my-2 px-2 text-xs md:text-lg xl:text-2xl xl:px-4 font-semibold">
             Comece agora <FaAngleRight className="text-2xl" />
           </button>
         </div>
@@ -153,7 +154,7 @@ function Landing() {
           </div>
         </div>
 
-        <button className=" text-center bg-[#8654AD] w-fit h-14 rounded-xl shadow-md text-white flex justify-evenly items-center my-2 px-2 text-xl xl:text-2xl xl:px-4 font-regular absolute bottom-0 lg:left-10 xl:left-[8.5rem] lg:bottom-[20%]">
+        <button onClick={() => navigate("/login")} className=" text-center bg-[#8654AD] w-fit h-14 rounded-xl shadow-md text-white flex justify-evenly items-center my-2 px-2 text-xl xl:text-2xl xl:px-4 font-regular absolute bottom-0 lg:left-10 xl:left-[8.5rem] lg:bottom-[20%]">
           Ver mais <FaAngleRight className="text-2xl" />
         </button>
       </div>
@@ -162,8 +163,8 @@ function Landing() {
         <p className="text-white font-regular w-4/5 lg:w-2/5 text-center text-2xl">
           Acompanhe o desempenho do usuário por meio de gráficos
         </p>
-        <img src="#" alt="" className="w-11/12 h-2/5 lg:w-2/5" />
-        <button className="absolute bottom-2 lg:right-[10rem] lg:bottom-[10rem] xl:right-[18.5rem] text-center bg-[#4BC2A6] xl:bottom-[20%] w-fit h-14 rounded-xl shadow-md text-white flex justify-evenly items-center my-2 px-2 text-xl xl:text-2xl xl:px-4 font-regular">
+        <img src={grafico} alt="" className="w-11/12 h-auto rounded-xl shadow-xl lg:w-2/5" />
+        <button onClick={() => navigate("/login")} className="absolute bottom-2 lg:right-[10rem] lg:bottom-[10rem] xl:right-[18.5rem] text-center bg-[#4BC2A6] xl:bottom-[20%] w-fit h-14 rounded-xl shadow-md text-white flex justify-evenly items-center my-2 px-2 text-xl xl:text-2xl xl:px-4 font-regular">
           Ver mais <FaAngleRight className="text-2xl" />
         </button>
       </div>
@@ -178,7 +179,7 @@ function Landing() {
             Junte-se a nós e faça a diferença
           </p>
         </div>
-        <button className=" text-center uppercase bg-[#EE9765] w-fit h-14 rounded-xl shadow-md text-white flex justify-evenly items-center relative my-2 px-2 text-md md:text-lg xl:text-2xl xl:px-4 font-semibold">
+        <button onClick={() => navigate("/criar-conta")} className=" text-center uppercase bg-[#EE9765] w-fit h-14 rounded-xl shadow-md text-white flex justify-evenly items-center relative my-2 px-2 text-md md:text-lg xl:text-2xl xl:px-4 font-semibold">
           Comece agora <FaAngleRight className="text-2xl" />
         </button>
       </div>
