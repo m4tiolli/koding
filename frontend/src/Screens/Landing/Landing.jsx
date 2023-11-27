@@ -44,6 +44,37 @@ function Landing() {
       document.documentElement.classList.remove("dark");
     }
   }, []);
+
+  // Função para verificar a mudança na classe 'slick-active'
+function checkActiveClass(mutationsList) {
+  for (let mutation of mutationsList) {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'class' && mutation.target.classList.contains('slick-active')) {
+          const buttons = document.querySelectorAll('.slick-active button:before');
+          
+          buttons.forEach((button, index) => {
+              if (button === mutation.target) {
+                  const colors = ["#E88D59", "#4A90E2", "#F2D237", "#5D6CC2"];
+                  document.documentElement.style.setProperty('--color', colors[index]);
+              }
+          });
+      }
+  }
+}
+
+// Seleciona o elemento que pode mudar a classe
+const targetNode = document.querySelector('.seu-seletor-do-slick-carousel');
+
+// Cria um observador para monitorar mudanças no atributo 'class'
+const observer = new MutationObserver(checkActiveClass);
+
+// Configura o observador para observar mudanças de atributo no nó alvo
+const config = { attributes: true };
+
+// Inicia a observação do nó alvo com a configuração especificada
+observer.observe(targetNode, config);
+
+
+
   return (
     <div className="absolute w-full h-fit overflow-hidden bg-[#e5c6ff] dark:bg-darkcinzaclaro">
       <div className="h-screen w-full flex flex-col items-center justify-center relative z-0">
