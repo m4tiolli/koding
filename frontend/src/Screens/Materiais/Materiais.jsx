@@ -158,7 +158,7 @@ const Materiais = () => {
               className="bg-transparent outline-none text-2xl"
             />
             <a href="">
-              <BiSearch className={`text-3xl text-white ml-20`} />
+              <BiSearch className={`text-3xl text-white ml-20 lg:-ml-5`} />
             </a>
           </form>
 
@@ -222,8 +222,8 @@ const Materiais = () => {
         >
           <ModalOverlay />
           <ModalContent
-            w="30vw"
-            h="15vw"
+            w="30vw lg:w-40vw"
+            h="15vw lg:h-50vw"
             display="flex"
             marginBottom="17vw"
             zIndex={100}
@@ -232,14 +232,14 @@ const Materiais = () => {
           >
             {/* Tags */}
 
-            <div className="h-full flex justify-center items-center gap-x-5 flex-wrap">
+            <div className="h-full lg:h-[250px] flex justify-center items-center gap-x-5 flex-wrap">
               <div className="mb-5">
                 <span className="flex justify-center text-lg">
                   Filtrar por:
                 </span>
                 <div className="border-b-2 w-32 border-black/50"></div>
               </div>
-              <div className="flex justify-center gap-y-2 gap-x-3 flex-wrap">
+              <div className="flex justify-center gap-y-2 lg:-mt-10 gap-x-3 flex-wrap">
                 <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-orange-300">
                   <AiOutlineClose className="text-xl" />
                   <span id="filter" className="text-lg">

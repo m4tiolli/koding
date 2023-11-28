@@ -50,7 +50,7 @@ export default function CardCapitulo({ capitulo }) {
 
   return (
     <div
-      className={`w-72 h-52 rounded-xl cursor-pointer flex justify-center items-center flex-col`}
+      className={`lg:w-56 w-72 h-52 rounded-xl cursor-pointer flex justify-center items-center flex-col`}
       style={{
         background: `linear-gradient(108deg, ${Color(mode, cor1)} 0%, ${Color(
           mode,
@@ -62,7 +62,7 @@ export default function CardCapitulo({ capitulo }) {
       <h1 className="text-white font-black text-3xl text-center">
         Capítulo {capitulo.numerocapitulo}
       </h1>
-      <h1 className="text-white font-bold text-center">{capitulo.nome}</h1>
+      <h1 className="text-white font-bold text-center lg:p-2">{capitulo.nome}</h1>
     </div>
   );
 }
