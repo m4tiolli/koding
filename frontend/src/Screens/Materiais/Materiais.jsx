@@ -158,7 +158,7 @@ const Materiais = () => {
               className="bg-transparent outline-none text-2xl"
             />
             <a href="">
-              <BiSearch className={`text-3xl text-white ml-20 lg:-ml-5`} />
+              <BiSearch className={`text-3xl text-white ml-20 notebook:ml-20 laptop1024:-ml-5`} />
             </a>
           </form>
 

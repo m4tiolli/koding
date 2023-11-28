@@ -50,7 +50,7 @@ export default function CardCapitulo({ capitulo }) {
 
   return (
     <div
-      className={`lg:w-56 w-72 h-52 rounded-xl cursor-pointer flex justify-center items-center flex-col`}
+      className={`lg:w-56 notebook:w-72 w-72 h-52 rounded-xl cursor-pointer flex justify-center items-center flex-col`}
       style={{
         background: `linear-gradient(108deg, ${Color(mode, cor1)} 0%, ${Color(
           mode,

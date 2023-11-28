@@ -42,6 +42,7 @@ export default {
         // => @media (min-width: 2560px) { ... }
         mobile375: "375px",
         mobile425: "425px",
+        laptop1024: "1024px"
       },
       borderWidth: {
         1: "1px",
