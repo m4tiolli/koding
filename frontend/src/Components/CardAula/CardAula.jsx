@@ -44,9 +44,6 @@ export default function CardAula({ aula, capitulo }) {
       .get(`https://tcckoding.azurewebsites.net/tags/${aulaId}`)
       .then((response) => setTags(response.data));
   }, [aulaId]);
-
-  console.log(aula);
-  console.log(capitulo);
   return (
     <div className="space-y-32">
       <div className="flex flex-col justify-center ml-10">

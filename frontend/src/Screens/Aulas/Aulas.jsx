@@ -2,8 +2,7 @@ import { BsFilter } from "react-icons/bs";
 import { BiSearch } from "react-icons/bi";
 import { IoArrowBack } from "react-icons/io5";
 import { AiOutlineClose } from "react-icons/ai";
-
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Menu from "../../Components/Menu/Menu";
 
@@ -24,7 +23,7 @@ function Aulas() {
 
   const location = useLocation();
   const aulas = location.state.aulas;
-  const capitulos = location.state.capitulo
+  const capitulos = location.state.capitulo;
 
   function Color(mode, color) {
     var newcolor;
@@ -46,7 +45,7 @@ function Aulas() {
     }
   }, []);
 
-  const capitulo = capitulos.linguagem
+  const capitulo = capitulos.linguagem;
   var texto;
   switch (capitulo) {
     case 1:
@@ -67,6 +66,11 @@ function Aulas() {
   }
 
   const navigate = useNavigate();
+
+  const [searchTerm, setSearchTerm] = useState("");
+  const filteredCapitulos = aulas.filter((aula) =>
+    aula.nome.toLowerCase().includes(searchTerm.toLowerCase())
+  );
   return (
     <div
       className="flex h-full w-full"
@@ -84,7 +88,9 @@ function Aulas() {
             onClick={() => navigate(-1)}
             className="text-3xl cursor-pointer text-cinza dark:text-white"
           />
-          <p className="dark:text-white text-cinza text-2xl font-semibold ml-10">Aprendendo {texto}</p>
+          <p className="dark:text-white text-cinza text-2xl font-semibold ml-10">
+            Aprendendo {texto}
+          </p>
         </div>
         {/* Barra de pesquisa */}
         <div className="flex h-64 w-5/12 ml-12 -m-20 mb-2 items-center justify-center gap-3">
@@ -96,10 +102,10 @@ function Aulas() {
             <input
               type="text"
               className="bg-transparent outline-none text-2xl"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
-            <a href="">
-              <BiSearch className="xl:mr-5 lg:mr-5 laptop:mr-3 mr-32 text-3xl text-white ml-20"></BiSearch>
-            </a>
+              <BiSearch className="xl:mr-5 lg:mr-5 laptop:mr-3 mr-32 text-3xl text-white ml-20 cursor-pointer"></BiSearch>
           </form>
 
           {/* Filtro */}
@@ -114,9 +120,24 @@ function Aulas() {
         </div>
         {/* Cards */}
         <div className="grid grid-cols-3">
-          {aulas.map((aula, index) => (
-            <CardAula aula={aula} capitulo={capitulos} key={index} />
-          ))}
+          {searchTerm != "" ? (
+            <div className="ml-10">
+              <p className="dark:text-white text-2xl font-semibold mb-6 -mt-10 ml-8 w-screen">
+                Mostrando resultados para "{searchTerm}"
+              </p>
+              <div className="grid grid-cols-3 2xl:grid-cols-4 gap-[23em] gap-y-8">
+                {filteredCapitulos.map((aula, index) => (
+                  <div key={index}>
+                    <CardAula aula={aula} capitulo={capitulos} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : (
+            aulas.map((aula, index) => (
+              <CardAula aula={aula} capitulo={capitulos} key={index} />
+            ))
+          )}
         </div>
         <Modal
           isCentered

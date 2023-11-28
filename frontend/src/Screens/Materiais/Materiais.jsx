@@ -143,6 +143,11 @@ const Materiais = () => {
     }, 0);
   }, [id]);
 
+  const [searchTerm, setSearchTerm] = useState("");
+  const filteredCapitulos = capitulos.filter((capitulo) =>
+    capitulo.nome.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className={`flex h-full w-full dark:bg-darkcinzaclaro`}>
       <main className={`w-full min-h-screen ml-56 mr-2 overflow-hidden`}>
@@ -156,10 +161,12 @@ const Materiais = () => {
             <input
               type="text"
               className="bg-transparent outline-none text-2xl"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
-            <a href="">
-              <BiSearch className={`text-3xl text-white ml-20 notebook:ml-20 laptop1024:-ml-5`} />
-            </a>
+              <BiSearch
+                className={`text-3xl text-white ml-20 notebook:ml-20 laptop1024:-ml-5 cursor-pointer`}
+              />
           </form>
 
           {/* Filtro */}
@@ -174,13 +181,18 @@ const Materiais = () => {
         </div>
 
         {/* Cards */}
-        {isLoading[0] == true ? (
-          <div className="grid place-items-center h-1/3 w-full">
-            <Spinner
-              color={`${localStorage.theme == "dark" ? "white" : "#811CD7"}`}
-              thickness="4px"
-              size={"xl"}
-            />
+        {searchTerm != "" ? (
+          <div className="ml-10">
+            <p className="dark:text-white text-2xl font-semibold mb-6 -mt-10">
+              Mostrando resultados para "{searchTerm}"
+            </p>
+            <div className="grid grid-cols-3 2xl:grid-cols-4 gap-y-8">
+              {filteredCapitulos.map((capitulo, index) => (
+                <div key={index}>
+                  <CardCapitulo capitulo={capitulo} />
+                </div>
+              ))}
+            </div>
           </div>
         ) : (
           linguagens.map((linguagem, index) => (
