@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { protanomaly, deuteranomaly, tritanomaly } from "./../ColorBlind";
-import { Spinner, useDisclosure } from "@chakra-ui/react";
+import { useDisclosure } from "@chakra-ui/react";
 import { Modal, ModalContent } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -12,8 +12,8 @@ function Color(mode, color) {
   if (mode === "protanomaly") {
     newcolor = protanomaly(color);
   } else if (mode === "deuteranomaly") {
-  } else if (mode === "tritanomaly") {
     newcolor = deuteranomaly(color);
+  } else if (mode === "tritanomaly") {
     newcolor = tritanomaly(color);
   } else newcolor = color;
   return newcolor;
@@ -67,7 +67,7 @@ export default function CardAula({ aula, capitulo }) {
             </div>
             <div className="flex flex-col">
               <marquee>
-                <span className="w-[250px] flex items-center justify-start text-xl text-cinza font-semibold dark:text-white">
+                <span className="w-[250px] flex items-center justify-start text-xl text-black font-semibold dark:text-white">
                   {aula.nome}
                 </span>
               </marquee>
@@ -78,13 +78,7 @@ export default function CardAula({ aula, capitulo }) {
                     <Tag tag={tag} cor1={cor1} cor2={cor2} key={index} />
                   ))
                 ) : (
-                  <Spinner
-                    color={`${
-                      localStorage.theme == "dark" ? "white" : "#811CD7"
-                    }`}
-                    thickness="4px"
-                    size={"xl"}
-                  />
+                  <p className="dark:text-white italic">sem tag</p>
                 )}
               </div>
             </div>
@@ -124,31 +118,20 @@ export default function CardAula({ aula, capitulo }) {
               ></div>
               <div>
                 <span className="flex font-bold text-lg mb-2 truncate">
-                Aula {aula.numeroaula} - {aula.nome}
+                  Aula {aula.numeroaula} - {aula.nome}
                 </span>
                 {/* Filtro */}
-                <div
-                  className="w-32 p-1 rounded-md"
-                  style={{
-                    backgroundImage: `linear-gradient(10deg, ${Color(
-                      mode,
-                      cor2
-                    )} 0%, ${Color(mode, cor1)} 100%`,
-                  }}
-                >
-                  
-                </div>
+                
               </div>
             </div>
             <div className="flex flex-col justify-center items-center space-y-10">
-             
               <Link to={"/conteudo"}>
                 <button className="bg-[#3BEF61] text-white w-32 uppercase text-2xl p-2 rounded-lg shadow-md">
                   Iniciar
                 </button>
               </Link>
               <span className="w-32 h-20">
-                {aula.descricao}
+              {aula.descricao}
               </span>
             </div>
           </div>
@@ -169,7 +152,7 @@ function Tag({ tag, cor1, cor2 }) {
         )} 0%, ${Color(mode, cor1)} 100%`,
       }}
     >
-      <span className="flex w-auto items-center justify-center text-md text-cinza font-semibold truncate dark:text-white">
+      <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate dark:text-white">
         {tag.nome}
       </span>
     </div>
