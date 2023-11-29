@@ -19,9 +19,9 @@ function Ajuda() {
 
       <MenuR/>
 
-      <main className="w-full h-full justify-center overflow-hidden mt-10 ml-52 dark:bg-darkfundoR">
+      <main className="w-full h-full justify-center overflow-hidden laptop1024:ml-52 dark:bg-darkfundoR">
         
-        <div onClick={() => navigate(-1)} className="flex items-center justify-center w-20 h-10 mt-16 lg:ml-10 ml-4 mb-10 font-semibold text-lg text-zinc-800">
+        <div onClick={() => navigate(-1)} className="flex items-center justify-center w-20 h-10 mt-16 laptop1024:mt-24 lg:ml-10 ml-4 mb-10 font-semibold text-lg text-zinc-800">
           <IoIosArrowBack className="dark:text-white" />
           <span className="cursor-pointer dark:text-white">Voltar</span>
         </div>
