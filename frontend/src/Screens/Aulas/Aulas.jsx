@@ -105,7 +105,7 @@ function Aulas() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
-              <BiSearch className="xl:mr-5 lg:mr-5 laptop:mr-3 mr-32 text-3xl text-white ml-20 cursor-pointer"></BiSearch>
+              <BiSearch className="xl:mr-5 lg:mr-5 laptop:mr-3 mr-32 text-3xl text-white ml-20 cursor-pointer laptop1024:-ml-5 notebook:ml-20"></BiSearch>
           </form>
 
           {/* Filtro */}
@@ -119,7 +119,7 @@ function Aulas() {
           </div>
         </div>
         {/* Cards */}
-        <div className="grid grid-cols-3">
+        <div className="grid grid-cols-3 laptop1024:grid-cols-2 notebook:grid-cols-3">
           {searchTerm != "" ? (
             <div className="ml-10">
               <p className="dark:text-white text-2xl font-semibold mb-6 -mt-10 ml-8 w-screen">
@@ -160,48 +160,48 @@ function Aulas() {
             {/* Tags */}
 
             <div className="h-full flex justify-center items-center gap-x-5 flex-wrap">
-              <div className="mb-5">
-                <span className="flex justify-center text-lg">
+              <div className="mb-5 laptop1024:mb-0 notebook:mb-5">
+                <span className="flex justify-center text-lg laptop1024:text-md">
                   Filtrar por:
                 </span>
                 <div className="border-b-2 w-32 border-black/50"></div>
               </div>
-              <div className="flex justify-center gap-y-2 gap-x-3 flex-wrap">
+              <div className="flex justify-center gap-y-2 gap-x-1 flex-wrap">
                 <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-orange-300">
                   <AiOutlineClose className="text-xl" />
-                  <span id="filter" className="text-lg">
+                  <span id="filter" className="text-lg laptop1024:text-sm notebook:text-lg">
                     html
                   </span>
                 </button>
                 <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-blue-300">
                   <AiOutlineClose className="text-xl" />
-                  <span className="text-lg">css</span>
+                  <span className="text-lg laptop1024:text-sm notebook:text-lg">css</span>
                 </button>
                 <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-yellow-300">
                   <AiOutlineClose className="text-xl" />
-                  <span className="text-lg">javascript</span>
+                  <span className="text-lg laptop1024:text-sm notebook:text-lg">javascript</span>
                 </button>
                 <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-purple-300">
                   <AiOutlineClose className="text-xl" />
-                  <span className="text-lg">php</span>
+                  <span className="text-lg laptop1024:text-sm notebook:text-lg">php</span>
                 </button>
                 <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-orange-300">
                   <AiOutlineClose className="text-xl" />
-                  <span id="filter" className="text-lg">
+                  <span id="filter" className="text-lg laptop1024:text-sm notebook:text-lg">
                     estrutura
                   </span>
                 </button>
                 <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-blue-300">
                   <AiOutlineClose className="text-xl" />
-                  <span className="text-lg">flexbox</span>
+                  <span className="text-lg laptop1024:text-sm notebook:text-lg">flexbox</span>
                 </button>
                 <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-yellow-300">
                   <AiOutlineClose className="text-xl" />
-                  <span className="text-lg">input</span>
+                  <span className="text-lg laptop1024:text-sm notebook:text-lg">input</span>
                 </button>
                 <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-purple-300">
                   <AiOutlineClose className="text-xl" />
-                  <span className="text-lg">introdução</span>
+                  <span className="text-lg laptop1024:text-sm notebook:text-lg">introdução</span>
                 </button>
               </div>
             </div>
