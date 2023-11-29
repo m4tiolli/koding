@@ -87,7 +87,7 @@ function Configuracao() {
   return (
     <ChakraProvider>
       <div
-        className="flex h-full w-full md:h-screen"
+        className="flex h-full w-full md:h-full notebook:h-screen laptop1024:h-screen"
         style={{
           background: "linear-gradient(108deg, #C6D6FF 0%, #FFFFFF 100%)",
         }}
@@ -251,7 +251,7 @@ function Configuracao() {
 
             {/* Logout */}
 
-            <div className="flex flex-col items-center md:mt-28 md:-ml-64 mobile375:-ml-5 mobile425:ml-2 lg:-ml-[340px] xl:-ml-[400px] xl:mt-52 -ml-12 justify-center py-10 w-96 text-gray-700 gap-3">
+            <div className="flex flex-col items-center md:mt-44 md:-ml-64 mobile375:-ml-5 mobile425:ml-2 lg:-ml-[340px] xl:-ml-[400px] xl:mt-52 -ml-12 justify-center py-10 w-96 text-gray-700 gap-3">
               <div className="flex items-center gap-3 w-full">
                 <IoIosLogOut className="text-2xl dark:text-white"></IoIosLogOut>
                 <button

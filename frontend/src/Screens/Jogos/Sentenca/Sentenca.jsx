@@ -226,7 +226,7 @@ function Sentenca() {
                 </button>
               ))}
             </div>
-            <div className="flex justify-center mt-20 space-x-[850px]">
+            <div className="flex justify-center mt-20 space-x-[850px] notebook:space-x-[850px] laptop1024:space-x-[600px]">
               <button className="flex justify-center items-center w-20 bg-slate-200 shadow-md rounded-md p-2">
                 Pular
               </button>

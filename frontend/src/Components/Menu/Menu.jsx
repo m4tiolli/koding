@@ -454,7 +454,7 @@ export default function Menu({ screen }) {
         <ModalOverlay />
         <ModalContent
           minWidth={"45vw"}
-          h={"75h"}
+          h={"45vh"}
           display={"flex"}
           justifyContent={"center"}
           alignItems={"center"}
@@ -475,7 +475,7 @@ export default function Menu({ screen }) {
             </div>
 
             {/* feedback */}
-            <div className="flex items-center justify-center font-semibold gap-x-4">
+            <div className="flex items-center justify-center font-semibold laptop1024:gap-x-3 gap-x-4">
               <label
                 htmlFor="pessima"
                 className="flex flex-col items-center justify-center gap-y-2 text-white div"

@@ -130,7 +130,7 @@ function Perfil() {
           pauseOnHover
           theme="colored"
         />
-        <main className=" w-full h-screen flex xl:gap-x-32 gap-x-16 ml-52 mr-2 overflow-hidden dark:text-white font-semibold dark:bg-darkcinzaclaro">
+        <main className="w-full h-screen flex xl:gap-x-32 gap-x-16 ml-52 mr-2 overflow-hidden dark:text-white font-semibold dark:bg-darkcinzaclaro">
           {/* Card Perfil */}
           <div
             className="items-center justify-center xl:w-72 xl:h-96 w-64 h-96 xl:ml-64 ml-28 xl:mt-40 mt-32 rounded-xl"

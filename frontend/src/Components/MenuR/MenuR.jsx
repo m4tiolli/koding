@@ -431,25 +431,25 @@ export default function Menu({ screen }) {
             </div>
 
             {/* feedback */}
-            <div className="flex items-center justify-center gap-x-10 font-semibold">
+            <div className="flex items-center justify-center notebook:gap-x-10 gap-x-10 laptop1024:gap-x-6 font-semibold">
               <div className="flex flex-col items-center justify-center gap-y-2 text-white">
-                <div className="w-20 h-20 rounded-full bg-slate-300 div"></div>
+                <div className="w-20 h-20 notebook:w-20 notebook:h-20 laptop1024:w-16 laptop1024:h-16 rounded-full bg-slate-300 div"></div>
                 <span className="uppercase">péssima</span>
               </div>
               <div className="flex flex-col items-center justify-center gap-y-2 text-white">
-                <div className="w-20 h-20 rounded-full bg-slate-300 div"></div>
+                <div className="w-20 h-20 notebook:w-20 notebook:h-20 laptop1024:w-16 laptop1024:h-16 rounded-full bg-slate-300 div"></div>
                 <span className="uppercase">ruim</span>
               </div>
               <div className="flex flex-col items-center justify-center gap-y-2 text-white">
-                <div className="w-20 h-20 rounded-full bg-slate-300 div"></div>
+                <div className="w-20 h-20 notebook:w-20 notebook:h-20 laptop1024:w-16 laptop1024:h-16 rounded-full bg-slate-300 div"></div>
                 <span className="uppercase">boa</span>
               </div>
               <div className="flex flex-col items-center justify-center gap-y-2 text-white">
-                <div className="w-20 h-20 rounded-full bg-slate-300 div"></div>
+                <div className="w-20 h-20 notebook:w-20 notebook:h-20 laptop1024:w-16 laptop1024:h-16 rounded-full bg-slate-300 div"></div>
                 <span className="uppercase">incrível</span>
               </div>
               <div className="flex flex-col items-center justify-center gap-y-2 text-white">
-                <div className="w-20 h-20 rounded-full bg-slate-300 div"></div>
+                <div className="w-20 h-20 notebook:w-20 notebook:h-20 laptop1024:w-16 laptop1024:h-16 rounded-full bg-slate-300 div"></div>
                 <span className="uppercase">perfeita</span>
               </div>
             </div>

@@ -74,9 +74,9 @@ function Configuracao() {
       >
         <Menu />
         
-        <main className="w-full ml-[208px] mt-[3.8rem] overflow-hidden dark:bg-darkcinzaclaro">
+        <main className="w-full ml-[208px] overflow-hidden dark:bg-darkcinzaclaro">
 
-        <IoArrowBack onClick={() => navigate(-1)} className="flex mt-10 ml-10 mb-5 text-3xl cursor-pointer dark:text-white"/>
+        <IoArrowBack onClick={() => navigate(-1)} className="flex mt-24 ml-10 mb-5 text-3xl cursor-pointer dark:text-white"/>
         
           <div className="mb-10">
             <span className="text-3xl font-semibold dark:text-white ml-10">Configurações</span>
@@ -103,7 +103,7 @@ function Configuracao() {
 
               <div>
                 <button
-                  className="w-auto h-10 p-3 mt-5 lg:mt-0 flex items-center rounded-xl shadow-lg text-white" style={{ background: Color(mode, '#22C55E') }}
+                  className="laptop:1024 -ml-32 w-auto h-10 p-3 mt-5 lg:mt-0 flex items-center rounded-xl shadow-lg text-white" style={{ background: Color(mode, '#22C55E') }}
                   type="submit"
                 >
                   Salvar Alterações

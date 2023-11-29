@@ -506,7 +506,7 @@ export default function Home({ prop }) {
             position={"fixed"}
             background={"#7E1AD4"}
           >
-            <ModalCloseButton color={"#fff"} />
+            <ModalCloseButton className="laptop:text-xl" color={"#fff"} />
             <div className="flex flex-col items-center justify-center w-full gap-4">
               {/* texto */}
               <div className="flex flex-col justify-center items-center text-white">
