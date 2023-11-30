@@ -1,5 +1,9 @@
 import Menu from "./../../Components/Menu/Menu";
 import "../Desafios/Desafios.css";
+import { useDisclosure } from "@chakra-ui/react";
+import { Modal, ModalContent } from "@chakra-ui/react";
+
+import myGif from "../../assets/gif.gif";
 
 import { Link } from "react-router-dom";
 import {
@@ -9,8 +13,8 @@ import {
 } from "./../../Components/ColorBlind";
 
 const Desafios = () => {
-  
   const mode = localStorage.getItem("theme");
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   function Color(mode, color) {
     var newcolor;
@@ -76,12 +80,13 @@ const Desafios = () => {
                 <span className="text-3xl font-semibold dark:text-white">
                   HTML - Sentença
                 </span>
-                <Link to={"/sentenca"}>
-                  <div
-                    className="w-80 h-48 rounded-xl mb-5"
-                    style={{ backgroundColor: Color(mode, "#E88D59") }}
-                  ></div>
-                </Link>
+
+                <div
+                  className="w-80 h-48 rounded-xl mb-5 cursor-pointer"
+                  style={{ backgroundColor: Color(mode, "#E88D59") }}
+                  onClick={onOpen}
+                ></div>
+
                 <span></span>
                 <div className="w-80 flex flex-wrap gap-x-3 gap-y-3">
                   <div
@@ -103,17 +108,19 @@ const Desafios = () => {
                 </div>
               </div>
             </div>
+
             <div className="mt-20">
               <div className="">
                 <span className="text-3xl font-semibold dark:text-white">
                   CSS - Flexbox
                 </span>
-                <Link to={"/flexbox"}>
-                  <div
-                    className="w-80 h-48 rounded-xl mb-5"
-                    style={{ background: Color(mode, "#2774CE") }}
-                  ></div>
-                </Link>
+
+                <div
+                  className="w-80 h-48 rounded-xl mb-5 cursor-pointer"
+                  style={{ background: Color(mode, "#2774CE") }}
+                  onClick={onOpen}
+                ></div>
+
                 <span></span>
                 <div className="w-80 flex flex-wrap gap-x-3 gap-y-3">
                   <div
@@ -145,17 +152,19 @@ const Desafios = () => {
                 </div>
               </div>
             </div>
+
             <div className="mt-20">
               <div className="">
                 <span className="text-3xl font-semibold dark:text-white">
                   JavaScript - Input
                 </span>
-                <Link to={"/input"}>
-                  <div
-                    className="w-80 h-48 rounded-xl mb-5"
-                    style={{ background: Color(mode, "#EECC43") }}
-                  ></div>
-                </Link>
+
+                <div
+                  className="w-80 h-48 rounded-xl mb-5 cursor-pointer"
+                  style={{ background: Color(mode, "#EECC43") }}
+                  onClick={onOpen}
+                ></div>
+
                 <span></span>
                 <div className="w-80 flex flex-wrap gap-x-3 gap-y-3">
                   <div
@@ -177,17 +186,19 @@ const Desafios = () => {
                 </div>
               </div>
             </div>
+
             <div className="mt-20">
               <div className="">
                 <span className="text-3xl font-semibold dark:text-white">
                   PHP - Quiz
                 </span>
-                <Link to={"/quiz"}>
-                  <div
-                    className="w-80 h-48 rounded-xl mb-5"
-                    style={{ background: Color(mode, "#6D7AC6") }}
-                  ></div>
-                </Link>
+
+                <div
+                  className="w-80 h-48 rounded-xl mb-5 cursor-pointer"
+                  style={{ background: Color(mode, "#6D7AC6") }}
+                  onClick={onOpen}
+                ></div>
+
                 <span></span>
                 <div className="w-80 flex flex-wrap gap-x-3 gap-y-3">
                   <div
@@ -211,6 +222,43 @@ const Desafios = () => {
             </div>
           </div>
         </div>
+        <Modal
+          isCentered={true}
+          onClose={onClose}
+          isOpen={isOpen}
+          motionPreset="slideInBottom"
+        >
+          <ModalContent
+            w="50vw"
+            h="22vw"
+            display="flex"
+            background="#D1B8E9"
+            borderRadius="0.9em"
+            zIndex={100}
+            marginLeft={"auto"}
+            marginTop={"auto"}
+            marginRight={"auto"}
+            marginBottom={"auto"}
+          >
+            {/* Card */}
+
+            <div className="flex flex-col items-center justify-center mt-5">
+              <div className="flex space-x-20">
+                <div className="rounded-xl w-[400px]">
+                  <div className="flex items-center justify-center mb-2">Siga o exemplo abaixo:</div>
+                  <img className="" src={myGif} alt="" />
+                </div>
+                <div className="flex items-center">
+                  <Link to={"/desafios"}>
+                    <button className="bg-[#3BEF61] text-white p-4 w-28 rounded-md">
+                      Iniciar
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </ModalContent>
+        </Modal>
       </main>
     </div>
   );

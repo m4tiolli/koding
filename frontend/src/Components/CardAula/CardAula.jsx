@@ -92,7 +92,7 @@ export default function CardAula({ aula, capitulo }) {
         motionPreset="slideInBottom"
       >
         <ModalContent
-          w="44vw"
+          w="50vw"
           h="22vw"
           display="flex"
           background="#D1B8E9"
@@ -105,8 +105,8 @@ export default function CardAula({ aula, capitulo }) {
         >
           {/* Card */}
 
-          <div className="h-full flex justify-center items-center gap-x-16">
-            <div className="flex flex-col space-y-3">
+          <div className="h-full flex justify-center items-center space-x-10">
+            <div className="flex flex-col space-y-3 ml-10">
               <div
                 className="w-82 h-44 rounded-xl"
                 style={{
@@ -124,13 +124,13 @@ export default function CardAula({ aula, capitulo }) {
                 
               </div>
             </div>
-            <div className="flex flex-col justify-center items-center space-y-10">
+            <div className="flex flex-col justify-center items-center text-center space-y-5 -mt-14">
               <Link to={"/conteudo"}>
                 <button className="bg-[#3BEF61] text-white w-32 uppercase text-2xl p-2 rounded-lg shadow-md">
                   Iniciar
                 </button>
               </Link>
-              <span className="w-32 h-20">
+              <span className="w-34 h-20 px-4 text-lg">
               {aula.descricao}
               </span>
             </div>
