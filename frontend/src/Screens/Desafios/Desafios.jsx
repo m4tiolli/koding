@@ -261,21 +261,24 @@ const Desafios = () => {
             {/* Card */}
 
             <div className="flex flex-col items-center justify-center mt-5">
-              <div className="flex space-x-20">
+              <div className="flex space-x-20 laptop1024:space-x-10 laptop1024:space-x-5">
                 <div className="rounded-xl w-[400px]">
-                  <div className="flex items-center justify-center text-center">
+                  <div className="flex items-center justify-center text-center laptop1024:text-sm ml-10">
                     Selecione os inputs e complete a sentença corretamente
                   </div>
-                  <img className="" src={myGif} alt="" />
+                  <img
+                    className="laptop1024:w-72 laptop1024:ml-20"
+                    src={myGif}
+                    alt=""
+                  />
                 </div>
                 <div className="flex items-center">
                   <Link to={"/sentenca"}>
-                    <button className="bg-[#3BEF61] text-white p-[6px] w-32 rounded-md">
+                    <button className="bg-[#3BEF61] text-white p-[6px] laptop1024:w-20 laptop1024:text-sm w-32 rounded-md">
                       Iniciar Desafio
                     </button>
-                    <div className="w-32 mt-3 text-center">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Ullam illo at praesentium maiores nemo atque
+                    <div className="w-32 laptop1024:w-24 laptop1024:mr-10 mt-3 text-center laptop1024:text-sm">
+                      Lorem ipsum dolor sit amet consectetur 
                     </div>
                   </Link>
                 </div>
@@ -305,21 +308,24 @@ const Desafios = () => {
             {/* Card */}
 
             <div className="flex flex-col items-center justify-center mt-5">
-              <div className="flex space-x-20">
+              <div className="flex space-x-20 laptop1024:space-x-10">
                 <div className="rounded-xl w-[400px]">
-                  <div className="flex items-center justify-center text-center">
+                  <div className="flex items-center justify-center text-center laptop1024:text-sm ml-10">
                     Alinhe as imagens utilizando os códigos apresentados
                   </div>
-                  <img className="" src={myGifFlex} alt="" />
+                  <img
+                    className="laptop1024:w-72 laptop1024:ml-20"
+                    src={myGifFlex}
+                    alt=""
+                  />
                 </div>
                 <div className="flex items-center">
                   <Link to={"/flexbox"}>
-                    <button className="bg-[#3BEF61] text-white p-[6px] w-32 rounded-md">
+                    <button className="bg-[#3BEF61] text-white p-[6px] laptop1024:w-20 laptop1024:text-sm w-32 rounded-md">
                       Iniciar Desafio
                     </button>
-                    <div className="w-32 mt-3 text-center">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Ullam illo at praesentium maiores nemo atque
+                    <div className="w-32 laptop1024:w-24 laptop1024:mr-10 mt-3 text-center laptop1024:text-sm">
+                      Lorem ipsum dolor sit amet consectetur 
                     </div>
                   </Link>
                 </div>
@@ -349,21 +355,25 @@ const Desafios = () => {
             {/* Card */}
 
             <div className="flex flex-col items-center justify-center mt-5">
-              <div className="flex space-x-20">
+              <div className="flex space-x-20 laptop1024:space-x-10">
                 <div className="rounded-xl w-[400px]">
-                  <div className="flex items-center justify-center mb-2">
+                  <div className="flex items-center justify-center mb-2 laptop1024:text-sm">
+                    {" "}
                     Selecione o input e complete a sentença
                   </div>
-                  <img className="" src={myGifInput} alt="" />
+                  <img
+                    className="laptop1024:w-72 laptop1024:ml-20"
+                    src={myGifInput}
+                    alt=""
+                  />
                 </div>
                 <div className="flex items-center justify-center">
                   <Link to={"/input"}>
-                    <button className="bg-[#3BEF61] text-white p-[6px] w-32 rounded-md">
+                    <button className="bg-[#3BEF61] text-white p-[6px] w-32 rounded-md laptop1024:w-20 laptop1024:text-sm">
                       Iniciar Desafio
                     </button>
-                    <div className="w-32 mt-3 text-center flex items-center justify-center">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Ullam illo at praesentium maiores nemo atque
+                    <div className="w-32  laptop1024:w-24 laptop1024:mr-10 mt-3 text-center flex items-center justify-center laptop1024:text-sm">
+                      Lorem ipsum dolor sit amet consectetur 
                     </div>
                   </Link>
                 </div>
@@ -393,21 +403,24 @@ const Desafios = () => {
             {/* Card */}
 
             <div className="flex flex-col items-center justify-center mt-5">
-              <div className="flex space-x-20">
+              <div className="flex space-x-20 laptop1024:space-x-10">
                 <div className="rounded-xl w-[400px]">
-                  <div className="flex items-center justify-center text-center">
+                  <div className="flex items-center justify-center text-center laptop1024:text-sm ml-10 laptop1024:mb-2">
                     Selecione o card e responda corretamente ao quiz
                   </div>
-                  <img className="" src={myGifQuiz} alt="" />
+                  <img
+                    className="laptop1024:w-72 laptop1024:ml-20"
+                    src={myGifQuiz}
+                    alt=""
+                  />
                 </div>
                 <div className="flex items-center">
                   <Link to={"/quiz"}>
-                    <button className="bg-[#3BEF61] text-white p-[6px] w-32 rounded-md">
+                    <button className="bg-[#3BEF61] text-white p-[6px] laptop1024:w-20 laptop1024:text-sm w-32 rounded-md">
                       Iniciar Desafio
                     </button>
-                    <div className="w-32 mt-3 text-center">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Ullam illo at praesentium maiores nemo atque
+                    <div className="w-32 laptop1024:w-24 laptop1024:mr-10 mt-3 text-center laptop1024:text-sm">
+                      Lorem ipsum dolor sit amet consectetur 
                     </div>
                   </Link>
                 </div>
