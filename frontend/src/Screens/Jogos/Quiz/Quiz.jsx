@@ -25,7 +25,7 @@ function Quiz() {
       pergunta: "Qual função é usada para exibir texto no PHP?",
       alternativas: ["print()", "display()", "output()", "show()", "echo()"],
       respostaCorreta: "echo()",
-      ajuda: "marcos", 
+      ajuda: "Quando falamos e a voz ecoa pelo ambiente", 
     },
   ];
 

@@ -42,7 +42,7 @@ function Sentenca() {
         "<head>",
       ],
       titulo: ["Como inserir uma imagem usando HTML?"],
-      ajuda: "Lembre-se que toda imagem se inicia com a tag <img>;",
+      ajuda: "Lembre-se que toda imagem inicia com a tag <img>;",
     },
     {
       sentencaCorreta: "<p>Isso é um parágrafo.</p>",
@@ -55,7 +55,7 @@ function Sentenca() {
         "</h1>",
       ],
       titulo: ["Como adicionar uma parágrafo em HTML?"],
-      ajuda: "marcos",
+      ajuda: "Utiliza-se a tag <p> para se fazer um parágrafo",
     },
   ];
   if (!localStorage.getItem("pontuacao")) localStorage.setItem("pontuacao", 0);

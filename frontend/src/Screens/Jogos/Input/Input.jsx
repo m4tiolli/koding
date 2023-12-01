@@ -27,7 +27,7 @@ function Input() {
       titulo: ["Qual a linguagem que está sendo referida abaixo?"],
       pergunta: "Complete a frase: React é uma biblioteca de _____.",
       respostaCorreta: "javascript",
-      ajuda: "marcos", 
+      ajuda: "Qual linguagem estamos aprendendo?", 
     },
   ];
 
@@ -284,7 +284,7 @@ function Input() {
             marginLeft={"73vw"}
             marginTop={"7vw"}
           >
-            <div className="flex flex-col w-full p-3 mt-2 justify-center text-center items-center space-y-2 text-white">
+            <div className="flex flex-col w-full p-3 justify-center text-center items-center space-y-2 text-white">
             {exibirAjuda ? fases[faseAtual].ajuda : ""}
             </div>
           </ModalContent>
