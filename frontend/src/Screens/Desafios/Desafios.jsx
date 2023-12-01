@@ -4,6 +4,9 @@ import { useDisclosure } from "@chakra-ui/react";
 import { Modal, ModalContent } from "@chakra-ui/react";
 
 import myGif from "../../assets/gif.gif";
+import myGifInput from "../../assets/input.gif";
+import myGifFlex from "../../assets/flex.gif";
+import myGifQuiz from "../../assets/quiz.gif";
 
 import { Link } from "react-router-dom";
 import {
@@ -15,6 +18,21 @@ import {
 const Desafios = () => {
   const mode = localStorage.getItem("theme");
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    isOpen: isFlexOpen,
+    onOpen: onFlexOpen,
+    onClose: onFlexClose,
+  } = useDisclosure();
+  const {
+    isOpen: isInputOpen,
+    onOpen: onInputOpen,
+    onClose: onInputClose,
+  } = useDisclosure();
+  const {
+    isOpen: isQuizOpen,
+    onOpen: onQuizOpen,
+    onClose: onQuizClose,
+  } = useDisclosure();
 
   function Color(mode, color) {
     var newcolor;
@@ -118,7 +136,7 @@ const Desafios = () => {
                 <div
                   className="w-80 h-48 rounded-xl mb-5 cursor-pointer"
                   style={{ background: Color(mode, "#2774CE") }}
-                  onClick={onOpen}
+                  onClick={onFlexOpen}
                 ></div>
 
                 <span></span>
@@ -162,7 +180,7 @@ const Desafios = () => {
                 <div
                   className="w-80 h-48 rounded-xl mb-5 cursor-pointer"
                   style={{ background: Color(mode, "#EECC43") }}
-                  onClick={onOpen}
+                  onClick={onInputOpen}
                 ></div>
 
                 <span></span>
@@ -196,7 +214,7 @@ const Desafios = () => {
                 <div
                   className="w-80 h-48 rounded-xl mb-5 cursor-pointer"
                   style={{ background: Color(mode, "#6D7AC6") }}
-                  onClick={onOpen}
+                  onClick={onQuizOpen}
                 ></div>
 
                 <span></span>
@@ -245,14 +263,152 @@ const Desafios = () => {
             <div className="flex flex-col items-center justify-center mt-5">
               <div className="flex space-x-20">
                 <div className="rounded-xl w-[400px]">
-                  <div className="flex items-center justify-center mb-2">Siga o exemplo abaixo:</div>
+                  <div className="flex items-center justify-center text-center">
+                    Selecione os inputs e complete a sentença corretamente
+                  </div>
                   <img className="" src={myGif} alt="" />
                 </div>
                 <div className="flex items-center">
-                  <Link to={"/desafios"}>
-                    <button className="bg-[#3BEF61] text-white p-4 w-28 rounded-md">
-                      Iniciar
+                  <Link to={"/sentenca"}>
+                    <button className="bg-[#3BEF61] text-white p-[6px] w-32 rounded-md">
+                      Iniciar Desafio
                     </button>
+                    <div className="w-32 mt-3 text-center">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Ullam illo at praesentium maiores nemo atque
+                    </div>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </ModalContent>
+        </Modal>
+
+        <Modal
+          isCentered={true}
+          onClose={onFlexClose}
+          isOpen={isFlexOpen}
+          motionPreset="slideInBottom"
+        >
+          <ModalContent
+            w="50vw"
+            h="22vw"
+            display="flex"
+            background="#D1B8E9"
+            borderRadius="0.9em"
+            zIndex={100}
+            marginLeft={"auto"}
+            marginTop={"auto"}
+            marginRight={"auto"}
+            marginBottom={"auto"}
+          >
+            {/* Card */}
+
+            <div className="flex flex-col items-center justify-center mt-5">
+              <div className="flex space-x-20">
+                <div className="rounded-xl w-[400px]">
+                  <div className="flex items-center justify-center text-center">
+                    Alinhe as imagens utilizando os códigos apresentados
+                  </div>
+                  <img className="" src={myGifFlex} alt="" />
+                </div>
+                <div className="flex items-center">
+                  <Link to={"/flexbox"}>
+                    <button className="bg-[#3BEF61] text-white p-[6px] w-32 rounded-md">
+                      Iniciar Desafio
+                    </button>
+                    <div className="w-32 mt-3 text-center">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Ullam illo at praesentium maiores nemo atque
+                    </div>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </ModalContent>
+        </Modal>
+
+        <Modal
+          isCentered={true}
+          onClose={onInputClose}
+          isOpen={isInputOpen}
+          motionPreset="slideInBottom"
+        >
+          <ModalContent
+            w="50vw"
+            h="22vw"
+            display="flex"
+            background="#D1B8E9"
+            borderRadius="0.9em"
+            zIndex={100}
+            marginLeft={"auto"}
+            marginTop={"auto"}
+            marginRight={"auto"}
+            marginBottom={"auto"}
+          >
+            {/* Card */}
+
+            <div className="flex flex-col items-center justify-center mt-5">
+              <div className="flex space-x-20">
+                <div className="rounded-xl w-[400px]">
+                  <div className="flex items-center justify-center mb-2">
+                    Selecione o input e complete a sentença
+                  </div>
+                  <img className="" src={myGifInput} alt="" />
+                </div>
+                <div className="flex items-center justify-center">
+                  <Link to={"/input"}>
+                    <button className="bg-[#3BEF61] text-white p-[6px] w-32 rounded-md">
+                      Iniciar Desafio
+                    </button>
+                    <div className="w-32 mt-3 text-center flex items-center justify-center">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Ullam illo at praesentium maiores nemo atque
+                    </div>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </ModalContent>
+        </Modal>
+
+        <Modal
+          isCentered={true}
+          onClose={onQuizClose}
+          isOpen={isQuizOpen}
+          motionPreset="slideInBottom"
+        >
+          <ModalContent
+            w="50vw"
+            h="22vw"
+            display="flex"
+            background="#D1B8E9"
+            borderRadius="0.9em"
+            zIndex={100}
+            marginLeft={"auto"}
+            marginTop={"auto"}
+            marginRight={"auto"}
+            marginBottom={"auto"}
+          >
+            {/* Card */}
+
+            <div className="flex flex-col items-center justify-center mt-5">
+              <div className="flex space-x-20">
+                <div className="rounded-xl w-[400px]">
+                  <div className="flex items-center justify-center text-center">
+                    Selecione o card e responda corretamente ao quiz
+                  </div>
+                  <img className="" src={myGifQuiz} alt="" />
+                </div>
+                <div className="flex items-center">
+                  <Link to={"/quiz"}>
+                    <button className="bg-[#3BEF61] text-white p-[6px] w-32 rounded-md">
+                      Iniciar Desafio
+                    </button>
+                    <div className="w-32 mt-3 text-center">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Ullam illo at praesentium maiores nemo atque
+                    </div>
                   </Link>
                 </div>
               </div>
