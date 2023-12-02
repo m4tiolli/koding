@@ -19,6 +19,12 @@ import "../Menu/Menu.css";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 
+import incrivel from "../../assets/incrivel.png"
+import perfeita from "../../assets/perfeita.png"
+import pessima from "../../assets/pessima.png"
+import boa from "../../assets/boa.png"
+import ruim from "../../assets/ruim.png"
+
 export default function Menu({ screen }) {
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -490,9 +496,11 @@ export default function Menu({ screen }) {
               >
                 <div
                   className={`w-20 h-20 rounded-full ${
-                    avaliacao === "1" ? "bg-blue-400" : "bg-slate-300"
+                    avaliacao === "1" ? "w-[90px] h-[90px]" : "bg-slate-300"
                   }`}
-                ></div>
+                >
+                  <img src={pessima} alt="Péssima" />
+                </div>
                 <span className="uppercase">
                   <p className="ml-1"> péssima</p>
                   <input
@@ -511,9 +519,11 @@ export default function Menu({ screen }) {
               >
                 <div
                   className={`w-20 h-20 rounded-full ${
-                    avaliacao === "2" ? "bg-blue-400" : "bg-slate-300"
+                    avaliacao === "2" ? "w-[90px] h-[90px]" : "bg-slate-300"
                   }`}
-                ></div>
+                >
+                  <img src={ruim} alt="Ruim" />
+                </div>
                 <span className="uppercase">
                   <p className="ml-1"> ruim</p>
                   <input
@@ -532,9 +542,11 @@ export default function Menu({ screen }) {
               >
                 <div
                   className={`w-20 h-20 rounded-full ${
-                    avaliacao === "3" ? "bg-blue-400" : "bg-slate-300"
+                    avaliacao === "3" ? "w-[90px] h-[90px]" : "bg-slate-300"
                   }`}
-                ></div>
+                >
+                  <img src={boa} alt="Boa" />
+                </div>
                 <span className="uppercase">
                   <p className="ml-1"> boa</p>
                   <input
@@ -553,9 +565,11 @@ export default function Menu({ screen }) {
               >
                 <div
                   className={`w-20 h-20 rounded-full ${
-                    avaliacao === "4" ? "bg-blue-400" : "bg-slate-300"
+                    avaliacao === "4" ? "w-[90px] h-[90px]" : "bg-slate-300"
                   }`}
-                ></div>
+                >
+                  <img src={incrivel} alt="Incrível" />
+                </div>
                 <span className="uppercase">
                   <p className="ml-1">incrível</p>
                   <input
@@ -574,9 +588,11 @@ export default function Menu({ screen }) {
               >
                 <div
                   className={`w-20 h-20 rounded-full ${
-                    avaliacao === "5" ? "bg-blue-400" : "bg-slate-300"
+                    avaliacao === "5" ? "w-[90px] h-[90px]" : "bg-slate-300"
                   }`}
-                ></div>
+                >
+                  <img src={perfeita} alt="Perfeita" />
+                </div>
                 <span className="uppercase">
                   <p className="ml-1">perfeita</p>
                   <input
@@ -592,7 +608,7 @@ export default function Menu({ screen }) {
             </div>
 
             <button
-              className="w-44 flex items-center justify-center text-center rounded-lg bg-[#C4BCC7] px-4 py-2"
+              className="w-44 flex items-center justify-center text-center rounded-lg bg-[#C4BCC7] px-4 py-2 button"
               onClick={() => EnviarFeedback(parseInt(avaliacao), mensagem)}
             >
               <span className="items-center gap-2 w-full">

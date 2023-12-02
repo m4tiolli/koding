@@ -2,3 +2,11 @@
   width: calc(100vw - 14rem);
   margin-left: 13rem;
 }
+
+.button:hover{
+  scale: 1.1;
+}
+
+.button{
+  transition: ease-in-out 250ms;
+}

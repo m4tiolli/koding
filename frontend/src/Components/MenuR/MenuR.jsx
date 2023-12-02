@@ -15,6 +15,12 @@ import green from "../green.png";
 import red from "../red.png";
 import { useNavigate } from "react-router-dom";
 
+import incrivel from "../../assets/incrivel.png"
+import perfeita from "../../assets/perfeita.png"
+import pessima from "../../assets/pessima.png"
+import boa from "../../assets/boa.png"
+import ruim from "../../assets/ruim.png"
+
 import "../MenuR/MenuR.css";
 
 export default function Menu({ screen }) {
@@ -439,23 +445,33 @@ export default function Menu({ screen }) {
             {/* feedback */}
             <div className="flex items-center justify-center notebook:gap-x-10 gap-x-10 laptop1024:gap-x-6 font-semibold">
               <div className="flex flex-col items-center justify-center gap-y-2 text-white">
-                <div className="w-20 h-20 notebook:w-20 notebook:h-20 laptop1024:w-16 laptop1024:h-16 rounded-full bg-slate-300 div"></div>
+                <div className="w-20 h-20 notebook:w-20 notebook:h-20 laptop1024:w-16 laptop1024:h-16 rounded-full bg-slate-300 div">
+                <img src={pessima} alt="Péssima" />
+                </div>
                 <span className="uppercase">péssima</span>
               </div>
               <div className="flex flex-col items-center justify-center gap-y-2 text-white">
-                <div className="w-20 h-20 notebook:w-20 notebook:h-20 laptop1024:w-16 laptop1024:h-16 rounded-full bg-slate-300 div"></div>
+                <div className="w-20 h-20 notebook:w-20 notebook:h-20 laptop1024:w-16 laptop1024:h-16 rounded-full bg-slate-300 div">
+                <img src={ruim} alt="Ruim" />
+                </div>
                 <span className="uppercase">ruim</span>
               </div>
               <div className="flex flex-col items-center justify-center gap-y-2 text-white">
-                <div className="w-20 h-20 notebook:w-20 notebook:h-20 laptop1024:w-16 laptop1024:h-16 rounded-full bg-slate-300 div"></div>
+                <div className="w-20 h-20 notebook:w-20 notebook:h-20 laptop1024:w-16 laptop1024:h-16 rounded-full bg-slate-300 div">
+                <img src={boa} alt="Boa" />
+                </div>
                 <span className="uppercase">boa</span>
               </div>
               <div className="flex flex-col items-center justify-center gap-y-2 text-white">
-                <div className="w-20 h-20 notebook:w-20 notebook:h-20 laptop1024:w-16 laptop1024:h-16 rounded-full bg-slate-300 div"></div>
+                <div className="w-20 h-20 notebook:w-20 notebook:h-20 laptop1024:w-16 laptop1024:h-16 rounded-full bg-slate-300 div">
+                <img src={incrivel} alt="Incrível" />
+                </div>
                 <span className="uppercase">incrível</span>
               </div>
               <div className="flex flex-col items-center justify-center gap-y-2 text-white">
-                <div className="w-20 h-20 notebook:w-20 notebook:h-20 laptop1024:w-16 laptop1024:h-16 rounded-full bg-slate-300 div"></div>
+                <div className="w-20 h-20 notebook:w-20 notebook:h-20 laptop1024:w-16 laptop1024:h-16 rounded-full bg-slate-300 div">
+                <img src={perfeita} alt="Perfeita" />
+                </div>
                 <span className="uppercase">perfeita</span>
               </div>
             </div>
@@ -469,7 +485,7 @@ export default function Menu({ screen }) {
               ></textarea>
             </div>
 
-            <button className="w-44 flex items-center justify-center text-center rounded-lg bg-[#BCC2C7] px-4 py-2">
+            <button className="w-44 flex items-center justify-center text-center rounded-lg bg-[#BCC2C7] px-4 py-2 button">
               <span className="items-center gap-2 w-full">
                 <span className="">Enviar Feedback</span>
               </span>

@@ -1,3 +1,11 @@
 .div:hover{
     scale: 1.1;
 }
+
+.button:hover{
+    scale: 1.1;
+}
+
+.button{
+    transition: ease-in-out 250ms;
+}

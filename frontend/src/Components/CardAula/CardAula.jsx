@@ -4,6 +4,7 @@ import { useDisclosure } from "@chakra-ui/react";
 import { Modal, ModalContent } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import myGif from "../../assets/gif.gif";
 
 const mode = localStorage.getItem("theme");
 
@@ -21,6 +22,11 @@ function Color(mode, color) {
 // eslint-disable-next-line react/prop-types
 export default function CardAula({ aula, capitulo }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    isOpen: isFlexOpen,
+    onOpen: onFlexOpen,
+    onClose: onFlexClose,
+  } = useDisclosure();
   const [tags, setTags] = useState([]);
   const aulaId = aula.id;
   let cor1 =
@@ -87,8 +93,8 @@ export default function CardAula({ aula, capitulo }) {
       </div>
       <Modal
         isCentered={true}
-        onClose={onClose}
-        isOpen={isOpen}
+        onClose={onFlexClose}
+        isOpen={isFlexOpen}
         motionPreset="slideInBottom"
       >
         <ModalContent
@@ -137,6 +143,56 @@ export default function CardAula({ aula, capitulo }) {
           </div>
         </ModalContent>
       </Modal>
+      
+      <Modal
+          isCentered={true}
+          onClose={onClose}
+          isOpen={isOpen}
+          motionPreset="slideInBottom"
+        >
+          <ModalContent
+            w="45vw"
+            h="22vw"
+            display="flex"
+            background="#7E1AD4"
+            borderRadius="0.9em"
+            zIndex={1000}
+            marginLeft={"auto"}
+            marginTop={"auto"}
+            marginRight={"auto"}
+            marginBottom={"auto"}
+            justifyContent={"center"}
+            alignItems={"center"}
+          >
+            {/* Card */}
+
+            <div className="flex flex-col items-center justify-center">
+              <div className="flex items-center space-x-10">
+                <div className="rounded-xl w-[400px]">
+                  <img
+                    className="notebook:w-auto notebook:ml-0"
+                    src={myGif}
+                    alt=""
+                  />
+                </div>
+                <div className="flex items-center">
+                  <Link to={"/flexbox"}>
+                    <div className="w-32 notebook:w-32 notebook:mr-0 notebook:text-base mt-3 text-center text-white mb-10 truncate">
+                      Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor
+                      sit amet consectetur Lorem ipsum dolor sit amet
+                      consectetur Lorem ipsum dolor sit amet consectetur Lorem
+                      ipsum dolor sit amet consectetur Lorem ipsum dolor sit
+                      amet consectetur Lorem ipsum dolor sit amet consectetur
+                    </div>
+                    <button className="bg-[#3BEF61] text-white p-[6px] notebook:w-32 notebook:text-base w-32 rounded-md button shadow-md">
+                      Iniciar Desafio
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </ModalContent>
+        </Modal>
     </div>
   );
 }

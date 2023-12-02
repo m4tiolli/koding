@@ -96,20 +96,30 @@ const Desafios = () => {
             <div className="mt-20">
               <div className="">
                 <span className="text-3xl font-semibold dark:text-white">
-                  HTML - Sentença
+                  HTML
                 </span>
 
                 <div
-                  className="w-80 h-48 rounded-xl mb-5 cursor-pointer"
-                  style={{ backgroundColor: Color(mode, "#E88D59") }}
+                  className="w-80 h-48 rounded-xl mb-5 cursor-pointer flex items-center justify-center text-3xl text-white font-semibold uppercase"
+                  style={{
+                    background: `linear-gradient(108deg, ${Color(
+                      mode,
+                      "#E88D59"
+                    )} 0%, ${Color(mode, "#E87331")} 100%)`,
+                  }}
                   onClick={onOpen}
-                ></div>
+                >
+                  Sentença
+                </div>
 
                 <span></span>
                 <div className="w-80 flex flex-wrap gap-x-3 gap-y-3">
                   <div
                     className="w-16 p-1 rounded-xl"
-                    style={{ backgroundColor: Color(mode, "#E88D59") }}
+                    style={{background: `linear-gradient(108deg, ${Color(
+                      mode,
+                      '#E88D59'
+                    )} 0%, ${Color(mode, '#E87331')} 100%)`, }}
                   >
                     <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate dark:text-white">
                       HTML
@@ -117,7 +127,10 @@ const Desafios = () => {
                   </div>
                   <div
                     className="w-32 p-1 rounded-xl"
-                    style={{ backgroundColor: Color(mode, "#E88D59") }}
+                    style={{background: `linear-gradient(108deg, ${Color(
+                      mode,
+                      '#E88D59'
+                    )} 0%, ${Color(mode, '#E87331')} 100%)`, }}
                   >
                     <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate dark:text-white">
                       Sentença
@@ -130,14 +143,19 @@ const Desafios = () => {
             <div className="mt-20">
               <div className="">
                 <span className="text-3xl font-semibold dark:text-white">
-                  CSS - Flexbox
+                  CSS 
                 </span>
 
                 <div
-                  className="w-80 h-48 rounded-xl mb-5 cursor-pointer"
-                  style={{ background: Color(mode, "#2774CE") }}
+                  className="w-80 h-48 rounded-xl mb-5 cursor-pointer flex items-center justify-center text-3xl text-white font-semibold uppercase"
+                  style={{ background: `linear-gradient(108deg, ${Color(
+                    mode,
+                    '#4A90E2'
+                  )} 0%, ${Color(mode, '#0D54A8')} 100%)`, }}
                   onClick={onFlexOpen}
-                ></div>
+                >
+                  Flexbox
+                </div>
 
                 <span></span>
                 <div className="w-80 flex flex-wrap gap-x-3 gap-y-3">
@@ -174,20 +192,28 @@ const Desafios = () => {
             <div className="mt-20">
               <div className="">
                 <span className="text-3xl font-semibold dark:text-white">
-                  JavaScript - Input
+                  JavaScript
                 </span>
 
                 <div
-                  className="w-80 h-48 rounded-xl mb-5 cursor-pointer"
-                  style={{ background: Color(mode, "#EECC43") }}
+                  className="w-80 h-48 rounded-xl mb-5 cursor-pointer flex items-center justify-center text-3xl text-white font-semibold uppercase"
+                  style={{ background: `linear-gradient(108deg, ${Color(
+                    mode,
+                    '#F2D237'
+                  )} 0%, ${Color(mode, '#B89D1C')} 100%)`, }}
                   onClick={onInputOpen}
-                ></div>
+                >
+                   Input
+                </div>
 
                 <span></span>
                 <div className="w-80 flex flex-wrap gap-x-3 gap-y-3">
                   <div
                     className="w-32 p-1 rounded-xl"
-                    style={{ background: Color(mode, "#EECC43") }}
+                    style={{ background: `linear-gradient(108deg, ${Color(
+                      mode,
+                      '#F2D237'
+                    )} 0%, ${Color(mode, '#B89D1C')} 100%)`,  }}
                   >
                     <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate dark:text-white">
                       JavaScript
@@ -195,7 +221,10 @@ const Desafios = () => {
                   </div>
                   <div
                     className="w-32 p-1 rounded-xl"
-                    style={{ background: Color(mode, "#EECC43") }}
+                    style={{ background: `linear-gradient(108deg, ${Color(
+                      mode,
+                      '#F2D237'
+                    )} 0%, ${Color(mode, '#B89D1C')} 100%)`,  }}
                   >
                     <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate dark:text-white">
                       Input
@@ -208,20 +237,28 @@ const Desafios = () => {
             <div className="mt-20">
               <div className="">
                 <span className="text-3xl font-semibold dark:text-white">
-                  PHP - Quiz
+                  PHP 
                 </span>
 
                 <div
-                  className="w-80 h-48 rounded-xl mb-5 cursor-pointer"
-                  style={{ background: Color(mode, "#6D7AC6") }}
+                  className="w-80 h-48 rounded-xl mb-5 cursor-pointer flex items-center justify-center text-3xl text-white font-semibold uppercase"
+                  style={{ background: `linear-gradient(108deg, ${Color(
+                    mode,
+                    '#5D6CC2'
+                  )} 0%, ${Color(mode, '#485BBB')} 100%)`, }}
                   onClick={onQuizOpen}
-                ></div>
+                >
+                  Quiz
+                </div>
 
                 <span></span>
                 <div className="w-80 flex flex-wrap gap-x-3 gap-y-3">
                   <div
                     className="w-16 p-1 rounded-xl"
-                    style={{ background: Color(mode, "#6D7AC6") }}
+                    style={{background: `linear-gradient(108deg, ${Color(
+                      mode,
+                      '#5D6CC2'
+                    )} 0%, ${Color(mode, '#485BBB')} 100%)`,  }}
                   >
                     <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate dark:text-white">
                       PHP
@@ -229,7 +266,10 @@ const Desafios = () => {
                   </div>
                   <div
                     className="w-16 p-1 rounded-xl"
-                    style={{ background: Color(mode, "#6D7AC6") }}
+                    style={{ background: `linear-gradient(108deg, ${Color(
+                      mode,
+                      '#5D6CC2'
+                    )} 0%, ${Color(mode, '#485BBB')} 100%)`,  }}
                   >
                     <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate dark:text-white">
                       Quiz
@@ -247,39 +287,42 @@ const Desafios = () => {
           motionPreset="slideInBottom"
         >
           <ModalContent
-            w="50vw"
+            w="45vw"
             h="22vw"
             display="flex"
-            background="#D1B8E9"
+            background="#7E1AD4"
             borderRadius="0.9em"
-            zIndex={100}
+            zIndex={1000}
             marginLeft={"auto"}
             marginTop={"auto"}
             marginRight={"auto"}
             marginBottom={"auto"}
+            justifyContent={"center"}
+            alignItems={"center"}
           >
             {/* Card */}
 
-            <div className="flex flex-col items-center justify-center mt-5">
-              <div className="flex space-x-20 notebook:space-x-20 laptop1024:space-x-10">
+            <div className="flex flex-col items-center justify-center">
+              <div className="flex items-center space-x-10">
                 <div className="rounded-xl w-[400px]">
-                  <div className="flex items-center justify-center text-center notebook:text-base laptop1024:text-sm ml-10">
-                    Selecione os inputs e complete a sentença corretamente
-                  </div>
                   <img
-                    className="notebook:w-auto notebook:ml-0 laptop1024:w-72 laptop1024:ml-20"
+                    className="notebook:w-auto notebook:ml-0"
                     src={myGif}
                     alt=""
                   />
                 </div>
                 <div className="flex items-center">
                   <Link to={"/sentenca"}>
-                    <button className="bg-[#3BEF61] text-white p-[6px] notebook:w-32 notebook:text-base laptop1024:w-20 laptop1024:text-sm w-32 rounded-md">
+                    <div className="w-32 notebook:w-32 notebook:mr-0 notebook:text-base mt-3 text-center text-white mb-10 truncate">
+                      Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor
+                      sit amet consectetur Lorem ipsum dolor sit amet
+                      consectetur Lorem ipsum dolor sit amet consectetur Lorem
+                      ipsum dolor sit amet consectetur Lorem ipsum dolor sit
+                      amet consectetur Lorem ipsum dolor sit amet consectetur
+                    </div>
+                    <button className="bg-[#3BEF61] text-white p-[6px] notebook:w-32 notebook:text-base w-32 rounded-md button shadow-md">
                       Iniciar Desafio
                     </button>
-                    <div className="w-32 notebook:w-32 notebook:mr-0 notebook:text-base laptop1024:w-24 laptop1024:mr-10 mt-3 text-center laptop1024:text-sm">
-                      Lorem ipsum dolor sit amet consectetur 
-                    </div>
                   </Link>
                 </div>
               </div>
@@ -294,39 +337,42 @@ const Desafios = () => {
           motionPreset="slideInBottom"
         >
           <ModalContent
-            w="50vw"
+            w="45vw"
             h="22vw"
             display="flex"
-            background="#D1B8E9"
+            background="#7E1AD4"
             borderRadius="0.9em"
-            zIndex={100}
+            zIndex={1000}
             marginLeft={"auto"}
             marginTop={"auto"}
             marginRight={"auto"}
             marginBottom={"auto"}
+            justifyContent={"center"}
+            alignItems={"center"}
           >
             {/* Card */}
 
-            <div className="flex flex-col items-center justify-center mt-5">
-              <div className="flex space-x-20 laptop1024:space-x-10">
+            <div className="flex flex-col items-center justify-center">
+              <div className="flex items-center space-x-10">
                 <div className="rounded-xl w-[400px]">
-                  <div className="flex items-center justify-center text-center notebook:text-base laptop1024:text-sm ml-10">
-                    Alinhe as imagens utilizando os códigos apresentados
-                  </div>
                   <img
-                    className="notebook:w-auto notebook:ml-0 laptop1024:w-72 laptop1024:ml-20"
+                    className="notebook:w-auto notebook:ml-0"
                     src={myGifFlex}
                     alt=""
                   />
                 </div>
                 <div className="flex items-center">
                   <Link to={"/flexbox"}>
-                    <button className="bg-[#3BEF61] text-white p-[6px] laptop1024:w-20 notebook:w-32 notebook:text-base laptop1024:text-sm w-32 rounded-md">
+                    <div className="w-32 notebook:w-32 notebook:mr-0 notebook:text-base mt-3 text-center text-white mb-10 truncate">
+                      Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor
+                      sit amet consectetur Lorem ipsum dolor sit amet
+                      consectetur Lorem ipsum dolor sit amet consectetur Lorem
+                      ipsum dolor sit amet consectetur Lorem ipsum dolor sit
+                      amet consectetur Lorem ipsum dolor sit amet consectetur
+                    </div>
+                    <button className="bg-[#3BEF61] text-white p-[6px] notebook:w-32 notebook:text-base w-32 rounded-md button shadow-md">
                       Iniciar Desafio
                     </button>
-                    <div className="w-32 notebook:w-32 notebook:mr-0 notebook:text-base laptop1024:w-24 laptop1024:mr-10 mt-3 text-center laptop1024:text-sm">
-                      Lorem ipsum dolor sit amet consectetur 
-                    </div>
                   </Link>
                 </div>
               </div>
@@ -341,40 +387,42 @@ const Desafios = () => {
           motionPreset="slideInBottom"
         >
           <ModalContent
-            w="50vw"
+            w="45vw"
             h="22vw"
             display="flex"
-            background="#D1B8E9"
+            background="#7E1AD4"
             borderRadius="0.9em"
-            zIndex={100}
+            zIndex={1000}
             marginLeft={"auto"}
             marginTop={"auto"}
             marginRight={"auto"}
             marginBottom={"auto"}
+            justifyContent={"center"}
+            alignItems={"center"}
           >
             {/* Card */}
 
-            <div className="flex flex-col items-center justify-center mt-5">
-              <div className="flex space-x-20 notebook:space-x-20 laptop1024:space-x-10">
+            <div className="flex flex-col items-center justify-center">
+              <div className="flex items-center space-x-10">
                 <div className="rounded-xl w-[400px]">
-                  <div className="flex items-center justify-center mb-2 notebook:text-base laptop1024:text-sm">
-                    {" "}
-                    Selecione o input e complete a sentença
-                  </div>
                   <img
-                    className="notebook:w-auto notebook:ml-0 laptop1024:w-72 laptop1024:ml-20"
+                    className="notebook:w-auto notebook:ml-0"
                     src={myGifInput}
                     alt=""
                   />
                 </div>
-                <div className="flex items-center justify-center">
+                <div className="flex items-center">
                   <Link to={"/input"}>
-                    <button className="bg-[#3BEF61] text-white p-[6px] w-32 rounded-md notebook:w-32 notebook:text-base laptop1024:w-20 laptop1024:text-sm">
+                    <div className="w-32 notebook:w-32 notebook:mr-0 notebook:text-base mt-3 text-center text-white mb-10 truncate">
+                      Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor
+                      sit amet consectetur Lorem ipsum dolor sit amet
+                      consectetur Lorem ipsum dolor sit amet consectetur Lorem
+                      ipsum dolor sit amet consectetur Lorem ipsum dolor sit
+                      amet consectetur Lorem ipsum dolor sit amet consectetur
+                    </div>
+                    <button className="bg-[#3BEF61] text-white p-[6px] notebook:w-32 notebook:text-base w-32 rounded-md button shadow-md">
                       Iniciar Desafio
                     </button>
-                    <div className="w-32 notebook:w-32 notebook:mr-0 notebook:text-base laptop1024:w-24 laptop1024:mr-10 mt-3 text-center flex items-center justify-center laptop1024:text-sm">
-                      Lorem ipsum dolor sit amet consectetur 
-                    </div>
                   </Link>
                 </div>
               </div>
@@ -389,39 +437,42 @@ const Desafios = () => {
           motionPreset="slideInBottom"
         >
           <ModalContent
-            w="50vw"
+            w="45vw"
             h="22vw"
             display="flex"
-            background="#D1B8E9"
+            background="#7E1AD4"
             borderRadius="0.9em"
-            zIndex={100}
+            zIndex={1000}
             marginLeft={"auto"}
             marginTop={"auto"}
             marginRight={"auto"}
             marginBottom={"auto"}
+            justifyContent={"center"}
+            alignItems={"center"}
           >
             {/* Card */}
 
-            <div className="flex flex-col items-center justify-center mt-5">
-              <div className="flex space-x-20 notebook:space-x-20 laptop1024:space-x-10">
+            <div className="flex flex-col items-center justify-center">
+              <div className="flex items-center space-x-10">
                 <div className="rounded-xl w-[400px]">
-                  <div className="flex items-center justify-center text-center notebook:text-base laptop1024:text-sm ml-10 notebook:mb-0 laptop1024:mb-2">
-                    Selecione o card e responda corretamente ao quiz
-                  </div>
                   <img
-                    className="laptop1024:w-72 laptop1024:ml-20"
+                    className="notebook:w-auto notebook:ml-0"
                     src={myGifQuiz}
                     alt=""
                   />
                 </div>
                 <div className="flex items-center">
                   <Link to={"/quiz"}>
-                    <button className="bg-[#3BEF61] text-white p-[6px] notebook:w-32 notebook:text-base laptop1024:w-20 laptop1024:text-sm w-32 rounded-md">
+                    <div className="w-32 notebook:w-32 notebook:mr-0 notebook:text-base mt-3 text-center text-white mb-10 truncate">
+                      Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor
+                      sit amet consectetur Lorem ipsum dolor sit amet
+                      consectetur Lorem ipsum dolor sit amet consectetur Lorem
+                      ipsum dolor sit amet consectetur Lorem ipsum dolor sit
+                      amet consectetur Lorem ipsum dolor sit amet consectetur
+                    </div>
+                    <button className="bg-[#3BEF61] text-white p-[6px] notebook:w-32 notebook:text-base w-32 rounded-md button shadow-md">
                       Iniciar Desafio
                     </button>
-                    <div className="w-32 notebook:w-32 notebook:mr-0 notebook:text-base laptop1024:w-24 laptop1024:mr-10 mt-3 text-center laptop1024:text-sm">
-                      Lorem ipsum dolor sit amet consectetur 
-                    </div>
                   </Link>
                 </div>
               </div>
