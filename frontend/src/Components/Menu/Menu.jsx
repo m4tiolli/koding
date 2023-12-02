@@ -57,6 +57,14 @@ export default function Menu({ screen }) {
     }
   };
 
+  useEffect(() => {
+    localStorage.nivel == "responsavel"
+      ? navigate("/pais/home")
+      : localStorage.nivel == "crianca"
+      ? ""
+      : navigate("/");
+  }, [navigate]);
+
   function Sair() {
     localStorage.removeItem("nivel");
     document.location.reload();

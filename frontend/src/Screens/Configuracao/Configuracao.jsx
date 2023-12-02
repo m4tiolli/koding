@@ -85,33 +85,15 @@ function Configuracao() {
           {/* Dados */}
 
           <container className="w-full h-full flex flex-col gap-y-10 ml-20">
-            {/* Enviar Foto */}
 
-            <form action="" method="" className="flex flex-col lg:flex-row gap-x-32 lg:gap-x-64">
-              <div className="flex items-center gap-6">
-                <span className="text-lg dark:text-white">Personalizar Avatar</span>
-                <label
-                  className="p-2 w-42 rounded-xl border-solid border-black cursor-pointer shadow-lg text-center"
-                  style={{ background: "#efefef" }}
-                  htmlFor="image"
-                >
-                  {" "}
-                  Selecionar arquivo
-                  <input className="hidden" name="image" type="file" id="image" />
-                </label>
-              </div>
+            {/* Dados conta */}
 
-              <div>
-                <button
-                  className="laptop:1024 -ml-32 w-auto h-10 p-3 mt-5 lg:mt-0 flex items-center rounded-xl shadow-lg text-white" style={{ background: Color(mode, '#22C55E') }}
+            <button
+                  className="laptop:1024 -ml-32 w-auto h-10 p-3 mt-5 lg:mt-0 flex items-center rounded-xl shadow-lg text-white fixed right-[15em]" style={{ background: Color(mode, '#22C55E') }}
                   type="submit"
                 >
                   Salvar Alterações
                 </button>
-              </div>
-            </form>
-
-            {/* Dados conta */}
 
             <form
               action=""
@@ -208,6 +190,7 @@ function Configuracao() {
                   name="darkMode"
                   id="darkMode"
                 >
+                  <option value="">Selecione</option>
                   <option value="system">Padrão do Sistema</option>
                   <option value="on">Habilitado</option>
                   <option value="off">Desabilitado</option>
@@ -225,9 +208,10 @@ function Configuracao() {
                   name="contraste"
                   id="contraste"
                 >
-                  <option value="on">Azul</option>
-                  <option value="on">Vermelho</option>
-                  <option value="off">Verde</option>
+                  <option value="">Selecione</option>
+                  <option value="azul">Azul</option>
+                  <option value="vermelho">Vermelho</option>
+                  <option value="verde">Verde</option>
                 </select>
               </div>
             </div>

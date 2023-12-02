@@ -255,18 +255,6 @@ function Perfil() {
 
             <div className="flex items-center justify-center xl:p-1 xl:w-60 w-56 rounded-lg text-left border-2 border-solid border-black leading-none hover:bg-white/50 dark:border-white">
               <div className="inline-flex items-center gap-5">
-                <AiFillHeart className="xl:text-5xl text-4xl"></AiFillHeart>
-                <div className="w-20 text-center flex flex-col items-center justify-center">
-                  <span className="xl:text-3xl text-2xl">5</span>
-                  <span className="xl:text-md text-sm text-black/75 dark:text-white">
-                    Vidas Restantes
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-center xl:p-1 xl:w-60 w-56 rounded-lg text-left border-2 border-solid border-black leading-none hover:bg-white/50 dark:border-white">
-              <div className="inline-flex items-center gap-5">
                 <FaPencilAlt className="xl:text-4xl text-3xl"></FaPencilAlt>
                 <div className="w-20 text-center flex flex-col items-center justify-center">
                   <span className="xl:text-3xl text-2xl">5</span>
