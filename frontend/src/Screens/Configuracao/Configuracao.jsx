@@ -26,6 +26,13 @@ import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 
 function Configuracao() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!localStorage.getItem("user") || !localStorage.getItem("nivel")) {
+      navigate("/");
+    }
+  });
   const mode = localStorage.getItem("theme");
 
   function Color(mode, color) {
@@ -57,7 +64,6 @@ function Configuracao() {
     onOpen: openDeleteAccountModal,
     onClose: closeDeleteAccountModal,
   } = useDisclosure();
-  const navigate = useNavigate();
 
   function Sair() {
     localStorage.removeItem("nivel");
@@ -71,7 +77,7 @@ function Configuracao() {
   const [email, setEmail] = useState(user.email);
   const [senha, setSenha] = useState();
 
-  const [color, setColor] = useState(localStorage.getItem('theme'));
+  const [color, setColor] = useState(localStorage.getItem("theme"));
 
   const Update = () => {
     if (senha == user.senha) {
@@ -121,11 +127,18 @@ function Configuracao() {
   const selectdark = useRef(null);
 
   const Excluir = () => {
-    axios.delete(`https://tcckoding.azurewebsites.net/crianca/${user.id}`)
-    .then(localStorage.removeItem("user"))
-    .then(localStorage.removeItem("nivel"))
-    .then(window.location.reload())
-  }
+    axios
+      .delete(`https://tcckoding.azurewebsites.net/crianca/${user.id}`)
+      .then(() => {
+        localStorage.removeItem("user");
+        localStorage.removeItem("nivel");
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.error("Erro ao excluir:", error);
+      });
+  };
+  
 
   return (
     <ChakraProvider>
@@ -262,7 +275,11 @@ function Configuracao() {
                   value={color}
                   onChange={(e) => setColor(e.target.value)}
                   ref={selectdark}
-                  disabled={color == "tritanomaly" || color == "deuteranomaly" || color == "protanomaly"}
+                  disabled={
+                    color == "tritanomaly" ||
+                    color == "deuteranomaly" ||
+                    color == "protanomaly"
+                  }
                 >
                   <option value="">Padrão</option>
                   <option value="dark">Habilitado</option>
@@ -283,7 +300,7 @@ function Configuracao() {
                   value={color}
                   onChange={(e) => setColor(e.target.value)}
                   ref={selectdalt}
-                  disabled={color == 'dark'}
+                  disabled={color == "dark"}
                 >
                   <option value="">Nenhum</option>
                   <option value="tritanomaly">Tritanomalia</option>
@@ -332,7 +349,11 @@ function Configuracao() {
                       >
                         Voltar
                       </Button>
-                      <Button variant={"ghost"} colorScheme={"red"} onClick={Excluir}>
+                      <Button
+                        variant={"ghost"}
+                        colorScheme={"red"}
+                        onClick={Excluir}
+                      >
                         Excluir
                       </Button>
                     </ModalFooter>

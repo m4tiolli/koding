@@ -107,6 +107,8 @@ INSERT INTO crianca VALUES
 (DEFAULT, 'marcos', 'marcos', 'marcos@gmail.com', '123', 2, 'boy2', 'm'),
 (DEFAULT, 'ju', 'ju', 'ju@gmail.com', '123', 3, 'girl3', 'f');
 
+DELETE FROM crianca WHERE id = 1;
+
 INSERT INTO pontuacoes VALUES (DEFAULT, 1, 200, '2023-11-21');
 INSERT INTO pontuacoes VALUES (DEFAULT, 2, 200, '2023-10-08');
 INSERT INTO pontuacoes VALUES (DEFAULT, 3, 300, '2023-10-09');
