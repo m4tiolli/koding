@@ -1,5 +1,5 @@
-import { IoIosLogOut} from "react-icons/io";
-import { IoArrowBack} from "react-icons/io5";
+import { IoIosLogOut } from "react-icons/io";
+import { IoArrowBack } from "react-icons/io5";
 import { BsTrash3 } from "react-icons/bs";
 import {
   Button,
@@ -14,41 +14,39 @@ import {
   ModalHeader,
   ModalCloseButton,
 } from "@chakra-ui/react";
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import {
   protanomaly,
   tritanomaly,
   deuteranomaly,
 } from "./../../Components/ColorBlind";
-// import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-
-// import {Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton,} from '@chakra-ui/react';
-
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 import Menu from "../../Components/Menu/Menu";
+import { ToastContainer, toast } from "react-toastify";
+import axios from "axios";
 
 function Configuracao() {
   const mode = localStorage.getItem("theme");
 
-    function Color(mode, color) {
-        var newcolor;
-        if (mode === "protanomaly") {
-            newcolor = protanomaly(color);
-        } else if (mode === "deuteranomaly") {
-            newcolor = deuteranomaly(color);
-        } else if (mode === "tritanomaly") {
-            newcolor = tritanomaly(color);
-        } else newcolor = color;
-        return newcolor;
-    }
+  function Color(mode, color) {
+    var newcolor;
+    if (mode === "protanomaly") {
+      newcolor = protanomaly(color);
+    } else if (mode === "deuteranomaly") {
+      newcolor = deuteranomaly(color);
+    } else if (mode === "tritanomaly") {
+      newcolor = tritanomaly(color);
+    } else newcolor = color;
+    return newcolor;
+  }
 
   useEffect(() => {
     if (localStorage.theme === "dark") {
-        document.documentElement.classList.add("dark");
+      document.documentElement.classList.add("dark");
     } else {
-        document.documentElement.classList.remove("dark");
+      document.documentElement.classList.remove("dark");
     }
-}, []);
+  }, []);
   const {
     isOpen: logoutModalOpen,
     onOpen: openLogoutModal,
@@ -63,43 +61,122 @@ function Configuracao() {
 
   function Sair() {
     localStorage.removeItem("nivel");
-    document.location.reload()
+    document.location.reload();
   }
-  
+
+  const user = JSON.parse(atob(localStorage.getItem("user")));
+
+  const [nome, setNome] = useState(user.nome);
+  const [username, setUsername] = useState(user.username);
+  const [email, setEmail] = useState(user.email);
+  const [senha, setSenha] = useState();
+
+  const [color, setColor] = useState(localStorage.getItem('theme'));
+
+  const Update = () => {
+    if (senha == user.senha) {
+      const body = { username, email, senha };
+      localStorage.setItem("theme", color);
+      axios
+        .put(`https://tcckoding.azurewebsites.net/crianca/${user.id}`, body)
+        .then(
+          toast.success("Dados alterados com sucesso!", {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          })
+        )
+        .then(Get())
+        .catch((err) => console.error(err));
+    } else {
+      toast.error("A senha não coincide!", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    }
+  };
+
+  function Get() {
+    const body = { email, senha };
+    axios
+      .post("https://tcckoding.azurewebsites.net/crianca/login", body)
+      .then((response) =>
+        localStorage.setItem("user", btoa(JSON.stringify(response.data)))
+      );
+    window.location.reload();
+  }
+
+  const selectdalt = useRef(null);
+  const selectdark = useRef(null);
+
+  const Excluir = () => {
+    axios.delete(`https://tcckoding.azurewebsites.net/crianca/${user.id}`)
+    .then(localStorage.removeItem("user"))
+    .then(localStorage.removeItem("nivel"))
+    .then(window.location.reload())
+  }
+
   return (
     <ChakraProvider>
       <div
         className="flex h-full w-full"
-        style={{ background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)" }}
+        style={{
+          background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)",
+        }}
       >
         <Menu />
-        
-        <main className="w-full ml-[208px] overflow-hidden dark:bg-darkcinzaclaro">
+        <ToastContainer
+          position="top-center"
+          autoClose={2000}
+          limit={3}
+          hideProgressBar
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
 
-        <IoArrowBack onClick={() => navigate(-1)} className="flex mt-24 ml-10 mb-5 text-3xl cursor-pointer dark:text-white"/>
-        
+        <main className="w-full ml-[208px] overflow-hidden dark:bg-darkcinzaclaro">
+          <IoArrowBack
+            onClick={() => navigate(-1)}
+            className="flex mt-24 ml-10 mb-5 text-3xl cursor-pointer dark:text-white"
+          />
+
           <div className="mb-10">
-            <span className="text-3xl font-semibold dark:text-white ml-10">Configurações</span>
+            <span className="text-3xl font-semibold dark:text-white ml-10">
+              Configurações
+            </span>
           </div>
 
           {/* Dados */}
 
           <container className="w-full h-full flex flex-col gap-y-10 ml-20">
-
             {/* Dados conta */}
 
             <button
-                  className="laptop:1024 -ml-32 w-auto h-10 p-3 mt-5 lg:mt-0 flex items-center rounded-xl shadow-lg text-white fixed right-[15em]" style={{ background: Color(mode, '#22C55E') }}
-                  type="submit"
-                >
-                  Salvar Alterações
-                </button>
-
-            <form
-              action=""
-              method="post"
-              className="flex flex-col gap-y-5 text-lg"
+              className="laptop:1024 -ml-32 w-auto h-10 p-3 mt-5 lg:mt-0 flex items-center rounded-xl shadow-lg text-white fixed right-[15em]"
+              style={{ background: Color(mode, "#22C55E") }}
+              type="submit"
+              onClick={Update}
             >
+              Salvar Alterações
+            </button>
+
+            <div className="flex flex-col gap-y-5 text-lg">
               <div className="w-2/5 lg:w-[440px] flex flex-col lg:flex-row items-center">
                 <div className="w-full dark:text-white">
                   <span>Nome</span>
@@ -107,17 +184,19 @@ function Configuracao() {
 
                 <label className="">
                   <input
-                    className="ml-8 p-2 w-42 rounded-xl border-solid border-black outline-none shadow-lg"
+                    className="ml-8 p-2 w-42 rounded-xl border-solid border-black outline-none shadow-lg opacity-80 cursor-not-allowed"
                     style={{ background: "#efefef" }}
                     name="name"
                     type="text"
+                    value={nome}
+                    disabled={true}
                   />
                 </label>
               </div>
 
               <div className="w-2/5 lg:w-[440px] flex flex-col lg:flex-row items-center">
                 <div className="w-full dark:text-white">
-                 <span>Username</span>
+                  <span>Username</span>
                 </div>
 
                 <label>
@@ -126,6 +205,8 @@ function Configuracao() {
                     style={{ background: "#efefef" }}
                     name="username"
                     type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
                   />
                 </label>
               </div>
@@ -141,13 +222,15 @@ function Configuracao() {
                     style={{ background: "#efefef" }}
                     name="email"
                     type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </label>
               </div>
 
               <div className="w-2/5 lg:w-[440px] flex flex-col lg:flex-row items-center">
                 <div className="w-full dark:text-white">
-                  <span>Senha</span>
+                  <span>Senha Atual</span>
                 </div>
 
                 <label>
@@ -156,25 +239,12 @@ function Configuracao() {
                     style={{ background: "#efefef" }}
                     name="password"
                     type="password"
+                    value={senha}
+                    onChange={(e) => setSenha(e.target.value)}
                   />
                 </label>
               </div>
-
-              <div className="w-2/5 lg:w-[440px] flex flex-col lg:flex-row items-center">
-                <div className="w-full dark:text-white">
-                  <span>Confirmar senha</span>
-                </div>
-
-                <label>
-                  <input
-                    className="ml-8 p-2 rounded-xl border-solid border-black outline-none shadow-lg"
-                    style={{ background: "#efefef" }}
-                    name="password"
-                    type="password"
-                  />
-                </label>
-              </div>
-            </form>
+            </div>
 
             {/* Modos */}
 
@@ -189,11 +259,14 @@ function Configuracao() {
                   style={{ background: "#efefef" }}
                   name="darkMode"
                   id="darkMode"
+                  value={color}
+                  onChange={(e) => setColor(e.target.value)}
+                  ref={selectdark}
+                  disabled={color == "tritanomaly" || color == "deuteranomaly" || color == "protanomaly"}
                 >
-                  <option value="">Selecione</option>
-                  <option value="system">Padrão do Sistema</option>
-                  <option value="on">Habilitado</option>
-                  <option value="off">Desabilitado</option>
+                  <option value="">Padrão</option>
+                  <option value="dark">Habilitado</option>
+                  <option value="light">Desabilitado</option>
                 </select>
               </div>
 
@@ -207,11 +280,15 @@ function Configuracao() {
                   style={{ background: "#efefef" }}
                   name="contraste"
                   id="contraste"
+                  value={color}
+                  onChange={(e) => setColor(e.target.value)}
+                  ref={selectdalt}
+                  disabled={color == 'dark'}
                 >
-                  <option value="">Selecione</option>
-                  <option value="azul">Azul</option>
-                  <option value="vermelho">Vermelho</option>
-                  <option value="verde">Verde</option>
+                  <option value="">Nenhum</option>
+                  <option value="tritanomaly">Tritanomalia</option>
+                  <option value="deuteranomaly">Deuteranomalia</option>
+                  <option value="protanomaly">Protanomalia</option>
                 </select>
               </div>
             </div>
@@ -221,12 +298,18 @@ function Configuracao() {
             <div className="flex flex-col items-center justify-center py-10 w-96 text-gray-700 gap-3">
               <div className="flex items-center gap-3 w-full">
                 <IoIosLogOut className="text-2xl dark:text-white"></IoIosLogOut>
-                <button className="text-xl dark:text-white" onClick={openLogoutModal}>
+                <button
+                  className="text-xl dark:text-white"
+                  onClick={openLogoutModal}
+                >
                   Sair
                 </button>
               </div>
 
-              <div className="flex items-center gap-3 w-full" style={{ color: Color(mode, '#DC2626') }}>
+              <div
+                className="flex items-center gap-3 w-full"
+                style={{ color: Color(mode, "#DC2626") }}
+              >
                 <BsTrash3 className="text-2xl"></BsTrash3>
                 <button className="text-xl" onClick={openDeleteAccountModal}>
                   Excluir minha conta
@@ -243,8 +326,13 @@ function Configuracao() {
                     <ModalCloseButton />
                     <ModalBody>Você deseja mesmo excluir sua conta?</ModalBody>
                     <ModalFooter>
-                      <Button variant={"ghost"} onClick={closeDeleteAccountModal}>Voltar</Button>
-                      <Button variant={"ghost"} colorScheme={"red"}>
+                      <Button
+                        variant={"ghost"}
+                        onClick={closeDeleteAccountModal}
+                      >
+                        Voltar
+                      </Button>
+                      <Button variant={"ghost"} colorScheme={"red"} onClick={Excluir}>
                         Excluir
                       </Button>
                     </ModalFooter>
@@ -262,8 +350,14 @@ function Configuracao() {
                     <ModalCloseButton />
                     <ModalBody>Você deseja mesmo sair?</ModalBody>
                     <ModalFooter>
-                      <Button variant={"ghost"} onClick={closeLogoutModal}>Voltar</Button>
-                      <Button variant={"ghost"} colorScheme={"red"} onClick={Sair}>
+                      <Button variant={"ghost"} onClick={closeLogoutModal}>
+                        Voltar
+                      </Button>
+                      <Button
+                        variant={"ghost"}
+                        colorScheme={"red"}
+                        onClick={Sair}
+                      >
                         Sair
                       </Button>
                     </ModalFooter>

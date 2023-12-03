@@ -17,6 +17,7 @@
   transition: all 0.1s linear;
   box-sizing: border-box;
   font-family: "Poppins" !important;
+  user-select: none;
 }
 
 ::selection {
