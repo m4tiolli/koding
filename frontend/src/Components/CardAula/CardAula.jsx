@@ -4,7 +4,7 @@ import { useDisclosure } from "@chakra-ui/react";
 import { Modal, ModalContent } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import myGif from "../../assets/gif.gif";
+import Html from '../../assets/html.svg'
 
 const mode = localStorage.getItem("theme");
 
@@ -127,7 +127,6 @@ export default function CardAula({ aula, capitulo }) {
                   Aula {aula.numeroaula} - {aula.nome}
                 </span>
                 {/* Filtro */}
-                
               </div>
             </div>
             <div className="flex flex-col justify-center items-center text-center space-y-5 -mt-14">
@@ -136,63 +135,66 @@ export default function CardAula({ aula, capitulo }) {
                   Iniciar
                 </button>
               </Link>
-              <span className="w-34 h-20 px-4 text-lg">
-              {aula.descricao}
-              </span>
+              <span className="w-34 h-20 px-4 text-lg">{aula.descricao}</span>
             </div>
           </div>
         </ModalContent>
       </Modal>
-      
-      <Modal
-          isCentered={true}
-          onClose={onClose}
-          isOpen={isOpen}
-          motionPreset="slideInBottom"
-        >
-          <ModalContent
-            w="45vw"
-            h="22vw"
-            display="flex"
-            background="#7E1AD4"
-            borderRadius="0.9em"
-            zIndex={1000}
-            marginLeft={"auto"}
-            marginTop={"auto"}
-            marginRight={"auto"}
-            marginBottom={"auto"}
-            justifyContent={"center"}
-            alignItems={"center"}
-          >
-            {/* Card */}
 
-            <div className="flex flex-col items-center justify-center">
-              <div className="flex items-center space-x-10">
-                <div className="rounded-xl w-[400px]">
-                  <img
-                    className="notebook:w-auto notebook:ml-0"
-                    src={myGif}
-                    alt=""
-                  />
+      <Modal
+        isCentered={true}
+        onClose={onClose}
+        isOpen={isOpen}
+        motionPreset="slideInBottom"
+      >
+        <ModalContent
+          w="50vw"
+          h="22vw"
+          display="flex"
+          background="#7E1AD4"
+          borderRadius="0.9em"
+          zIndex={1000}
+          marginLeft={"auto"}
+          marginTop={"auto"}
+          marginRight={"auto"}
+          marginBottom={"auto"}
+          justifyContent={"center"}
+          alignItems={"center"}
+        >
+          {/* Card */}
+
+          <div className="flex flex-col items-center justify-center">
+            <div className="flex items-center space-x-10 px-5">
+              <div className="rounded-xl w-[400px] space-y-5">
+                <div
+                  className="w-[350px] h-44 rounded-xl flex justify-center items-center"
+                  style={{
+                    backgroundImage: `linear-gradient(100deg, ${Color(
+                      mode,
+                      "#6800FF"
+                    )} 0%, ${Color(mode, "#BB5E7E")} 100%`,
+                  }}
+                >
+                  <img src={Html} alt="" className="" />
                 </div>
-                <div className="flex items-center">
-                  <Link to={"/flexbox"}>
-                    <div className="w-32 notebook:w-32 notebook:mr-0 notebook:text-base mt-3 text-center text-white mb-10 truncate">
-                      Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor
-                      sit amet consectetur Lorem ipsum dolor sit amet
-                      consectetur Lorem ipsum dolor sit amet consectetur Lorem
-                      ipsum dolor sit amet consectetur Lorem ipsum dolor sit
-                      amet consectetur Lorem ipsum dolor sit amet consectetur
-                    </div>
-                    <button className="bg-[#3BEF61] text-white p-[6px] notebook:w-32 notebook:text-base w-32 rounded-md button shadow-md">
-                      Iniciar Desafio
-                    </button>
-                  </Link>
-                </div>
+                  <span className="flex w-[350px] font-bold text-lg mb-2 text-white">
+                    Aula {aula.numeroaula} - {aula.nome}
+                  </span>
+              </div>
+              <div className="flex items-center justify-center">
+                <Link to={"/conteudo"} className="flex flex-col justify-center items-center">
+                  <button className="bg-[#3BEF61] text-white p-[10px] w-32 uppercase text-xl flex justify-center rounded-md shadow-md">
+                    Iniciar
+                  </button>
+                  <div className="w-auto mt-3 text-white mb-10 text-center">
+                    {aula.descricao}
+                  </div>
+                </Link>
               </div>
             </div>
-          </ModalContent>
-        </Modal>
+          </div>
+        </ModalContent>
+      </Modal>
     </div>
   );
 }
