@@ -328,6 +328,9 @@ const Desafios = () => {
             <div className="flex flex-col items-center justify-center">
               <div className="flex items-center space-x-10 px-5">
                 <div className="rounded-xl w-[400px] space-y-5">
+                  <span className="flex w-[350px] justify-center font-bold text-lg mb-2 text-white uppercase">
+                    Sentença
+                  </span>
                   <div
                     className="w-[350px] h-44 rounded-xl flex justify-center items-center"
                     style={{
@@ -339,9 +342,6 @@ const Desafios = () => {
                   >
                     <img src={myGif} alt="" className="" />
                   </div>
-                  <span className="flex w-[350px] justify-center font-bold text-lg mb-2 text-white uppercase">
-                    Sentença
-                  </span>
                 </div>
                 <div className="flex items-center justify-center">
                   <Link
@@ -352,7 +352,9 @@ const Desafios = () => {
                       Iniciar Desafio
                     </button>
                     <div className="w-auto mt-3 text-white mb-10 text-center">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum eius distinctio exercitationem, voluptatibus odit dignissimos velit expedita aliquam 
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Rerum eius distinctio exercitationem, voluptatibus odit
+                      dignissimos velit expedita aliquam
                     </div>
                   </Link>
                 </div>
@@ -386,6 +388,9 @@ const Desafios = () => {
             <div className="flex flex-col items-center justify-center">
               <div className="flex items-center space-x-10 px-5">
                 <div className="rounded-xl w-[400px] space-y-5">
+                  <span className="flex w-[350px] justify-center font-bold text-lg mb-2 text-white uppercase">
+                    Flexbox
+                  </span>
                   <div
                     className="w-[350px] h-44 rounded-xl flex justify-center items-center"
                     style={{
@@ -397,9 +402,6 @@ const Desafios = () => {
                   >
                     <img src={myGifFlex} alt="" className="" />
                   </div>
-                  <span className="flex w-[350px] justify-center font-bold text-lg mb-2 text-white uppercase">
-                    Flexbox
-                  </span>
                 </div>
                 <div className="flex items-center justify-center">
                   <Link
@@ -407,10 +409,12 @@ const Desafios = () => {
                     className="flex flex-col justify-center items-center"
                   >
                     <button className="bg-[#3BEF61] text-white p-[10px] w-auto uppercase text-lg flex justify-center rounded-md shadow-md">
-                      Iniciar Desafio 
+                      Iniciar Desafio
                     </button>
                     <div className="w-auto mt-3 text-white mb-10 text-center">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum eius distinctio exercitationem, voluptatibus odit dignissimos velit expedita aliquam 
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Rerum eius distinctio exercitationem, voluptatibus odit
+                      dignissimos velit expedita aliquam
                     </div>
                   </Link>
                 </div>
@@ -444,6 +448,9 @@ const Desafios = () => {
             <div className="flex flex-col items-center justify-center">
               <div className="flex items-center space-x-10 px-5">
                 <div className="rounded-xl w-[400px] space-y-5">
+                  <span className="flex w-[350px] justify-center font-bold text-lg mb-2 text-white uppercase">
+                    Input
+                  </span>
                   <div
                     className="w-[350px] h-44 rounded-xl flex justify-center items-center"
                     style={{
@@ -455,9 +462,6 @@ const Desafios = () => {
                   >
                     <img src={myGifInput} alt="" className="" />
                   </div>
-                  <span className="flex w-[350px] justify-center font-bold text-lg mb-2 text-white uppercase">
-                    Input
-                  </span>
                 </div>
                 <div className="flex items-center justify-center">
                   <Link
@@ -468,7 +472,9 @@ const Desafios = () => {
                       Iniciar Desafio
                     </button>
                     <div className="w-auto mt-3 text-white mb-10 text-center">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum eius distinctio exercitationem, voluptatibus odit dignissimos velit expedita aliquam 
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Rerum eius distinctio exercitationem, voluptatibus odit
+                      dignissimos velit expedita aliquam
                     </div>
                   </Link>
                 </div>
@@ -502,6 +508,9 @@ const Desafios = () => {
             <div className="flex flex-col items-center justify-center">
               <div className="flex items-center space-x-10 px-5">
                 <div className="rounded-xl w-[400px] space-y-5">
+                  <span className="flex w-[350px] justify-center font-bold text-lg mb-2 text-white uppercase">
+                    Quiz
+                  </span>
                   <div
                     className="w-[350px] h-44 rounded-xl flex justify-center items-center"
                     style={{
@@ -513,9 +522,6 @@ const Desafios = () => {
                   >
                     <img src={myGifQuiz} alt="" className="" />
                   </div>
-                  <span className="flex w-[350px] justify-center font-bold text-lg mb-2 text-white uppercase">
-                    Quiz
-                  </span>
                 </div>
                 <div className="flex items-center justify-center">
                   <Link
@@ -526,7 +532,9 @@ const Desafios = () => {
                       Iniciar Desafio
                     </button>
                     <div className="w-auto mt-3 text-white mb-10 text-center">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum eius distinctio exercitationem, voluptatibus odit dignissimos velit expedita aliquam 
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Rerum eius distinctio exercitationem, voluptatibus odit
+                      dignissimos velit expedita aliquam
                     </div>
                   </Link>
                 </div>
