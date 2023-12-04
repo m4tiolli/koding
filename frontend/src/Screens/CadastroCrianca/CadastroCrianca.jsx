@@ -168,7 +168,7 @@ function CadastroCrianca() {
             } z-10 relative w-4/5 md:w-3/5 rounded-2xl flex flex-col justify-center items-center gap-4 before:block before:content-[' '] before:w-full before:absolute before:top-0 before:h-full before:rotate-[-8deg] before:radius-x before:-z-20 before:shadow-lg shadow-lg before:rounded-2xl h-fit py-4`}
           >
             <h1 className="text-cinza dark:text-white font-bold text-2xl xl:text-3xl">
-              Crie sua conta
+              Crie uma conta para seu filho!
             </h1>
             <div className="flex flex-col gap-3 items-center w-full">
               <input
@@ -283,7 +283,7 @@ function CadastroCrianca() {
       </div>
       <div className="z-20 h-1/4 xl:h-fit w-full xl:w-2/3 m-auto flex items-start justify-center gap-0 flex-col">
         <Logo
-          isResponsavel={false}
+          isResponsavel={true}
           isDark={dark}
           className={"scale-[.50] -ml-20 lg:-ml-6 xl:scale-[.60] "}
         />
@@ -296,19 +296,6 @@ function CadastroCrianca() {
             ? "Junte-se a nós e faça a diferença!"
             : "Faça seu cadastro"}
         </p>
-        <Link to={"/login"}>
-          <div className="flex items-center my-2 text-cinza dark:text-white">
-            <BsArrowLeft className="text-xl font-bold mx-3" />
-            <p className="text-xl">
-              Voltar ao{" "}
-              <span
-                className={`linkresponsavel cursor-pointer font-bold hover:opacity-70`}
-              >
-                Login
-              </span>
-            </p>
-          </div>
-        </Link>
       </div>
     </div>
   );

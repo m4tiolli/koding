@@ -23,7 +23,7 @@ export default function SelectCrianca() {
 
   const [criancas, setCriancas] = useState([]);
   const [loading, setLoading] = useState(true);
-  const user = JSON.parse(localStorage.user);
+  const user = JSON.parse(atob(localStorage.user));
   const userId = parseInt(user.id);
 
   useEffect(() => {

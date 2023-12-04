@@ -49,7 +49,7 @@ function Desempenho() {
     };
   }, []);
 
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(atob(localStorage.getItem("user")));
 
   const [dadosPontuacao, setDadosPontuacao] = useState([]);
 
