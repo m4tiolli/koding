@@ -11,6 +11,21 @@
   .active {
     @apply ring-4 ring-green-500 opacity-80 scale-95
   }
+  .title{
+    @apply text-2xl font-semibold mb-3
+  }
+  .colorHTML{
+    @apply text-[#E87635]
+  }
+  .colorCSS{
+    @apply text-[#438ADD]
+  }
+  .colorJS{
+    @apply text-[#E8BE2A]
+  }
+  .colorPHP{
+    @apply text-[#6E35E8]
+  }
 }
 
 * {
