@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS crianca(
     responsavel INT NOT NULL,
     imagem LONGTEXT,
     genero VARCHAR(1),
-    FOREIGN KEY (responsavel) REFERENCES responsavel (id)
+    FOREIGN KEY (responsavel) REFERENCES responsavel (id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS pontuacoes(
@@ -94,7 +94,7 @@ CREATE TABLE feedbacks(
     	responsavel INT,
     	conteudo LONGTEXT,
 	estrela INT, 
-	FOREIGN KEY (responsavel) REFERENCES responsavel (id)
+	FOREIGN KEY (responsavel) REFERENCES responsavel (id) ON DELETE CASCADE
 );
 
 INSERT INTO responsavel VALUES 
