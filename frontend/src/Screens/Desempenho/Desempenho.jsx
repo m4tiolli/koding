@@ -13,7 +13,7 @@ import MultiLineChart from "../../Components/Graficos/MultiLine/MultiLine";
 
 function Desempenho() {
   const mode = localStorage.getItem("theme");
-  const dadosCrianca = JSON.parse(localStorage.getItem("dadosCrianca"));
+  const dadosCrianca = JSON.parse(atob(localStorage.getItem("dadosCrianca")));
   function Color(mode, color) {
     var newcolor;
     if (mode === "protanomaly") {

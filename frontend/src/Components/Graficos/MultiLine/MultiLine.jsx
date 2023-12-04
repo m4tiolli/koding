@@ -30,39 +30,37 @@ const MultiLineChart = ({ valores, defaul }) => {
 
   const labels = Object.keys(agruparPorDia(valores));
 
-  const filtrarUltimas24Horas = (dataObjects) => {
-    const agora = new Date();
-    const umDiaEmMilissegundos = 24 * 60 * 60 * 1000;
-    const dataLimite = agora - umDiaEmMilissegundos;
-
-    const pontuacoesUltimas24Horas = dataObjects
-      .filter((item) => {
-        const dataItem = new Date(item.data);
-        return dataItem.getTime() > dataLimite;
-      });
-
-    return agruparPorDia(pontuacoesUltimas24Horas);
-  };
-
   const filtrarUltimaSemana = (dataObjects) => {
     const agora = new Date();
     const umaSemanaEmMilissegundos = 7 * 24 * 60 * 60 * 1000;
     const dataLimite = agora - umaSemanaEmMilissegundos;
 
-    const pontuacoesUltimaSemana = dataObjects
-      .filter((item) => {
-        const dataItem = new Date(item.data);
-        return dataItem.getTime() > dataLimite;
-      });
+    const pontuacoesUltimaSemana = dataObjects.filter((item) => {
+      const dataItem = new Date(item.data);
+      return dataItem.getTime() > dataLimite;
+    });
 
     return agruparPorDia(pontuacoesUltimaSemana);
   };
 
+  const filtrarUltimoMes = (dataObjects) => {
+    const agora = new Date();
+    const umMesEmMilissegundos = 30 * 24 * 60 * 60 * 1000;
+    const dataLimite = agora - umMesEmMilissegundos;
+
+    const pontuacoesUltimoMes = dataObjects.filter((item) => {
+      const dataItem = new Date(item.data);
+      return dataItem.getTime() > dataLimite;
+    });
+
+    return agruparPorDia(pontuacoesUltimoMes);
+  };
+
   const dataRetornada =
-    opcao === "dia"
-      ? filtrarUltimas24Horas(valores)
-      : opcao === "semana"
+    opcao === "semana"
       ? filtrarUltimaSemana(valores)
+      : opcao === "mes"
+      ? filtrarUltimoMes(valores)
       : agruparPorDia(valores);
 
   const data = {
@@ -124,8 +122,8 @@ const MultiLineChart = ({ valores, defaul }) => {
             }}
             value={defaul ?? opcao}
           >
-            <option value="dia">Últimas 24h</option>
             <option value="semana">Última semana</option>
+            <option value="mes">Último mês</option>
             <option value="all">Todo o período</option>
           </select>
         </div>

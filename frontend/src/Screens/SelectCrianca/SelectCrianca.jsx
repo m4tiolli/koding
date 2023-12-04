@@ -96,7 +96,7 @@ export function Card({ crianca, img }) {
   const navigate = useNavigate();
   const Navegar = (kid) => {
     console.log(kid);
-    localStorage.setItem("dadosCrianca", JSON.stringify(kid));
+    localStorage.setItem("dadosCrianca", btoa(JSON.stringify(kid)));
     navigate("/pais/home");
   };
   return (
