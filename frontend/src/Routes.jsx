@@ -19,7 +19,7 @@ import HomeR from "./Screens/HomeR/HomeR";
 import PerfilR from "./Screens/PerfilR/PerfilR";
 import CadastroCrianca from "./Screens/CadastroCrianca/CadastroCrianca";
 import Desafios from "./Screens/Desafios/Desafios";
-import Conteudo from "./Screens/Conteudo/Conteudo";
+import Conteudo from "./Screens/Conteudo/HTML/cap3/aula3/hc3a3";
 import SelectCrianca from "./Screens/SelectCrianca/SelectCrianca";
 import Flexbox2 from "./Screens/Jogos/Flexbox/Flexbox2";
 
