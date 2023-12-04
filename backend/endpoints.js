@@ -25,7 +25,7 @@ module.exports = function (app) {
     const { nome, cpf, telefone, email, senha } = req.body;
 
     db.query(
-      "INSERT INTO responsavel (nome, cpf, telefone, email, senha, imagem) VALUES (?, ?, ?, ?, ?)",
+      "INSERT INTO responsavel (nome, cpf, telefone, email, senha) VALUES (?, ?, ?, ?, ?)",
       [nome, cpf, telefone, email, senha],
       (err, result) => {
         if (err) {
