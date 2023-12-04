@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS pontuacoes(
 	crianca INT NOT NULL,
 	pontuacao INT, 
     data DATE,
-	FOREIGN KEY (crianca) REFERENCES crianca (id)
+	FOREIGN KEY (crianca) REFERENCES crianca (id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS linguagens(
@@ -107,11 +107,10 @@ INSERT INTO crianca VALUES
 (DEFAULT, 'marcos', 'marcos', 'marcos@gmail.com', '123', 2, 'boy2', 'm'),
 (DEFAULT, 'ju', 'ju', 'ju@gmail.com', '123', 3, 'girl3', 'f');
 
-DELETE FROM crianca WHERE id = 1;
-
-INSERT INTO pontuacoes VALUES (DEFAULT, 1, 200, '2023-11-21');
-INSERT INTO pontuacoes VALUES (DEFAULT, 2, 200, '2023-10-08');
-INSERT INTO pontuacoes VALUES (DEFAULT, 3, 300, '2023-10-09');
+INSERT INTO pontuacoes VALUES 
+(DEFAULT, 1, 200, '2023-11-21'),
+(DEFAULT, 2, 200, '2023-10-08'),
+(DEFAULT, 3, 300, '2023-10-09');
 
 INSERT INTO linguagens VALUES
 (DEFAULT, 'HTML'),
@@ -163,7 +162,6 @@ INSERT INTO tags VALUES
 (DEFAULT, 'Quiz'),
 (DEFAULT, 'Sentença');
 
-
 INSERT INTO capitulos VALUES 
 (DEFAULT, 'HTML - Introdução', 1, 1),
 (DEFAULT, 'HTML - Técnicas Avançadas', 1, 2),
@@ -177,7 +175,6 @@ INSERT INTO capitulos VALUES
 (DEFAULT, 'PHP - Introdução', 4, 1),
 (DEFAULT, 'PHP - Programação Orientada a Objetos', 4, 2),
 (DEFAULT, 'PHP - Banco de Dados com MySQL', 4, 3);
-
 
 INSERT INTO aulas VALUES 
 (DEFAULT, 'Fundamentos do HTML', 'Nesta aula, você irá aprender os conceitos básicos do HTML', 
