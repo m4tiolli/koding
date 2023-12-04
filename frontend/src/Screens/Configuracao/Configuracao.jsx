@@ -13,6 +13,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalCloseButton,
+  ModalOverlay,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import {
@@ -138,7 +139,6 @@ function Configuracao() {
         console.error("Erro ao excluir:", error);
       });
   };
-  
 
   return (
     <ChakraProvider>
@@ -177,7 +177,7 @@ function Configuracao() {
 
           {/* Dados */}
 
-          <container className="w-full h-full flex flex-col gap-y-10 ml-20">
+          <div className="w-full h-full flex flex-col gap-y-10 ml-20">
             {/* Dados conta */}
 
             <button
@@ -338,6 +338,7 @@ function Configuracao() {
                   blockScrollOnMount={false}
                   isCentered={true}
                 >
+                  <ModalOverlay />
                   <ModalContent>
                     <ModalHeader>Excluir conta</ModalHeader>
                     <ModalCloseButton />
@@ -366,6 +367,7 @@ function Configuracao() {
                   blockScrollOnMount={false}
                   isCentered={true}
                 >
+                  <ModalOverlay />
                   <ModalContent>
                     <ModalHeader>Sair</ModalHeader>
                     <ModalCloseButton />
@@ -386,7 +388,7 @@ function Configuracao() {
                 </Modal>
               </div>
             </div>
-          </container>
+          </div>
         </main>
       </div>
     </ChakraProvider>

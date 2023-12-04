@@ -30,7 +30,7 @@ function Perfil() {
     }
   }, []);
 
-  const dadosCrianca = JSON.parse(localStorage.getItem("user"));
+  const dadosCrianca = JSON.parse(atob(localStorage.getItem("user")));
 
   let mode = localStorage.theme;
   function Color(mode, color) {
@@ -49,7 +49,7 @@ function Perfil() {
     }
     return newcolor;
   }
-  const local = JSON.parse(localStorage.getItem("user"));
+  const local = JSON.parse(atob(localStorage.getItem("user")));
   const [image, setImage] = useState(local.imagem);
 
   const toggleImage = (image) => {
