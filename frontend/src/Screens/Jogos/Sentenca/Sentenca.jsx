@@ -137,7 +137,7 @@ function Sentenca() {
   }
 
   const enviarPontuacao = () => {
-    const user = JSON.parse(localStorage.getItem("user"));
+    const user = JSON.parse(atob(localStorage.getItem("user")));
     const crianca = user.id;
     const pontuacao = localStorage.getItem("pontuacao");
     const body = { crianca, pontuacao };

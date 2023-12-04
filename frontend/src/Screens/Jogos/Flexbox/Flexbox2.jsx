@@ -88,7 +88,7 @@ function Flexbox2() {
       var local = parseInt(localStorage.pontuacao);
       local = local + 100;
       localStorage.setItem("pontuacao", local);
-      const user = JSON.parse(localStorage.getItem("user"));
+      const user = JSON.parse(atob(localStorage.getItem("user")));
       const crianca = user.id;
       const pontuacao = localStorage.getItem("pontuacao");
       const body = { crianca, pontuacao };

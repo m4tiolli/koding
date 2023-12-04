@@ -9,6 +9,7 @@ import {
   deuteranomaly,
 } from "./../../Components/ColorBlind";
 import axios from "axios";
+import MultiLineChart from "../../Components/Graficos/MultiLine/MultiLine";
 
 function Desempenho() {
   const mode = localStorage.getItem("theme");
@@ -142,7 +143,7 @@ function Desempenho() {
               <LineChart valores={dadosPontuacao} />
             </div>
             <div>
-              <LineChart defaul={'all'} />
+              <MultiLineChart valores={dadosPontuacao} />
             </div>
           </div>
         </div>
