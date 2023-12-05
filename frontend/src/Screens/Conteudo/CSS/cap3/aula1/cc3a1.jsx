@@ -11,7 +11,7 @@ import {
   deuteranomaly,
 } from "../../../../../Components/ColorBlind";
 
-function Hc2a1() {
+function Cc3a1() {
   const navigate = useNavigate();
   useEffect(() => {
     localStorage.nivel === "responsavel"
@@ -51,7 +51,7 @@ function Hc2a1() {
         />
         <div className="flex flex-col ml-20 mt-16 mb-10">
           <span className="text-4xl font-semibold">
-            Aula 00 - HTML Semântico
+            Aula 00 - Introdução ao Design Responsivo
           </span>
 
           <div className="flex w-10/12 mt-16 mb-10 gap-x-10">
@@ -62,14 +62,14 @@ function Hc2a1() {
                   className="text-2xl font-semibold mb-3"
                   style={{ color: Color(mode, "#E87635") }}
                 >
-                  1. Elementos Semânticos
+                  1. O que é Design Responsivo?
                 </h1>
                 <span className="flex text-justify">
-                Agora, vamos mergulhar nas magias mais profundas do HTML! &lt;main&gt; é o conteúdo principal, &lt;nav&gt; é a navegação, e &lt;section&gt; é como dividimos nossa página.
+                Vamos explorar o design responsivo, que é como a mágica que faz nossas páginas se adaptarem a diferentes tamanhos de tela. Usamos "media queries" para fazer truques de layout.
                 </span>
               </div>
+              
             </div>
-
           </div>
         </div>
       </main>
@@ -77,4 +77,4 @@ function Hc2a1() {
   );
 }
 
-export default Hc2a1;
+export default Cc3a1;

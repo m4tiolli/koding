@@ -11,7 +11,7 @@ import {
   deuteranomaly,
 } from "../../../../../Components/ColorBlind";
 
-function Hc2a1() {
+function Jc3a3() {
   const navigate = useNavigate();
   useEffect(() => {
     localStorage.nivel === "responsavel"
@@ -37,7 +37,7 @@ function Hc2a1() {
 
   return (
     <div
-      className="flex h-screen w-full"
+      className="flex h-full w-full"
       style={{
         background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)",
       }}
@@ -51,7 +51,7 @@ function Hc2a1() {
         />
         <div className="flex flex-col ml-20 mt-16 mb-10">
           <span className="text-4xl font-semibold">
-            Aula 00 - HTML Semântico
+            Aula 02 - Imagens Responsivas e Testes em Diferentes Dispositivos
           </span>
 
           <div className="flex w-10/12 mt-16 mb-10 gap-x-10">
@@ -62,10 +62,13 @@ function Hc2a1() {
                   className="text-2xl font-semibold mb-3"
                   style={{ color: Color(mode, "#E87635") }}
                 >
-                  1. Elementos Semânticos
+                  1. Flexbox e Grid Flexíveis
                 </h1>
                 <span className="flex text-justify">
-                Agora, vamos mergulhar nas magias mais profundas do HTML! &lt;main&gt; é o conteúdo principal, &lt;nav&gt; é a navegação, e &lt;section&gt; é como dividimos nossa página.
+                Aprendendo Flexbox e Grid, que são como encantamentos para organizar elementos. Flexbox é como arrumar peças em uma fila, e Grid é como fazer um quebra-cabeça. 
+                <br /> <br />
+                E assim, nossos pequenos feiticeiros tornam-se mestres em HTML, explorando os mistérios mágicos da criação web! 
+
                 </span>
               </div>
             </div>
@@ -77,4 +80,4 @@ function Hc2a1() {
   );
 }
 
-export default Hc2a1;
+export default Jc3a3;

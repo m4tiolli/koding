@@ -504,7 +504,8 @@ module.exports = function (app) {
     );
   });
 
-  app.get("/redefinir", async (req, res) => {
+  app.post("/redefinir/", async (req, res) => {
+    const {email, codigo} = req.body
     const transporter = nodemailer.createTransport({
       host: "smtp.umbler.com",
       port: 587,
@@ -516,10 +517,10 @@ module.exports = function (app) {
     })
     const info = await transporter.sendMail({
       from: '"Ju Gama - Equipe Koding" <jugama@tcckoding.site>', // sender address
-      to: "gabrielmatiollif@gmail.com, marcos.alves117@etec.sp.gov.br", // list of receivers
+      to: email, // list of receivers
       subject: "Redefinição de Senha", // Subject line
-      text: "Hello world?", // plain text body
-      html: "<b>Hello world?</b>", // html body
+      text: codigo, // plain text body
+      html: codigo, // html body
     });
   
     console.log("Message sent: %s", info.messageId);

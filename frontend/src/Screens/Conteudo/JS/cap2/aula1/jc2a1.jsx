@@ -11,7 +11,7 @@ import {
   deuteranomaly,
 } from "../../../../../Components/ColorBlind";
 
-function Hc2a1() {
+function Jc2a1() {
   const navigate = useNavigate();
   useEffect(() => {
     localStorage.nivel === "responsavel"
@@ -77,4 +77,4 @@ function Hc2a1() {
   );
 }
 
-export default Hc2a1;
+export default Jc2a1;

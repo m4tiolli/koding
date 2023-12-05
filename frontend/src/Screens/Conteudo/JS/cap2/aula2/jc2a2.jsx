@@ -11,7 +11,7 @@ import {
   deuteranomaly,
 } from "../../../../../Components/ColorBlind";
 
-function Hc1a1() {
+function Jc2a2() {
   const navigate = useNavigate();
   useEffect(() => {
     localStorage.nivel === "responsavel"
@@ -51,7 +51,7 @@ function Hc1a1() {
         />
         <div className="flex flex-col ml-20 mt-16 mb-10">
           <span className="text-4xl font-semibold">
-            Aula 00 - Fundamentos do HTML
+            Aula 01 - Formulários Avançados
           </span>
 
           <div className="flex w-10/12 mt-16 mb-10 gap-x-10">
@@ -62,14 +62,10 @@ function Hc1a1() {
                   className="text-2xl font-semibold mb-3"
                   style={{ color: Color(mode, "#E87635") }}
                 >
-                  1. Introdução ao HTML
+                  1. Campos de Formulário Especiais
                 </h1>
                 <span className="flex text-justify">
-                  HTML, que significa Hypertext Markup Language (Linguagem de
-                  Marcação de Hipertexto), é como a poção mágica que usamos para
-                  criar páginas na web. Ele usa "tags" para organizar o conteúdo
-                  e faz com que os navegadores exibam as páginas do jeito que
-                  queremos.
+                Explorando campos especiais como &lt;input type="email"&gt; para e-mails, &lt;input type="password"&gt; para senhas, e &lt;input type="file"&gt; para upload de arquivos.
                 </span>
               </div>
 
@@ -79,26 +75,11 @@ function Hc1a1() {
                     className="text-2xl font-semibold mb-3"
                     style={{ color: Color(mode, "#E87635") }}
                   >
-                    2. Estrutura Básica de uma página HTML
+                    2. Elementos de Controle Avançados
                   </h1>
                   <span className="flex text-justify">
-                    Toda página começa com uma varinha mágica especial chamada
-                    &lt;!DOCTYPE html&gt;. Em seguida, temos a tag &lt;html&gt;
-                    que envolve tudo. O conteúdo que os feiticeiros querem que
-                    os outros vejam fica dentro da tag &lt;body&gt;, enquanto as
-                    coisas invisíveis vão dentro da tag &lt;head&gt;. Ah, e não
-                    esqueçam da tag &lt;meta charset="utf-8"&gt; para garantir
-                    que todos os idiomas funcionem corretamente!
+                  Agora, conhecemos o &lt;select&gt; para listas suspensas, &lt;input type="checkbox"&gt; para caixas de seleção, e &lt;nput type="radio"&gt; para opções exclusivas.
                   </span>
-                </div>
-                <span
-                  className="text-xl font-semibold mb-3"
-                  style={{ color: Color(mode, "#E87635") }}
-                >
-                  Exemplo:
-                </span>
-                <div className="mb-5">
-                  <img src={html1} alt="" />
                 </div>
               </div>
             </div>
@@ -108,10 +89,10 @@ function Hc1a1() {
               <div className="border-l-2 h-32 border-black/50 dark:border-white"></div>
               <div className="flex flex-col space-y-5 justify-center ml-5">
                 <div className="hover:bg-[#CE9FF5] rounded-md p-2 cursor-pointer">
-                  Introdução
+                  Campos de Formulário Especiais
                 </div>
                 <div className="hover:bg-[#E08A98] rounded-md p-2 cursor-pointer">
-                  Estrutura Básica
+                  Elementos de Controles Avançados
                 </div>
               </div>
             </div>
@@ -122,4 +103,4 @@ function Hc1a1() {
   );
 }
 
-export default Hc1a1;
+export default Jc2a2;

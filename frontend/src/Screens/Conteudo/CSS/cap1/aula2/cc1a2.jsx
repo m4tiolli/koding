@@ -11,7 +11,7 @@ import {
   deuteranomaly,
 } from "../../../../../Components/ColorBlind";
 
-function Hc1a1() {
+function Cc1a2() {
   const navigate = useNavigate();
   useEffect(() => {
     localStorage.nivel === "responsavel"
@@ -49,9 +49,9 @@ function Hc1a1() {
           onClick={() => navigate(-1)}
           className="flex mt-28 ml-8 text-3xl cursor-pointer dark:text-white"
         />
-        <div className="flex flex-col ml-20 mt-16 mb-10">
+        <div className="flex flex-col ml-20 mt-16">
           <span className="text-4xl font-semibold">
-            Aula 00 - Fundamentos do HTML
+            Aula 01 - Tags HTML e Estrutura Basica
           </span>
 
           <div className="flex w-10/12 mt-16 mb-10 gap-x-10">
@@ -62,33 +62,37 @@ function Hc1a1() {
                   className="text-2xl font-semibold mb-3"
                   style={{ color: Color(mode, "#E87635") }}
                 >
-                  1. Introdução ao HTML
+                  1. Tags Estruturais
                 </h1>
                 <span className="flex text-justify">
-                  HTML, que significa Hypertext Markup Language (Linguagem de
-                  Marcação de Hipertexto), é como a poção mágica que usamos para
-                  criar páginas na web. Ele usa "tags" para organizar o conteúdo
-                  e faz com que os navegadores exibam as páginas do jeito que
-                  queremos.
+                As tags como  &lt;header&gt;,  &lt;footer&gt;, e  &lt;div&gt; são como feitiços que organizam o conteúdo da página. O  &lt;header&gt; é como um título, o  &lt;footer&gt; fica no final, e  &lt;div&gt; é uma caixa mágica para organizar coisas.
                 </span>
               </div>
 
-              <div className="flex flex-col w-10/12 mt-10 mb-10">
+              <div className="flex flex-col w-10/12 mt-10">
+                <div className="">
+                  <h1
+                    className="text-2xl font-semibold mb-3"
+                    style={{ color: Color(mode, "#E87635") }}
+                  >
+                    2. Tags de Título e Texto
+                  </h1>
+                  <span className="flex text-justify">
+                  Os títulos, como &lt;h1&gt; a &lt;h6&gt;, são como encantamentos de diferentes tamanhos. E as tags &lt;p&gt;, &lt;span&gt;, &lt;br&gt;, e &lt;hr&gt; ajudam a criar textos e separações.
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex flex-col w-10/12 mt-10">
                 <div className="mb-5">
                   <h1
                     className="text-2xl font-semibold mb-3"
                     style={{ color: Color(mode, "#E87635") }}
                   >
-                    2. Estrutura Básica de uma página HTML
+                    3. Listas e Links
                   </h1>
                   <span className="flex text-justify">
-                    Toda página começa com uma varinha mágica especial chamada
-                    &lt;!DOCTYPE html&gt;. Em seguida, temos a tag &lt;html&gt;
-                    que envolve tudo. O conteúdo que os feiticeiros querem que
-                    os outros vejam fica dentro da tag &lt;body&gt;, enquanto as
-                    coisas invisíveis vão dentro da tag &lt;head&gt;. Ah, e não
-                    esqueçam da tag &lt;meta charset="utf-8"&gt; para garantir
-                    que todos os idiomas funcionem corretamente!
+                  Para criar listas, usamos &lt;ol&gt; para listas ordenadas e &lt;ul&gt; para listas não ordenadas. As listas têm &lt;li&gt; para cada item. E para fazer links, usamos a tag &lt;a&gt;.
                   </span>
                 </div>
                 <span
@@ -108,10 +112,13 @@ function Hc1a1() {
               <div className="border-l-2 h-32 border-black/50 dark:border-white"></div>
               <div className="flex flex-col space-y-5 justify-center ml-5">
                 <div className="hover:bg-[#CE9FF5] rounded-md p-2 cursor-pointer">
-                  Introdução
+                  Tags Estruturais
+                </div>
+                <div className="hover:bg-[#CE9FF5] rounded-md p-2 cursor-pointer">
+                  Tags de Título e Texto
                 </div>
                 <div className="hover:bg-[#E08A98] rounded-md p-2 cursor-pointer">
-                  Estrutura Básica
+                  Lista de Links
                 </div>
               </div>
             </div>
@@ -122,4 +129,4 @@ function Hc1a1() {
   );
 }
 
-export default Hc1a1;
+export default Cc1a2;
