@@ -57,7 +57,7 @@ function Perfil() {
   };
 
   const handleProfileChange = () => {
-    const local = JSON.parse(localStorage.getItem("user"));
+    const local = JSON.parse(atob(localStorage.getItem("user")));
     const id = local.id;
     const imagem = { imagem: image };
     axios
@@ -77,7 +77,7 @@ function Perfil() {
       .then(onClose)
       .catch((err) => console.log(err));
     const updatedUser = { ...local, imagem: image };
-    localStorage.setItem("user", JSON.stringify(updatedUser));
+    localStorage.setItem("user", btoa(JSON.stringify(updatedUser)));
   };
   let img;
   let active;
