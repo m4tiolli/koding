@@ -2,7 +2,7 @@ const mysql = require("mysql");
 const cors = require("cors");
 module.exports = function (app) {
   app.use(cors());
-
+  
   const db = mysql.createPool({
     host: "koding.mysql.database.azure.com",
     user: "tccbarto",
@@ -174,6 +174,26 @@ module.exports = function (app) {
           res.status(500).json({ error: "Erro ao alterar imagem" });
         } else {
           res.json({ message: "Imagem alterada" });
+        }
+      }
+    );
+  });
+
+  app.put("/responsavel/:responsavel/crianca/:id", (req, res) => {
+    const { username, email, senha } = req.body;
+    const { responsavel, id } = req.params;
+  
+    db.query(
+      "UPDATE crianca SET username = ?, email = ?, senha = ? WHERE id = ? AND responsavel = ?",
+      [username, email, senha, id, responsavel],
+      (err, result) => {
+        if (err) {
+          console.error("Erro ao alterar criança", err);
+          res.status(500).json({ error: "Erro ao alterar criança" });
+        } else if (result.affectedRows === 0) {
+          res.status(404).json({ error: "Criança não encontrada ou não pertence a este responsável" });
+        } else {
+          res.json({ message: "Criança alterada com sucesso" });
         }
       }
     );
