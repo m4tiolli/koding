@@ -1,5 +1,6 @@
 const mysql = require("mysql");
 const cors = require("cors");
+const nodemailer = require("nodemailer")
 module.exports = function (app) {
   app.use(cors());
   
@@ -502,4 +503,25 @@ module.exports = function (app) {
       }
     );
   });
+
+  app.get("/redefinir", async (req, res) => {
+    const transporter = nodemailer.createTransport({
+      host: "smtp.umbler.com",
+      port: 587,
+      secure: false,
+      auth: {
+        user: "jugama@tcckoding.site",
+        pass: "HeraCross/015",
+      },
+    })
+    const info = await transporter.sendMail({
+      from: '"Ju Gama - Equipe Koding" <jugama@tcckoding.site>', // sender address
+      to: "gabrielmatiollif@gmail.com, marcos.alves117@etec.sp.gov.br", // list of receivers
+      subject: "Redefinição de Senha", // Subject line
+      text: "Hello world?", // plain text body
+      html: "<b>Hello world?</b>", // html body
+    });
+  
+    console.log("Message sent: %s", info.messageId);
+  })
 };

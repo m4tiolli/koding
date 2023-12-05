@@ -3,7 +3,7 @@ import { BiSearch } from "react-icons/bi";
 import { IoArrowBack } from "react-icons/io5";
 import { AiOutlineClose } from "react-icons/ai";
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Menu from "../../Components/Menu/Menu";
 
 import { useDisclosure } from "@chakra-ui/react";
@@ -46,6 +46,7 @@ function Aulas() {
   }, []);
 
   const capitulo = capitulos.linguagem;
+  const id_capitulo = capitulos.numerocapitulo
   var texto;
   switch (capitulo) {
     case 1:
@@ -66,6 +67,8 @@ function Aulas() {
   }
 
   const navigate = useNavigate();
+
+  console.log(aulas);
 
   const [searchTerm, setSearchTerm] = useState("");
   const filteredCapitulos = aulas.filter((aula) =>
@@ -135,7 +138,9 @@ function Aulas() {
             </div>
           ) : (
             aulas.map((aula, index) => (
-              <CardAula aula={aula} capitulo={capitulos} key={index} />
+              <Link to={`/aulas/${texto.toLowerCase()}/cap${id_capitulo}/aula${aula.numeroaula}`}  key={index}>
+              <CardAula aula={aula} capitulo={capitulos} />
+              </Link>
             ))
           )}
         </div>

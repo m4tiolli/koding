@@ -50,6 +50,8 @@ function AppRoutes() {
         <Route exact path="/desafios" element={<Desafios />} />
         <Route exact path="/conteudo" element={<Conteudo />} />
         <Route exact path="/pais/selecionar" element={<SelectCrianca />} />
+        <Route exact path="/aulas/html/cap1/aula1" element={<SelectCrianca />} />
+
       </Routes>
     </HashRouter>
   );
