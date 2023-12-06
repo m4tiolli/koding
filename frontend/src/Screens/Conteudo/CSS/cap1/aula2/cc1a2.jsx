@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
 import { useNavigate } from "react-router-dom";
 
-import html1 from "../../../../../assets/comando1.svg";
+import css1 from "../../../../../assets/css/comando-2.svg";
 
 import {
   protanomaly,
@@ -78,6 +78,15 @@ function Cc1a2() {
                   Define o tamanho da fonte.
                 </span>
               </div>
+              <span
+                className="text-xl font-semibold mb-3 mt-5"
+                style={{ color: Color(mode, "#438ADD") }}
+              >
+                Exemplo:
+              </span>
+              <div className="mb-5">
+                <img src={css1} alt="" />
+              </div>
 
               <div className="flex flex-col w-10/12 mt-10">
                 <div className="">
@@ -88,9 +97,11 @@ function Cc1a2() {
                     2. Estilizando com Cores
                   </h1>
                   <span className="flex text-justify">
-                    Em CSS, podemos usar várias formas para escolher cores! <br /> <br /> 
-                    Por nome: blue, red, etc. <br /> Código hexadecimal: #00ff00 (verde), 
-                    #ff4500 (laranja), etc. <br /> RGB: rgb(255, 0, 0) (vermelho puro). <br />
+                    Em CSS, podemos usar várias formas para escolher cores!{" "}
+                    <br /> <br />
+                    Por nome: blue, red, etc. <br /> Código hexadecimal: #00ff00
+                    (verde), #ff4500 (laranja), etc. <br /> RGB: rgb(255, 0, 0)
+                    (vermelho puro). <br />
                     HSL: hsl(120, 100%, 50%) (verde puro).
                   </span>
                 </div>

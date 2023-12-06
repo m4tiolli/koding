@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
 import { useNavigate } from "react-router-dom";
 
-import html1 from "../../../../../assets/comando1.svg";
+import css1 from "../../../../../assets/css/comando-7.svg";
 
 import {
   protanomaly,
@@ -68,11 +68,17 @@ function Cc1a1() {
                 Juntando Flexbox e Grade, podemos criar layouts incríveis!
                 </span>
               </div>
+              <span
+                className="text-xl font-semibold mb-3 mt-5"
+                style={{ color: Color(mode, "#438ADD") }}
+              >
+                Exemplo:
+              </span>
+              <div className="mb-5">
+                <img src={css1} alt="" />
+              </div>
 
-              <div className="flex flex-col w-10/12 mt-10 mb-10">
-                <div className="mb-5">
-                  <img src={html1} alt="" />
-                </div>
+              <div className="flex flex-col w-10/12 mt-5 mb-10">
                 <span
                   className="flex text-justify"
                 >

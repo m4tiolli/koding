@@ -3,7 +3,8 @@ import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
 import { useNavigate } from "react-router-dom";
 
-import html1 from "../../../../../assets/comando1.svg";
+import css1 from "../../../../../assets/css/comando.svg";
+import css2 from "../../../../../assets/css/comando-1.svg";
 
 import {
   protanomaly,
@@ -88,7 +89,10 @@ function Cc1a1() {
                   Exemplo:
                 </span>
                 <div className="mb-5">
-                  <img src={html1} alt="" />
+                  <img src={css1} alt="" />
+                </div>
+                <div className="mb-5">
+                  <img src={css2} alt="" />
                 </div>
               </div>
             </div>

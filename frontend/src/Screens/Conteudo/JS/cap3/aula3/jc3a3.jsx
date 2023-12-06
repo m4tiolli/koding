@@ -3,7 +3,8 @@ import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
 import { useNavigate } from "react-router-dom";
 
-import html1 from "../../../../../assets/comando1.svg";
+import js1 from "../../../../../assets/js/comando-10.svg";
+import js2 from "../../../../../assets/js/comando-12.svg";
 
 import {
   protanomaly,
@@ -71,6 +72,16 @@ function Jc1a1() {
                 </span>
               </div>
 
+              <span
+                className="text-xl font-semibold mt-5 mb-3"
+                style={{ color: Color(mode, "#E8BE2A") }}
+              >
+                Exemplo:
+              </span>
+              <div className="mb-5">
+                <img src={js1} alt="" />
+              </div>
+
               <div className="flex flex-col w-10/12 mt-10 mb-10">
                 <div className="mb-5">
                   <h1
@@ -85,8 +96,14 @@ function Jc1a1() {
                     useState para gerenciar o estado.
                   </span>
                 </div>
+                <span
+                  className="text-xl font-semibold mb-3"
+                  style={{ color: Color(mode, "#E8BE2A") }}
+                >
+                  Exemplo:
+                </span>
                 <div className="mb-5">
-                  <img src={html1} alt="" />
+                  <img src={js2} alt="" />
                 </div>
                 <span className="flex text-justify">
                   E assim concluímos nossa jornada pelo mundo mágico do

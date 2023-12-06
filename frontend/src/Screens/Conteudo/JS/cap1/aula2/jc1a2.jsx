@@ -3,7 +3,8 @@ import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
 import { useNavigate } from "react-router-dom";
 
-import html1 from "../../../../../assets/comando1.svg";
+import js1 from "../../../../../assets/js/comando-1.svg";
+import js2 from "../../../../../assets/js/comando-2.svg";
 
 import {
   protanomaly,
@@ -73,6 +74,15 @@ function Jc1a1() {
                   querySelectorAll(): Pega todos os elementos. javascript
                 </span>
               </div>
+              <span
+                className="text-xl font-semibold mb-3 mt-5"
+                style={{ color: Color(mode, "#E8BE2A") }}
+              >
+                Exemplo:
+              </span>
+              <div className="mb-5">
+                <img src={js1} alt="" />
+              </div>
 
               <div className="flex flex-col w-10/12 mt-10 mb-10">
                 <div className="mb-5">
@@ -91,6 +101,7 @@ function Jc1a1() {
                     removeAttribute(): Remove um atributo.
                   </span>
                 </div>
+              </div>
                 <span
                   className="text-xl font-semibold mb-3"
                   style={{ color: Color(mode, "#E8BE2A") }}
@@ -98,9 +109,8 @@ function Jc1a1() {
                   Exemplo:
                 </span>
                 <div className="mb-5">
-                  <img src={html1} alt="" />
+                  <img src={js2} alt="" />
                 </div>
-              </div>
             </div>
 
             {/* Menu */}

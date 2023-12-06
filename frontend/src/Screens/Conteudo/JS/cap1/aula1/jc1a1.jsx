@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
 import { useNavigate } from "react-router-dom";
 
-import html1 from "../../../../../assets/comando1.svg";
+import js1 from "../../../../../assets/js/comando.svg";
 
 import {
   protanomaly,
@@ -72,7 +72,7 @@ function Jc1a1() {
                 </span>
               </div>
 
-              <div className="flex flex-col w-10/12 mt-10 mb-10">
+              <div className="flex flex-col w-10/12 mt-10 mb-5">
                 <div className="mb-5">
                   <h1
                     className="text-2xl font-semibold mb-3"
@@ -87,16 +87,16 @@ function Jc1a1() {
                     blocos e const mantém um valor constante.
                   </span>
                 </div>
+              </div>
                 <span
                   className="text-xl font-semibold mb-3"
                   style={{ color: Color(mode, "#E8BE2A") }}
                 >
                   Exemplo:
                 </span>
-                <div className="mb-5">
-                  <img src={html1} alt="" />
+                <div className="mb-14">
+                  <img src={js1} alt="" />
                 </div>
-              </div>
 
               <div className="flex flex-col w-10/12 mb-10">
                 <div className="mb-5">
@@ -116,15 +116,6 @@ function Jc1a1() {
                     Arrays: Guardam coleções de tesouros. Funções: São feitiços
                     reutilizáveis.
                   </span>
-                </div>
-                <span
-                  className="text-xl font-semibold mb-3"
-                  style={{ color: Color(mode, "#E8BE2A") }}
-                >
-                  Exemplo:
-                </span>
-                <div className="mb-5">
-                  <img src={html1} alt="" />
                 </div>
               </div>
             </div>

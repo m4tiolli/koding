@@ -3,7 +3,8 @@ import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
 import { useNavigate } from "react-router-dom";
 
-import html1 from "../../../../../assets/comando1.svg";
+import js1 from "../../../../../assets/js/comando-8.svg";
+import js2 from "../../../../../assets/js/comando-9.svg";
 
 import {
   protanomaly,
@@ -70,8 +71,17 @@ function Jc1a1() {
                   pausa a função até que a promessa seja cumprida.
                 </span>
               </div>
+              <span
+                className="text-xl font-semibold mt-5 mb-3"
+                style={{ color: Color(mode, "#E8BE2A") }}
+              >
+                Exemplo:
+              </span>
+              <div className="mb-5">
+                <img src={js1} alt="" />
+              </div>
 
-              <div className="flex flex-col w-10/12 mt-10 mb-10">
+              <div className="flex flex-col w-10/12 mt-10 mb-5">
                 <div className="mb-5">
                   <h1
                     className="text-2xl font-semibold mb-3"
@@ -84,15 +94,15 @@ function Jc1a1() {
                     buscando informações mágicas!
                   </span>
                 </div>
-                <span
-                  className="text-xl font-semibold mb-3"
-                  style={{ color: Color(mode, "#E8BE2A") }}
-                >
-                  Exemplo:
-                </span>
-                <div className="mb-5">
-                  <img src={html1} alt="" />
-                </div>
+              </div>
+              <span
+                className="text-xl font-semibold mb-3"
+                style={{ color: Color(mode, "#E8BE2A") }}
+              >
+                Exemplo:
+              </span>
+              <div className="mb-5">
+                <img src={js2} alt="" />
               </div>
             </div>
 

@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
 import { useNavigate } from "react-router-dom";
 
-import html1 from "../../../../../assets/comando1.svg";
+import js1 from "../../../../../assets/js/comando-11.svg";
 
 import {
   protanomaly,
@@ -65,8 +65,19 @@ function Jc1a1() {
                   1. Componentes Mágicos
                 </h1>
                 <span className="flex text-justify">
-                Componentes são blocos mágicos que representam partes reutilizáveis da interface. Eles promovem reutilização e encapsulamento.
+                  Componentes são blocos mágicos que representam partes
+                  reutilizáveis da interface. Eles promovem reutilização e
+                  encapsulamento.
                 </span>
+              </div>
+              <span
+                className="text-xl font-semibold mt-5 mb-3"
+                style={{ color: Color(mode, "#E8BE2A") }}
+              >
+                Exemplo:
+              </span>
+              <div className="mb-5">
+                <img src={js1} alt="" />
               </div>
 
               <div className="flex flex-col w-10/12 mt-10 mb-10">
@@ -78,17 +89,9 @@ function Jc1a1() {
                     2. Roteamento Encantado
                   </h1>
                   <span className="flex text-justify">
-                  Roteamento é a mágica de navegar entre páginas sem recarregar. Traz uma experiência suave para os usuários.
+                    Roteamento é a mágica de navegar entre páginas sem
+                    recarregar. Traz uma experiência suave para os usuários.
                   </span>
-                </div>
-                <span
-                  className="text-xl font-semibold mb-3"
-                  style={{ color: Color(mode, "#E8BE2A") }}
-                >
-                  Exemplo:
-                </span>
-                <div className="mb-5">
-                  <img src={html1} alt="" />
                 </div>
               </div>
             </div>

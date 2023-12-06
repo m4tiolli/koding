@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
 import { useNavigate } from "react-router-dom";
 
-import html1 from "../../../../../assets/comando1.svg";
+import js1 from "../../../../../assets/js/comando-5.svg";
 
 import {
   protanomaly,
@@ -37,7 +37,7 @@ function Jc1a1() {
 
   return (
     <div
-      className="flex h-screen w-full"
+      className="flex h-full w-full"
       style={{
         background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)",
       }}
@@ -65,8 +65,19 @@ function Jc1a1() {
                   1. Funções de Callback
                 </h1>
                 <span className="flex text-justify">
-                Callbacks garantem que uma função seja executada após uma tarefa mágica ser concluída. Por exemplo, mostrar uma mensagem após 3 segundos.
+                  Callbacks garantem que uma função seja executada após uma
+                  tarefa mágica ser concluída. Por exemplo, mostrar uma mensagem
+                  após 3 segundos.
                 </span>
+              </div>
+              <span
+                className="text-xl font-semibold mb-3 mt-5"
+                style={{ color: Color(mode, "#E8BE2A") }}
+              >
+                Exemplo:
+              </span>
+              <div className="mb-14">
+                <img src={js1} alt="" />
               </div>
             </div>
           </div>

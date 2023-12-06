@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
 import { useNavigate } from "react-router-dom";
 
-import html1 from "../../../../../assets/comando1.svg";
+import css1 from "../../../../../assets/css/comando-3.svg";
 
 import {
   protanomaly,
@@ -89,6 +89,16 @@ function Cc1a2() {
                     Pseudo-elementos: Estilizam partes específicas de um elemento, como ::first-line para a primeira linha de um parágrafo.
                   </span>
                 </div>
+                
+              <span
+                className="text-xl font-semibold mb-3 mt-5"
+                style={{ color: Color(mode, "#438ADD") }}
+              >
+                Exemplo:
+              </span>
+              <div className="mb-5">
+                <img src={css1} alt="" />
+              </div>
               </div>
             </div>
 

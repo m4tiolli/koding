@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
 import { useNavigate } from "react-router-dom";
 
-import html1 from "../../../../../assets/comando1.svg";
+import css1 from "../../../../../assets/css/comando-4.svg";
 
 import {
   protanomaly,
@@ -37,7 +37,7 @@ function Cc2a2() {
 
   return (
     <div
-      className="flex h-screen w-full"
+      className="flex h-full w-full"
       style={{
         background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)",
       }}
@@ -67,6 +67,15 @@ function Cc2a2() {
                 <span className="flex text-justify">
                 Keyframes são como receitas mágicas para animações em CSS! Eles definem como a animação se desenrola ao longo do tempo. Vamos dar vida a elementos usando keyframes!
                 </span>
+              </div>
+              <span
+                className="text-xl font-semibold mb-3 mt-5"
+                style={{ color: Color(mode, "#438ADD") }}
+              >
+                Exemplo:
+              </span>
+              <div className="mb-5">
+                <img src={css1} alt="" />
               </div>
             </div>
           </div>
