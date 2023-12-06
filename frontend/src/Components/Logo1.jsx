@@ -1,7 +1,11 @@
+import { useNavigate } from "react-router-dom";
+
 export default function Logo1() {
+  const navigate = useNavigate()
   return (
     <>
       <svg
+       onClick={() => navigate(-1)}
         width="180"
         height="90"
         viewBox="0 0 340 120"
