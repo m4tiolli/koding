@@ -6,6 +6,7 @@ import { AiFillEye } from "react-icons/ai";
 import { BsArrowLeft } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
 
 function CadastroCrianca() {
   const [isPassVisible, setPassVisible] = useState(false);
@@ -62,20 +63,49 @@ function CadastroCrianca() {
       senha === "" ||
       confirmarSenha === ""
     ) {
-      alert("Por favor, preencha todos os campos.");
+      toast.error("Preencha todos os campos!", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
       return;
     } else if (senha !== confirmarSenha) {
-      alert("As senhas não coincidem.");
+      toast.error("As senhas não coincidem!", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
       return;
     } else {
-      const local = JSON.parse(localStorage.getItem("user"));
+      const local = JSON.parse(atob(localStorage.getItem("user")));
       const responsavel = local.id;
       const body = { nome, username, email, senha, responsavel };
       axios
         .post("https://tcckoding.azurewebsites.net/crianca", body)
         .then(() => {
-          alert("Usuário cadastrado com sucesso");
-          navigate("/login");
+          toast.success("Conta criada!", {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+          setTimeout(() => {
+            navigate("/pais/selecionar");
+          }, 3000);
         })
         .catch((error) => {
           console.log(error);
@@ -157,6 +187,19 @@ function CadastroCrianca() {
         dark ? "bg-[#173032]" : "bg-[#c4e1d5]"
       } absolute w-full h-fit xl:h-full z-20 flex flex-col-reverse xl:flex-row xl:justify-between gap-4 items-start justify-start xl:overflow-hidden`}
     >
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        limit={3}
+        hideProgressBar
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       <BackgroundCircles isResponsavel={true} />
       <div className="z-20 h-full w-full flex items-end justify-center flex-col relative">
         <div className="flex items-center justify-evenly flex-col h-full w-full">

@@ -1,9 +1,9 @@
 const mysql = require("mysql");
 const cors = require("cors");
-const nodemailer = require("nodemailer")
+const nodemailer = require("nodemailer");
 module.exports = function (app) {
   app.use(cors());
-  
+
   const db = mysql.createPool({
     host: "koding.mysql.database.azure.com",
     user: "tccbarto",
@@ -183,7 +183,7 @@ module.exports = function (app) {
   app.put("/responsavel/:responsavel/crianca/:id", (req, res) => {
     const { username, email, senha } = req.body;
     const { responsavel, id } = req.params;
-  
+
     db.query(
       "UPDATE crianca SET username = ?, email = ?, senha = ? WHERE id = ? AND responsavel = ?",
       [username, email, senha, id, responsavel],
@@ -192,7 +192,9 @@ module.exports = function (app) {
           console.error("Erro ao alterar criança", err);
           res.status(500).json({ error: "Erro ao alterar criança" });
         } else if (result.affectedRows === 0) {
-          res.status(404).json({ error: "Criança não encontrada ou não pertence a este responsável" });
+          res.status(404).json({
+            error: "Criança não encontrada ou não pertence a este responsável",
+          });
         } else {
           res.json({ message: "Criança alterada com sucesso" });
         }
@@ -505,24 +507,79 @@ module.exports = function (app) {
   });
 
   app.post("/redefinir/", async (req, res) => {
-    const {email, codigo} = req.body
-    const transporter = nodemailer.createTransport({
-      host: "smtp.umbler.com",
-      port: 587,
-      secure: false,
-      auth: {
-        user: "jugama@tcckoding.site",
-        pass: "HeraCross/015",
-      },
-    })
-    const info = await transporter.sendMail({
-      from: '"Ju Gama - Equipe Koding" <jugama@tcckoding.site>', // sender address
-      to: email, // list of receivers
-      subject: "Redefinição de Senha", // Subject line
-      text: codigo, // plain text body
-      html: codigo, // html body
-    });
-  
-    console.log("Message sent: %s", info.messageId);
-  })
+    const { email, codigo } = req.body;
+
+    db.query(
+      `SELECT 'crianca' AS tabela FROM crianca WHERE email = ? UNION SELECT 'responsavel' AS tabela FROM responsavel WHERE email = ?`,
+      [email, email],
+      (err, result) => {
+        if (err) {
+          res.status(500).json(err);
+        } else {
+          if (result && result.length > 0) {
+            const resposta = result[0].tabela;
+            const transporter = nodemailer.createTransport({
+              host: "smtp.umbler.com",
+              port: 587,
+              secure: false,
+              auth: {
+                user: "jugama@tcckoding.site",
+                pass: "HeraCross/015",
+              },
+            });
+            transporter.sendMail(
+              {
+                from: '"Ju Gama - Equipe Koding" <jugama@tcckoding.site>',
+                to: email,
+                subject: "Redefinição de Senha",
+                text: codigo,
+                html: codigo,
+              },
+              (err, info) => {
+                if (err) {
+                  res.status(500).json(err);
+                } else {
+                  res.status(200).json(resposta);
+                }
+              }
+            );
+          } else {
+            res.status(404).json("Email não existe.");
+          }
+        }
+      }
+    );
+  });
+
+  app.put("/redefinir/crianca/:email", (req, res) => {
+    const { senha } = req.body;
+    const email = req.params.email;
+    db.query(
+      "UPDATE crianca SET senha = ? WHERE email = ?",
+      [senha, email],
+      (err, result) => {
+        if (err) {
+          res.json(err);
+        } else {
+          res.status(200).json("senha alterada");
+        }
+      }
+    );
+  });
+  app.put("/redefinir/responsavel/:email", (req, res) => {
+    const { senha } = req.body;
+    const email = req.params.email;
+    db.query(
+      "UPDATE responsavel SET senha = ? WHERE email = ?",
+      [senha, email],
+      (err, result) => {
+        if (err) {
+          res.json(err);
+        } else {
+          res.status(200).json("senha alterada");
+        }
+      }
+    );
+  });
 };
+  
