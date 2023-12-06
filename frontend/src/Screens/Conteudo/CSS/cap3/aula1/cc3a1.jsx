@@ -11,7 +11,7 @@ import {
   deuteranomaly,
 } from "../../../../../Components/ColorBlind";
 
-function Cc3a1() {
+function Cc1a1() {
   const navigate = useNavigate();
   useEffect(() => {
     localStorage.nivel === "responsavel"
@@ -51,7 +51,7 @@ function Cc3a1() {
         />
         <div className="flex flex-col ml-20 mt-16 mb-10">
           <span className="text-4xl font-semibold">
-            Aula 00 - Introdução ao Design Responsivo
+            Aula 00 - Introdução a Layouts Flexíveis em CSS
           </span>
 
           <div className="flex w-10/12 mt-16 mb-10 gap-x-10">
@@ -60,15 +60,18 @@ function Cc3a1() {
               <div>
                 <h1
                   className="text-2xl font-semibold mb-3"
-                  style={{ color: Color(mode, "#E87635") }}
+                  style={{ color: Color(mode, "#438ADD") }}
                 >
-                  1. O que é Design Responsivo?
+                  1. Flexbox
                 </h1>
                 <span className="flex text-justify">
-                Vamos explorar o design responsivo, que é como a mágica que faz nossas páginas se adaptarem a diferentes tamanhos de tela. Usamos "media queries" para fazer truques de layout.
+                  Flexbox é como uma poção mágica para layouts flexíveis! <br /> <br />
+                  display: flex: Transforma um contêiner em um flex container. <br />
+                  flex-direction: Define a direção dos flex items (linha ou
+                  coluna). <br /> flex-wrap: Permite que os itens quebrem para uma nova
+                  linha conforme necessário.
                 </span>
               </div>
-              
             </div>
           </div>
         </div>
@@ -77,4 +80,4 @@ function Cc3a1() {
   );
 }
 
-export default Cc3a1;
+export default Cc1a1;

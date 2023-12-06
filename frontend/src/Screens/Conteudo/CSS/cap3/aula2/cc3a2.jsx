@@ -11,7 +11,7 @@ import {
   deuteranomaly,
 } from "../../../../../Components/ColorBlind";
 
-function Cc3a2() {
+function Cc1a1() {
   const navigate = useNavigate();
   useEffect(() => {
     localStorage.nivel === "responsavel"
@@ -49,9 +49,9 @@ function Cc3a2() {
           onClick={() => navigate(-1)}
           className="flex mt-28 ml-8 text-3xl cursor-pointer dark:text-white"
         />
-        <div className="flex flex-col ml-20 mt-16">
+        <div className="flex flex-col ml-20 mt-16 mb-10">
           <span className="text-4xl font-semibold">
-            Aula 01 - Layouts Flexiveis e Grids
+            Aula 01 - Layouts de Grade em CSS
           </span>
 
           <div className="flex w-10/12 mt-16 mb-10 gap-x-10">
@@ -60,12 +60,12 @@ function Cc3a2() {
               <div>
                 <h1
                   className="text-2xl font-semibold mb-3"
-                  style={{ color: Color(mode, "#E87635") }}
+                  style={{ color: Color(mode, "#438ADD") }}
                 >
-                  1. Unidades Mágicas e Media Queries
+                  1. Layouts em Grade
                 </h1>
                 <span className="flex text-justify">
-                Unidades mágicas como porcentagens e vw ajudam a criar layouts flexíveis. As "media queries" são como feitiços que ajustam o layout dependendo do dispositivo.
+                Vamos usar o poder das grades para organizar nossos elementos!
                 </span>
               </div>
             </div>
@@ -76,4 +76,4 @@ function Cc3a2() {
   );
 }
 
-export default Cc3a2;
+export default Cc1a1;

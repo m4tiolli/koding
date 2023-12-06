@@ -11,7 +11,7 @@ import {
   deuteranomaly,
 } from "../../../../../Components/ColorBlind";
 
-function Cc2a1() {
+function Cc2a2() {
   const navigate = useNavigate();
   useEffect(() => {
     localStorage.nivel === "responsavel"
@@ -51,7 +51,7 @@ function Cc2a1() {
         />
         <div className="flex flex-col ml-20 mt-16 mb-10">
           <span className="text-4xl font-semibold">
-            Aula 00 - HTML Semântico
+            Aula 00 - Conceitos Básicos de Animações em CSS
           </span>
 
           <div className="flex w-10/12 mt-16 mb-10 gap-x-10">
@@ -60,16 +60,15 @@ function Cc2a1() {
               <div>
                 <h1
                   className="text-2xl font-semibold mb-3"
-                  style={{ color: Color(mode, "#E87635") }}
+                  style={{ color: Color(mode, "#438ADD") }}
                 >
-                  1. Elementos Semânticos
+                  1. Keyframes
                 </h1>
                 <span className="flex text-justify">
-                Agora, vamos mergulhar nas magias mais profundas do HTML! &lt;main&gt; é o conteúdo principal, &lt;nav&gt; é a navegação, e &lt;section&gt; é como dividimos nossa página.
+                Keyframes são como receitas mágicas para animações em CSS! Eles definem como a animação se desenrola ao longo do tempo. Vamos dar vida a elementos usando keyframes!
                 </span>
               </div>
             </div>
-
           </div>
         </div>
       </main>
@@ -77,4 +76,4 @@ function Cc2a1() {
   );
 }
 
-export default Cc2a1;
+export default Cc2a2;

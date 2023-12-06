@@ -11,7 +11,7 @@ import {
   deuteranomaly,
 } from "../../../../../Components/ColorBlind";
 
-function Jc2a3() {
+function Jc1a1() {
   const navigate = useNavigate();
   useEffect(() => {
     localStorage.nivel === "responsavel"
@@ -37,7 +37,7 @@ function Jc2a3() {
 
   return (
     <div
-      className="flex h-screen w-full"
+      className="flex h-full w-full"
       style={{
         background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)",
       }}
@@ -51,7 +51,7 @@ function Jc2a3() {
         />
         <div className="flex flex-col ml-20 mt-16 mb-10">
           <span className="text-4xl font-semibold">
-            Aula 02 - HTML e Multimídias
+            Aula 02 - Async/Await e Fetch API
           </span>
 
           <div className="flex w-10/12 mt-16 mb-10 gap-x-10">
@@ -60,13 +60,52 @@ function Jc2a3() {
               <div>
                 <h1
                   className="text-2xl font-semibold mb-3"
-                  style={{ color: Color(mode, "#E87635") }}
+                  style={{ color: Color(mode, "#E8BE2A") }}
                 >
-                  1. Incorporação de Multimídia
+                  1. Async/Await - Simplificando a Magia
                 </h1>
                 <span className="flex text-justify">
-                Aprendendo a incorporar imagens &lt;img&gt;, áudio &lt;audio&gt;, e vídeo &lt;video&gt;. Além disso, o mistério do &lt;iframe&gt; para mostrar conteúdo de outros lugares.
+                  Async e await tornam a escrita de código assíncrono mais fácil
+                  e legível. Async faz uma função retornar uma promessa, e await
+                  pausa a função até que a promessa seja cumprida.
                 </span>
+              </div>
+
+              <div className="flex flex-col w-10/12 mt-10 mb-10">
+                <div className="mb-5">
+                  <h1
+                    className="text-2xl font-semibold mb-3"
+                    style={{ color: Color(mode, "#E8BE2A") }}
+                  >
+                    2. Fetch API - Pedindo Coisas Mágicas
+                  </h1>
+                  <span className="flex text-justify">
+                    Fetch API é usada para fazer requisições HTTP assíncronas,
+                    buscando informações mágicas!
+                  </span>
+                </div>
+                <span
+                  className="text-xl font-semibold mb-3"
+                  style={{ color: Color(mode, "#E8BE2A") }}
+                >
+                  Exemplo:
+                </span>
+                <div className="mb-5">
+                  <img src={html1} alt="" />
+                </div>
+              </div>
+            </div>
+
+            {/* Menu */}
+            <div className="flex w-72 h-32 mt-10">
+              <div className="border-l-2 h-32 border-black/50 dark:border-white"></div>
+              <div className="flex flex-col space-y-5 justify-center ml-5">
+                <div className="hover:bg-[#CE9FF5] rounded-md p-2 cursor-pointer">
+                  Async/Await - Simplificando a Magia
+                </div>
+                <div className="hover:bg-[#E08A98] rounded-md p-2 cursor-pointer">
+                  Fetch API - Pedindo Coisas Mágicas:
+                </div>
               </div>
             </div>
           </div>
@@ -76,4 +115,4 @@ function Jc2a3() {
   );
 }
 
-export default Jc2a3;
+export default Jc1a1;

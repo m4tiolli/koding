@@ -11,7 +11,7 @@ import {
   deuteranomaly,
 } from "../../../../../Components/ColorBlind";
 
-function Cc2a3() {
+function Cc2a2() {
   const navigate = useNavigate();
   useEffect(() => {
     localStorage.nivel === "responsavel"
@@ -51,7 +51,7 @@ function Cc2a3() {
         />
         <div className="flex flex-col ml-20 mt-16 mb-10">
           <span className="text-4xl font-semibold">
-            Aula 02 - HTML e Multimídias
+            Aula 02 - Animações Avançadas em CSS
           </span>
 
           <div className="flex w-10/12 mt-16 mb-10 gap-x-10">
@@ -60,12 +60,17 @@ function Cc2a3() {
               <div>
                 <h1
                   className="text-2xl font-semibold mb-3"
-                  style={{ color: Color(mode, "#E87635") }}
+                  style={{ color: Color(mode, "#438ADD") }}
                 >
-                  1. Incorporação de Multimídia
+                  1. Propriedades Avançadas de Animação
                 </h1>
                 <span className="flex text-justify">
-                Aprendendo a incorporar imagens &lt;img&gt;, áudio &lt;audio&gt;, e vídeo &lt;video&gt;. Além disso, o mistério do &lt;iframe&gt; para mostrar conteúdo de outros lugares.
+                  Vamos explorar algumas propriedades avançadas para ajustar
+                  nossas animações! <br /> <br /> 
+                  animation-timing-function: Controla a
+                  aceleração da animação. <br /> animation-fill-mode: Define o estado
+                  final da animação. <br /> animation-iteration-count: Determina
+                  quantas vezes a animação deve ser repetida.
                 </span>
               </div>
             </div>
@@ -76,4 +81,4 @@ function Cc2a3() {
   );
 }
 
-export default Cc2a3;
+export default Cc2a2;

@@ -11,7 +11,7 @@ import {
   deuteranomaly,
 } from "../../../../../Components/ColorBlind";
 
-function Jc3a1() {
+function Jc1a1() {
   const navigate = useNavigate();
   useEffect(() => {
     localStorage.nivel === "responsavel"
@@ -37,7 +37,7 @@ function Jc3a1() {
 
   return (
     <div
-      className="flex h-screen w-full"
+      className="flex h-full w-full"
       style={{
         background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)",
       }}
@@ -51,7 +51,7 @@ function Jc3a1() {
         />
         <div className="flex flex-col ml-20 mt-16 mb-10">
           <span className="text-4xl font-semibold">
-            Aula 00 - Introdução ao Design Responsivo
+            Aula 00 - Introdução a Frameworks Front-end em JavaScript
           </span>
 
           <div className="flex w-10/12 mt-16 mb-10 gap-x-10">
@@ -60,15 +60,56 @@ function Jc3a1() {
               <div>
                 <h1
                   className="text-2xl font-semibold mb-3"
-                  style={{ color: Color(mode, "#E87635") }}
+                  style={{ color: Color(mode, "#E8BE2A") }}
                 >
-                  1. O que é Design Responsivo?
+                  1. O que São Frameworks Front-end?
                 </h1>
                 <span className="flex text-justify">
-                Vamos explorar o design responsivo, que é como a mágica que faz nossas páginas se adaptarem a diferentes tamanhos de tela. Usamos "media queries" para fazer truques de layout.
+                  Frameworks são como livros de feitiços que ajudam a construir
+                  interfaces mágicas para as aplicações web. Eles tornam tarefas
+                  comuns mais fáceis!
                 </span>
               </div>
-              
+
+              <div className="flex flex-col w-10/12 mt-10 mb-10">
+                <div className="mb-5">
+                  <h1
+                    className="text-2xl font-semibold mb-3"
+                    style={{ color: Color(mode, "#E8BE2A") }}
+                  >
+                    2. React e Angular - Dois Poderosos Feitiços
+                  </h1>
+                  <span className="flex text-justify">
+                    React: Uma biblioteca para criar interfaces de usuário
+                    modulares e reutilizáveis. Usa componentes para tornar o
+                    desenvolvimento eficiente. <br /> <br />
+                    Angular: Um framework completo para construir aplicações web
+                    robustas. Usa TypeScript e orientação a objetos.
+                  </span>
+                </div>
+                <span
+                  className="text-xl font-semibold mb-3"
+                  style={{ color: Color(mode, "#E8BE2A") }}
+                >
+                  Exemplo:
+                </span>
+                <div className="mb-5">
+                  <img src={html1} alt="" />
+                </div>
+              </div>
+            </div>
+
+            {/* Menu */}
+            <div className="flex w-72 h-32 mt-10">
+              <div className="border-l-2 h-32 border-black/50 dark:border-white"></div>
+              <div className="flex flex-col space-y-5 justify-center ml-5">
+                <div className="hover:bg-[#CE9FF5] rounded-md p-2 cursor-pointer">
+                  O que São Frameworks Front-end?
+                </div>
+                <div className="hover:bg-[#E08A98] rounded-md p-2 cursor-pointer">
+                  React e Angular - Dois Poderosos Feitiços
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -77,4 +118,4 @@ function Jc3a1() {
   );
 }
 
-export default Jc3a1;
+export default Jc1a1;

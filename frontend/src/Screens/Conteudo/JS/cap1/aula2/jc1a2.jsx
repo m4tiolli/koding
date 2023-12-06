@@ -11,7 +11,7 @@ import {
   deuteranomaly,
 } from "../../../../../Components/ColorBlind";
 
-function Jc1a2() {
+function Jc1a1() {
   const navigate = useNavigate();
   useEffect(() => {
     localStorage.nivel === "responsavel"
@@ -49,9 +49,9 @@ function Jc1a2() {
           onClick={() => navigate(-1)}
           className="flex mt-28 ml-8 text-3xl cursor-pointer dark:text-white"
         />
-        <div className="flex flex-col ml-20 mt-16">
+        <div className="flex flex-col ml-20 mt-16 mb-10">
           <span className="text-4xl font-semibold">
-            Aula 01 - Tags HTML e Estrutura Basica
+            Aula 01 - Manipulação do Documento com JavaScript
           </span>
 
           <div className="flex w-10/12 mt-16 mb-10 gap-x-10">
@@ -60,44 +60,40 @@ function Jc1a2() {
               <div>
                 <h1
                   className="text-2xl font-semibold mb-3"
-                  style={{ color: Color(mode, "#E87635") }}
+                  style={{ color: Color(mode, "#E8BE2A") }}
                 >
-                  1. Tags Estruturais
+                  1. Selecionando Elementos com Feitiços
                 </h1>
                 <span className="flex text-justify">
-                As tags como  &lt;header&gt;,  &lt;footer&gt;, e  &lt;div&gt; são como feitiços que organizam o conteúdo da página. O  &lt;header&gt; é como um título, o  &lt;footer&gt; fica no final, e  &lt;div&gt; é uma caixa mágica para organizar coisas.
+                  JavaScript pode interagir com o conteúdo HTML usando feitiços
+                  especiais! <br /> <br />
+                  getElementById(): Pega um elemento pelo seu ID. <br />
+                  getElementsByClassName(): Pega elementos por classe. <br />
+                  querySelector(): Usa seletores CSS. <br />
+                  querySelectorAll(): Pega todos os elementos. javascript
                 </span>
               </div>
 
-              <div className="flex flex-col w-10/12 mt-10">
-                <div className="">
-                  <h1
-                    className="text-2xl font-semibold mb-3"
-                    style={{ color: Color(mode, "#E87635") }}
-                  >
-                    2. Tags de Título e Texto
-                  </h1>
-                  <span className="flex text-justify">
-                  Os títulos, como &lt;h1&gt; a &lt;h6&gt;, são como encantamentos de diferentes tamanhos. E as tags &lt;p&gt;, &lt;span&gt;, &lt;br&gt;, e &lt;hr&gt; ajudam a criar textos e separações.
-                  </span>
-                </div>
-              </div>
-
-              <div className="flex flex-col w-10/12 mt-10">
+              <div className="flex flex-col w-10/12 mt-10 mb-10">
                 <div className="mb-5">
                   <h1
                     className="text-2xl font-semibold mb-3"
-                    style={{ color: Color(mode, "#E87635") }}
+                    style={{ color: Color(mode, "#E8BE2A") }}
                   >
-                    3. Listas e Links
+                    2. Modificando Atributos com Encantamentos
                   </h1>
                   <span className="flex text-justify">
-                  Para criar listas, usamos &lt;ol&gt; para listas ordenadas e &lt;ul&gt; para listas não ordenadas. As listas têm &lt;li&gt; para cada item. E para fazer links, usamos a tag &lt;a&gt;.
+                    Existem feitiços para modificar atributos dos elementos!
+                    <br /> <br />
+                    hasAttribute(): Verifica se um atributo existe. <br />
+                    getAttribute(): Pega o valor de um atributo. <br />
+                    setAttribute(): Adiciona ou atualiza um atributo. <br />
+                    removeAttribute(): Remove um atributo.
                   </span>
                 </div>
                 <span
                   className="text-xl font-semibold mb-3"
-                  style={{ color: Color(mode, "#E87635") }}
+                  style={{ color: Color(mode, "#E8BE2A") }}
                 >
                   Exemplo:
                 </span>
@@ -108,17 +104,14 @@ function Jc1a2() {
             </div>
 
             {/* Menu */}
-            <div className="flex w-64 h-32 mt-10">
+            <div className="flex w-72 h-32 mt-10">
               <div className="border-l-2 h-32 border-black/50 dark:border-white"></div>
               <div className="flex flex-col space-y-5 justify-center ml-5">
                 <div className="hover:bg-[#CE9FF5] rounded-md p-2 cursor-pointer">
-                  Tags Estruturais
-                </div>
-                <div className="hover:bg-[#CE9FF5] rounded-md p-2 cursor-pointer">
-                  Tags de Título e Texto
+                  Selecionando Elementos com Feitiços
                 </div>
                 <div className="hover:bg-[#E08A98] rounded-md p-2 cursor-pointer">
-                  Lista de Links
+                  Modificando Atributos com Encantamentos
                 </div>
               </div>
             </div>
@@ -129,4 +122,4 @@ function Jc1a2() {
   );
 }
 
-export default Jc1a2;
+export default Jc1a1;

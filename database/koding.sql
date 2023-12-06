@@ -410,7 +410,7 @@ Realização de consultas SQL básicas com o PHP
 Recuperação e exibição de dados do banco de dados
 Exemplo prático: Criando uma página para exibir dados de um banco de dados MySQL com PHP.', 
 'html.png', 12, 0),
-(DEFAULT, 'AInserção, Atualização e Exclusão de Dados no MySQL com PHP', 'Nesta aula, você explorará como inserir, atualizar e excluir dados em um banco de dados MySQL usando o PHP.', 
+(DEFAULT, 'Inserção, Atualização e Exclusão de Dados no MySQL com PHP', 'Nesta aula, você explorará como inserir, atualizar e excluir dados em um banco de dados MySQL usando o PHP.', 
 'Inserção de dados em tabelas MySQL com PHP
 Atualização de registros existentes
 Exclusão de registros

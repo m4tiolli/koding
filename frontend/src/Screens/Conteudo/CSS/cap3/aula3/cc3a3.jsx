@@ -11,7 +11,7 @@ import {
   deuteranomaly,
 } from "../../../../../Components/ColorBlind";
 
-function Cc3a3() {
+function Cc1a1() {
   const navigate = useNavigate();
   useEffect(() => {
     localStorage.nivel === "responsavel"
@@ -51,7 +51,7 @@ function Cc3a3() {
         />
         <div className="flex flex-col ml-20 mt-16 mb-10">
           <span className="text-4xl font-semibold">
-            Aula 02 - Imagens Responsivas e Testes em Diferentes Dispositivos
+            Aula 02 - Layouts Flexíveis Avançados e Combinação de Técnicas
           </span>
 
           <div className="flex w-10/12 mt-16 mb-10 gap-x-10">
@@ -60,19 +60,26 @@ function Cc3a3() {
               <div>
                 <h1
                   className="text-2xl font-semibold mb-3"
-                  style={{ color: Color(mode, "#E87635") }}
+                  style={{ color: Color(mode, "#438ADD") }}
                 >
-                  1. Flexbox e Grid Flexíveis
+                  1. Combinando Técnicas para Layouts Mágicos
                 </h1>
                 <span className="flex text-justify">
-                Aprendendo Flexbox e Grid, que são como encantamentos para organizar elementos. Flexbox é como arrumar peças em uma fila, e Grid é como fazer um quebra-cabeça. 
-                <br /> <br />
-                E assim, nossos pequenos feiticeiros tornam-se mestres em HTML, explorando os mistérios mágicos da criação web! 
+                Juntando Flexbox e Grade, podemos criar layouts incríveis!
+                </span>
+              </div>
 
+              <div className="flex flex-col w-10/12 mt-10 mb-10">
+                <div className="mb-5">
+                  <img src={html1} alt="" />
+                </div>
+                <span
+                  className="flex text-justify"
+                >
+                  E assim, nossos jovens feiticeiros aprendem os mistérios mágicos do CSS, transformando páginas web em verdadeiras obras de arte! 
                 </span>
               </div>
             </div>
-
           </div>
         </div>
       </main>
@@ -80,4 +87,4 @@ function Cc3a3() {
   );
 }
 
-export default Cc3a3;
+export default Cc1a1;

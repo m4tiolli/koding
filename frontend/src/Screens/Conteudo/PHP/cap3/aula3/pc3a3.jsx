@@ -11,7 +11,7 @@ import {
   deuteranomaly,
 } from "../../../../../Components/ColorBlind";
 
-function Pc3a3() {
+function Pc1a2() {
   const navigate = useNavigate();
   useEffect(() => {
     localStorage.nivel === "responsavel"
@@ -49,9 +49,9 @@ function Pc3a3() {
           onClick={() => navigate(-1)}
           className="flex mt-28 ml-8 text-3xl cursor-pointer dark:text-white"
         />
-        <div className="flex flex-col ml-20 mt-16 mb-10">
+        <div className="flex flex-col ml-20 mt-16">
           <span className="text-4xl font-semibold">
-            Aula 02 - Imagens Responsivas e Testes em Diferentes Dispositivos
+            Aula 02 - Interagindo com Bancos de Dados Avançados em PHP e MySQL
           </span>
 
           <div className="flex w-10/12 mt-16 mb-10 gap-x-10">
@@ -60,19 +60,18 @@ function Pc3a3() {
               <div>
                 <h1
                   className="text-2xl font-semibold mb-3"
-                  style={{ color: Color(mode, "#E87635") }}
+                  style={{ color: Color(mode, "#5D6CC2") }}
                 >
-                  1. Flexbox e Grid Flexíveis
+                  1. Consultas Avançadas - Procurando o que é Importante
                 </h1>
                 <span className="flex text-justify">
-                Aprendendo Flexbox e Grid, que são como encantamentos para organizar elementos. Flexbox é como arrumar peças em uma fila, e Grid é como fazer um quebra-cabeça. 
-                <br /> <br />
-                E assim, nossos pequenos feiticeiros tornam-se mestres em HTML, explorando os mistérios mágicos da criação web! 
-
+                Às vezes, queremos encontrar coisas especiais no nosso tesouro de dados. Podemos pedir ao MySQL para buscar informações específicas, como nomes e idades das pessoas com mais de 18 anos!
+                </span>
+                <span className="flex text-justify">
+                <br />E assim terminamos nossa jornada mágica pelo PHP! Lembre-se, programar é como fazer magia, e você agora é um verdadeiro feiticeiro do código! 
                 </span>
               </div>
             </div>
-
           </div>
         </div>
       </main>
@@ -80,4 +79,4 @@ function Pc3a3() {
   );
 }
 
-export default Pc3a3;
+export default Pc1a2;

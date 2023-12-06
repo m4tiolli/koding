@@ -51,7 +51,7 @@ function Pc1a2() {
         />
         <div className="flex flex-col ml-20 mt-16">
           <span className="text-4xl font-semibold">
-            Aula 01 - Tags HTML e Estrutura Basica
+            Aula 01 - Estruturas de Controle em PHP
           </span>
 
           <div className="flex w-10/12 mt-16 mb-10 gap-x-10">
@@ -60,12 +60,14 @@ function Pc1a2() {
               <div>
                 <h1
                   className="text-2xl font-semibold mb-3"
-                  style={{ color: Color(mode, "#E87635") }}
+                  style={{ color: Color(mode, "#5D6CC2") }}
                 >
-                  1. Tags Estruturais
+                  1. Comandos Mágicos
                 </h1>
                 <span className="flex text-justify">
-                As tags como  &lt;header&gt;,  &lt;footer&gt;, e  &lt;div&gt; são como feitiços que organizam o conteúdo da página. O  &lt;header&gt; é como um título, o  &lt;footer&gt; fica no final, e  &lt;div&gt; é uma caixa mágica para organizar coisas.
+                  O PHP entende comandos especiais, como "if" e "else". É como
+                  dar ordens ao computador! Se algo é verdadeiro, ele faz uma
+                  coisa, se não for, faz outra.
                 </span>
               </div>
 
@@ -73,36 +75,14 @@ function Pc1a2() {
                 <div className="">
                   <h1
                     className="text-2xl font-semibold mb-3"
-                    style={{ color: Color(mode, "#E87635") }}
+                    style={{ color: Color(mode, "#5D6CC2") }}
                   >
-                    2. Tags de Título e Texto
+                    2. Coleções Mágicas chamadas Arrays
                   </h1>
                   <span className="flex text-justify">
-                  Os títulos, como &lt;h1&gt; a &lt;h6&gt;, são como encantamentos de diferentes tamanhos. E as tags &lt;p&gt;, &lt;span&gt;, &lt;br&gt;, e &lt;hr&gt; ajudam a criar textos e separações.
+                    Os Arrays são como varinhas mágicas que guardam muitas
+                    coisas juntas. Por exemplo, uma lista de cores mágicas!
                   </span>
-                </div>
-              </div>
-
-              <div className="flex flex-col w-10/12 mt-10">
-                <div className="mb-5">
-                  <h1
-                    className="text-2xl font-semibold mb-3"
-                    style={{ color: Color(mode, "#E87635") }}
-                  >
-                    3. Listas e Links
-                  </h1>
-                  <span className="flex text-justify">
-                  Para criar listas, usamos &lt;ol&gt; para listas ordenadas e &lt;ul&gt; para listas não ordenadas. As listas têm &lt;li&gt; para cada item. E para fazer links, usamos a tag &lt;a&gt;.
-                  </span>
-                </div>
-                <span
-                  className="text-xl font-semibold mb-3"
-                  style={{ color: Color(mode, "#E87635") }}
-                >
-                  Exemplo:
-                </span>
-                <div className="mb-5">
-                  <img src={html1} alt="" />
                 </div>
               </div>
             </div>
@@ -112,13 +92,10 @@ function Pc1a2() {
               <div className="border-l-2 h-32 border-black/50 dark:border-white"></div>
               <div className="flex flex-col space-y-5 justify-center ml-5">
                 <div className="hover:bg-[#CE9FF5] rounded-md p-2 cursor-pointer">
-                  Tags Estruturais
+                  Comandos Mágicos
                 </div>
                 <div className="hover:bg-[#CE9FF5] rounded-md p-2 cursor-pointer">
-                  Tags de Título e Texto
-                </div>
-                <div className="hover:bg-[#E08A98] rounded-md p-2 cursor-pointer">
-                  Lista de Links
+                  Coleções Mágicas chamadas Arrays
                 </div>
               </div>
             </div>

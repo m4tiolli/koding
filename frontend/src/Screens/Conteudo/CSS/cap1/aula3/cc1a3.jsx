@@ -11,7 +11,7 @@ import {
   deuteranomaly,
 } from "../../../../../Components/ColorBlind";
 
-function Cc1a3() {
+function Cc1a2() {
   const navigate = useNavigate();
   useEffect(() => {
     localStorage.nivel === "responsavel"
@@ -51,7 +51,7 @@ function Cc1a3() {
         />
         <div className="flex flex-col ml-20 mt-16">
           <span className="text-4xl font-semibold">
-            Aula 02 - Formatação de Texto e Elementos Avançados
+            Aula 02 - Estilização Avançada com CSS
           </span>
 
           <div className="flex w-10/12 mt-16 mb-10 gap-x-10">
@@ -60,28 +60,50 @@ function Cc1a3() {
               <div>
                 <h1
                   className="text-2xl font-semibold mb-3"
-                  style={{ color: Color(mode, "#E87635") }}
+                  style={{ color: Color(mode, "#438ADD") }}
                 >
-                  1. Formatando Texto e Criando Formulários
+                  1. Posicionamento e Display
                 </h1>
                 <span className="flex text-justify">
-                Para deixar o texto mais interessante, usamos tags como &lt;b&gt; para negrito, &lt;i&gt; para itálico, &lt;u&gt; para sublinhado, e &lt;mark&gt; para destacar. E para criar formulários mágicos, a tag &lt;form&gt; é o ponto de partida, com &lt;input&gt; para coletar dados.
+                  Agora, vamos aprender a posicionar elementos na página como
+                  verdadeiros feiticeiros!
+                  <br /> <br />
+                  position: Define como um elemento é posicionado (static, relative, absolute, fixed). <br />
+                  top, bottom, left, right: Ajustam a posição do elemento. <br />
+                  display: Escolhe o tipo de exibição (block, inline, flex, grid). <br />
                 </span>
               </div>
 
               <div className="flex flex-col w-10/12 mt-10">
-                <span
-                  className="text-xl font-semibold mb-3"
-                  style={{ color: Color(mode, "#E87635") }}
-                >
-                  Exemplo:
-                </span>
-                <div className="mb-5">
-                  <img src={html1} alt="" />
+                <div className="">
+                  <h1
+                    className="text-2xl font-semibold mb-3"
+                    style={{ color: Color(mode, "#438ADD") }}
+                  >
+                    2. Pseudo-Classes e Pseudo-Elementos
+                  </h1>
+                  <span className="flex text-justify">
+                  Feiticeiros também usam truques especiais para estilizar partes específicas!
+                    <br /> <br />
+                    Pseudo-classes: Adicionam estilos a estados especiais, como :hover para quando passamos o mouse. <br /> 
+                    Pseudo-elementos: Estilizam partes específicas de um elemento, como ::first-line para a primeira linha de um parágrafo.
+                  </span>
                 </div>
               </div>
             </div>
-            
+
+            {/* Menu */}
+            <div className="flex w-64 h-32 mt-10">
+              <div className="border-l-2 h-32 border-black/50 dark:border-white"></div>
+              <div className="flex flex-col space-y-5 justify-center ml-5">
+                <div className="hover:bg-[#CE9FF5] rounded-md p-2 cursor-pointer">
+                  Posicionamento e Display
+                </div>
+                <div className="hover:bg-[#E08A98] rounded-md p-2 cursor-pointer">
+                  Pseudo-Classes e Pseudo-Elementos
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </main>
@@ -89,4 +111,4 @@ function Cc1a3() {
   );
 }
 
-export default Cc1a3;
+export default Cc1a2;

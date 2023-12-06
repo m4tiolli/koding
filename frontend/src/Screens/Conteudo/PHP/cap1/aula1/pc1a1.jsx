@@ -11,7 +11,7 @@ import {
   deuteranomaly,
 } from "../../../../../Components/ColorBlind";
 
-function Pc1a1() {
+function Jc1a1() {
   const navigate = useNavigate();
   useEffect(() => {
     localStorage.nivel === "responsavel"
@@ -51,7 +51,7 @@ function Pc1a1() {
         />
         <div className="flex flex-col ml-20 mt-16 mb-10">
           <span className="text-4xl font-semibold">
-            Aula 00 - Fundamentos do HTML
+            Aula 00 - Fundamentos do PHP
           </span>
 
           <div className="flex w-10/12 mt-16 mb-10 gap-x-10">
@@ -60,16 +60,12 @@ function Pc1a1() {
               <div>
                 <h1
                   className="text-2xl font-semibold mb-3"
-                  style={{ color: Color(mode, "#E87635") }}
+                  style={{ color: Color(mode, "#5D6CC2") }}
                 >
-                  1. Introdução ao HTML
+                  1. O que é o PHP
                 </h1>
                 <span className="flex text-justify">
-                  HTML, que significa Hypertext Markup Language (Linguagem de
-                  Marcação de Hipertexto), é como a poção mágica que usamos para
-                  criar páginas na web. Ele usa "tags" para organizar o conteúdo
-                  e faz com que os navegadores exibam as páginas do jeito que
-                  queremos.
+                Imagine o PHP como um superpoder que ajuda a criar coisas incríveis na internet, como sites e jogos! Ele é como um amigo que fala com os computadores e faz com que eles mostrem coisas legais na tela.
                 </span>
               </div>
 
@@ -77,23 +73,63 @@ function Pc1a1() {
                 <div className="mb-5">
                   <h1
                     className="text-2xl font-semibold mb-3"
-                    style={{ color: Color(mode, "#E87635") }}
+                    style={{ color: Color(mode, "#5D6CC2") }}
                   >
-                    2. Estrutura Básica de uma página HTML
+                    2. Configurando a Máquina Mágica
                   </h1>
                   <span className="flex text-justify">
-                    Toda página começa com uma varinha mágica especial chamada
-                    &lt;!DOCTYPE html&gt;. Em seguida, temos a tag &lt;html&gt;
-                    que envolve tudo. O conteúdo que os feiticeiros querem que
-                    os outros vejam fica dentro da tag &lt;body&gt;, enquanto as
-                    coisas invisíveis vão dentro da tag &lt;head&gt;. Ah, e não
-                    esqueçam da tag &lt;meta charset="utf-8"&gt; para garantir
-                    que todos os idiomas funcionem corretamente!
+                  Antes de começarmos a criar, precisamos preparar nossa máquina mágica. Isso envolve instalar algumas ferramentas mágicas, como o Apache. Pode parecer complicado, mas existem pacotes mágicos, como XAMPP, que fazem tudo ficar fácil!
                   </span>
                 </div>
                 <span
                   className="text-xl font-semibold mb-3"
-                  style={{ color: Color(mode, "#E87635") }}
+                  style={{ color: Color(mode, "#5D6CC2") }}
+                >
+                  Exemplo:
+                </span>
+                <div className="mb-5">
+                  <img src={html1} alt="" />
+                </div>
+              </div>
+
+              <div className="flex flex-col w-10/12 mb-10">
+                <div className="mb-5">
+                  <h1
+                    className="text-2xl font-semibold mb-3"
+                    style={{ color: Color(mode, "#5D6CC2") }}
+                  >
+                    3. Conhecendo a Linguagem dos Feiticeiros
+                  </h1>
+                  <span className="flex text-justify">
+                  No PHP, usamos palavras especiais para fazer coisas acontecerem. Por exemplo, quando queremos mostrar algo na tela, dizemos: "echo". É como mandar uma mensagem mágica para o computador!
+                  </span>
+                </div>
+                <span
+                  className="text-xl font-semibold mb-3"
+                  style={{ color: Color(mode, "#5D6CC2") }}
+                >
+                  Exemplo:
+                </span>
+                <div className="mb-5">
+                  <img src={html1} alt="" />
+                </div>
+              </div>
+              
+              <div className="flex flex-col w-10/12 mb-10">
+                <div className="mb-5">
+                  <h1
+                    className="text-2xl font-semibold mb-3"
+                    style={{ color: Color(mode, "#5D6CC2") }}
+                  >
+                    4. Guardando Segredos em Variáveis
+                  </h1>
+                  <span className="flex text-justify">
+                  As variáveis são como gavetas mágicas onde podemos guardar informações. Se queremos lembrar o nome de alguém, usamos uma gaveta chamada "$nome". Assim, sempre que quisermos saber o nome, abrimos a gaveta!
+                  </span>
+                </div>
+                <span
+                  className="text-xl font-semibold mb-3"
+                  style={{ color: Color(mode, "#5D6CC2") }}
                 >
                   Exemplo:
                 </span>
@@ -104,14 +140,20 @@ function Pc1a1() {
             </div>
 
             {/* Menu */}
-            <div className="flex w-64 h-32 mt-10">
-              <div className="border-l-2 h-32 border-black/50 dark:border-white"></div>
-              <div className="flex flex-col space-y-5 justify-center ml-5">
+            <div className="flex w-72 h-32 mt-10">
+              <div className="border-l-2 h-64 border-black/50 dark:border-white"></div>
+              <div className="flex flex-col space-y-5 justify-center ml-5 mt-32">
                 <div className="hover:bg-[#CE9FF5] rounded-md p-2 cursor-pointer">
-                  Introdução
+                  O que São Frameworks Front-end?
                 </div>
                 <div className="hover:bg-[#E08A98] rounded-md p-2 cursor-pointer">
-                  Estrutura Básica
+                  React e Angular - Dois Poderosos Feitiços
+                </div>
+                <div className="hover:bg-[#EE9765] rounded-md p-2 cursor-pointer">
+                  O que São Frameworks Front-end?
+                </div>
+                <div className="hover:bg-[#1D75DC] rounded-md p-2 cursor-pointer">
+                  React e Angular - Dois Poderosos Feitiços
                 </div>
               </div>
             </div>
@@ -122,4 +164,4 @@ function Pc1a1() {
   );
 }
 
-export default Pc1a1;
+export default Jc1a1;

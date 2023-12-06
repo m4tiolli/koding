@@ -11,7 +11,7 @@ import {
   deuteranomaly,
 } from "../../../../../Components/ColorBlind";
 
-function Pc2a1() {
+function Pc1a2() {
   const navigate = useNavigate();
   useEffect(() => {
     localStorage.nivel === "responsavel"
@@ -49,9 +49,9 @@ function Pc2a1() {
           onClick={() => navigate(-1)}
           className="flex mt-28 ml-8 text-3xl cursor-pointer dark:text-white"
         />
-        <div className="flex flex-col ml-20 mt-16 mb-10">
+        <div className="flex flex-col ml-16 mt-16">
           <span className="text-4xl font-semibold">
-            Aula 00 - HTML Semântico
+            Aula 00 - Introdução à Programação Orienta a Objeto em PHP
           </span>
 
           <div className="flex w-10/12 mt-16 mb-10 gap-x-10">
@@ -60,16 +60,15 @@ function Pc2a1() {
               <div>
                 <h1
                   className="text-2xl font-semibold mb-3"
-                  style={{ color: Color(mode, "#E87635") }}
+                  style={{ color: Color(mode, "#5D6CC2") }}
                 >
-                  1. Elementos Semânticos
+                  1. Conhecendo os Objetos e Suas Varinhas
                 </h1>
                 <span className="flex text-justify">
-                Agora, vamos mergulhar nas magias mais profundas do HTML! &lt;main&gt; é o conteúdo principal, &lt;nav&gt; é a navegação, e &lt;section&gt; é como dividimos nossa página.
+                Na programação, usamos objetos para criar coisas especiais. Por exemplo, um objeto chamado "Carro" pode ter propriedades, como cor e modelo, e fazer coisas, como dirigir!
                 </span>
               </div>
             </div>
-
           </div>
         </div>
       </main>
@@ -77,4 +76,4 @@ function Pc2a1() {
   );
 }
 
-export default Pc2a1;
+export default Pc1a2;

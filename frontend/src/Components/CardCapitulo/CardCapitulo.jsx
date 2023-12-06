@@ -46,7 +46,7 @@ export default function CardCapitulo({ capitulo }) {
       ? "#0D54A8"
       : capitulo.linguagem == 3
       ? "#B89D1C"
-      : "#5D6CC2";
+      : "#29388E";
 
   return (
     <div

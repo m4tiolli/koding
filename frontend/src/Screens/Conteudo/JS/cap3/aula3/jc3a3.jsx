@@ -11,7 +11,7 @@ import {
   deuteranomaly,
 } from "../../../../../Components/ColorBlind";
 
-function Jc3a3() {
+function Jc1a1() {
   const navigate = useNavigate();
   useEffect(() => {
     localStorage.nivel === "responsavel"
@@ -51,7 +51,7 @@ function Jc3a3() {
         />
         <div className="flex flex-col ml-20 mt-16 mb-10">
           <span className="text-4xl font-semibold">
-            Aula 02 - Imagens Responsivas e Testes em Diferentes Dispositivos
+            Aula 02 - Comunicação com API's e Estado da Aplicação
           </span>
 
           <div className="flex w-10/12 mt-16 mb-10 gap-x-10">
@@ -60,19 +60,54 @@ function Jc3a3() {
               <div>
                 <h1
                   className="text-2xl font-semibold mb-3"
-                  style={{ color: Color(mode, "#E87635") }}
+                  style={{ color: Color(mode, "#E8BE2A") }}
                 >
-                  1. Flexbox e Grid Flexíveis
+                  1. Comunicação com APIs
                 </h1>
                 <span className="flex text-justify">
-                Aprendendo Flexbox e Grid, que são como encantamentos para organizar elementos. Flexbox é como arrumar peças em uma fila, e Grid é como fazer um quebra-cabeça. 
-                <br /> <br />
-                E assim, nossos pequenos feiticeiros tornam-se mestres em HTML, explorando os mistérios mágicos da criação web! 
+                  Para buscar ou enviar informações mágicas, usamos comunicação
+                  com APIs. Pode ser feito com feitiços como fetch ou
+                  bibliotecas como axios.
+                </span>
+              </div>
 
+              <div className="flex flex-col w-10/12 mt-10 mb-10">
+                <div className="mb-5">
+                  <h1
+                    className="text-2xl font-semibold mb-3"
+                    style={{ color: Color(mode, "#E8BE2A") }}
+                  >
+                    2. Cuidando do Estado Mágico
+                  </h1>
+                  <span className="flex text-justify">
+                    O estado mágico é a informação que a aplicação mantém
+                    enquanto é executada. Em React, por exemplo, usamos o hook
+                    useState para gerenciar o estado.
+                  </span>
+                </div>
+                <div className="mb-5">
+                  <img src={html1} alt="" />
+                </div>
+                <span className="flex text-justify">
+                  E assim concluímos nossa jornada pelo mundo mágico do
+                  JavaScript! Lembre-se, programar é como fazer feitiços, e
+                  agora você é um verdadeiro mago do código!
                 </span>
               </div>
             </div>
 
+            {/* Menu */}
+            <div className="flex w-64 h-32 mt-10">
+              <div className="border-l-2 h-32 border-black/50 dark:border-white"></div>
+              <div className="flex flex-col space-y-5 justify-center ml-5">
+                <div className="hover:bg-[#CE9FF5] rounded-md p-2 cursor-pointer">
+                  Comunicação com APIs
+                </div>
+                <div className="hover:bg-[#E08A98] rounded-md p-2 cursor-pointer">
+                  Cuidando do Estado Mágico
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </main>
@@ -80,4 +115,4 @@ function Jc3a3() {
   );
 }
 
-export default Jc3a3;
+export default Jc1a1;

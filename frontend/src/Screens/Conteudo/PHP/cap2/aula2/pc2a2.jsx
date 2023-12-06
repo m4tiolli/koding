@@ -11,7 +11,7 @@ import {
   deuteranomaly,
 } from "../../../../../Components/ColorBlind";
 
-function Pc2a2() {
+function Pc1a2() {
   const navigate = useNavigate();
   useEffect(() => {
     localStorage.nivel === "responsavel"
@@ -49,9 +49,9 @@ function Pc2a2() {
           onClick={() => navigate(-1)}
           className="flex mt-28 ml-8 text-3xl cursor-pointer dark:text-white"
         />
-        <div className="flex flex-col ml-20 mt-16 mb-10">
+        <div className="flex flex-col ml-20 mt-16">
           <span className="text-4xl font-semibold">
-            Aula 01 - Formulários Avançados
+            Aula 01 - Herança e Polimorfismo em PHP
           </span>
 
           <div className="flex w-10/12 mt-16 mb-10 gap-x-10">
@@ -60,25 +60,25 @@ function Pc2a2() {
               <div>
                 <h1
                   className="text-2xl font-semibold mb-3"
-                  style={{ color: Color(mode, "#E87635") }}
+                  style={{ color: Color(mode, "#5D6CC2") }}
                 >
-                  1. Campos de Formulário Especiais
+                  1. Herança - A Magia das Gerações
                 </h1>
                 <span className="flex text-justify">
-                Explorando campos especiais como &lt;input type="email"&gt; para e-mails, &lt;input type="password"&gt; para senhas, e &lt;input type="file"&gt; para upload de arquivos.
+                Herança é quando um objeto mais novo herda poderes mágicos de um objeto mais antigo. Por exemplo, um "Cachorro" pode herdar coisas de um "Animal"!
                 </span>
               </div>
 
-              <div className="flex flex-col w-10/12 mt-10 mb-10">
-                <div className="mb-5">
+              <div className="flex flex-col w-10/12 mt-10">
+                <div className="">
                   <h1
                     className="text-2xl font-semibold mb-3"
-                    style={{ color: Color(mode, "#E87635") }}
+                    style={{ color: Color(mode, "#5D6CC2") }}
                   >
-                    2. Elementos de Controle Avançados
+                    2. Polimorfismo - Quando um Pode Ser Outro
                   </h1>
                   <span className="flex text-justify">
-                  Agora, conhecemos o &lt;select&gt; para listas suspensas, &lt;input type="checkbox"&gt; para caixas de seleção, e &lt;nput type="radio"&gt; para opções exclusivas.
+                  Polimorfismo é quando um objeto pode agir como outro. Por exemplo, um "Quadrado" e um "Círculo" podem agir como uma "Forma"!
                   </span>
                 </div>
               </div>
@@ -89,10 +89,10 @@ function Pc2a2() {
               <div className="border-l-2 h-32 border-black/50 dark:border-white"></div>
               <div className="flex flex-col space-y-5 justify-center ml-5">
                 <div className="hover:bg-[#CE9FF5] rounded-md p-2 cursor-pointer">
-                  Campos de Formulário Especiais
+                  Herança - A Magia das Gerações
                 </div>
-                <div className="hover:bg-[#E08A98] rounded-md p-2 cursor-pointer">
-                  Elementos de Controles Avançados
+                <div className="hover:bg-[#CE9FF5] rounded-md p-2 cursor-pointer">
+                  Polimorfismo - Quando um Pode Ser Outro
                 </div>
               </div>
             </div>
@@ -103,4 +103,4 @@ function Pc2a2() {
   );
 }
 
-export default Pc2a2;
+export default Pc1a2;

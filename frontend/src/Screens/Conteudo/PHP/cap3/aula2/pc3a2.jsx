@@ -11,7 +11,7 @@ import {
   deuteranomaly,
 } from "../../../../../Components/ColorBlind";
 
-function Pc3a2() {
+function Pc1a2() {
   const navigate = useNavigate();
   useEffect(() => {
     localStorage.nivel === "responsavel"
@@ -51,7 +51,7 @@ function Pc3a2() {
         />
         <div className="flex flex-col ml-20 mt-16">
           <span className="text-4xl font-semibold">
-            Aula 01 - Layouts Flexiveis e Grids
+            Aula 01 - Inserção, Atualização e Exclusão de Dados no MySQL com PHP 
           </span>
 
           <div className="flex w-10/12 mt-16 mb-10 gap-x-10">
@@ -60,12 +60,12 @@ function Pc3a2() {
               <div>
                 <h1
                   className="text-2xl font-semibold mb-3"
-                  style={{ color: Color(mode, "#E87635") }}
+                  style={{ color: Color(mode, "#5D6CC2") }}
                 >
-                  1. Unidades Mágicas e Media Queries
+                  1. Operações Básicas de CRUD - Criando, Atualizando e Apagando
                 </h1>
                 <span className="flex text-justify">
-                Unidades mágicas como porcentagens e vw ajudam a criar layouts flexíveis. As "media queries" são como feitiços que ajustam o layout dependendo do dispositivo.
+                No mundo dos bancos de dados, CRUD é como ter superpoderes para criar, atualizar e apagar coisas! Por exemplo, criar um novo usuário, atualizar sua idade e até mesmo dizer adeus!
                 </span>
               </div>
             </div>
@@ -76,4 +76,4 @@ function Pc3a2() {
   );
 }
 
-export default Pc3a2;
+export default Pc1a2;
