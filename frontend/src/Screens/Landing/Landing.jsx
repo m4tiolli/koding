@@ -33,6 +33,7 @@ const settings = {
 
 function Landing() {
   let mode = localStorage.theme;
+  
   function Color(mode, color) {
     var newcolor;
     if (mode === "protanomaly") {

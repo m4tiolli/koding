@@ -132,7 +132,7 @@ function Perfil() {
           {/* Card Perfil */}
           <div
             className="items-center justify-center xl:w-72 xl:h-96 w-64 h-96 xl:ml-64 ml-28 xl:mt-40 mt-32 rounded-xl"
-            style={{
+            s tyle={{
               backgroundImage: `linear-gradient(10deg, ${Color(
                 mode,
                 "#831ED5"
