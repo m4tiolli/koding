@@ -57,6 +57,7 @@ CREATE TABLE IF NOT EXISTS aulas(
 	imagem LONGTEXT,
    capitulo INT,
    numeroaula INT,
+   desbloqueado BOOLEAN NOT NULL DEFAULT False,
    FOREIGN KEY (capitulo) REFERENCES capitulos(id)
 );
 
@@ -410,7 +411,7 @@ Realização de consultas SQL básicas com o PHP
 Recuperação e exibição de dados do banco de dados
 Exemplo prático: Criando uma página para exibir dados de um banco de dados MySQL com PHP.', 
 'html.png', 12, 0),
-(DEFAULT, 'Inserção, Atualização e Exclusão de Dados no MySQL com PHP', 'Nesta aula, você explorará como inserir, atualizar e excluir dados em um banco de dados MySQL usando o PHP.', 
+(DEFAULT, 'AInserção, Atualização e Exclusão de Dados no MySQL com PHP', 'Nesta aula, você explorará como inserir, atualizar e excluir dados em um banco de dados MySQL usando o PHP.', 
 'Inserção de dados em tabelas MySQL com PHP
 Atualização de registros existentes
 Exclusão de registros
@@ -551,3 +552,20 @@ INNER JOIN responsavel ON responsavel.id = crianca.responsavel;
 SELECT feedbacks.id AS feedback, feedbacks.conteudo, feedbacks.estrela FROM feedbacks WHERE feedbacks.responsavel = 1;
 
 select *  from pontuacoes where crianca = 1;
+
+-- Verificar se o email existe em pelo menos uma tabela
+SELECT 'crianca' AS tabela
+FROM crianca
+WHERE email = 'matiasjr@gmail.com'
+
+UNION
+
+SELECT 'responsavel' AS tabela
+FROM responsavel
+WHERE email = 'matiasjr@gmail.com';
+
+select * from aulas left join capitulos on aulas.capitulo = capitulos.id;
+
+update aulas set desbloqueado = 1 where numeroaula = 0;
+
+update aulas inner join capitulos on aulas.capitulo = capitulos.id set desbloqueado = 0 where aulas.capitulo = 1 and capitulos.linguagem = 1 and numeroaula = 1

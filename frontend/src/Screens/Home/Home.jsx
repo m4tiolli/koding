@@ -214,7 +214,7 @@ export default function Home({ prop }) {
 
         <AlertaInatividade />
         <aside
-          className={`dark:bg-darkcinza h-screen w-52 p-5 fixed top-0 flex flex-col items-start justify-center shadow-lg`}
+          className={`dark:bg-darkcinza h-screen w-52 p-5 fixed z-10 top-0 flex flex-col items-start justify-center shadow-lg`}
           style={{ backgroundColor: Color(mode, "#EDD8FF") }}
         >
           <header className="w-full mb-12">

@@ -576,10 +576,24 @@ module.exports = function (app) {
         if (err) {
           res.json(err);
         } else {
-          res.status(200).json("senha alterada");
+          res.status(200).json("Senha alterada");
+        }
+      }
+    );
+  });
+
+  app.put("/desbloquear", (req, res) => {
+    const { lingugagem, capitulo, numeroaula } = req.body;
+    db.query(
+      "update aulas inner join capitulos on aulas.capitulo = capitulos.id set desbloqueado = 1 where aulas.capitulo = ? and capitulos.linguagem = ? and numeroaula = ?",
+      [capitulo, lingugagem, numeroaula],
+      (err, result) => {
+        if (err) {
+          res.json(err);
+        } else {
+          res.status(200).json("Aula desbloqueada.");
         }
       }
     );
   });
 };
-  

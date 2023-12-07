@@ -1,10 +1,15 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { protanomaly, deuteranomaly, tritanomaly } from "./../ColorBlind";
-import { useDisclosure } from "@chakra-ui/react";
-import { Modal, ModalContent } from "@chakra-ui/react";
+import {
+  Modal,
+  ModalContent,
+  ModalOverlay,
+  useDisclosure,
+} from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Html from '../../assets/html.svg'
+import Html from "../../assets/html.svg";
+import { IoIosLock } from "react-icons/io";
 
 const mode = localStorage.getItem("theme");
 
@@ -21,6 +26,27 @@ function Color(mode, color) {
 }
 // eslint-disable-next-line react/prop-types
 export default function CardAula({ aula, capitulo }) {
+  const navigate = useNavigate();
+  const id_capitulo = capitulo.numerocapitulo;
+  var texto;
+  switch (capitulo.linguagem) {
+    case 1:
+      texto = "HTML";
+      break;
+    case 2:
+      texto = "CSS";
+      break;
+    case 3:
+      texto = "JavaScript";
+      break;
+    case 4:
+      texto = "PHP";
+      break;
+    default:
+      texto = "";
+      break;
+  }
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const {
     isOpen: isFlexOpen,
@@ -56,36 +82,45 @@ export default function CardAula({ aula, capitulo }) {
         <div className="flex space-x-16 items-center mb-10">
           <div className="space-y-5">
             {/* Card */}
-            <div
-              onClick={onOpen}
-              className="w-80 h-52 rounded-xl cursor-pointer flex justify-center items-center flex-col"
-              style={{
-                backgroundImage: `linear-gradient(10deg, ${Color(
-                  mode,
-                  cor2
-                )} 0%, ${Color(mode, cor1)} 100%`,
-              }}
-            >
-              <h1 className="text-white font-black text-3xl text-center">
-                Aula {aula.numeroaula}
-              </h1>
-              <h1 className="text-white font-bold text-center">{aula.nome}</h1>
-            </div>
-            <div className="flex flex-col">
-              <marquee>
-                <span className="w-[250px] flex items-center justify-start text-xl text-black font-semibold dark:text-white">
+            <div className="relative w-fit h-fit">
+              <div className={`${aula.desbloqueado == 0 ? "block" : "hidden"} w-80 h-52 absolute top-0 left-0 grid place-items-center z-[2]`}>
+                <IoIosLock className="w-20 h-20 top-0 text-white" />
+              </div>
+              <div
+                onClick={aula.desbloqueado == 0 ? !onOpen : onOpen}
+                className={`${
+                  aula.desbloqueado == 0 ? "brightness-[.25]" : ""
+                } w-80 h-52 rounded-xl cursor-pointer flex justify-center items-center flex-col relative z-[1]`}
+                style={{
+                  backgroundImage: `linear-gradient(10deg, ${Color(
+                    mode,
+                    cor2
+                  )} 0%, ${Color(mode, cor1)} 100%`,
+                }}
+              >
+                <h1 className="text-white font-black text-3xl text-center">
+                  Aula {aula.numeroaula}
+                </h1>
+                <h1 className="text-white font-bold text-center">
                   {aula.nome}
-                </span>
-              </marquee>
-              {/* Filtro */}
-              <div className="w-80 flex flex-wrap gap-x-3 gap-y-3">
-                {tags.length > 0 ? (
-                  tags.map((tag, index) => (
-                    <Tag tag={tag} cor1={cor1} cor2={cor2} key={index} />
-                  ))
-                ) : (
-                  <p className="dark:text-white italic">sem tag</p>
-                )}
+                </h1>
+              </div>
+              <div className="flex flex-col">
+                <marquee>
+                  <span className="w-[250px] flex items-center justify-start text-xl text-black font-semibold dark:text-white">
+                    {aula.nome}
+                  </span>
+                </marquee>
+                {/* Filtro */}
+                <div className={`${aula.desbloqueado == 0 ? "brightness-[.25]" : ""} w-80 flex flex-wrap gap-x-3 gap-y-3`}>
+                  {tags.length > 0 ? (
+                    tags.map((tag, index) => (
+                      <Tag tag={tag} cor1={cor1} cor2={cor2} key={index} />
+                    ))
+                  ) : (
+                    <p className="dark:text-white italic">sem tag</p>
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -96,6 +131,7 @@ export default function CardAula({ aula, capitulo }) {
         onClose={onFlexClose}
         isOpen={isFlexOpen}
         motionPreset="slideInBottom"
+        zIndex={2}
       >
         <ModalContent
           w="50vw"
@@ -103,7 +139,7 @@ export default function CardAula({ aula, capitulo }) {
           display="flex"
           background="#D1B8E9"
           borderRadius="0.9em"
-          zIndex={100}
+          zIndex={'50'}
           marginLeft={"auto"}
           marginTop={"auto"}
           marginRight={"auto"}
@@ -129,12 +165,19 @@ export default function CardAula({ aula, capitulo }) {
                 {/* Filtro */}
               </div>
             </div>
-            <div className="flex flex-col justify-center items-center text-center space-y-5 -mt-14">
-              <Link to={"/conteudo"}>
-                <button className="bg-[#3BEF61] text-white w-32 uppercase text-2xl p-2 rounded-lg shadow-md">
-                  Iniciar
-                </button>
-              </Link>
+            <div className="flex flex-col justify-center items-center text-center">
+              <button
+                onClick={() =>
+                  navigate(
+                    `/aulas/${texto.toLowerCase()}/cap${id_capitulo}/aula${
+                      aula.numeroaula
+                    }`
+                  )
+                }
+                className="bg-[#3BEF61] text-white w-32 uppercase text-2xl p-2 rounded-lg shadow-md"
+              >
+                Iniciar
+              </button>
               <span className="w-34 h-20 px-4 text-lg">{aula.descricao}</span>
             </div>
           </div>
@@ -147,23 +190,21 @@ export default function CardAula({ aula, capitulo }) {
         isOpen={isOpen}
         motionPreset="slideInBottom"
       >
+        <ModalOverlay />
         <ModalContent
           w="50vw"
           h="22vw"
           display="flex"
           background="#7E1AD4"
           borderRadius="0.9em"
-          zIndex={1000}
-          marginLeft={"auto"}
-          marginTop={"auto"}
-          marginRight={"auto"}
-          marginBottom={"auto"}
+          margin={'auto'}
           justifyContent={"center"}
           alignItems={"center"}
+          zIndex={2}
         >
           {/* Card */}
 
-          <div className="flex flex-col items-center justify-center">
+          <div className="flex flex-col items-center justify-center z-[2]">
             <div className="flex items-center space-x-10 px-5">
               <div className="rounded-xl w-[400px] space-y-5">
                 <div
@@ -177,19 +218,27 @@ export default function CardAula({ aula, capitulo }) {
                 >
                   <img src={Html} alt="" className="" />
                 </div>
-                  <span className="flex w-[350px] font-bold text-lg mb-2 text-white">
-                    Aula {aula.numeroaula} - {aula.nome}
-                  </span>
+                <span className="flex w-[350px] font-bold text-lg mb-2 text-white">
+                  Aula {aula.numeroaula} - {aula.nome}
+                </span>
               </div>
-              <div className="flex items-center justify-center">
-                <Link to={"/conteudo"} className="flex flex-col justify-center items-center">
-                  <button className="bg-[#3BEF61] text-white p-[10px] w-32 uppercase text-xl flex justify-center rounded-md shadow-md">
-                    Iniciar
-                  </button>
-                  <div className="w-auto mt-3 text-white mb-10 text-center">
-                    {aula.descricao}
-                  </div>
-                </Link>
+              <div className="flex flex-col-reverse items-center justify-center">
+                <button
+                  onClick={() =>
+                    navigate(
+                      `/aulas/${texto.toLowerCase()}/cap${id_capitulo}/aula${
+                        aula.numeroaula
+                      }`
+                    )
+                  }
+                  className="bg-[#3BEF61] text-white p-[10px] w-32 uppercase text-xl flex justify-center rounded-md shadow-md"
+                >
+                  Iniciar
+                </button>
+
+                <div className="w-auto mt-3 text-white mb-10 text-center">
+                  {aula.descricao}
+                </div>
               </div>
             </div>
           </div>

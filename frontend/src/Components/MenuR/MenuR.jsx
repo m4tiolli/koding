@@ -145,7 +145,7 @@ export default function Menu({ screen }) {
   return (
     <ChakraProvider>
       <aside
-        className={`dark:bg-darkcinzaR h-screen w-52 p-5 fixed top-0 lg:flex hidden items-start justify-center shadow-lg`}
+        className={`dark:bg-darkcinzaR h-screen w-52 p-5 fixed z-10 top-0 lg:flex hidden items-start justify-center shadow-lg`}
         style={{ backgroundColor: Color(mode, "#E5E9F9") }}
       >
         <header className="w-full mb-12">

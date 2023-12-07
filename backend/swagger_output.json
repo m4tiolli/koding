@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "REST API",
+    "title": "API Koding",
     "description": ""
   },
   "host": "tcckoding.azurewebsites.net",
@@ -831,6 +831,36 @@
               "type": "object",
               "properties": {
                 "senha": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/desbloquear": {
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "lingugagem": {
+                  "example": "any"
+                },
+                "capitulo": {
+                  "example": "any"
+                },
+                "numeroaula": {
                   "example": "any"
                 }
               }

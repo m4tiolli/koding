@@ -46,7 +46,16 @@ function Aulas() {
   }, []);
 
   const capitulo = capitulos.linguagem;
-  const id_capitulo = capitulos.numerocapitulo
+
+  const navigate = useNavigate();
+
+  console.log(aulas);
+
+  const [searchTerm, setSearchTerm] = useState("");
+  const filteredCapitulos = aulas.filter((aula) =>
+    aula.nome.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   var texto;
   switch (capitulo) {
     case 1:
@@ -65,15 +74,6 @@ function Aulas() {
       texto = "";
       break;
   }
-
-  const navigate = useNavigate();
-
-  console.log(aulas);
-
-  const [searchTerm, setSearchTerm] = useState("");
-  const filteredCapitulos = aulas.filter((aula) =>
-    aula.nome.toLowerCase().includes(searchTerm.toLowerCase())
-  );
   return (
     <div
       className="flex h-full w-full"
@@ -108,7 +108,7 @@ function Aulas() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
-              <BiSearch className="xl:mr-5 lg:mr-5 laptop:mr-3 mr-32 text-3xl text-white ml-20 cursor-pointer laptop1024:-ml-5 notebook:ml-20"></BiSearch>
+            <BiSearch className="xl:mr-5 lg:mr-5 laptop:mr-3 mr-32 text-3xl text-white ml-20 cursor-pointer laptop1024:-ml-5 notebook:ml-20"></BiSearch>
           </form>
 
           {/* Filtro */}
@@ -138,9 +138,7 @@ function Aulas() {
             </div>
           ) : (
             aulas.map((aula, index) => (
-              <Link to={`/aulas/${texto.toLowerCase()}/cap${id_capitulo}/aula${aula.numeroaula}`}  key={index}>
-              <CardAula aula={aula} capitulo={capitulos} />
-              </Link>
+              <CardAula aula={aula} key={index} capitulo={capitulos} />
             ))
           )}
         </div>
@@ -174,39 +172,57 @@ function Aulas() {
               <div className="flex justify-center gap-y-2 gap-x-1 flex-wrap">
                 <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-orange-300">
                   <AiOutlineClose className="text-xl" />
-                  <span id="filter" className="text-lg laptop1024:text-sm notebook:text-lg">
+                  <span
+                    id="filter"
+                    className="text-lg laptop1024:text-sm notebook:text-lg"
+                  >
                     html
                   </span>
                 </button>
                 <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-blue-300">
                   <AiOutlineClose className="text-xl" />
-                  <span className="text-lg laptop1024:text-sm notebook:text-lg">css</span>
+                  <span className="text-lg laptop1024:text-sm notebook:text-lg">
+                    css
+                  </span>
                 </button>
                 <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-yellow-300">
                   <AiOutlineClose className="text-xl" />
-                  <span className="text-lg laptop1024:text-sm notebook:text-lg">javascript</span>
+                  <span className="text-lg laptop1024:text-sm notebook:text-lg">
+                    javascript
+                  </span>
                 </button>
                 <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-purple-300">
                   <AiOutlineClose className="text-xl" />
-                  <span className="text-lg laptop1024:text-sm notebook:text-lg">php</span>
+                  <span className="text-lg laptop1024:text-sm notebook:text-lg">
+                    php
+                  </span>
                 </button>
                 <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-orange-300">
                   <AiOutlineClose className="text-xl" />
-                  <span id="filter" className="text-lg laptop1024:text-sm notebook:text-lg">
+                  <span
+                    id="filter"
+                    className="text-lg laptop1024:text-sm notebook:text-lg"
+                  >
                     estrutura
                   </span>
                 </button>
                 <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-blue-300">
                   <AiOutlineClose className="text-xl" />
-                  <span className="text-lg laptop1024:text-sm notebook:text-lg">flexbox</span>
+                  <span className="text-lg laptop1024:text-sm notebook:text-lg">
+                    flexbox
+                  </span>
                 </button>
                 <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-yellow-300">
                   <AiOutlineClose className="text-xl" />
-                  <span className="text-lg laptop1024:text-sm notebook:text-lg">input</span>
+                  <span className="text-lg laptop1024:text-sm notebook:text-lg">
+                    input
+                  </span>
                 </button>
                 <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-purple-300">
                   <AiOutlineClose className="text-xl" />
-                  <span className="text-lg laptop1024:text-sm notebook:text-lg">introdução</span>
+                  <span className="text-lg laptop1024:text-sm notebook:text-lg">
+                    introdução
+                  </span>
                 </button>
               </div>
             </div>
