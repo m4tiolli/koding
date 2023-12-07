@@ -583,10 +583,10 @@ module.exports = function (app) {
   });
 
   app.put("/desbloquear", (req, res) => {
-    const { lingugagem, capitulo, numeroaula } = req.body;
+    const { linguagem, capitulo, numeroaula } = req.body;
     db.query(
       "update aulas inner join capitulos on aulas.capitulo = capitulos.id set desbloqueado = 1 where aulas.capitulo = ? and capitulos.linguagem = ? and numeroaula = ?",
-      [capitulo, lingugagem, numeroaula],
+      [capitulo, linguagem, numeroaula],
       (err, result) => {
         if (err) {
           res.json(err);

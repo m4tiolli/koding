@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "API Koding",
+    "title": "REST API",
     "description": ""
   },
   "host": "tcckoding.azurewebsites.net",
@@ -854,7 +854,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "lingugagem": {
+                "linguagem": {
                   "example": "any"
                 },
                 "capitulo": {
