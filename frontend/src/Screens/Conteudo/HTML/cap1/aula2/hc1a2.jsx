@@ -11,6 +11,7 @@ import {
   tritanomaly,
   deuteranomaly,
 } from "../../../../../Components/ColorBlind";
+import BotaoDesbloquear from "../../../../../Components/BotaoDesbloquear/BotaoDesbloquear";
 
 function Hc1a2() {
   const navigate = useNavigate();
@@ -50,7 +51,7 @@ function Hc1a2() {
           onClick={() => navigate(-1)}
           className="flex mt-28 ml-8 text-3xl cursor-pointer dark:text-white"
         />
-        <div className="flex flex-col ml-20 mt-16">
+        <div className="flex flex-col ml-20 mt-16 mb-5">
           <span className="text-4xl font-semibold">
             Aula 01 - Tags HTML e Estrutura Basica
           </span>
@@ -127,6 +128,7 @@ function Hc1a2() {
               </div>
             </div>
           </div>
+          <BotaoDesbloquear />
         </div>
       </main>
     </div>

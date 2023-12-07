@@ -10,6 +10,7 @@ import {
   tritanomaly,
   deuteranomaly,
 } from "../../../../../Components/ColorBlind";
+import BotaoDesbloquear from "../../../../../Components/BotaoDesbloquear/BotaoDesbloquear";
 
 function Pc1a2() {
   const navigate = useNavigate();
@@ -97,6 +98,7 @@ function Pc1a2() {
               </div>
             </div>
           </div>
+          <BotaoDesbloquear />
         </div>
       </main>
     </div>

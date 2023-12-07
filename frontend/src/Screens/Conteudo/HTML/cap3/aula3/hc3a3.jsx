@@ -2,8 +2,7 @@ import { IoArrowBack } from "react-icons/io5";
 import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
 import { useNavigate } from "react-router-dom";
-
-import html1 from "../../../../../assets/comando1.svg";
+import BotaoDesbloquear from "../../../../../Components/BotaoDesbloquear/BotaoDesbloquear";
 
 import {
   protanomaly,
@@ -72,8 +71,8 @@ function Hc3a3() {
                 </span>
               </div>
             </div>
-
           </div>
+          <BotaoDesbloquear />
         </div>
       </main>
     </div>

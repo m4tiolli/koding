@@ -10,6 +10,7 @@ import {
   tritanomaly,
   deuteranomaly,
 } from "../../../../../Components/ColorBlind";
+import BotaoDesbloquear from "../../../../../Components/BotaoDesbloquear/BotaoDesbloquear";
 
 function Jc1a1() {
   const navigate = useNavigate();
@@ -65,7 +66,10 @@ function Jc1a1() {
                   1. O que é o PHP
                 </h1>
                 <span className="flex text-justify">
-                Imagine o PHP como um superpoder que ajuda a criar coisas incríveis na internet, como sites e jogos! Ele é como um amigo que fala com os computadores e faz com que eles mostrem coisas legais na tela.
+                  Imagine o PHP como um superpoder que ajuda a criar coisas
+                  incríveis na internet, como sites e jogos! Ele é como um amigo
+                  que fala com os computadores e faz com que eles mostrem coisas
+                  legais na tela.
                 </span>
               </div>
 
@@ -78,7 +82,10 @@ function Jc1a1() {
                     2. Configurando a Máquina Mágica
                   </h1>
                   <span className="flex text-justify">
-                  Antes de começarmos a criar, precisamos preparar nossa máquina mágica. Isso envolve instalar algumas ferramentas mágicas, como o Apache. Pode parecer complicado, mas existem pacotes mágicos, como XAMPP, que fazem tudo ficar fácil!
+                    Antes de começarmos a criar, precisamos preparar nossa
+                    máquina mágica. Isso envolve instalar algumas ferramentas
+                    mágicas, como o Apache. Pode parecer complicado, mas existem
+                    pacotes mágicos, como XAMPP, que fazem tudo ficar fácil!
                   </span>
                 </div>
                 <span
@@ -101,7 +108,10 @@ function Jc1a1() {
                     3. Conhecendo a Linguagem dos Feiticeiros
                   </h1>
                   <span className="flex text-justify">
-                  No PHP, usamos palavras especiais para fazer coisas acontecerem. Por exemplo, quando queremos mostrar algo na tela, dizemos: "echo". É como mandar uma mensagem mágica para o computador!
+                    No PHP, usamos palavras especiais para fazer coisas
+                    acontecerem. Por exemplo, quando queremos mostrar algo na
+                    tela, dizemos: "echo". É como mandar uma mensagem mágica
+                    para o computador!
                   </span>
                 </div>
                 <span
@@ -114,7 +124,7 @@ function Jc1a1() {
                   <img src={html1} alt="" />
                 </div>
               </div>
-              
+
               <div className="flex flex-col w-10/12 mb-10">
                 <div className="mb-5">
                   <h1
@@ -124,7 +134,10 @@ function Jc1a1() {
                     4. Guardando Segredos em Variáveis
                   </h1>
                   <span className="flex text-justify">
-                  As variáveis são como gavetas mágicas onde podemos guardar informações. Se queremos lembrar o nome de alguém, usamos uma gaveta chamada "$nome". Assim, sempre que quisermos saber o nome, abrimos a gaveta!
+                    As variáveis são como gavetas mágicas onde podemos guardar
+                    informações. Se queremos lembrar o nome de alguém, usamos
+                    uma gaveta chamada "$nome". Assim, sempre que quisermos
+                    saber o nome, abrimos a gaveta!
                   </span>
                 </div>
                 <span
@@ -158,6 +171,7 @@ function Jc1a1() {
               </div>
             </div>
           </div>
+          <BotaoDesbloquear />
         </div>
       </main>
     </div>
