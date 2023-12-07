@@ -113,9 +113,7 @@ function Perfil() {
     <ChakraProvider>
       <div
         className="flex h-full w-full"
-        style={{
-          background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)",
-        }}
+        z
       >
         <ToastContainer
           position="top-center"

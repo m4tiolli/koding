@@ -16,6 +16,7 @@ import axios from "axios";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import BackgroundCircles from "../../Components/BackgroundCircles";
 
 const Materiais = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -149,7 +150,8 @@ const Materiais = () => {
   );
 
   return (
-    <div className={`flex h-full w-full dark:bg-darkcinzaclaro`}>
+    <div className="flex h-full w-full dark:bg-darkcinzaclaro overflow-x-hidden">
+      {/* <BackgroundCircles/> */}
       <main className={`w-full min-h-screen ml-56 mr-2 overflow-hidden`}>
         {/* Barra de pesquisa */}
         <div className="flex h-64 w-5/12 ml-10 mt-10 items-center justify-center gap-3">

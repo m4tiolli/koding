@@ -6,6 +6,7 @@ import { ToastContainer } from "react-toastify";
 import { toast } from "react-toastify";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { AiFillEye } from "react-icons/ai";
+import BackgroundCircles from "../../Components/BackgroundCircles";
 
 const RecuperarSenha = ({ length = 6 }) => {
   const navigate = useNavigate();
@@ -26,6 +27,17 @@ const RecuperarSenha = ({ length = 6 }) => {
       }
     }
   };
+
+  const [dark, setDark] = useState(false);
+  useEffect(() => {
+    if (localStorage.theme === "dark") {
+      document.documentElement.classList.add("dark");
+      setDark(true);
+    } else {
+      document.documentElement.classList.remove("dark");
+      setDark(false);
+    }
+  }, []);
 
   const handlePaste = (e) => {
     e.preventDefault();
@@ -106,7 +118,13 @@ const Componente1 = ({
   setEmail,
 }) => {
   return (
-    <div className="dark:bg-darkcinza bg-[#efefef] w-full h-screen p-40 relative flex flex-col justify-evenly items-center">
+    <div
+      className="dark:bg-darkcinza bg-[#efefef] w-full h-screen p-40 relative flex flex-col justify-evenly items-center overflow-hidden "
+      style={{
+        background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)",
+      }} 
+      >
+      <BackgroundCircles />
       <div className="flex absolute top-8 gap-6">
         <IoArrowBack
           className="text-3xl cursor-pointer text-cinza dark:text-white"
@@ -272,12 +290,15 @@ const Componente3 = ({
   setValorFluxo,
   valorFluxo,
   email,
-  nivel
+  nivel,
 }) => {
   const Alterar = () => {
     const body = { senha };
     axios
-      .put(`https://tcckoding.azurewebsites.net/redefinir/${nivel}/${email}`, body)
+      .put(
+        `https://tcckoding.azurewebsites.net/redefinir/${nivel}/${email}`,
+        body
+      )
       .then(
         toast.success("Senha alterada!", {
           position: "top-center",
