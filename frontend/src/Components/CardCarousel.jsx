@@ -6,7 +6,7 @@ export default function CardCarousel({ props }) {
                 {props.img}
                 <p className="text-2xl">{props.title}</p>
             </div>
-            <div className="w-3/5 rounded-e-xl flex flex-col justify-center" style={{ background: props.color }}>
+            <div className="w-3/5 rounded-e-xl flex flex-col justify-center" style={{ backgroundColor: Color(mode, props.color) }}>
                 {props.items.map((item, index) => (
                     <li className="text-white ps-4 text-[1rem]" key={index}>{item}</li>
                 ))}
