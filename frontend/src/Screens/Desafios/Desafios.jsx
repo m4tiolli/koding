@@ -352,9 +352,7 @@ const Desafios = () => {
                       Iniciar Desafio
                     </button>
                     <div className="w-auto mt-3 text-white mb-10 text-center">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Rerum eius distinctio exercitationem, voluptatibus odit
-                      dignissimos velit expedita aliquam
+                      Selecione o card que melhor complete a sentença apresentada com base nos estudos de HTML!
                     </div>
                   </Link>
                 </div>
@@ -412,9 +410,7 @@ const Desafios = () => {
                       Iniciar Desafio
                     </button>
                     <div className="w-auto mt-3 text-white mb-10 text-center">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Rerum eius distinctio exercitationem, voluptatibus odit
-                      dignissimos velit expedita aliquam
+                      Ajude a alinhar as imagens conforme exibidas utilizando flexbox com base nos estudos de CSS!
                     </div>
                   </Link>
                 </div>
@@ -472,9 +468,7 @@ const Desafios = () => {
                       Iniciar Desafio
                     </button>
                     <div className="w-auto mt-3 text-white mb-10 text-center">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Rerum eius distinctio exercitationem, voluptatibus odit
-                      dignissimos velit expedita aliquam
+                      Selecione o input correto conforme a pergunta apresentada com base nos estudos de JavaScript!
                     </div>
                   </Link>
                 </div>
@@ -532,9 +526,7 @@ const Desafios = () => {
                       Iniciar Desafio
                     </button>
                     <div className="w-auto mt-3 text-white mb-10 text-center">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Rerum eius distinctio exercitationem, voluptatibus odit
-                      dignissimos velit expedita aliquam
+                      Responda corretamente às perguntas feitas com base nos estudos sobre PHP!
                     </div>
                   </Link>
                 </div>
