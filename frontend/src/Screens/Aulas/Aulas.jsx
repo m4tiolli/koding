@@ -65,9 +65,40 @@ function Aulas() {
   const navigate = useNavigate();
 
   const [searchTerm, setSearchTerm] = useState("");
-  const filteredCapitulos = aulas.filter((aula) =>
-    aula.nome.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredCapitulos = aulas.filter((capitulo) =>
+    Object.values(capitulo).some(
+      (value) =>
+        typeof value === "string" &&
+        value.toLowerCase().includes(searchTerm.toLowerCase())
+    )
   );
+
+  const [buttonStates, setButtonStates] = useState({
+    html: false,
+    css: false,
+    javascript: false,
+    php: false,
+    estrutura: false,
+    programação: false,
+    responsivo: false,
+    introdução: false,
+  });
+
+  const handleButtonClick = (buttonName) => {
+    setButtonStates((prevState) => ({
+      ...prevState,
+      [buttonName]: !prevState[buttonName],
+    }));
+    if (searchTerm.includes(buttonName)) {
+      setSearchTerm((prevSearchTerm) =>
+        prevSearchTerm.replace(new RegExp(buttonName, "g"), "").trim()
+      );
+    } else {
+      setSearchTerm((prevSearchTerm) =>
+        prevSearchTerm ? `${prevSearchTerm} ${buttonName}` : buttonName
+      );
+    }
+  };
   return (
     <div
       className="flex h-full w-full"
@@ -163,68 +194,26 @@ function Aulas() {
           >
             {/* Tags */}
 
-            <div className="h-full flex justify-center items-center gap-x-5 flex-wrap">
-              <div className="mb-5 laptop1024:mb-0 notebook:mb-5">
-                <span className="flex justify-center text-lg laptop1024:text-md">
+            <div className="h-full lg:h-[250px] flex justify-center items-center gap-x-5 flex-wrap">
+              <div className="mb-5">
+                <span className="flex justify-center text-lg">
                   Filtrar por:
                 </span>
                 <div className="border-b-2 w-32 border-black/50"></div>
               </div>
-              <div className="flex justify-center gap-y-2 gap-x-1 flex-wrap">
-                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-orange-300">
-                  <AiOutlineClose className="text-xl" />
-                  <span
-                    id="filter"
-                    className="text-lg laptop1024:text-sm notebook:text-lg"
+              <div className="flex justify-center gap-y-2 lg:-mt-10 gap-x-3 flex-wrap">
+                {Object.keys(buttonStates).map((buttonName, index) => (
+                  <button
+                    key={index}
+                    className={`flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 ${
+                      buttonStates[buttonName] ? `opacity-70` : ""
+                    }`}
+                    onClick={() => handleButtonClick(buttonName)}
                   >
-                    html
-                  </span>
-                </button>
-                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-blue-300">
-                  <AiOutlineClose className="text-xl" />
-                  <span className="text-lg laptop1024:text-sm notebook:text-lg">
-                    css
-                  </span>
-                </button>
-                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-yellow-300">
-                  <AiOutlineClose className="text-xl" />
-                  <span className="text-lg laptop1024:text-sm notebook:text-lg">
-                    javascript
-                  </span>
-                </button>
-                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-purple-300">
-                  <AiOutlineClose className="text-xl" />
-                  <span className="text-lg laptop1024:text-sm notebook:text-lg">
-                    php
-                  </span>
-                </button>
-                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-orange-300">
-                  <AiOutlineClose className="text-xl" />
-                  <span
-                    id="filter"
-                    className="text-lg laptop1024:text-sm notebook:text-lg"
-                  >
-                    estrutura
-                  </span>
-                </button>
-                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-blue-300">
-                  <AiOutlineClose className="text-xl" />
-                  <span className="text-lg laptop1024:text-sm notebook:text-lg">
-                    flexbox
-                  </span>
-                </button>
-                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-yellow-300">
-                  <AiOutlineClose className="text-xl" />
-                  <span className="text-lg laptop1024:text-sm notebook:text-lg">
-                    input
-                  </span>
-                </button>
-                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-purple-300">
-                  <AiOutlineClose className="text-xl" />
-                  <span className="text-lg laptop1024:text-sm notebook:text-lg">
-                    introdução
-                  </span>
-                </button>
+                    <AiOutlineClose className="text-xl" />
+                    <span className="text-lg">{buttonName}</span>
+                  </button>
+                ))}
               </div>
             </div>
           </ModalContent>

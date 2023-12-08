@@ -146,13 +146,42 @@ const Materiais = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
   const filteredCapitulos = capitulos.filter((capitulo) =>
-    capitulo.nome.toLowerCase().includes(searchTerm.toLowerCase())
+    Object.values(capitulo).some(
+      (value) =>
+        typeof value === "string" &&
+        value.toLowerCase().includes(searchTerm.toLowerCase())
+    )
   );
 
   useEffect(() => {
     localStorage.removeItem("capitulo");
   }, []);
+  const [buttonStates, setButtonStates] = useState({
+    html: false,
+    css: false,
+    javascript: false,
+    php: false,
+    estrutura: false,
+    programação: false,
+    responsivo: false,
+    introdução: false,
+  });
 
+  const handleButtonClick = (buttonName) => {
+    setButtonStates((prevState) => ({
+      ...prevState,
+      [buttonName]: !prevState[buttonName],
+    }));
+    if (searchTerm.includes(buttonName)) {
+      setSearchTerm((prevSearchTerm) =>
+        prevSearchTerm.replace(new RegExp(buttonName, "g"), "").trim()
+      );
+    } else {
+      setSearchTerm((prevSearchTerm) =>
+        prevSearchTerm ? `${prevSearchTerm} ${buttonName}` : buttonName
+      );
+    }
+  };
   return (
     <div className="flex h-full w-full dark:bg-darkcinzaclaro overflow-x-hidden">
       {/* <BackgroundCircles/> */}
@@ -258,42 +287,18 @@ const Materiais = () => {
                 <div className="border-b-2 w-32 border-black/50"></div>
               </div>
               <div className="flex justify-center gap-y-2 lg:-mt-10 gap-x-3 flex-wrap">
-                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-orange-300">
-                  <AiOutlineClose className="text-xl" />
-                  <span id="filter" className="text-lg">
-                    html
-                  </span>
-                </button>
-                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-blue-300">
-                  <AiOutlineClose className="text-xl" />
-                  <span className="text-lg">css</span>
-                </button>
-                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-yellow-300">
-                  <AiOutlineClose className="text-xl" />
-                  <span className="text-lg">javascript</span>
-                </button>
-                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-purple-300">
-                  <AiOutlineClose className="text-xl" />
-                  <span className="text-lg">php</span>
-                </button>
-                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-orange-300">
-                  <AiOutlineClose className="text-xl" />
-                  <span id="filter" className="text-lg">
-                    estrutura
-                  </span>
-                </button>
-                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-blue-300">
-                  <AiOutlineClose className="text-xl" />
-                  <span className="text-lg">flexbox</span>
-                </button>
-                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-yellow-300">
-                  <AiOutlineClose className="text-xl" />
-                  <span className="text-lg">input</span>
-                </button>
-                <button className="flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 hover:bg-purple-300">
-                  <AiOutlineClose className="text-xl" />
-                  <span className="text-lg">introdução</span>
-                </button>
+                {Object.keys(buttonStates).map((buttonName, index) => (
+                  <button
+                    key={index}
+                    className={`flex justify-center items-center w-auto text-white p-1 bg-gray-500 rounded-xl gap-1 ${
+                      buttonStates[buttonName] ? `opacity-70` : ""
+                    }`}
+                    onClick={() => handleButtonClick(buttonName)}
+                  >
+                    <AiOutlineClose className="text-xl" />
+                    <span className="text-lg">{buttonName}</span>
+                  </button>
+                ))}
               </div>
             </div>
           </ModalContent>
