@@ -210,8 +210,8 @@ function CadastroCrianca() {
                 : "before:bg-verdeclaro bg-verde"
             } z-10 relative w-4/5 md:w-3/5 rounded-2xl flex flex-col justify-center items-center gap-4 before:block before:content-[' '] before:w-full before:absolute before:top-0 before:h-full before:rotate-[-8deg] before:radius-x before:-z-20 before:shadow-lg shadow-lg before:rounded-2xl h-fit py-4`}
           >
-            <h1 className="text-cinza dark:text-white font-bold text-2xl xl:text-3xl">
-              Crie uma conta para seu filho!
+            <h1 className="text-cinza dark:text-white font-bold text-2xl xl:text-3xl mt-3">
+              Cadastre seu filho!
             </h1>
             <div className="flex flex-col gap-3 items-center w-full">
               <input
