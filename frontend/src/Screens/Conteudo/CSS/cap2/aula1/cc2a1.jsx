@@ -1,7 +1,7 @@
 import { IoArrowBack } from "react-icons/io5";
 import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation  } from "react-router-dom";
 
 import css1 from "../../../../../assets/css/comando-4.svg";
 
@@ -23,6 +23,8 @@ function Cc2a2() {
   }, [navigate]);
 
   const mode = localStorage.getItem("theme");
+  const location = useLocation();
+  const object = location.state.object;
 
   function Color(mode, color) {
     var newcolor;
@@ -66,7 +68,9 @@ function Cc2a2() {
                   1. Keyframes
                 </h1>
                 <span className="flex text-justify">
-                Keyframes são como receitas mágicas para animações em CSS! Eles definem como a animação se desenrola ao longo do tempo. Vamos dar vida a elementos usando keyframes!
+                  Keyframes são como receitas mágicas para animações em CSS!
+                  Eles definem como a animação se desenrola ao longo do tempo.
+                  Vamos dar vida a elementos usando keyframes!
                 </span>
               </div>
               <span
@@ -80,7 +84,11 @@ function Cc2a2() {
               </div>
             </div>
           </div>
-          <BotaoDesbloquear />
+          <BotaoDesbloquear
+            linguagem={object.linguagem}
+            capitulo={object.capitulo}
+            numeroaula={object.numeroaula}
+          />
         </div>
       </main>
     </div>

@@ -1,7 +1,7 @@
 import { IoArrowBack } from "react-icons/io5";
 import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation  } from "react-router-dom";
 
 import js1 from "../../../../../assets/js/comando-10.svg";
 import js2 from "../../../../../assets/js/comando-12.svg";
@@ -25,6 +25,8 @@ function Jc1a1() {
   }, [navigate]);
 
   const mode = localStorage.getItem("theme");
+  const location = useLocation();
+  const object = location.state.object;
 
   function Color(mode, color) {
     var newcolor;
@@ -128,7 +130,10 @@ function Jc1a1() {
               </div>
             </div>
           </div>
-          <BotaoDesbloquear />
+          <BotaoDesbloquear
+            linguagem={object.linguagem}
+            capitulo={object.capitulo}
+            numeroaula={object.numeroaula} />
         </div>
       </main>
     </div>

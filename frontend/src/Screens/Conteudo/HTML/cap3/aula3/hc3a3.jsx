@@ -1,7 +1,7 @@
 import { IoArrowBack } from "react-icons/io5";
 import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation  } from "react-router-dom";
 import BotaoDesbloquear from "../../../../../Components/BotaoDesbloquear/BotaoDesbloquear";
 
 import {
@@ -21,6 +21,8 @@ function Hc3a3() {
   }, [navigate]);
 
   const mode = localStorage.getItem("theme");
+  const location = useLocation();
+  const object = location.state.object;
 
   function Color(mode, color) {
     var newcolor;
@@ -64,15 +66,21 @@ function Hc3a3() {
                   1. Flexbox e Grid Flexíveis
                 </h1>
                 <span className="flex text-justify">
-                Aprendendo Flexbox e Grid, que são como encantamentos para organizar elementos. Flexbox é como arrumar peças em uma fila, e Grid é como fazer um quebra-cabeça. 
-                <br /> <br />
-                E assim, nossos pequenos feiticeiros tornam-se mestres em HTML, explorando os mistérios mágicos da criação web! 
-
+                  Aprendendo Flexbox e Grid, que são como encantamentos para
+                  organizar elementos. Flexbox é como arrumar peças em uma fila,
+                  e Grid é como fazer um quebra-cabeça.
+                  <br /> <br />E assim, nossos pequenos feiticeiros tornam-se
+                  mestres em HTML, explorando os mistérios mágicos da criação
+                  web!
                 </span>
               </div>
             </div>
           </div>
-          <BotaoDesbloquear />
+          <BotaoDesbloquear
+            linguagem={object.linguagem}
+            capitulo={object.capitulo}
+            numeroaula={object.numeroaula}
+          />
         </div>
       </main>
     </div>

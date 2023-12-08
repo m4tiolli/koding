@@ -1,7 +1,7 @@
 import { IoArrowBack } from "react-icons/io5";
 import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation  } from "react-router-dom";
 
 import html1 from "../../../../../assets/comando1.svg";
 
@@ -23,6 +23,8 @@ function Pc1a2() {
   }, [navigate]);
 
   const mode = localStorage.getItem("theme");
+  const location = useLocation();
+  const object = location.state.object;
 
   function Color(mode, color) {
     var newcolor;
@@ -66,7 +68,9 @@ function Pc1a2() {
                   1. Abstração - Pensando nas Coisas Importantes
                 </h1>
                 <span className="flex text-justify">
-                Abstração é como olhar para algo mágico e ver apenas o que é mais importante. Uma "Classe Abstrata" é como um modelo mágico que outras classes seguem!
+                  Abstração é como olhar para algo mágico e ver apenas o que é
+                  mais importante. Uma "Classe Abstrata" é como um modelo mágico
+                  que outras classes seguem!
                 </span>
               </div>
 
@@ -79,7 +83,9 @@ function Pc1a2() {
                     2. Interface - Combinando Poderes Mágicos
                   </h1>
                   <span className="flex text-justify">
-                  Interfaces são como acordos mágicos entre objetos. Um "Cachorro" e um "Gato" podem concordar em fazer barulhos diferentes, mas ambos seguem as regras de "Animal"!
+                    Interfaces são como acordos mágicos entre objetos. Um
+                    "Cachorro" e um "Gato" podem concordar em fazer barulhos
+                    diferentes, mas ambos seguem as regras de "Animal"!
                   </span>
                 </div>
               </div>
@@ -98,7 +104,11 @@ function Pc1a2() {
               </div>
             </div>
           </div>
-          <BotaoDesbloquear />
+          <BotaoDesbloquear
+            linguagem={object.linguagem}
+            capitulo={object.capitulo}
+            numeroaula={object.numeroaula}
+          />
         </div>
       </main>
     </div>

@@ -1,7 +1,7 @@
 import { IoArrowBack } from "react-icons/io5";
 import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation  } from "react-router-dom";
 
 import css1 from "../../../../../assets/css/comando-3.svg";
 
@@ -23,6 +23,8 @@ function Cc1a2() {
   }, [navigate]);
 
   const mode = localStorage.getItem("theme");
+  const location = useLocation();
+  const object = location.state.object;
 
   function Color(mode, color) {
     var newcolor;
@@ -69,9 +71,12 @@ function Cc1a2() {
                   Agora, vamos aprender a posicionar elementos na página como
                   verdadeiros feiticeiros!
                   <br /> <br />
-                  position: Define como um elemento é posicionado (static, relative, absolute, fixed). <br />
-                  top, bottom, left, right: Ajustam a posição do elemento. <br />
-                  display: Escolhe o tipo de exibição (block, inline, flex, grid). <br />
+                  position: Define como um elemento é posicionado (static,
+                  relative, absolute, fixed). <br />
+                  top, bottom, left, right: Ajustam a posição do elemento.{" "}
+                  <br />
+                  display: Escolhe o tipo de exibição (block, inline, flex,
+                  grid). <br />
                 </span>
               </div>
 
@@ -84,22 +89,26 @@ function Cc1a2() {
                     2. Pseudo-Classes e Pseudo-Elementos
                   </h1>
                   <span className="flex text-justify">
-                  Feiticeiros também usam truques especiais para estilizar partes específicas!
+                    Feiticeiros também usam truques especiais para estilizar
+                    partes específicas!
                     <br /> <br />
-                    Pseudo-classes: Adicionam estilos a estados especiais, como :hover para quando passamos o mouse. <br /> 
-                    Pseudo-elementos: Estilizam partes específicas de um elemento, como ::first-line para a primeira linha de um parágrafo.
+                    Pseudo-classes: Adicionam estilos a estados especiais, como
+                    :hover para quando passamos o mouse. <br />
+                    Pseudo-elementos: Estilizam partes específicas de um
+                    elemento, como ::first-line para a primeira linha de um
+                    parágrafo.
                   </span>
                 </div>
-                
-              <span
-                className="text-xl font-semibold mb-3 mt-5"
-                style={{ color: Color(mode, "#438ADD") }}
-              >
-                Exemplo:
-              </span>
-              <div className="mb-5">
-                <img src={css1} alt="" />
-              </div>
+
+                <span
+                  className="text-xl font-semibold mb-3 mt-5"
+                  style={{ color: Color(mode, "#438ADD") }}
+                >
+                  Exemplo:
+                </span>
+                <div className="mb-5">
+                  <img src={css1} alt="" />
+                </div>
               </div>
             </div>
 
@@ -116,7 +125,11 @@ function Cc1a2() {
               </div>
             </div>
           </div>
-          <BotaoDesbloquear />
+          <BotaoDesbloquear
+            linguagem={object.linguagem}
+            capitulo={object.capitulo}
+            numeroaula={object.numeroaula}
+          />
         </div>
       </main>
     </div>

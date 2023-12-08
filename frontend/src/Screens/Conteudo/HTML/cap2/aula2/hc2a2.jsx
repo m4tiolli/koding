@@ -1,7 +1,7 @@
 import { IoArrowBack } from "react-icons/io5";
 import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation  } from "react-router-dom";
 
 import {
   protanomaly,
@@ -21,6 +21,9 @@ function Hc2a2() {
   }, [navigate]);
 
   const mode = localStorage.getItem("theme");
+  
+  const location = useLocation();
+  const object = location.state.object;
 
   function Color(mode, color) {
     var newcolor;
@@ -64,7 +67,9 @@ function Hc2a2() {
                   1. Campos de Formulário Especiais
                 </h1>
                 <span className="flex text-justify">
-                Explorando campos especiais como &lt;input type="email"&gt; para e-mails, &lt;input type="password"&gt; para senhas, e &lt;input type="file"&gt; para upload de arquivos.
+                  Explorando campos especiais como &lt;input type="email"&gt;
+                  para e-mails, &lt;input type="password"&gt; para senhas, e
+                  &lt;input type="file"&gt; para upload de arquivos.
                 </span>
               </div>
 
@@ -77,7 +82,9 @@ function Hc2a2() {
                     2. Elementos de Controle Avançados
                   </h1>
                   <span className="flex text-justify">
-                  Agora, conhecemos o &lt;select&gt; para listas suspensas, &lt;input type="checkbox"&gt; para caixas de seleção, e &lt;nput type="radio"&gt; para opções exclusivas.
+                    Agora, conhecemos o &lt;select&gt; para listas suspensas,
+                    &lt;input type="checkbox"&gt; para caixas de seleção, e
+                    &lt;nput type="radio"&gt; para opções exclusivas.
                   </span>
                 </div>
               </div>
@@ -96,7 +103,11 @@ function Hc2a2() {
               </div>
             </div>
           </div>
-          <BotaoDesbloquear />
+          <BotaoDesbloquear
+            linguagem={object.linguagem}
+            capitulo={object.capitulo}
+            numeroaula={object.numeroaula}
+          />
         </div>
       </main>
     </div>

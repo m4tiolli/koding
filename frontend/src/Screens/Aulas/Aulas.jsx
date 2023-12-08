@@ -19,17 +19,19 @@ import axios from "axios";
 
 function Aulas() {
   const mode = localStorage.getItem("theme");
-
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [loading, setLoading] = useState(true);
   const location = useLocation();
   const [aulas, setAulas] = useState([]);
   var capitulos;
-  if (localStorage.getItem("capitulo")) {
-    capitulos = JSON.parse(localStorage.getItem("capitulo"));
-  } else {
+  const origin = location.state.origem;
+  if (origin == "capitulos") {
     capitulos = location.state.capitulo;
     localStorage.setItem("capitulo", JSON.stringify(capitulos));
+  } else if (origin == "aulas") {
+    capitulos = JSON.parse(localStorage.getItem("capitulo"));
+  } else {
+    navigate("/home");
   }
 
   useEffect(() => {
@@ -37,7 +39,6 @@ function Aulas() {
       .get(`https://tcckoding.azurewebsites.net/aulas/${capitulos.id}`)
       .then((response) => setAulas(response.data))
       .then(() => setLoading(false))
-      .then(() => localStorage.removeItem("capitulo"))
       .catch((error) => console.error(error));
   }, []);
 
@@ -81,7 +82,7 @@ function Aulas() {
       <main className="w-full ml-52 overflow-hidden dark:bg-darkcinzaclaro min-h-screen">
         <div className="flex mt-28 ml-8 mb-5 items-center">
           <IoArrowBack
-            onClick={() => navigate(-1)}
+            onClick={() => navigate("/home")}
             className="text-3xl cursor-pointer text-cinza dark:text-white"
           />
           <p className="dark:text-white text-cinza text-2xl font-semibold ml-10">

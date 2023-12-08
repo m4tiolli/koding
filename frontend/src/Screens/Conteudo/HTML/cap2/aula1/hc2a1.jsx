@@ -1,7 +1,7 @@
 import { IoArrowBack } from "react-icons/io5";
 import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation  } from "react-router-dom";
 
 import {
   protanomaly,
@@ -11,6 +11,10 @@ import {
 import BotaoDesbloquear from "../../../../../Components/BotaoDesbloquear/BotaoDesbloquear";
 
 function Hc2a1() {
+  
+  const location = useLocation();
+  const object = location.state.object;
+
   const navigate = useNavigate();
   useEffect(() => {
     localStorage.nivel === "responsavel"
@@ -70,7 +74,10 @@ function Hc2a1() {
             </div>
 
           </div>
-          <BotaoDesbloquear />
+          <BotaoDesbloquear
+            linguagem={object.linguagem}
+            capitulo={object.capitulo}
+            numeroaula={object.numeroaula} />
         </div>
       </main>
     </div>

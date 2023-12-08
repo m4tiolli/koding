@@ -1,7 +1,7 @@
 import { IoArrowBack } from "react-icons/io5";
 import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation  } from "react-router-dom";
 
 import html1 from "../../../../../assets/comando1.svg";
 
@@ -23,6 +23,8 @@ function Pc1a2() {
   }, [navigate]);
 
   const mode = localStorage.getItem("theme");
+  const location = useLocation();
+  const object = location.state.object;
 
   function Color(mode, color) {
     var newcolor;
@@ -66,15 +68,24 @@ function Pc1a2() {
                   1. Consultas Avançadas - Procurando o que é Importante
                 </h1>
                 <span className="flex text-justify">
-                Às vezes, queremos encontrar coisas especiais no nosso tesouro de dados. Podemos pedir ao MySQL para buscar informações específicas, como nomes e idades das pessoas com mais de 18 anos!
+                  Às vezes, queremos encontrar coisas especiais no nosso tesouro
+                  de dados. Podemos pedir ao MySQL para buscar informações
+                  específicas, como nomes e idades das pessoas com mais de 18
+                  anos!
                 </span>
                 <span className="flex text-justify">
-                <br />E assim terminamos nossa jornada mágica pelo PHP! Lembre-se, programar é como fazer magia, e você agora é um verdadeiro feiticeiro do código! 
+                  <br />E assim terminamos nossa jornada mágica pelo PHP!
+                  Lembre-se, programar é como fazer magia, e você agora é um
+                  verdadeiro feiticeiro do código!
                 </span>
               </div>
             </div>
           </div>
-          <BotaoDesbloquear />
+          <BotaoDesbloquear
+            linguagem={object.linguagem}
+            capitulo={object.capitulo}
+            numeroaula={object.numeroaula}
+          />
         </div>
       </main>
     </div>

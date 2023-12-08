@@ -1,7 +1,7 @@
 import { IoArrowBack } from "react-icons/io5";
 import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import html1 from "../../../../../assets/html/comando-2.svg";
 
@@ -35,6 +35,8 @@ function Hc1a3() {
     } else newcolor = color;
     return newcolor;
   }
+  const location = useLocation();
+  const object = location.state.object;
 
   return (
     <div
@@ -66,7 +68,11 @@ function Hc1a3() {
                   1. Formatando Texto e Criando Formulários
                 </h1>
                 <span className="flex text-justify">
-                Para deixar o texto mais interessante, usamos tags como &lt;b&gt; para negrito, &lt;i&gt; para itálico, &lt;u&gt; para sublinhado, e &lt;mark&gt; para destacar. E para criar formulários mágicos, a tag &lt;form&gt; é o ponto de partida, com &lt;input&gt; para coletar dados.
+                  Para deixar o texto mais interessante, usamos tags como
+                  &lt;b&gt; para negrito, &lt;i&gt; para itálico, &lt;u&gt; para
+                  sublinhado, e &lt;mark&gt; para destacar. E para criar
+                  formulários mágicos, a tag &lt;form&gt; é o ponto de partida,
+                  com &lt;input&gt; para coletar dados.
                 </span>
               </div>
 
@@ -83,7 +89,11 @@ function Hc1a3() {
               </div>
             </div>
           </div>
-          <BotaoDesbloquear />
+          <BotaoDesbloquear
+            linguagem={object.linguagem}
+            capitulo={object.capitulo}
+            numeroaula={object.numeroaula}
+          />
         </div>
       </main>
     </div>

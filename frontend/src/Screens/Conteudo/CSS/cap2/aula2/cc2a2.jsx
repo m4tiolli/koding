@@ -1,7 +1,7 @@
 import { IoArrowBack } from "react-icons/io5";
 import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation  } from "react-router-dom";
 
 import css1 from "../../../../../assets/css/comando-5.svg";
 
@@ -23,6 +23,8 @@ function Cc2a2() {
   }, [navigate]);
 
   const mode = localStorage.getItem("theme");
+  const location = useLocation();
+  const object = location.state.object;
 
   function Color(mode, color) {
     var newcolor;
@@ -66,7 +68,8 @@ function Cc2a2() {
                   1. Transições para Efeitos de Hover
                 </h1>
                 <span className="flex text-justify">
-                Quando queremos que algo mude suavemente ao passar o mouse, usamos transições. É como uma mágica suave!
+                  Quando queremos que algo mude suavemente ao passar o mouse,
+                  usamos transições. É como uma mágica suave!
                 </span>
               </div>
               <span
@@ -80,7 +83,11 @@ function Cc2a2() {
               </div>
             </div>
           </div>
-          <BotaoDesbloquear />
+          <BotaoDesbloquear
+            linguagem={object.linguagem}
+            capitulo={object.capitulo}
+            numeroaula={object.numeroaula}
+          />
         </div>
       </main>
     </div>

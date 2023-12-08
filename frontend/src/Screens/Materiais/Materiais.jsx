@@ -149,6 +149,10 @@ const Materiais = () => {
     capitulo.nome.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  useEffect(() => {
+    localStorage.removeItem("capitulo");
+  }, []);
+
   return (
     <div className="flex h-full w-full dark:bg-darkcinzaclaro overflow-x-hidden">
       {/* <BackgroundCircles/> */}
@@ -166,9 +170,9 @@ const Materiais = () => {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
-              <BiSearch
-                className={`text-3xl text-white ml-20 notebook:ml-20 laptop1024:-ml-5 cursor-pointer`}
-              />
+            <BiSearch
+              className={`text-3xl text-white ml-20 notebook:ml-20 laptop1024:-ml-5 cursor-pointer`}
+            />
           </form>
 
           {/* Filtro */}

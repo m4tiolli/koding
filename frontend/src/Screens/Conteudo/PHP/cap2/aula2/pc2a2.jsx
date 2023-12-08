@@ -1,7 +1,7 @@
 import { IoArrowBack } from "react-icons/io5";
 import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation  } from "react-router-dom";
 
 import html1 from "../../../../../assets/comando1.svg";
 
@@ -23,6 +23,8 @@ function Pc1a2() {
   }, [navigate]);
 
   const mode = localStorage.getItem("theme");
+  const location = useLocation();
+  const object = location.state.object;
 
   function Color(mode, color) {
     var newcolor;
@@ -66,7 +68,9 @@ function Pc1a2() {
                   1. Herança - A Magia das Gerações
                 </h1>
                 <span className="flex text-justify">
-                Herança é quando um objeto mais novo herda poderes mágicos de um objeto mais antigo. Por exemplo, um "Cachorro" pode herdar coisas de um "Animal"!
+                  Herança é quando um objeto mais novo herda poderes mágicos de
+                  um objeto mais antigo. Por exemplo, um "Cachorro" pode herdar
+                  coisas de um "Animal"!
                 </span>
               </div>
 
@@ -79,7 +83,9 @@ function Pc1a2() {
                     2. Polimorfismo - Quando um Pode Ser Outro
                   </h1>
                   <span className="flex text-justify">
-                  Polimorfismo é quando um objeto pode agir como outro. Por exemplo, um "Quadrado" e um "Círculo" podem agir como uma "Forma"!
+                    Polimorfismo é quando um objeto pode agir como outro. Por
+                    exemplo, um "Quadrado" e um "Círculo" podem agir como uma
+                    "Forma"!
                   </span>
                 </div>
               </div>
@@ -98,7 +104,11 @@ function Pc1a2() {
               </div>
             </div>
           </div>
-          <BotaoDesbloquear />
+          <BotaoDesbloquear
+            linguagem={object.linguagem}
+            capitulo={object.capitulo}
+            numeroaula={object.numeroaula}
+          />
         </div>
       </main>
     </div>

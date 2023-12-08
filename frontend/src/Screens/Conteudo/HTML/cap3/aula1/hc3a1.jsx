@@ -1,7 +1,7 @@
 import { IoArrowBack } from "react-icons/io5";
 import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation  } from "react-router-dom";
 
 import BotaoDesbloquear from "../../../../../Components/BotaoDesbloquear/BotaoDesbloquear";
 
@@ -22,6 +22,9 @@ function Hc3a1() {
   }, [navigate]);
 
   const mode = localStorage.getItem("theme");
+
+  const location = useLocation();
+  const object = location.state.object;
 
   function Color(mode, color) {
     var newcolor;
@@ -65,13 +68,18 @@ function Hc3a1() {
                   1. O que é Design Responsivo?
                 </h1>
                 <span className="flex text-justify">
-                Vamos explorar o design responsivo, que é como a mágica que faz nossas páginas se adaptarem a diferentes tamanhos de tela. Usamos "media queries" para fazer truques de layout.
+                  Vamos explorar o design responsivo, que é como a mágica que
+                  faz nossas páginas se adaptarem a diferentes tamanhos de tela.
+                  Usamos "media queries" para fazer truques de layout.
                 </span>
               </div>
-              
             </div>
           </div>
-          <BotaoDesbloquear />
+          <BotaoDesbloquear
+            linguagem={object.linguagem}
+            capitulo={object.capitulo}
+            numeroaula={object.numeroaula}
+          />
         </div>
       </main>
     </div>

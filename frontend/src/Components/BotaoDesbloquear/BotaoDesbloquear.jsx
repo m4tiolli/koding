@@ -5,29 +5,52 @@ import { ToastContainer, toast } from "react-toastify";
 function BotaoDesbloquear({ linguagem, capitulo, numeroaula }) {
   const navigate = useNavigate();
   const DesbloquarProximo = () => {
-    console.log(capitulo, numeroaula);
-    const num = numeroaula + 1;
-    const body = { linguagem, capitulo, numeroaula: num };
-    console.log(body);
-    axios
-      .put("https://tcckoding.azurewebsites.net/desbloquear", body)
-      .then(
-        toast.success("Aula finalzada!", {
-          position: "top-center",
-          autoClose: 2000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        })
-      )
-      .then(
-        setTimeout(() => {
-          navigate("/aulas");
-        }, 3000)
-      );
+    if (numeroaula == 2) {
+      const num = 0;
+      const cap = capitulo + 1;
+      const body = { linguagem, capitulo: cap, numeroaula: num };
+      axios
+        .put("https://tcckoding.azurewebsites.net/desbloquear", body)
+        .then(
+          toast.success("Aula finalizada!", {
+            position: "bottom-right",
+            autoClose: 2000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          })
+        )
+        .then(
+          setTimeout(() => {
+            navigate("/aulas", { state: { origem: "aulas" } });
+          }, 3000)
+        );
+    } else {
+      const num = numeroaula + 1;
+      const body = { linguagem, capitulo, numeroaula: num };
+      axios
+        .put("https://tcckoding.azurewebsites.net/desbloquear", body)
+        .then(
+          toast.success("Aula finalizada!", {
+            position: "bottom-right",
+            autoClose: 2000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          })
+        )
+        .then(
+          setTimeout(() => {
+            navigate("/aulas", { state: { origem: "aulas" } });
+          }, 3000)
+        );
+    }
   };
 
   return (
@@ -39,7 +62,7 @@ function BotaoDesbloquear({ linguagem, capitulo, numeroaula }) {
         Finalizar
       </button>
       <ToastContainer
-        position="top-center"
+        position="bottom-right"
         autoClose={2000}
         limit={3}
         hideProgressBar

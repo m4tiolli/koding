@@ -1,7 +1,7 @@
 import { IoArrowBack } from "react-icons/io5";
 import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation  } from "react-router-dom";
 
 import html1 from "../../../../../assets/comando1.svg";
 
@@ -11,7 +11,6 @@ import {
   deuteranomaly,
 } from "../../../../../Components/ColorBlind";
 import BotaoDesbloquear from "../../../../../Components/BotaoDesbloquear/BotaoDesbloquear";
-
 
 function Jc1a1() {
   const navigate = useNavigate();
@@ -24,6 +23,9 @@ function Jc1a1() {
   }, [navigate]);
 
   const mode = localStorage.getItem("theme");
+  const location = useLocation();
+  const object = location.state.object;
+
 
   function Color(mode, color) {
     var newcolor;
@@ -114,7 +116,11 @@ function Jc1a1() {
               </div>
             </div>
           </div>
-          <BotaoDesbloquear />
+          <BotaoDesbloquear
+            linguagem={object.linguagem}
+            capitulo={object.capitulo}
+            numeroaula={object.numeroaula}
+          />
         </div>
       </main>
     </div>

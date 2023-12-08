@@ -1,7 +1,7 @@
 import { IoArrowBack } from "react-icons/io5";
 import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import html1 from "../../../../../assets/html/comando-1.svg";
 import html2 from "../../../../../assets/html/comando-3.svg";
@@ -15,7 +15,6 @@ import BotaoDesbloquear from "../../../../../Components/BotaoDesbloquear/BotaoDe
 
 function Hc1a2() {
   const navigate = useNavigate();
-  const location = useLocation();
   useEffect(() => {
     localStorage.nivel === "responsavel"
       ? navigate("/pais/home")
@@ -37,11 +36,8 @@ function Hc1a2() {
     } else newcolor = color;
     return newcolor;
   }
-
-  const locationState = location.state;
-  const object = locationState && locationState.object;
-  console.log(object);
-
+  const location = useLocation();
+  const object = location.state.object;
   return (
     <div
       className="flex h-full w-full"
@@ -142,7 +138,11 @@ function Hc1a2() {
               </div>
             </div>
           </div>
-          <BotaoDesbloquear />
+          <BotaoDesbloquear
+            linguagem={object.linguagem}
+            capitulo={object.capitulo}
+            numeroaula={object.numeroaula}
+          />
         </div>
       </main>
     </div>

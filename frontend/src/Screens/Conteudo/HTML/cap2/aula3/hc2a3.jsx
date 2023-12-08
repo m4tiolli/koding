@@ -1,7 +1,7 @@
 import { IoArrowBack } from "react-icons/io5";
 import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation  } from "react-router-dom";
 
 import {
   protanomaly,
@@ -21,6 +21,9 @@ function Hc2a3() {
   }, [navigate]);
 
   const mode = localStorage.getItem("theme");
+  
+  const location = useLocation();
+  const object = location.state.object;
 
   function Color(mode, color) {
     var newcolor;
@@ -64,12 +67,18 @@ function Hc2a3() {
                   1. Incorporação de Multimídia
                 </h1>
                 <span className="flex text-justify">
-                Aprendendo a incorporar imagens &lt;img&gt;, áudio &lt;audio&gt;, e vídeo &lt;video&gt;. Além disso, o mistério do &lt;iframe&gt; para mostrar conteúdo de outros lugares.
+                  Aprendendo a incorporar imagens &lt;img&gt;, áudio
+                  &lt;audio&gt;, e vídeo &lt;video&gt;. Além disso, o mistério
+                  do &lt;iframe&gt; para mostrar conteúdo de outros lugares.
                 </span>
               </div>
             </div>
           </div>
-          <BotaoDesbloquear />
+          <BotaoDesbloquear
+            linguagem={object.linguagem}
+            capitulo={object.capitulo}
+            numeroaula={object.numeroaula}
+          />
         </div>
       </main>
     </div>

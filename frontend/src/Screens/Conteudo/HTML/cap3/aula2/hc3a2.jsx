@@ -1,7 +1,7 @@
 import { IoArrowBack } from "react-icons/io5";
 import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation  } from "react-router-dom";
 
 import BotaoDesbloquear from "../../../../../Components/BotaoDesbloquear/BotaoDesbloquear";
 
@@ -22,6 +22,9 @@ function Hc3a2() {
   }, [navigate]);
 
   const mode = localStorage.getItem("theme");
+  const location = useLocation();
+  const object = location.state.object;
+
 
   function Color(mode, color) {
     var newcolor;
@@ -65,12 +68,18 @@ function Hc3a2() {
                   1. Unidades Mágicas e Media Queries
                 </h1>
                 <span className="flex text-justify">
-                Unidades mágicas como porcentagens e vw ajudam a criar layouts flexíveis. As "media queries" são como feitiços que ajustam o layout dependendo do dispositivo.
+                  Unidades mágicas como porcentagens e vw ajudam a criar layouts
+                  flexíveis. As "media queries" são como feitiços que ajustam o
+                  layout dependendo do dispositivo.
                 </span>
               </div>
             </div>
           </div>
-          <BotaoDesbloquear />
+          <BotaoDesbloquear
+            linguagem={object.linguagem}
+            capitulo={object.capitulo}
+            numeroaula={object.numeroaula}
+          />
         </div>
       </main>
     </div>

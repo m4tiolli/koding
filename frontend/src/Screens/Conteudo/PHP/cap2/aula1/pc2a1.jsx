@@ -1,7 +1,7 @@
 import { IoArrowBack } from "react-icons/io5";
 import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation  } from "react-router-dom";
 
 import html1 from "../../../../../assets/comando1.svg";
 
@@ -23,6 +23,8 @@ function Pc1a2() {
   }, [navigate]);
 
   const mode = localStorage.getItem("theme");
+  const location = useLocation();
+  const object = location.state.object;
 
   function Color(mode, color) {
     var newcolor;
@@ -66,12 +68,18 @@ function Pc1a2() {
                   1. Conhecendo os Objetos e Suas Varinhas
                 </h1>
                 <span className="flex text-justify">
-                Na programação, usamos objetos para criar coisas especiais. Por exemplo, um objeto chamado "Carro" pode ter propriedades, como cor e modelo, e fazer coisas, como dirigir!
+                  Na programação, usamos objetos para criar coisas especiais.
+                  Por exemplo, um objeto chamado "Carro" pode ter propriedades,
+                  como cor e modelo, e fazer coisas, como dirigir!
                 </span>
               </div>
             </div>
           </div>
-          <BotaoDesbloquear />
+          <BotaoDesbloquear
+            linguagem={object.linguagem}
+            capitulo={object.capitulo}
+            numeroaula={object.numeroaula}
+          />
         </div>
       </main>
     </div>

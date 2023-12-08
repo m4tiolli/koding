@@ -1,7 +1,7 @@
 import { IoArrowBack } from "react-icons/io5";
 import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation  } from "react-router-dom";
 
 import html1 from "../../../../../assets/comando1.svg";
 
@@ -23,6 +23,9 @@ function Cc2a2() {
   }, [navigate]);
 
   const mode = localStorage.getItem("theme");
+  const location = useLocation();
+  const object = location.state.object;
+
 
   function Color(mode, color) {
     var newcolor;
@@ -67,16 +70,20 @@ function Cc2a2() {
                 </h1>
                 <span className="flex text-justify">
                   Vamos explorar algumas propriedades avançadas para ajustar
-                  nossas animações! <br /> <br /> 
-                  animation-timing-function: Controla a
-                  aceleração da animação. <br /> animation-fill-mode: Define o estado
-                  final da animação. <br /> animation-iteration-count: Determina
-                  quantas vezes a animação deve ser repetida.
+                  nossas animações! <br /> <br />
+                  animation-timing-function: Controla a aceleração da animação.{" "}
+                  <br /> animation-fill-mode: Define o estado final da animação.{" "}
+                  <br /> animation-iteration-count: Determina quantas vezes a
+                  animação deve ser repetida.
                 </span>
               </div>
             </div>
           </div>
-          <BotaoDesbloquear />
+          <BotaoDesbloquear
+            linguagem={object.linguagem}
+            capitulo={object.capitulo}
+            numeroaula={object.numeroaula}
+          />
         </div>
       </main>
     </div>

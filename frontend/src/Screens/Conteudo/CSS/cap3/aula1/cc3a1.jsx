@@ -1,7 +1,7 @@
 import { IoArrowBack } from "react-icons/io5";
 import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation  } from "react-router-dom";
 
 import html1 from "../../../../../assets/comando1.svg";
 
@@ -23,6 +23,8 @@ function Cc1a1() {
   }, [navigate]);
 
   const mode = localStorage.getItem("theme");
+  const location = useLocation();
+  const object = location.state.object;
 
   function Color(mode, color) {
     var newcolor;
@@ -66,16 +68,22 @@ function Cc1a1() {
                   1. Flexbox
                 </h1>
                 <span className="flex text-justify">
-                  Flexbox é como uma poção mágica para layouts flexíveis! <br /> <br />
-                  display: flex: Transforma um contêiner em um flex container. <br />
+                  Flexbox é como uma poção mágica para layouts flexíveis! <br />{" "}
+                  <br />
+                  display: flex: Transforma um contêiner em um flex container.{" "}
+                  <br />
                   flex-direction: Define a direção dos flex items (linha ou
-                  coluna). <br /> flex-wrap: Permite que os itens quebrem para uma nova
-                  linha conforme necessário.
+                  coluna). <br /> flex-wrap: Permite que os itens quebrem para
+                  uma nova linha conforme necessário.
                 </span>
               </div>
             </div>
           </div>
-          <BotaoDesbloquear />
+          <BotaoDesbloquear
+            linguagem={object.linguagem}
+            capitulo={object.capitulo}
+            numeroaula={object.numeroaula}
+          />
         </div>
       </main>
     </div>

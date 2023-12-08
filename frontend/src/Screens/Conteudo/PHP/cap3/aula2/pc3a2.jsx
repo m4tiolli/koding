@@ -1,7 +1,7 @@
 import { IoArrowBack } from "react-icons/io5";
 import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation  } from "react-router-dom";
 
 import html1 from "../../../../../assets/comando1.svg";
 
@@ -23,6 +23,8 @@ function Pc1a2() {
   }, [navigate]);
 
   const mode = localStorage.getItem("theme");
+  const location = useLocation();
+  const object = location.state.object;
 
   function Color(mode, color) {
     var newcolor;
@@ -52,7 +54,7 @@ function Pc1a2() {
         />
         <div className="flex flex-col ml-20 mt-16">
           <span className="text-4xl font-semibold">
-            Aula 01 - Inserção, Atualização e Exclusão de Dados no MySQL com PHP 
+            Aula 01 - Inserção, Atualização e Exclusão de Dados no MySQL com PHP
           </span>
 
           <div className="flex w-10/12 mt-16 mb-10 gap-x-10">
@@ -66,12 +68,18 @@ function Pc1a2() {
                   1. Operações Básicas de CRUD - Criando, Atualizando e Apagando
                 </h1>
                 <span className="flex text-justify">
-                No mundo dos bancos de dados, CRUD é como ter superpoderes para criar, atualizar e apagar coisas! Por exemplo, criar um novo usuário, atualizar sua idade e até mesmo dizer adeus!
+                  No mundo dos bancos de dados, CRUD é como ter superpoderes
+                  para criar, atualizar e apagar coisas! Por exemplo, criar um
+                  novo usuário, atualizar sua idade e até mesmo dizer adeus!
                 </span>
               </div>
             </div>
           </div>
-          <BotaoDesbloquear />
+          <BotaoDesbloquear
+            linguagem={object.linguagem}
+            capitulo={object.capitulo}
+            numeroaula={object.numeroaula}
+          />
         </div>
       </main>
     </div>

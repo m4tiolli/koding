@@ -55,7 +55,7 @@ const AlertaInatividade = () => {
   return (
     <ChakraProvider>
       <div className="fixed bottom-2 left-2 z-50 flex items-center justify-center flex-col">
-        <p className="text-white">
+        <p className="text-cinza dark:text-white">
           <Countdown
             key={countdownKey}
             date={Date.now() + 120000}

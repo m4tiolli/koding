@@ -37,9 +37,7 @@ function Hc1a1() {
   }
 
   const location = useLocation();
-  const capitulo = location.state.capitulo;
-  const aula = location.state.aula;
-
+  const object = location.state.object;
 
   return (
     <div
@@ -122,7 +120,11 @@ function Hc1a1() {
               </div>
             </div>
           </div>
-        <BotaoDesbloquear capitulo={capitulo} numeroaula={aula} />
+          <BotaoDesbloquear
+            linguagem={object.linguagem}
+            capitulo={object.capitulo}
+            numeroaula={object.numeroaula}
+          />
         </div>
       </main>
     </div>

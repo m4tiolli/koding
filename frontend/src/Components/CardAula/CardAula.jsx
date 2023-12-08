@@ -47,8 +47,19 @@ export default function CardAula({ aula, capitulo }) {
       break;
   }
 
-  const passar = capitulo
-  console.log(passar);
+  const object = {
+    linguagem: capitulo.linguagem,
+    capitulo: aula.capitulo,
+    numeroaula: aula.numeroaula,
+  };
+
+  const Guardar = () => {
+    localStorage.setItem("aula", JSON.stringify(object));
+    navigate(
+      `/aulas/${texto.toLowerCase()}/cap${id_capitulo}/aula${aula.numeroaula}`,
+      { state: { object: object } }
+    );
+  };
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const {
@@ -178,12 +189,7 @@ export default function CardAula({ aula, capitulo }) {
             </div>
             <div className="flex flex-col justify-center items-center text-center">
               <button
-                onClick={() =>
-                  navigate(
-                    `/aulas/html/cap1/aula1`,
-                    { state: { object: passar } }
-                  )
-                }
+                onClick={Guardar}
                 className="bg-[#3BEF61] text-white w-32 uppercase text-2xl p-2 rounded-lg shadow-md"
               >
                 Iniciar
@@ -234,13 +240,7 @@ export default function CardAula({ aula, capitulo }) {
               </div>
               <div className="flex flex-col-reverse items-center justify-center">
                 <button
-                  onClick={() =>
-                    navigate(
-                      `/aulas/${texto.toLowerCase()}/cap${id_capitulo}/aula${
-                        aula.numeroaula
-                      }`
-                    )
-                  }
+                  onClick={Guardar}
                   className="bg-[#3BEF61] text-white p-[10px] w-32 uppercase text-xl flex justify-center rounded-md shadow-md"
                 >
                   Iniciar

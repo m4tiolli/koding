@@ -1,7 +1,7 @@
 import { IoArrowBack } from "react-icons/io5";
 import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation  } from "react-router-dom";
 
 import js1 from "../../../../../assets/js/comando.svg";
 
@@ -11,7 +11,6 @@ import {
   deuteranomaly,
 } from "../../../../../Components/ColorBlind";
 import BotaoDesbloquear from "../../../../../Components/BotaoDesbloquear/BotaoDesbloquear";
-
 
 function Jc1a1() {
   const navigate = useNavigate();
@@ -24,6 +23,8 @@ function Jc1a1() {
   }, [navigate]);
 
   const mode = localStorage.getItem("theme");
+  const location = useLocation();
+  const object = location.state.object;
 
   function Color(mode, color) {
     var newcolor;
@@ -90,15 +91,15 @@ function Jc1a1() {
                   </span>
                 </div>
               </div>
-                <span
-                  className="text-xl font-semibold mb-3"
-                  style={{ color: Color(mode, "#E8BE2A") }}
-                >
-                  Exemplo:
-                </span>
-                <div className="mb-14">
-                  <img src={js1} alt="" />
-                </div>
+              <span
+                className="text-xl font-semibold mb-3"
+                style={{ color: Color(mode, "#E8BE2A") }}
+              >
+                Exemplo:
+              </span>
+              <div className="mb-14">
+                <img src={js1} alt="" />
+              </div>
 
               <div className="flex flex-col w-10/12 mb-10">
                 <div className="mb-5">
@@ -109,8 +110,9 @@ function Jc1a1() {
                     3. Tipos de Tesouros (Dados):
                   </h1>
                   <span className="flex text-justify">
-                    Existem muitos tesouros mágicos em JavaScript! <br /> <br /> 
-                    Strings: Guardam textos mágicos. Números: São como poções numéricas. <br />
+                    Existem muitos tesouros mágicos em JavaScript! <br /> <br />
+                    Strings: Guardam textos mágicos. Números: São como poções
+                    numéricas. <br />
                     Valores booleanos: Podem ser verdadeiros ou falsos. <br />
                     Undefined: Para tesouros sem valor. Null: Indica ausência de
                     valor. <br />
@@ -138,7 +140,11 @@ function Jc1a1() {
               </div>
             </div>
           </div>
-          <BotaoDesbloquear />
+          <BotaoDesbloquear
+            linguagem={object.linguagem}
+            capitulo={object.capitulo}
+            numeroaula={object.numeroaula}
+          />
         </div>
       </main>
     </div>

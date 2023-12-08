@@ -1,7 +1,7 @@
 import { IoArrowBack } from "react-icons/io5";
 import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation  } from "react-router-dom";
 
 import css1 from "../../../../../assets/css/comando.svg";
 import css2 from "../../../../../assets/css/comando-1.svg";
@@ -24,6 +24,8 @@ function Cc1a1() {
   }, [navigate]);
 
   const mode = localStorage.getItem("theme");
+  const location = useLocation();
+  const object = location.state.object;
 
   function Color(mode, color) {
     var newcolor;
@@ -67,7 +69,11 @@ function Cc1a1() {
                   1. O que é CSS?
                 </h1>
                 <span className="flex text-justify">
-                CSS, ou "Cascading Style Sheets" (Folhas de Estilo em Cascata), é como uma varinha mágica que usamos para dar um visual incrível a páginas web. Ele decide como os elementos, como botões e textos, devem aparecer na tela, escolhendo cores, fontes e outros detalhes visuais.
+                  CSS, ou "Cascading Style Sheets" (Folhas de Estilo em
+                  Cascata), é como uma varinha mágica que usamos para dar um
+                  visual incrível a páginas web. Ele decide como os elementos,
+                  como botões e textos, devem aparecer na tela, escolhendo
+                  cores, fontes e outros detalhes visuais.
                 </span>
               </div>
 
@@ -80,7 +86,8 @@ function Cc1a1() {
                     2. Sintaxe Básica
                   </h1>
                   <span className="flex text-justify">
-                  Em CSS, usamos feitiços especiais chamados seletores e propriedades para estilizar os elementos HTML.
+                    Em CSS, usamos feitiços especiais chamados seletores e
+                    propriedades para estilizar os elementos HTML.
                   </span>
                 </div>
                 <span
@@ -111,7 +118,11 @@ function Cc1a1() {
               </div>
             </div>
           </div>
-          <BotaoDesbloquear />
+          <BotaoDesbloquear
+            linguagem={object.linguagem}
+            capitulo={object.capitulo}
+            numeroaula={object.numeroaula}
+          />
         </div>
       </main>
     </div>
