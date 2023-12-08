@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
 import { useNavigate, useLocation  } from "react-router-dom";
 
-import html1 from "../../../../../assets/comando1.svg";
+import php1 from "../../../../../assets/php/comando-11.svg";
 
 import {
   protanomaly,
@@ -40,7 +40,7 @@ function Pc1a2() {
 
   return (
     <div
-      className="flex h-screen w-full"
+      className="flex h-full w-full"
       style={{
         background: "linear-gradient(108deg, #E5C6FF 0%, #E4EBFF 100%)",
       }}
@@ -52,7 +52,7 @@ function Pc1a2() {
           onClick={() => navigate(-1)}
           className="flex mt-28 ml-8 text-3xl cursor-pointer dark:text-white"
         />
-        <div className="flex flex-col ml-20 mt-16">
+        <div className="flex flex-col ml-20 mt-16 mb-5">
           <span className="text-4xl font-semibold">
             Aula 01 - Inserção, Atualização e Exclusão de Dados no MySQL com PHP
           </span>
@@ -67,12 +67,21 @@ function Pc1a2() {
                 >
                   1. Operações Básicas de CRUD - Criando, Atualizando e Apagando
                 </h1>
-                <span className="flex text-justify">
+                <span className="flex text-justify mb-5">
                   No mundo dos bancos de dados, CRUD é como ter superpoderes
                   para criar, atualizar e apagar coisas! Por exemplo, criar um
                   novo usuário, atualizar sua idade e até mesmo dizer adeus!
                 </span>
               </div>
+              <span
+                  className="text-xl font-semibold mb-3"
+                  style={{ color: Color(mode, '#5D6CC2')}}
+                >
+                  Exemplo:
+                </span>
+                <div className="mb-5">
+                  <img src={php1} alt="" />
+                </div>
             </div>
           </div>
           <BotaoDesbloquear

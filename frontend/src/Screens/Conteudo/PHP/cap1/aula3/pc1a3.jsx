@@ -1,9 +1,10 @@
 import { IoArrowBack } from "react-icons/io5";
 import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
-import { useNavigate, useLocation  } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
-import html1 from "../../../../../assets/comando1.svg";
+import php1 from "../../../../../assets/php/comando-4.svg";
+import php2 from "../../../../../assets/php/comando-5.svg";
 
 import {
   protanomaly,
@@ -52,7 +53,7 @@ function Pc1a2() {
           onClick={() => navigate(-1)}
           className="flex mt-28 ml-8 text-3xl cursor-pointer dark:text-white"
         />
-        <div className="flex flex-col ml-20 mt-16">
+        <div className="flex flex-col ml-20 mt-16 mb-5">
           <span className="text-4xl font-semibold">
             Aula 02 - Interação com Formulário em PHP
           </span>
@@ -65,14 +66,23 @@ function Pc1a2() {
                   className="text-2xl font-semibold mb-3"
                   style={{ color: Color(mode, "#5D6CC2") }}
                 >
-                  1. Falando com Pergaminhos 
+                  1. Falando com Pergaminhos
                 </h1>
-                <span className="flex text-justify">
+                <span className="flex text-justify mb-5">
                   No mundo mágico da internet, usamos formulários para pedir
                   informações. O PHP pode ouvir esses pedidos e responder! Por
                   exemplo, se alguém escrever seu nome em um formulário, o PHP
                   pode dizer "Olá" para essa pessoa!
                 </span>
+              </div>
+              <span
+                className="text-xl font-semibold mb-3"
+                style={{ color: Color(mode, "#5D6CC2") }}
+              >
+                Exemplo:
+              </span>
+              <div className="mb-5">
+                <img src={php1} alt="" />
               </div>
 
               <div className="flex flex-col w-10/12 mt-10">
@@ -83,12 +93,22 @@ function Pc1a2() {
                   >
                     2. Magia de Validar Dados
                   </h1>
-                  <span className="flex text-justify">
+                  <span className="flex text-justify mb-5">
                     Quando recebemos informações, é importante ter certeza de
                     que são seguras. Imagine que estamos verificando se um
                     e-mail é de verdade!
                   </span>
                 </div>
+              </div>
+
+              <span
+                className="text-xl font-semibold mb-3"
+                style={{ color: Color(mode, "#5D6CC2") }}
+              >
+                Exemplo:
+              </span>
+              <div className="mb-5">
+                <img src={php2} alt="" />
               </div>
             </div>
 
@@ -108,7 +128,8 @@ function Pc1a2() {
           <BotaoDesbloquear
             linguagem={object.linguagem}
             capitulo={object.capitulo}
-            numeroaula={object.numeroaula} />
+            numeroaula={object.numeroaula}
+          />
         </div>
       </main>
     </div>

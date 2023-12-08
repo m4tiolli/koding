@@ -1,9 +1,10 @@
 import { IoArrowBack } from "react-icons/io5";
 import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
-import { useNavigate, useLocation  } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
-import html1 from "../../../../../assets/comando1.svg";
+import php1 from "../../../../../assets/php/comando.svg";
+import php2 from "../../../../../assets/php/comando-1.svg";
 
 import {
   protanomaly,
@@ -90,18 +91,9 @@ function Jc1a1() {
                     pacotes mágicos, como XAMPP, que fazem tudo ficar fácil!
                   </span>
                 </div>
-                <span
-                  className="text-xl font-semibold mb-3"
-                  style={{ color: Color(mode, "#5D6CC2") }}
-                >
-                  Exemplo:
-                </span>
-                <div className="mb-5">
-                  <img src={html1} alt="" />
-                </div>
               </div>
 
-              <div className="flex flex-col w-10/12 mb-10">
+              <div className="flex flex-col w-10/12">
                 <div className="mb-5">
                   <h1
                     className="text-2xl font-semibold mb-3"
@@ -116,18 +108,18 @@ function Jc1a1() {
                     para o computador!
                   </span>
                 </div>
-                <span
-                  className="text-xl font-semibold mb-3"
-                  style={{ color: Color(mode, "#5D6CC2") }}
-                >
-                  Exemplo:
-                </span>
-                <div className="mb-5">
-                  <img src={html1} alt="" />
-                </div>
+              </div>
+              <span
+                className="text-xl font-semibold mb-3"
+                style={{ color: Color(mode, "#5D6CC2") }}
+              >
+                Exemplo:
+              </span>
+              <div className="mb-10">
+                <img src={php1} alt="" />
               </div>
 
-              <div className="flex flex-col w-10/12 mb-10">
+              <div className="flex flex-col w-10/12">
                 <div className="mb-5">
                   <h1
                     className="text-2xl font-semibold mb-3"
@@ -142,6 +134,7 @@ function Jc1a1() {
                     saber o nome, abrimos a gaveta!
                   </span>
                 </div>
+            </div>
                 <span
                   className="text-xl font-semibold mb-3"
                   style={{ color: Color(mode, "#5D6CC2") }}
@@ -149,10 +142,9 @@ function Jc1a1() {
                   Exemplo:
                 </span>
                 <div className="mb-5">
-                  <img src={html1} alt="" />
+                  <img src={php2} alt="" />
                 </div>
               </div>
-            </div>
 
             {/* Menu */}
             <div className="flex w-72 h-32 mt-10">

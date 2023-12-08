@@ -1,9 +1,10 @@
 import { IoArrowBack } from "react-icons/io5";
 import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
-import { useNavigate, useLocation  } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
-import html1 from "../../../../../assets/comando1.svg";
+import php1 from "../../../../../assets/php/comando-7.svg";
+import php2 from "../../../../../assets/php/comando-8.svg";
 
 import {
   protanomaly,
@@ -52,7 +53,7 @@ function Pc1a2() {
           onClick={() => navigate(-1)}
           className="flex mt-28 ml-8 text-3xl cursor-pointer dark:text-white"
         />
-        <div className="flex flex-col ml-20 mt-16">
+        <div className="flex flex-col ml-20 mt-16 mb-5">
           <span className="text-4xl font-semibold">
             Aula 01 - Herança e Polimorfismo em PHP
           </span>
@@ -67,11 +68,20 @@ function Pc1a2() {
                 >
                   1. Herança - A Magia das Gerações
                 </h1>
-                <span className="flex text-justify">
+                <span className="flex text-justify mb-5">
                   Herança é quando um objeto mais novo herda poderes mágicos de
                   um objeto mais antigo. Por exemplo, um "Cachorro" pode herdar
                   coisas de um "Animal"!
                 </span>
+              </div>
+              <span
+                className="text-xl font-semibold mb-3"
+                style={{ color: Color(mode, "#5D6CC2") }}
+              >
+                Exemplo:
+              </span>
+              <div className="mb-5">
+                <img src={php1} alt="" />
               </div>
 
               <div className="flex flex-col w-10/12 mt-10">
@@ -82,12 +92,22 @@ function Pc1a2() {
                   >
                     2. Polimorfismo - Quando um Pode Ser Outro
                   </h1>
-                  <span className="flex text-justify">
+                  <span className="flex text-justify mb-5">
                     Polimorfismo é quando um objeto pode agir como outro. Por
                     exemplo, um "Quadrado" e um "Círculo" podem agir como uma
                     "Forma"!
                   </span>
                 </div>
+              </div>
+
+              <span
+                className="text-xl font-semibold mb-3"
+                style={{ color: Color(mode, "#5D6CC2") }}
+              >
+                Exemplo:
+              </span>
+              <div className="mb-5">
+                <img src={php2} alt="" />
               </div>
             </div>
 

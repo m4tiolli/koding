@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
 import { useNavigate, useLocation  } from "react-router-dom";
 
-import html1 from "../../../../../assets/comando1.svg";
+import php1 from "../../../../../assets/php/comando-12.svg";
 
 import {
   protanomaly,
@@ -52,7 +52,7 @@ function Pc1a2() {
           onClick={() => navigate(-1)}
           className="flex mt-28 ml-8 text-3xl cursor-pointer dark:text-white"
         />
-        <div className="flex flex-col ml-20 mt-16">
+        <div className="flex flex-col ml-20 mt-16 mb-5">
           <span className="text-4xl font-semibold">
             Aula 02 - Interagindo com Bancos de Dados Avançados em PHP e MySQL
           </span>
@@ -67,12 +67,21 @@ function Pc1a2() {
                 >
                   1. Consultas Avançadas - Procurando o que é Importante
                 </h1>
-                <span className="flex text-justify">
+                <span className="flex text-justify mb-5">
                   Às vezes, queremos encontrar coisas especiais no nosso tesouro
                   de dados. Podemos pedir ao MySQL para buscar informações
                   específicas, como nomes e idades das pessoas com mais de 18
                   anos!
                 </span>
+                <span
+                  className="text-xl font-semibold mb-5"
+                  style={{ color: Color(mode, '#5D6CC2')}}
+                >
+                  Exemplo:
+                </span>
+                <div className="mb-5 mt-3">
+                  <img src={php1} alt="" />
+                </div>
                 <span className="flex text-justify">
                   <br />E assim terminamos nossa jornada mágica pelo PHP!
                   Lembre-se, programar é como fazer magia, e você agora é um

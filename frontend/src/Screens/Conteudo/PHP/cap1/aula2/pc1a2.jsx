@@ -1,9 +1,10 @@
 import { IoArrowBack } from "react-icons/io5";
 import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
-import { useNavigate, useLocation  } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
-import html1 from "../../../../../assets/comando1.svg";
+import php1 from "../../../../../assets/php/comando-2.svg";
+import php2 from "../../../../../assets/php/comando-3.svg";
 
 import {
   protanomaly,
@@ -25,7 +26,6 @@ function Pc1a2() {
   const mode = localStorage.getItem("theme");
   const location = useLocation();
   const object = location.state.object;
-
 
   function Color(mode, color) {
     var newcolor;
@@ -53,7 +53,7 @@ function Pc1a2() {
           onClick={() => navigate(-1)}
           className="flex mt-28 ml-8 text-3xl cursor-pointer dark:text-white"
         />
-        <div className="flex flex-col ml-20 mt-16">
+        <div className="flex flex-col ml-20 mt-16 mb-5">
           <span className="text-4xl font-semibold">
             Aula 01 - Estruturas de Controle em PHP
           </span>
@@ -68,14 +68,23 @@ function Pc1a2() {
                 >
                   1. Comandos Mágicos
                 </h1>
-                <span className="flex text-justify">
+                <span className="flex text-justify mb-5">
                   O PHP entende comandos especiais, como "if" e "else". É como
                   dar ordens ao computador! Se algo é verdadeiro, ele faz uma
                   coisa, se não for, faz outra.
                 </span>
               </div>
+              <span
+                className="text-xl font-semibold mb-3"
+                style={{ color: Color(mode, "#5D6CC2") }}
+              >
+                Exemplo:
+              </span>
+              <div className="mb-5">
+                <img src={php1} alt="" />
+              </div>
 
-              <div className="flex flex-col w-10/12 mt-10">
+              <div className="flex flex-col w-10/12 mt-10 mb-5">
                 <div className="">
                   <h1
                     className="text-2xl font-semibold mb-3"
@@ -89,6 +98,15 @@ function Pc1a2() {
                   </span>
                 </div>
               </div>
+              <span
+                  className="text-xl font-semibold mb-3"
+                  style={{ color: Color(mode, "#5D6CC2") }}
+                >
+                  Exemplo:
+                </span>
+                <div className="mb-5">
+                  <img src={php2} alt="" />
+                </div>
             </div>
 
             {/* Menu */}
