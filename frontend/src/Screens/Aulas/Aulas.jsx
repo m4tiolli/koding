@@ -3,7 +3,7 @@ import { BiSearch } from "react-icons/bi";
 import { IoArrowBack } from "react-icons/io5";
 import { AiOutlineClose } from "react-icons/ai";
 import { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Menu from "../../Components/Menu/Menu";
 
 import { useDisclosure } from "@chakra-ui/react";
@@ -92,7 +92,7 @@ function Aulas() {
             className="text-3xl cursor-pointer text-cinza dark:text-white"
           />
           <p className="dark:text-white text-cinza text-2xl font-semibold ml-10">
-            Aprendendo {texto}
+            {capitulo.nome}
           </p>
         </div>
         {/* Barra de pesquisa */}

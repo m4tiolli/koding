@@ -36,15 +36,15 @@ function Landing() {
   
   function Color(mode, color) {
     var newcolor;
-    if (mode === "protanomaly") {
+    if (mode === "protanomalia") {
       newcolor = protanomaly(color);
-      localStorage.theme = "protanomaly";
-    } else if (mode === "deuteranomaly") {
+      localStorage.theme = "protanomalia";
+    } else if (mode === "deuteranomalia") {
       newcolor = deuteranomaly(color);
-      localStorage.theme = "deuteranomaly";
-    } else if (mode === "tritanomaly") {
+      localStorage.theme = "deuteranomalia";
+    } else if (mode === "tritanomalia") {
       newcolor = tritanomaly(color);
-      localStorage.theme = "tritanomaly";
+      localStorage.theme = "tritanomalia";
     } else {
       newcolor = color;
     }
