@@ -5,7 +5,7 @@ import { ImContrast } from "react-icons/im";
 import { useState, useEffect } from "react";
 import Desempenho from "../Desempenho/Desempenho";
 import PerfilR from "../PerfilR/PerfilR";
-import MenuR from "../../Components/MenuR/MenuR"
+import MenuR from "../../Components/MenuR/MenuR";
 import "./HomeR.css";
 import { useDisclosure } from "@chakra-ui/react";
 import { Modal, ModalContent } from "@chakra-ui/react";
@@ -17,6 +17,8 @@ import {
 } from "../../Components/ColorBlind";
 import { useNavigate } from "react-router-dom";
 import Header from "../../Components/Header/Header";
+import { IoSettingsOutline } from "react-icons/io5";
+import { IoMdExit } from "react-icons/io";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -44,7 +46,7 @@ export default function Home() {
 
   function Sair() {
     localStorage.removeItem("nivel");
-    document.location.reload()
+    document.location.reload();
   }
 
   const [isChecked, setIsChecked] = useState(false);
@@ -123,9 +125,11 @@ export default function Home() {
     <ChakraProvider>
       <div
         className="flex h-full w-full"
-        style={{ background: "linear-gradient(108deg, #C6D6FF 0%, #FFFFFF 100%)" }}
+        style={{
+          background: "linear-gradient(108deg, #C6D6FF 0%, #FFFFFF 100%)",
+        }}
       >
-        <MenuR/>
+        <MenuR />
 
         <Modal
           isOpen={isOpen}
@@ -216,7 +220,7 @@ export default function Home() {
             <div className="bg-[#BCC2C7] flex flex-col items-center w-full justify-start rounded-2xl h-fit pb-4 gap-0">
               <button className="text-left rounded-t-lg leading-none text-white bg-[#50535B] py-3 w-full hover:opacity-70">
                 <span className="inline-flex items-center gap-2 w-full">
-                  <BiHelpCircle className="relative 2xl:text-3xl text-lg w-1/4 "></BiHelpCircle>
+                  <IoSettingsOutline className="relative 2xl:text-3xl text-lg w-1/4 "></IoSettingsOutline>
                   <span className="2xl:text-xl text-lg w-3/4">
                     Configurações
                   </span>
@@ -232,9 +236,12 @@ export default function Home() {
                 </span>
               </button>
 
-              <button className="text-left rounded-t-lg leading-none text-cinza py-3 w-full hover:opacity-70" onClick={Sair}>
+              <button
+                className="text-left rounded-t-lg leading-none text-cinza py-3 w-full hover:opacity-70"
+                onClick={Sair}
+              >
                 <span className="inline-flex items-center gap-2 w-full">
-                  <BiHelpCircle className="relative 2xl:text-3xl text-lg w-1/4 "></BiHelpCircle>
+                  <IoMdExit className="relative 2xl:text-3xl text-lg w-1/4 "></IoMdExit>
                   <span className="2xl:text-xl text-lg w-3/4">Sair</span>
                 </span>
               </button>

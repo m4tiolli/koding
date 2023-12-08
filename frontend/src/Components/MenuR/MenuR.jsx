@@ -15,13 +15,15 @@ import green from "../green.png";
 import red from "../red.png";
 import { useNavigate } from "react-router-dom";
 
-import incrivel from "../../assets/incrivel.png"
-import perfeita from "../../assets/perfeita.png"
-import pessima from "../../assets/pessima.png"
-import boa from "../../assets/boa.png"
-import ruim from "../../assets/ruim.png"
+import incrivel from "../../assets/incrivel.png";
+import perfeita from "../../assets/perfeita.png";
+import pessima from "../../assets/pessima.png";
+import boa from "../../assets/boa.png";
+import ruim from "../../assets/ruim.png";
 
 import "../MenuR/MenuR.css";
+import { IoSettingsOutline } from "react-icons/io5";
+import { IoMdExit } from "react-icons/io";
 
 export default function Menu({ screen }) {
   const navigate = useNavigate();
@@ -66,9 +68,7 @@ export default function Menu({ screen }) {
   };
 
   useEffect(() => {
-    localStorage.nivel !== "responsavel"
-      ? navigate("/")
-      : ""
+    localStorage.nivel !== "responsavel" ? navigate("/") : "";
   }, [navigate]);
 
   function Sair() {
@@ -375,7 +375,7 @@ export default function Menu({ screen }) {
               onClick={() => navigate("/pais/configuracao")}
             >
               <span className="inline-flex items-center gap-2 w-full">
-                <BiHelpCircle className="relative 2xl:text-3xl text-lg w-1/4 "></BiHelpCircle>
+                <IoSettingsOutline className="relative 2xl:text-3xl text-lg w-1/4" />
                 <span className="2xl:text-xl text-lg w-3/4">Configurações</span>
               </span>
             </button>
@@ -397,7 +397,7 @@ export default function Menu({ screen }) {
               onClick={Sair}
             >
               <span className="inline-flex items-center gap-2 w-full">
-                <BiHelpCircle className="relative 2xl:text-3xl text-lg w-1/4 "></BiHelpCircle>
+                <IoMdExit className="relative 2xl:text-3xl text-lg w-1/4" />
                 <span className="2xl:text-xl text-lg w-3/4">Sair</span>
               </span>
             </button>
@@ -446,31 +446,31 @@ export default function Menu({ screen }) {
             <div className="flex items-center justify-center notebook:gap-x-10 gap-x-10 laptop1024:gap-x-6 font-semibold">
               <div className="flex flex-col items-center justify-center gap-y-2 text-white">
                 <div className="w-20 h-20 notebook:w-20 notebook:h-20 laptop1024:w-16 laptop1024:h-16 rounded-full bg-slate-300 div">
-                <img src={pessima} alt="Péssima" />
+                  <img src={pessima} alt="Péssima" />
                 </div>
                 <span className="uppercase">péssima</span>
               </div>
               <div className="flex flex-col items-center justify-center gap-y-2 text-white">
                 <div className="w-20 h-20 notebook:w-20 notebook:h-20 laptop1024:w-16 laptop1024:h-16 rounded-full bg-slate-300 div">
-                <img src={ruim} alt="Ruim" />
+                  <img src={ruim} alt="Ruim" />
                 </div>
                 <span className="uppercase">ruim</span>
               </div>
               <div className="flex flex-col items-center justify-center gap-y-2 text-white">
                 <div className="w-20 h-20 notebook:w-20 notebook:h-20 laptop1024:w-16 laptop1024:h-16 rounded-full bg-slate-300 div">
-                <img src={boa} alt="Boa" />
+                  <img src={boa} alt="Boa" />
                 </div>
                 <span className="uppercase">boa</span>
               </div>
               <div className="flex flex-col items-center justify-center gap-y-2 text-white">
                 <div className="w-20 h-20 notebook:w-20 notebook:h-20 laptop1024:w-16 laptop1024:h-16 rounded-full bg-slate-300 div">
-                <img src={incrivel} alt="Incrível" />
+                  <img src={incrivel} alt="Incrível" />
                 </div>
                 <span className="uppercase">incrível</span>
               </div>
               <div className="flex flex-col items-center justify-center gap-y-2 text-white">
                 <div className="w-20 h-20 notebook:w-20 notebook:h-20 laptop1024:w-16 laptop1024:h-16 rounded-full bg-slate-300 div">
-                <img src={perfeita} alt="Perfeita" />
+                  <img src={perfeita} alt="Perfeita" />
                 </div>
                 <span className="uppercase">perfeita</span>
               </div>

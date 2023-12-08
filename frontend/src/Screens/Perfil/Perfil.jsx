@@ -243,7 +243,7 @@ function Perfil() {
               <div className="inline-flex items-center gap-5">
                 <AiFillStar className="xl:text-5xl text-4xl"></AiFillStar>
                 <div className="w-20 text-center flex flex-col items-center justify-center">
-                  <span className="xl:text-3xl text-2xl">100</span>
+                  <span className="xl:text-3xl text-2xl">1400</span>
                   <span className="xl:text-md text-sm text-black/75 dark:text-white">
                     Total XP
                   </span>

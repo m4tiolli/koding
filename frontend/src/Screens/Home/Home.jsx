@@ -26,11 +26,13 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import AlertaInatividade from "../../Components/AlertaInatividade/AlertaInatividade";
 
-import incrivel from "../../assets/incrivel.png"
-import perfeita from "../../assets/perfeita.png"
-import pessima from "../../assets/pessima.png"
-import boa from "../../assets/boa.png"
-import ruim from "../../assets/ruim.png"
+import incrivel from "../../assets/incrivel.png";
+import perfeita from "../../assets/perfeita.png";
+import pessima from "../../assets/pessima.png";
+import boa from "../../assets/boa.png";
+import ruim from "../../assets/ruim.png";
+import { IoSettingsOutline } from "react-icons/io5";
+import { IoMdExit } from "react-icons/io";
 
 export default function Home({ prop }) {
   const [button, setButton] = useState("materiais");
@@ -165,7 +167,7 @@ export default function Home({ prop }) {
   };
 
   function EnviarFeedback(estrela, conteudo) {
-    const user = JSON.parse(localStorage.getItem("user"));
+    const user = JSON.parse(atob(localStorage.getItem("user")));
     const responsavel = user.responsavel;
 
     const body = { responsavel, conteudo, estrela };
@@ -464,7 +466,7 @@ export default function Home({ prop }) {
                 onClick={() => navigate("/configuracao")}
               >
                 <span className="inline-flex items-center gap-2 w-full">
-                  <BiHelpCircle className="relative 2xl:text-3xl text-lg w-1/4 "></BiHelpCircle>
+                  <IoSettingsOutline className="relative 2xl:text-3xl text-lg w-1/4 "/>
                   <span className="2xl:text-xl text-lg w-3/4">
                     Configurações
                   </span>
@@ -476,7 +478,7 @@ export default function Home({ prop }) {
                 onClick={Sair}
               >
                 <span className="inline-flex items-center gap-2 w-full">
-                  <BiHelpCircle className="relative 2xl:text-3xl text-lg w-1/4 "></BiHelpCircle>
+                  <IoMdExit className="relative 2xl:text-3xl text-lg w-1/4 "/>
                   <span className="2xl:text-xl text-lg w-3/4">Sair</span>
                 </span>
               </button>

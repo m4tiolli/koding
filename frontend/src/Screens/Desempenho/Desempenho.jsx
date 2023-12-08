@@ -98,7 +98,7 @@ function Desempenho() {
                 )} 0%, ${Color(mode, "#38E56B")} 100%`,
               }}
             >
-              <span className="text-white text-6xl font-semibold">900</span>
+              <span className="text-white text-6xl font-semibold">06</span>
               <span className="text-white text-xl text-center">
                 Lições Completadas
               </span>
@@ -113,7 +113,7 @@ function Desempenho() {
                 )} 0%, ${Color(mode, "#51CEAE")} 100%`,
               }}
             >
-              <span className="text-white text-6xl font-semibold">03</span>
+              <span className="text-white text-6xl font-semibold">01</span>
               <span className="text-white text-xl text-center">
                 Linguagens Aprendidas
               </span>

@@ -91,7 +91,7 @@ export default function CardAula({ aula, capitulo }) {
       .then((response) => setTags(response.data));
   }, [aulaId]);
   return (
-    <div className="space-y-32">
+    <div className="space-y-32 z-auto">
       <div className="flex flex-col justify-center ml-10">
         <div className="flex space-x-16 items-center mb-10">
           <div className="space-y-5">
@@ -100,7 +100,7 @@ export default function CardAula({ aula, capitulo }) {
               <div
                 className={`${
                   aula.desbloqueado == 0 ? "block" : "hidden"
-                } w-80 h-52 absolute top-0 left-0 grid place-items-center z-[2]`}
+                } w-80 h-52 absolute top-0 left-0 grid place-items-center z-[21]`}
               >
                 <IoIosLock className="w-20 h-20 top-0 text-white" />
               </div>
@@ -108,7 +108,7 @@ export default function CardAula({ aula, capitulo }) {
                 onClick={aula.desbloqueado == 0 ? !onOpen : onOpen}
                 className={`${
                   aula.desbloqueado == 0 ? "brightness-[.25]" : ""
-                } w-80 h-52 rounded-xl cursor-pointer flex justify-center items-center flex-col relative z-[1]`}
+                } w-80 h-52 rounded-xl cursor-pointer flex justify-center items-center flex-col relative z-auto`}
                 style={{
                   backgroundImage: `linear-gradient(10deg, ${Color(
                     mode,
@@ -148,63 +148,13 @@ export default function CardAula({ aula, capitulo }) {
           </div>
         </div>
       </div>
-      <Modal
-        isCentered={true}
-        onClose={onFlexClose}
-        isOpen={isFlexOpen}
-        motionPreset="slideInBottom"
-        zIndex={2}
-      >
-        <ModalContent
-          w="50vw"
-          h="22vw"
-          display="flex"
-          background="#D1B8E9"
-          borderRadius="0.9em"
-          zIndex={"50"}
-          marginLeft={"auto"}
-          marginTop={"auto"}
-          marginRight={"auto"}
-          marginBottom={"auto"}
-        >
-          {/* Card */}
-
-          <div className="h-full flex justify-center items-center space-x-10">
-            <div className="flex flex-col space-y-3 ml-10">
-              <div
-                className="w-82 h-44 rounded-xl"
-                style={{
-                  backgroundImage: `linear-gradient(100deg, ${Color(
-                    mode,
-                    "#6800FF"
-                  )} 0%, ${Color(mode, "#BB5E7E")} 100%`,
-                }}
-              ></div>
-              <div>
-                <span className="flex font-bold text-lg mb-2 truncate">
-                  Aula {aula.numeroaula} - {aula.nome}
-                </span>
-                {/* Filtro */}
-              </div>
-            </div>
-            <div className="flex flex-col justify-center items-center text-center">
-              <button
-                onClick={Guardar}
-                className="bg-[#3BEF61] text-white w-32 uppercase text-2xl p-2 rounded-lg shadow-md"
-              >
-                Iniciar
-              </button>
-              <span className="w-34 h-20 px-4 text-lg">{aula.descricao}</span>
-            </div>
-          </div>
-        </ModalContent>
-      </Modal>
-
+<div className="relative z-[30]">
       <Modal
         isCentered={true}
         onClose={onClose}
         isOpen={isOpen}
         motionPreset="slideInBottom"
+        closeOnOverlayClick
       >
         <ModalOverlay />
         <ModalContent
@@ -216,11 +166,14 @@ export default function CardAula({ aula, capitulo }) {
           margin={"auto"}
           justifyContent={"center"}
           alignItems={"center"}
-          zIndex={2}
+          zIndex={30}
+          position={"fixed"}
+          left={'25vw'}
+          top={'18vh'}
         >
           {/* Card */}
 
-          <div className="flex flex-col items-center justify-center z-[2]">
+          <div className="flex flex-col items-center justify-center z-[30]">
             <div className="flex items-center space-x-10 px-5">
               <div className="rounded-xl w-[400px] space-y-5">
                 <div
@@ -254,6 +207,7 @@ export default function CardAula({ aula, capitulo }) {
           </div>
         </ModalContent>
       </Modal>
+      </div>
     </div>
   );
 }
