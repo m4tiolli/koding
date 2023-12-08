@@ -57,7 +57,7 @@ export default function CardCapitulo({ capitulo }) {
           cor2
         )} 100%)`,
       }}
-      onClick={() => navigate("/aulas", { state: { aulas: aulas, capitulo: capitulo } })}
+      onClick={() => navigate("/aulas", { state: { capitulo: capitulo } })}
     >
       <h1 className="text-white font-black text-3xl text-center">
         Capítulo {capitulo.numerocapitulo}

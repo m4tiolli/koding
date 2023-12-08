@@ -1,7 +1,7 @@
 import { IoArrowBack } from "react-icons/io5";
 import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import html1 from "../../../../../assets/html/comando-1.svg";
 import html2 from "../../../../../assets/html/comando-3.svg";
@@ -15,6 +15,7 @@ import BotaoDesbloquear from "../../../../../Components/BotaoDesbloquear/BotaoDe
 
 function Hc1a2() {
   const navigate = useNavigate();
+  const location = useLocation();
   useEffect(() => {
     localStorage.nivel === "responsavel"
       ? navigate("/pais/home")
@@ -36,6 +37,10 @@ function Hc1a2() {
     } else newcolor = color;
     return newcolor;
   }
+
+  const locationState = location.state;
+  const object = locationState && locationState.object;
+  console.log(object);
 
   return (
     <div
@@ -67,7 +72,10 @@ function Hc1a2() {
                   1. Tags Estruturais
                 </h1>
                 <span className="flex text-justify">
-                As tags como  &lt;header&gt;,  &lt;footer&gt;, e  &lt;div&gt; são como feitiços que organizam o conteúdo da página. O  &lt;header&gt; é como um título, o  &lt;footer&gt; fica no final, e  &lt;div&gt; é uma caixa mágica para organizar coisas.
+                  As tags como &lt;header&gt;, &lt;footer&gt;, e &lt;div&gt; são
+                  como feitiços que organizam o conteúdo da página. O
+                  &lt;header&gt; é como um título, o &lt;footer&gt; fica no
+                  final, e &lt;div&gt; é uma caixa mágica para organizar coisas.
                 </span>
               </div>
 
@@ -80,7 +88,10 @@ function Hc1a2() {
                     2. Tags de Título e Texto
                   </h1>
                   <span className="flex text-justify">
-                  Os títulos, como &lt;h1&gt; a &lt;h6&gt;, são como encantamentos de diferentes tamanhos. E as tags &lt;p&gt;, &lt;span&gt;, &lt;br&gt;, e &lt;hr&gt; ajudam a criar textos e separações.
+                    Os títulos, como &lt;h1&gt; a &lt;h6&gt;, são como
+                    encantamentos de diferentes tamanhos. E as tags &lt;p&gt;,
+                    &lt;span&gt;, &lt;br&gt;, e &lt;hr&gt; ajudam a criar textos
+                    e separações.
                   </span>
                 </div>
               </div>
@@ -94,7 +105,10 @@ function Hc1a2() {
                     3. Listas e Links
                   </h1>
                   <span className="flex text-justify">
-                  Para criar listas, usamos &lt;ol&gt; para listas ordenadas e &lt;ul&gt; para listas não ordenadas. As listas têm &lt;li&gt; para cada item. E para fazer links, usamos a tag &lt;a&gt;.
+                    Para criar listas, usamos &lt;ol&gt; para listas ordenadas e
+                    &lt;ul&gt; para listas não ordenadas. As listas têm
+                    &lt;li&gt; para cada item. E para fazer links, usamos a tag
+                    &lt;a&gt;.
                   </span>
                 </div>
                 <span

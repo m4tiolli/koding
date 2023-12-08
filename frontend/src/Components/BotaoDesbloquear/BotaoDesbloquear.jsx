@@ -5,8 +5,10 @@ import { ToastContainer, toast } from "react-toastify";
 function BotaoDesbloquear({ linguagem, capitulo, numeroaula }) {
   const navigate = useNavigate();
   const DesbloquarProximo = () => {
+    console.log(capitulo, numeroaula);
     const num = numeroaula + 1;
     const body = { linguagem, capitulo, numeroaula: num };
+    console.log(body);
     axios
       .put("https://tcckoding.azurewebsites.net/desbloquear", body)
       .then(

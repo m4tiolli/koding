@@ -1,7 +1,7 @@
 import { IoArrowBack } from "react-icons/io5";
 import { useEffect } from "react";
 import Menu from "../../../../../Components/Menu/Menu";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import html1 from "../../../../../assets/html/comando.svg";
 
@@ -35,6 +35,11 @@ function Hc1a1() {
     } else newcolor = color;
     return newcolor;
   }
+
+  const location = useLocation();
+  const capitulo = location.state.capitulo;
+  const aula = location.state.aula;
+
 
   return (
     <div
@@ -117,7 +122,7 @@ function Hc1a1() {
               </div>
             </div>
           </div>
-        <BotaoDesbloquear />
+        <BotaoDesbloquear capitulo={capitulo} numeroaula={aula} />
         </div>
       </main>
     </div>

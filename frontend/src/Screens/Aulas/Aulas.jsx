@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Menu from "../../Components/Menu/Menu";
 
-import { useDisclosure } from "@chakra-ui/react";
+import { Spinner, useDisclosure } from "@chakra-ui/react";
 import { Modal, ModalContent } from "@chakra-ui/react";
 
 import {
@@ -15,15 +15,31 @@ import {
   deuteranomaly,
 } from "./../../Components/ColorBlind";
 import CardAula from "../../Components/CardAula/CardAula";
+import axios from "axios";
 
 function Aulas() {
   const mode = localStorage.getItem("theme");
 
   const { isOpen, onOpen, onClose } = useDisclosure();
-
+  const [loading, setLoading] = useState(true);
   const location = useLocation();
-  const aulas = location.state.aulas;
-  const capitulos = location.state.capitulo;
+  const [aulas, setAulas] = useState([]);
+  var capitulos;
+  if (localStorage.getItem("capitulo")) {
+    capitulos = JSON.parse(localStorage.getItem("capitulo"));
+  } else {
+    capitulos = location.state.capitulo;
+    localStorage.setItem("capitulo", JSON.stringify(capitulos));
+  }
+
+  useEffect(() => {
+    axios
+      .get(`https://tcckoding.azurewebsites.net/aulas/${capitulos.id}`)
+      .then((response) => setAulas(response.data))
+      .then(() => setLoading(false))
+      .then(() => localStorage.removeItem("capitulo"))
+      .catch((error) => console.error(error));
+  }, []);
 
   function Color(mode, color) {
     var newcolor;
@@ -45,35 +61,12 @@ function Aulas() {
     }
   }, []);
 
-  const capitulo = capitulos.linguagem;
-
   const navigate = useNavigate();
-
-  console.log(aulas);
 
   const [searchTerm, setSearchTerm] = useState("");
   const filteredCapitulos = aulas.filter((aula) =>
     aula.nome.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
-  var texto;
-  switch (capitulo) {
-    case 1:
-      texto = "HTML";
-      break;
-    case 2:
-      texto = "CSS";
-      break;
-    case 3:
-      texto = "JavaScript";
-      break;
-    case 4:
-      texto = "PHP";
-      break;
-    default:
-      texto = "";
-      break;
-  }
   return (
     <div
       className="flex h-full w-full"
@@ -92,7 +85,7 @@ function Aulas() {
             className="text-3xl cursor-pointer text-cinza dark:text-white"
           />
           <p className="dark:text-white text-cinza text-2xl font-semibold ml-10">
-            {capitulo.nome}
+            {capitulos.nome}
           </p>
         </div>
         {/* Barra de pesquisa */}
@@ -122,26 +115,33 @@ function Aulas() {
           </div>
         </div>
         {/* Cards */}
-        <div className="grid grid-cols-3 laptop1024:grid-cols-2 notebook:grid-cols-3">
-          {searchTerm != "" ? (
-            <div className="ml-10">
-              <p className="dark:text-white text-2xl font-semibold mb-6 -mt-10 ml-8 w-screen">
-                Mostrando resultados para "{searchTerm}"
-              </p>
-              <div className="grid grid-cols-3 2xl:grid-cols-4 gap-[23em] gap-y-8">
-                {filteredCapitulos.map((aula, index) => (
-                  <div key={index}>
-                    <CardAula aula={aula} capitulo={capitulos} />
-                  </div>
-                ))}
+        {loading ? (
+          <div className="w-screen h-40 grid place-items-center">
+            <Spinner thickness="4px" />
+          </div>
+        ) : (
+          <div className="grid grid-cols-3 laptop1024:grid-cols-2 notebook:grid-cols-3">
+            {searchTerm != "" ? (
+              <div className="ml-10">
+                <p className="dark:text-white text-2xl font-semibold mb-6 -mt-10 ml-8 w-screen">
+                  Mostrando resultados para "{searchTerm}"
+                </p>
+                <div className="grid grid-cols-3 2xl:grid-cols-4 gap-[23em] gap-y-8">
+                  {filteredCapitulos.map((aula, index) => (
+                    <div key={index}>
+                      <CardAula aula={aula} capitulo={capitulos} />
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          ) : (
-            aulas.map((aula, index) => (
-              <CardAula aula={aula} key={index} capitulo={capitulos} />
-            ))
-          )}
-        </div>
+            ) : (
+              aulas.map((aula, index) => (
+                <CardAula aula={aula} key={index} capitulo={capitulos} />
+              ))
+            )}
+          </div>
+        )}
+
         <Modal
           isCentered
           onClose={onClose}

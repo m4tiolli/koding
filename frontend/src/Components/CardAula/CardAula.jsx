@@ -47,6 +47,9 @@ export default function CardAula({ aula, capitulo }) {
       break;
   }
 
+  const passar = capitulo
+  console.log(passar);
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const {
     isOpen: isFlexOpen,
@@ -83,7 +86,11 @@ export default function CardAula({ aula, capitulo }) {
           <div className="space-y-5">
             {/* Card */}
             <div className="relative w-fit h-fit">
-              <div className={`${aula.desbloqueado == 0 ? "block" : "hidden"} w-80 h-52 absolute top-0 left-0 grid place-items-center z-[2]`}>
+              <div
+                className={`${
+                  aula.desbloqueado == 0 ? "block" : "hidden"
+                } w-80 h-52 absolute top-0 left-0 grid place-items-center z-[2]`}
+              >
                 <IoIosLock className="w-20 h-20 top-0 text-white" />
               </div>
               <div
@@ -112,13 +119,17 @@ export default function CardAula({ aula, capitulo }) {
                   </span>
                 </marquee>
                 {/* Filtro */}
-                <div className={`${aula.desbloqueado == 0 ? "brightness-[.25]" : ""} w-80 flex flex-wrap gap-x-3 gap-y-3`}>
+                <div
+                  className={`${
+                    aula.desbloqueado == 0 ? "brightness-[.25]" : ""
+                  } w-80 flex flex-wrap gap-x-3 gap-y-3`}
+                >
                   {tags.length > 0 ? (
                     tags.map((tag, index) => (
                       <Tag tag={tag} cor1={cor1} cor2={cor2} key={index} />
                     ))
                   ) : (
-                    <p className="dark:text-white italic">sem tag</p>
+                    <p className="dark:text-white italic text-white">sem tag</p>
                   )}
                 </div>
               </div>
@@ -139,7 +150,7 @@ export default function CardAula({ aula, capitulo }) {
           display="flex"
           background="#D1B8E9"
           borderRadius="0.9em"
-          zIndex={'50'}
+          zIndex={"50"}
           marginLeft={"auto"}
           marginTop={"auto"}
           marginRight={"auto"}
@@ -169,9 +180,8 @@ export default function CardAula({ aula, capitulo }) {
               <button
                 onClick={() =>
                   navigate(
-                    `/aulas/${texto.toLowerCase()}/cap${id_capitulo}/aula${
-                      aula.numeroaula
-                    }`
+                    `/aulas/html/cap1/aula1`,
+                    { state: { object: passar } }
                   )
                 }
                 className="bg-[#3BEF61] text-white w-32 uppercase text-2xl p-2 rounded-lg shadow-md"
@@ -197,7 +207,7 @@ export default function CardAula({ aula, capitulo }) {
           display="flex"
           background="#7E1AD4"
           borderRadius="0.9em"
-          margin={'auto'}
+          margin={"auto"}
           justifyContent={"center"}
           alignItems={"center"}
           zIndex={2}
@@ -259,7 +269,7 @@ function Tag({ tag, cor1, cor2 }) {
         )} 0%, ${Color(mode, cor1)} 100%`,
       }}
     >
-      <span className="flex w-auto items-center justify-center text-md text-black font-semibold truncate dark:text-white">
+      <span className="flex w-auto items-center justify-center text-md text-white font-semibold truncate dark:text-white">
         {tag.nome}
       </span>
     </div>
