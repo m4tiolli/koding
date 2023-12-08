@@ -19,6 +19,7 @@ import {
   tritanomaly,
   deuteranomaly,
 } from "../../Components/ColorBlind";
+import ModalCookies from "../../Components/ModalCookies/ModalCookies";
 
 const settings = {
   dots: true,
@@ -33,7 +34,7 @@ const settings = {
 
 function Landing() {
   let mode = localStorage.theme;
-  
+
   function Color(mode, color) {
     var newcolor;
     if (mode === "protanomalia") {
@@ -102,7 +103,8 @@ function Landing() {
 
   return (
     <div className="absolute w-full h-fit overflow-hidden bg-[#e5c6ff] dark:bg-darkcinzaclaro">
-      <div className="h-screen w-full flex flex-col items-center justify-center relative z-0">
+      <div className="h-screen w-full flex flex-col items-center justify-center relative z-auto">
+        <ModalCookies />
         <BackgroundLanding1 />
         <Header />
 

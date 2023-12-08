@@ -596,4 +596,15 @@ module.exports = function (app) {
       }
     );
   });
+
+  app.get("/crianca/:id", (req, res) => {
+    const idCrianca = req.params.idCrianca;
+    db.query("SELECT * FROM crianca WHERE id = ?", [idCrianca], (err, result) => {
+      if(err) {
+        res.json("Erro")
+      } else {
+        res.json(result)
+      }
+    })
+  })
 };

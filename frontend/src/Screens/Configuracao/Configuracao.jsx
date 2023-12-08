@@ -72,10 +72,21 @@ function Configuracao() {
   }
 
   const user = JSON.parse(atob(localStorage.getItem("user")));
+  const [novosDados, setNovosDados] = useState([]);
 
-  const [nome, setNome] = useState(user.nome);
-  const [username, setUsername] = useState(user.username);
-  const [email, setEmail] = useState(user.email);
+  useEffect(() => {
+    const idCrianca = user.id;
+    axios
+      .get(`https://tcckoding.azurewebsites.net/crianca/${idCrianca}`)
+      .then((response) => {
+        setNovosDados(response.data);
+        localStorage.setItem("user", btoa(JSON.stringify(response.data)));
+      });
+  });
+
+  const [nome, setNome] = useState(novosDados.nome);
+  const [username, setUsername] = useState(novosDados.username);
+  const [email, setEmail] = useState(novosDados.email);
   const [senha, setSenha] = useState();
 
   const [color, setColor] = useState(localStorage.getItem("theme"));
@@ -84,6 +95,7 @@ function Configuracao() {
     if (senha == user.senha) {
       const body = { username, email, senha };
       localStorage.setItem("theme", color);
+      console.log(body);
       axios
         .put(`https://tcckoding.azurewebsites.net/crianca/${user.id}`, body)
         .then(
@@ -98,7 +110,6 @@ function Configuracao() {
             theme: "colored",
           })
         )
-        .then(Get())
         .catch((err) => console.error(err));
     } else {
       toast.error("A senha não coincide!", {
@@ -114,16 +125,6 @@ function Configuracao() {
     }
   };
 
-  function Get() {
-    const body = { email, senha };
-    axios
-      .post("https://tcckoding.azurewebsites.net/crianca/login", body)
-      .then((response) =>
-        localStorage.setItem("user", btoa(JSON.stringify(response.data)))
-      );
-    window.location.reload();
-  }
-
   const selectdalt = useRef(null);
   const selectdark = useRef(null);
 
@@ -133,7 +134,9 @@ function Configuracao() {
       .then(() => {
         localStorage.removeItem("user");
         localStorage.removeItem("nivel");
-        window.location.reload();
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
       })
       .catch((error) => {
         console.error("Erro ao excluir:", error);
