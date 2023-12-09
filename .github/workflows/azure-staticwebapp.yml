@@ -14,10 +14,14 @@ name: Deploy web app to Azure Static Web Apps
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
+      - dev
+      - staging
   pull_request:
     types: [opened, synchronize, reopened, closed]
-    branches: [ "main" ]
+    branches:
+      - main
 
 # Environment variables available to all jobs and steps in this workflow
 env:
@@ -38,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
         with:
           submodules: true
       - name: Build And Deploy
@@ -48,6 +52,7 @@ jobs:
           azure_static_web_apps_api_token: ${{ env.AZURE_STATIC_WEB_APPS_API_TOKEN }} # secret containing api token for app
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
           action: "upload"
+          production_branch: "main"
           ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
           app_location: ${{ env.APP_LOCATION }}
