@@ -185,7 +185,7 @@ function CadastroCrianca() {
     <div
       className={`${
         dark ? "bg-[#173032]" : "bg-[#c4e1d5]"
-      } absolute w-full h-fit xl:h-full z-20 flex flex-col-reverse xl:flex-row xl:justify-between gap-4 items-start justify-start xl:overflow-hidden`}
+      } absolute w-full h-screen xl:h-full z-20 flex flex-col-reverse xl:flex-row xl:justify-between gap-4 items-start justify-start xl:overflow-hidden`}
     >
       <ToastContainer
         position="top-center"

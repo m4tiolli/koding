@@ -18,6 +18,7 @@ function VerificaPC() {
 
   const Sair = () => {
     localStorage.removeItem("user");
+    localStorage.removeItem("nivel");
     setTimeout(() => {
       navigate("/");
     }, 1000);

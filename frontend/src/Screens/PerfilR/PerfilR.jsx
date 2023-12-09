@@ -115,7 +115,7 @@ function Perfil() {
         theme="colored"
       />
 
-      <main className="w-full h-screen laptop:h-screen lg:flex lg:flex-col lg:ml-20 xl:gap-x-32 gap-x-16 overflow-hidden dark:text-white font-semibold dark:bg-darkfundoR">
+      <main className="w-full h-full laptop:h-screen lg:flex lg:flex-col lg:ml-20 xl:gap-x-32 gap-x-16 overflow-hidden dark:text-white font-semibold dark:bg-darkfundoR">
         {responsive ? <Navbar /> : ""}
 
         <div className="mt-20 lg:mt-24 text-center">

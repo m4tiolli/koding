@@ -80,12 +80,6 @@ const Navbar = () => {
               </span>
             </Link>
           </div>
-
-          <button className="text-center rounded-lg leading-none bg-[#B0B3C8] px-4 py-2 hover:opacity-70 mt-10">
-            <span className="flex justify-center items-center gap-2 w-full">
-              <span className="2xl:text-xl text-lg">Dar Feedback</span>
-            </span>
-          </button>
         </div>
       </div>
     </div>

@@ -142,7 +142,7 @@ function Cadastro() {
 
     return (
         <div
-            className={`${dark ? 'bg-[#173032]' : 'bg-[#c4e1d5]'} absolute w-full h-fit xl:h-full z-20 flex flex-col-reverse xl:flex-row xl:justify-between gap-4 items-start justify-start xl:overflow-hidden`}>
+            className={`${dark ? 'bg-[#173032]' : 'bg-[#c4e1d5]'} absolute w-full h-screen xl:h-full z-20 flex flex-col-reverse xl:flex-row xl:justify-between gap-4 items-start justify-start xl:overflow-hidden`}>
             <BackgroundCircles isResponsavel={true} />
             <div className="z-20 h-full w-full flex items-end justify-center flex-col relative">
                 <div className="flex items-center justify-evenly flex-col h-full w-full">
