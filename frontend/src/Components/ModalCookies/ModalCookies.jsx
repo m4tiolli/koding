@@ -21,7 +21,7 @@ function ModalCookies() {
     <div
       className={`${
         estadoModal == true ? "block" : "hidden"
-      } bg-white z-[10000] p-4 fixed bottom-2 left-2 w-[35vw] h-[25vh] rounded-xl grid place-items-center`}
+      } bg-white z-[10000] p-4 fixed bottom-2 left-2 w-[80%] h-1/5 lg:w-[35vw] lg:h-[25vh] rounded-xl grid place-items-center`}
     >
       <p className="text-left">
         Este site utiliza cookies de terceiros para melhorar sua experiência no

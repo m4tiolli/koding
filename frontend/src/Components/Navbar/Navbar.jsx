@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-
+import { TbArrowsExchange2 } from "react-icons/tb";
 import { BsGraphUp } from "react-icons/bs";
 import { AiOutlineUser } from "react-icons/ai";
 import { BiHelpCircle } from "react-icons/bi";
@@ -53,6 +53,15 @@ const Navbar = () => {
               </span>
             </Link>
           </div>
+
+          <Link to={"/pais/selecionar"}>
+            <span className="inline-flex items-center gap-5 mt-2 -mb-2">
+              <TbArrowsExchange2 className="relative text-3xl">
+                alterar criança
+              </TbArrowsExchange2>
+              <span className="text-lg">Trocar de criança</span>
+            </span>
+          </Link>
 
           <div className="flex flex-col space-y-5 mt-5">
             <Link to={"/pais/configuracao"}>

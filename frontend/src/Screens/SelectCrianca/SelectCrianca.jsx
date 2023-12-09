@@ -106,7 +106,7 @@ export function Card({ crianca, img }) {
     >
       <img
         src={img}
-        className="rounded-full w-[10rem] h-[10rem] object-cover"
+        className="rounded-full w-[5rem] h-[5rem] lg:w-[10rem] lg:h-[10rem] object-cover"
         alt=""
       />
       <p className="font-regular text-xl text-slate-900">

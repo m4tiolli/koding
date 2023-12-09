@@ -14,7 +14,6 @@ import blue from "../blue.png";
 import green from "../green.png";
 import red from "../red.png";
 import { useNavigate } from "react-router-dom";
-
 import incrivel from "../../assets/incrivel.png";
 import perfeita from "../../assets/perfeita.png";
 import pessima from "../../assets/pessima.png";
