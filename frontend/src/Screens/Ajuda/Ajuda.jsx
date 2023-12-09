@@ -6,6 +6,11 @@ import "../Ajuda/Ajuda.css";
 
 import MenuR from "../../Components/MenuR/MenuR";
 
+import HTML from '../../assets/pdfs/HTML.pdf'
+import CSS from '../../assets/pdfs/CSS.pdf'
+import JavaScript from '../../assets/pdfs/JavaScript.pdf'
+import PHP from '../../assets/pdfs/PHP.pdf'
+
 function Ajuda() {
   const navigate = useNavigate();
     
@@ -91,6 +96,7 @@ function Ajuda() {
               <div className="text-gray-700 dark:text-white">
               &emsp;Para verificar o material de apoio sobre <b>HTML</b> acesse o PDF abaixo: 
               </div>
+              <embed src={HTML} type="application/pdf" width="100%" height="500px"/>
             </details>
 
             <details className="details w-full flex items-center p-4 border-1 border-solid border-black/60">
@@ -100,6 +106,7 @@ function Ajuda() {
               <div className="text-gray-700 dark:text-white">
               &emsp;Para verificar o material de apoio sobre <b>CSS</b> acesse o PDF abaixo: 
               </div>
+              <embed src={CSS} type="application/pdf" width="100%" height="500px"/>
             </details>
 
             <details className="details w-full flex items-center p-4 border-1 border-solid border-black/60">
@@ -109,6 +116,7 @@ function Ajuda() {
               <div className="text-gray-700 dark:text-white">
               &emsp;Para verificar o material de apoio sobre <b>JavaScript</b> acesse o PDF abaixo: 
               </div>
+              <embed src={JavaScript} type="application/pdf" width="100%" height="500px"/>
             </details>
 
             <details className="details w-full flex items-center p-4 border-1 border-solid border-black/60">
@@ -118,6 +126,7 @@ function Ajuda() {
               <div className="text-gray-700 dark:text-white">
               &emsp;Para verificar o material de apoio sobre <b>PHP</b> acesse o PDF abaixo: 
               </div>
+              <embed src={PHP} type="application/pdf" width="100%" height="500px"/>
             </details>
           </div>
 
