@@ -598,7 +598,7 @@ module.exports = function (app) {
   });
 
   app.get("/crianca/:id", (req, res) => {
-    const idCrianca = req.params.idCrianca;
+    const idCrianca = req.params.id;
     db.query("SELECT * FROM crianca WHERE id = ?", [idCrianca], (err, result) => {
       if(err) {
         res.json("Erro")

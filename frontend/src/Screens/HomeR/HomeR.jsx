@@ -1,6 +1,5 @@
 import { BsFillMoonFill } from "react-icons/bs";
-import { BiSearch, BiHelpCircle } from "react-icons/bi";
-import { LuPaintBucket } from "react-icons/lu";
+import { BiHelpCircle } from "react-icons/bi";
 import { ImContrast } from "react-icons/im";
 import { useState, useEffect } from "react";
 import Desempenho from "../Desempenho/Desempenho";
@@ -10,13 +9,7 @@ import "./HomeR.css";
 import { useDisclosure } from "@chakra-ui/react";
 import { Modal, ModalContent } from "@chakra-ui/react";
 import { ChakraProvider } from "@chakra-ui/react";
-import {
-  protanomaly,
-  tritanomaly,
-  deuteranomaly,
-} from "../../Components/ColorBlind";
 import { useNavigate } from "react-router-dom";
-import Header from "../../Components/Header/Header";
 import { IoSettingsOutline } from "react-icons/io5";
 import { IoMdExit } from "react-icons/io";
 
@@ -39,10 +32,6 @@ export default function Home() {
   } = useDisclosure();
 
   const [button, setButton] = useState("desempenho");
-
-  const toggleButton = (type) => {
-    setButton(type);
-  };
 
   function Sair() {
     localStorage.removeItem("nivel");
@@ -95,23 +84,6 @@ export default function Home() {
    * @param {string} color
    * @returns
    */
-
-  function Color(mode, color) {
-    var newcolor;
-    if (mode === "protanomaly") {
-      newcolor = protanomaly(color);
-      localStorage.theme = "protanomaly";
-    } else if (mode === "deuteranomaly") {
-      newcolor = deuteranomaly(color);
-      localStorage.theme = "deuteranomaly";
-    } else if (mode === "tritanomaly") {
-      newcolor = tritanomaly(color);
-      localStorage.theme = "tritanomaly";
-    } else {
-      newcolor = color;
-    }
-    return newcolor;
-  }
 
   function darkNotAllowed() {
     return blindChecked === true ? true : false;

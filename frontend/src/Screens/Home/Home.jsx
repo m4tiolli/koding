@@ -2,7 +2,7 @@ import { BsBook, BsFillMoonFill } from "react-icons/bs";
 import { PiSword } from "react-icons/pi";
 import { AiOutlineUser } from "react-icons/ai";
 import { CiCircleMore } from "react-icons/ci";
-import { BiSearch, BiHelpCircle, BiChevronLeft } from "react-icons/bi";
+import { BiSearch, BiChevronLeft } from "react-icons/bi";
 import { LuPaintBucket } from "react-icons/lu";
 import { ImContrast, ImBlocked } from "react-icons/im";
 import Logo from "../../Components/Logo";
@@ -33,6 +33,7 @@ import boa from "../../assets/boa.png";
 import ruim from "../../assets/ruim.png";
 import { IoSettingsOutline } from "react-icons/io5";
 import { IoMdExit } from "react-icons/io";
+import VerificaPC from './../../Components/VerificaPC/VerificaPC';
 
 export default function Home({ prop }) {
   const [button, setButton] = useState("materiais");
@@ -215,6 +216,7 @@ export default function Home({ prop }) {
         />
 
         <AlertaInatividade />
+        <VerificaPC/>
         <aside
           className={`dark:bg-darkcinza h-screen w-52 p-5 fixed z-10 top-0 flex flex-col items-start justify-center shadow-lg`}
           style={{ backgroundColor: Color(mode, "#EDD8FF") }}

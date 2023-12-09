@@ -25,11 +25,6 @@ import {
 import { useEffect, useRef, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
-// import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-
-// import {Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton,} from '@chakra-ui/react';
-
-// import { useEffect, useState } from "react";
 import MenuR from "../../Components/MenuR/MenuR";
 
 function Configuracao() {
@@ -75,7 +70,7 @@ function Configuracao() {
 
   function Sair() {
     localStorage.removeItem("nivel");
-    document.location.reload()
+    document.location.reload();
   }
 
   const [responsive, setResponsive] = useState(false);
@@ -94,8 +89,6 @@ function Configuracao() {
     };
   }, []);
 
-
-
   const user = JSON.parse(atob(localStorage.getItem("user")));
 
   const [nome, setNome] = useState(user.nome);
@@ -108,7 +101,12 @@ function Configuracao() {
 
   const Update = () => {
     if (senha == user.senha) {
-      const body = { cpf, telefone, email, senha };
+      const body = { nome, cpf, telefone, email, senha };
+      user.nome = nome;
+      user.cpf = cpf;
+      user.telefone = telefone;
+      user.email = email;
+      user.senha = senha;
       localStorage.setItem("theme", color);
       axios
         .put(`https://tcckoding.azurewebsites.net/responsavel/${user.id}`, body)
@@ -124,7 +122,11 @@ function Configuracao() {
             theme: "colored",
           })
         )
-        .then(Get())
+        .then(() => {
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
+        })
         .catch((err) => console.error(err));
     } else {
       toast.error("A senha não coincide!", {
@@ -139,16 +141,6 @@ function Configuracao() {
       });
     }
   };
-
-  function Get() {
-    const body = { email, senha };
-    axios
-      .post("https://tcckoding.azurewebsites.net/responsavel/login", body)
-      .then((response) =>
-        localStorage.setItem("user", btoa(JSON.stringify(response.data)))
-      );
-    window.location.reload();
-  }
 
   const selectdalt = useRef(null);
   const selectdark = useRef(null);
@@ -174,6 +166,19 @@ function Configuracao() {
           background: "linear-gradient(108deg, #C6D6FF 0%, #FFFFFF 100%)",
         }}
       >
+        <ToastContainer
+          position="top-center"
+          autoClose={2000}
+          limit={3}
+          hideProgressBar
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
         <MenuR />
 
         <main className="w-full mr-2 lg:flex lg:flex-col lg:items-center lg:ml-48 lg:mt- overflow-hidden dark:bg-darkfundoR">
@@ -192,7 +197,6 @@ function Configuracao() {
           {/* Dados */}
 
           <div className="w-full h-full flex flex-col md:flex-row gap-y-10 ml-20 md:ml-32 lg:gap-x-12 lg:ml-40 lg:mt-5 xl:justify-center xl:gap-x-20">
-
             {/* Dados conta */}
 
             <form
@@ -220,7 +224,6 @@ function Configuracao() {
                   />
                 </label>
               </div>
-
 
               <div className="md:w-4/5 w-3/5 lg:w-[440px] flex flex-col lg:flex-row items-center">
                 <div className="w-full dark:text-white">
@@ -289,144 +292,148 @@ function Configuracao() {
                   />
                 </label>
               </div>
-              {/* 
-              <div className="md:w-4/5 w-3/5 lg:w-[440px] flex flex-col lg:flex-row items-center">
-                <div className="w-full dark:text-white">
-                  <span className="ml-7 text-center">Confirmar senha</span>
-                </div>
-
-                <label>
-                  <input
-                    className="ml-8 p-2 rounded-xl border-solid border-black outline-none shadow-lg"
-                    style={{ background: "#efefef" }}
-                    name="password"
-                    type="password"
-                  />
-                </label>
-              </div> */}
               <button
-                className="w-auto h-10 p-3 mobile375:ml-5 mobile425:ml-12 md:-ml-[220px] md:mt-64 -ml-4 lg:mt-52 lg:-ml-64 xl:-ml-72 flex items-center rounded-xl shadow-lg text-white"
+                className="w-fit fixed right-[33.5em] bottom-[10em] h-10 p-3 mobile375:ml-5 mobile425:ml-12 md:-ml-[220px] md:mt-64 -ml-4 lg:mt-52 lg:-ml-64 xl:-ml-72 flex items-center rounded-xl shadow-lg text-white"
                 style={{ background: Color(mode, "#22C55E") }}
                 type="submit"
               >
                 Salvar Alterações
               </button>
-        </form>
+            </form>
 
-        {/* Modos */}
+            {/* Modos */}
 
-        <div className="flex flex-col gap-y-5 text-lg mobile375:-ml-5 mobile425:ml-2 -ml-12">
-          <div className="flex flex-col">
-            <div className="w-52 dark:text-white">
-              <span>Modo Escuro</span>
+            <div className="flex flex-col gap-y-5 text-lg mobile375:-ml-5 mobile425:ml-2 -ml-12">
+              <div className="flex flex-col">
+                <div className="w-52 dark:text-white">
+                  <span>Modo Escuro</span>
+                </div>
+
+                <select
+                  className="p-2 w-[250px] mt-2 rounded-xl border-solid border-black outline-none shadow-lg cursor-pointer"
+                  style={{ background: "#efefef" }}
+                  name="darkMode"
+                  id="darkMode"
+                  value={color}
+                  onChange={(e) => setColor(e.target.value)}
+                  ref={selectdark}
+                  disabled={
+                    color == "tritanomaly" ||
+                    color == "deuteranomaly" ||
+                    color == "protanomaly"
+                  }
+                >
+                  <option value="">Padrão</option>
+                  <option value="dark">Habilitado</option>
+                  <option value="light">Desabilitado</option>
+                </select>
+              </div>
+
+              <div className="flex flex-col">
+                <div className="w-52 dark:text-white">
+                  <span>Modo Daltonismo</span>
+                </div>
+
+                <select
+                  className="p-2 w-[250px] mt-2 rounded-xl border-solid border-black outline-none shadow-lg cursor-pointer"
+                  style={{ background: "#efefef" }}
+                  name="contraste"
+                  id="contraste"
+                  value={color}
+                  onChange={(e) => setColor(e.target.value)}
+                  ref={selectdalt}
+                  disabled={color == "dark"}
+                >
+                  <option value="">Nenhum</option>
+                  <option value="tritanomaly">Tritanomalia</option>
+                  <option value="deuteranomaly">Deuteranomalia</option>
+                  <option value="protanomaly">Protanomalia</option>
+                </select>
+              </div>
             </div>
 
-            <select
-              className="p-2 w-[250px] mt-2 rounded-xl border-solid border-black outline-none shadow-lg cursor-pointer"
-              style={{ background: "#efefef" }}
-              name="darkMode"
-              id="darkMode"
-            >
-              <option value="system">Padrão do Sistema</option>
-              <option value="on">Habilitado</option>
-              <option value="off">Desabilitado</option>
-            </select>
-          </div>
+            {/* Logout */}
 
-          <div className="flex flex-col">
-            <div className="w-52 dark:text-white">
-              <span>Modo Daltonismo</span>
+            <div className="flex flex-col items-center md:mt-44 md:-ml-64 mobile375:-ml-5 mobile425:ml-2 lg:-ml-[340px] xl:-ml-[400px] xl:mt-52 -ml-12 justify-center py-10 w-96 text-gray-700 gap-3">
+              <div className="flex items-center gap-3 w-full">
+                <IoIosLogOut className="text-2xl dark:text-white"></IoIosLogOut>
+                <button
+                  className="text-xl dark:text-white"
+                  onClick={openLogoutModal}
+                >
+                  Sair
+                </button>
+              </div>
+
+              <div
+                className="flex items-center gap-3 w-full"
+                style={{ color: Color(mode, "#DC2626") }}
+              >
+                <BsTrash3 className="text-2xl"></BsTrash3>
+                <button className="text-xl" onClick={openDeleteAccountModal}>
+                  Excluir minha conta
+                </button>
+                <Modal
+                  isOpen={deleteAccountModalOpen}
+                  onClose={closeDeleteAccountModal}
+                  motionPreset="slideInBottom"
+                  blockScrollOnMount={false}
+                  isCentered={true}
+                >
+                  <ModalOverlay />
+                  <ModalContent>
+                    <ModalHeader>Excluir conta</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>Você deseja mesmo excluir sua conta?</ModalBody>
+                    <ModalFooter>
+                      <Button
+                        variant={"ghost"}
+                        onClick={closeDeleteAccountModal}
+                      >
+                        Voltar
+                      </Button>
+                      <Button
+                        variant={"ghost"}
+                        colorScheme={"red"}
+                        onClick={Excluir}
+                      >
+                        Excluir
+                      </Button>
+                    </ModalFooter>
+                  </ModalContent>
+                </Modal>
+                <Modal
+                  isOpen={logoutModalOpen}
+                  onClose={closeLogoutModal}
+                  motionPreset="slideInBottom"
+                  blockScrollOnMount={false}
+                  isCentered={true}
+                >
+                  <ModalOverlay />
+                  <ModalContent>
+                    <ModalHeader>Sair</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>Você deseja mesmo sair?</ModalBody>
+                    <ModalFooter>
+                      <Button variant={"ghost"} onClick={closeLogoutModal}>
+                        Voltar
+                      </Button>
+                      <Button
+                        variant={"ghost"}
+                        colorScheme={"red"}
+                        onClick={Sair}
+                      >
+                        Sair
+                      </Button>
+                    </ModalFooter>
+                  </ModalContent>
+                </Modal>
+              </div>
             </div>
-
-            <select
-              className="p-2 w-[250px] mt-2 rounded-xl border-solid border-black outline-none shadow-lg cursor-pointer"
-              style={{ background: "#efefef" }}
-              name="contraste"
-              id="contraste"
-            >
-              <option value="on">Azul</option>
-              <option value="on">Vermelho</option>
-              <option value="off">Verde</option>
-            </select>
           </div>
-        </div>
-
-
-        {/* Logout */}
-
-        <div className="flex flex-col items-center md:mt-44 md:-ml-64 mobile375:-ml-5 mobile425:ml-2 lg:-ml-[340px] xl:-ml-[400px] xl:mt-52 -ml-12 justify-center py-10 w-96 text-gray-700 gap-3">
-          <div className="flex items-center gap-3 w-full">
-            <IoIosLogOut className="text-2xl dark:text-white"></IoIosLogOut>
-            <button
-              className="text-xl dark:text-white"
-              onClick={openLogoutModal}
-            >
-              Sair
-            </button>
-          </div>
-
-          <div className="flex items-center gap-3 w-full" style={{ color: Color(mode, '#DC2626') }}>
-            <BsTrash3 className="text-2xl"></BsTrash3>
-            <button className="text-xl" onClick={openDeleteAccountModal}>
-              Excluir minha conta
-            </button>
-            <Modal
-              isOpen={deleteAccountModalOpen}
-              onClose={closeDeleteAccountModal}
-              motionPreset="slideInBottom"
-              blockScrollOnMount={false}
-              isCentered={true}
-            >
-              <ModalOverlay />
-              <ModalContent>
-                <ModalHeader>Excluir conta</ModalHeader>
-                <ModalCloseButton />
-                <ModalBody>Você deseja mesmo excluir sua conta?</ModalBody>
-                <ModalFooter>
-                  <Button
-                    variant={"ghost"}
-                    onClick={closeDeleteAccountModal}
-                  >
-                    Voltar
-                  </Button>
-                  <Button
-                    variant={"ghost"}
-                    colorScheme={"red"}
-                    onClick={Excluir}
-                  >
-                    Excluir
-                  </Button>
-                </ModalFooter>
-              </ModalContent>
-            </Modal>
-            <Modal
-              isOpen={logoutModalOpen}
-              onClose={closeLogoutModal}
-              motionPreset="slideInBottom"
-              blockScrollOnMount={false}
-              isCentered={true}
-            >
-              <ModalOverlay />
-              <ModalContent>
-                <ModalHeader>Sair</ModalHeader>
-                <ModalCloseButton />
-                <ModalBody>Você deseja mesmo sair?</ModalBody>
-                <ModalFooter>
-                  <Button variant={"ghost"} onClick={closeLogoutModal}>
-                    Voltar
-                  </Button>
-                  <Button variant={"ghost"} colorScheme={"red"} onClick={Sair}>
-                    Sair
-                  </Button>
-                </ModalFooter>
-              </ModalContent>
-            </Modal>
-          </div>
-        </div>
+        </main>
       </div>
-    </main>
-      </div >
-    </ChakraProvider >
+    </ChakraProvider>
   );
 }
 

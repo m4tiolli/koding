@@ -16,7 +16,6 @@ import axios from "axios";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import BackgroundCircles from "../../Components/BackgroundCircles";
 
 const Materiais = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -219,7 +218,7 @@ const Materiais = () => {
         {searchTerm != "" ? (
           <div className="ml-10">
             <p className="dark:text-white text-2xl font-semibold mb-6 -mt-10">
-              Mostrando resultados para "{searchTerm}"
+              Mostrando resultados para &ldquo;{searchTerm}&rdquo;
             </p>
             <div className="grid grid-cols-3 2xl:grid-cols-4 gap-y-8">
               {filteredCapitulos.map((capitulo, index) => (

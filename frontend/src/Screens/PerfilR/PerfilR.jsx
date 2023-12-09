@@ -1,10 +1,10 @@
-import { AiFillStar, AiFillHeart } from "react-icons/ai";
+import { AiFillStar } from "react-icons/ai";
 import { FaPencilAlt } from "react-icons/fa";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import MenuR from "../../Components/MenuR/MenuR";
 import Navbar from "../../Components/Navbar/Navbar";
-
+import { toast, ToastContainer } from "react-toastify";
 import {
   protanomaly,
   tritanomaly,
@@ -50,29 +50,46 @@ function Perfil() {
     }
   }, []);
 
-  const [nome, setNome] = useState("");
-  const [cpf, setCpf] = useState("");
-  const [telefone, setTelefone] = useState("");
-  const [email, setEmail] = useState("");
+  const dadosCrianca = JSON.parse(atob(localStorage.getItem("dadosCrianca")));
+  const [nome, setNome] = useState(dadosCrianca.NomeCrianca);
+  const [username, setUsername] = useState(dadosCrianca.username);
+  const [email, setEmail] = useState(dadosCrianca.EmailCrianca);
   const [senha, setSenha] = useState("");
-
+  const [confirmSenha, setConfirmSenha] = useState("");
 
   const handleSubmit = async () => {
-    const id = JSON.parse(localStorage.user).id;
-    const body = { nome, cpf, telefone, email, senha };
-    try {
-      const response = await axios.put(
-        `http://localhost:3000/responsavel/${id}`,
-        body,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      console.log("Usuário cadastrado com sucesso:", response.data);
-    } catch (error) {
-      console.error("Erro ao cadastrar usuário:", error);
+    const body = { username, email, senha };
+    if (senha == confirmSenha && senha == dadosCrianca.SenhaCrianca) {
+      dadosCrianca.username = username;
+      dadosCrianca.email = email;
+      axios
+        .put(
+          `https://tcckoding.azurewebsites.net/crianca/${dadosCrianca.IdCrianca}`,
+          body
+        )
+        .then(() => {
+          toast.success("Dados alterados com sucesso!", {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+        });
+    } else {
+      toast.error("As senhas não coincidem!", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     }
   };
 
@@ -84,10 +101,23 @@ function Perfil() {
       }}
     >
       <MenuR />
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        limit={3}
+        hideProgressBar
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
 
       <main className="w-full h-screen laptop:h-screen lg:flex lg:flex-col lg:ml-20 xl:gap-x-32 gap-x-16 overflow-hidden dark:text-white font-semibold dark:bg-darkfundoR">
-      {responsive ? <Navbar /> : ""}
-        
+        {responsive ? <Navbar /> : ""}
+
         <div className="mt-20 lg:mt-24 text-center">
           <span className="text-3xl font-semibold dark:text-white">
             Gerenciar Perfil - Criança
@@ -97,7 +127,7 @@ function Perfil() {
         {/* Dados */}
 
         <div className="flex flex-col md:flex-row md:gap-x-16 xl:flex-row xl:gap-x-32 laptop:flex-row laptop:gap-x-20 justify-center items-center md:mt-5 mt-20 mb-20">
-          <container className="flex flex-col items-center justify-center w-72 h-96 md:-mt-36 lg:-mt-2 xl:mt-6 lg:ml-32 -mt-10 gap-y-5">
+          <div className="flex flex-col items-center justify-center w-72 h-96 md:-mt-36 lg:-mt-2 xl:mt-6 lg:ml-32 -mt-10 gap-y-5">
             <span className="xl:text-3xl text-2xl font-semibold dark:text-white">
               Dados
             </span>
@@ -137,7 +167,7 @@ function Perfil() {
                 </div>
               </div>
             </div>
-          </container>
+          </div>
 
           {/*Alterar Dados */}
 
@@ -175,8 +205,8 @@ function Perfil() {
                     style={{ background: "#efefef" }}
                     name="username"
                     type="text"
-                    value={cpf}
-                    onChange={(e) => setCpf(e.target.value)}
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
                   />
                 </label>
               </div>
@@ -191,8 +221,8 @@ function Perfil() {
                     className="dark:text-black ml-8 p-2 rounded-xl border-solid border-black outline-none shadow-lg"
                     style={{ background: "#efefef" }}
                     name="email"
-                    value={telefone}
-                    onChange={(e) => setTelefone(e.target.value)}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </label>
               </div>
@@ -207,8 +237,8 @@ function Perfil() {
                     className="dark:text-black ml-8 p-2 rounded-xl border-solid border-black outline-none shadow-lg"
                     style={{ background: "#efefef" }}
                     name="password"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={senha}
+                    onChange={(e) => setSenha(e.target.value)}
                   />
                 </label>
               </div>
@@ -223,8 +253,8 @@ function Perfil() {
                     className="dark:text-black ml-8 p-2 rounded-xl border-solid border-black outline-none shadow-lg"
                     style={{ background: "#efefef" }}
                     name="password"
-                    value={senha}
-                    onChange={(e) => setSenha(e.target.value)}
+                    value={confirmSenha}
+                    onChange={(e) => setConfirmSenha(e.target.value)}
                   />
                 </label>
               </div>

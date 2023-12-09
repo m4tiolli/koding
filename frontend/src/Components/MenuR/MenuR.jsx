@@ -6,7 +6,7 @@ import { LuPaintBucket } from "react-icons/lu";
 import { ImContrast, ImBlocked } from "react-icons/im";
 import Logo from "../Logo";
 import { useState, useEffect } from "react";
-import { ModalHeader, ModalOverlay, useDisclosure } from "@chakra-ui/react";
+import { ModalOverlay, useDisclosure } from "@chakra-ui/react";
 import { Modal, ModalContent } from "@chakra-ui/react";
 import { ChakraProvider } from "@chakra-ui/react";
 import { protanomaly, tritanomaly, deuteranomaly } from "../ColorBlind";
@@ -20,7 +20,7 @@ import perfeita from "../../assets/perfeita.png";
 import pessima from "../../assets/pessima.png";
 import boa from "../../assets/boa.png";
 import ruim from "../../assets/ruim.png";
-
+import { TbArrowsExchange2 } from "react-icons/tb";
 import "../MenuR/MenuR.css";
 import { IoSettingsOutline } from "react-icons/io5";
 import { IoMdExit } from "react-icons/io";
@@ -45,10 +45,6 @@ export default function Menu({ screen }) {
   } = useDisclosure();
 
   const [button, setButton] = useState("");
-
-  const toggleButton = (type) => {
-    setButton(type);
-  };
 
   const [isChecked, setIsChecked] = useState(false);
 
@@ -184,6 +180,22 @@ export default function Menu({ screen }) {
                 perfil
               </AiOutlineUser>
               <span className="text-lg">Perfil</span>
+            </span>
+          </button>
+          <button
+            className={`dark:text-white h-24 w-full rounded-lg px-0 text-left leading-none hover:bg-white/50 dark:hover:bg-[#2c4441] ${
+              button == "pais/perfil" ? "bg-white/50 dark:bg-[#2c4441]" : ""
+            }`}
+            style={{ transition: "150ms ease-in" }}
+            onClick={() =>
+              navigate("/pais/selecionar")
+            }
+          >
+            <span className="inline-flex items-center gap-5">
+              <TbArrowsExchange2 className="relative text-3xl">
+                alterar criança
+              </TbArrowsExchange2>
+              <span className="text-lg">Trocar de criança</span>
             </span>
           </button>
 
@@ -480,7 +492,6 @@ export default function Menu({ screen }) {
             <div className="flex flex-col items-center text-white gap-y-3 text-lg">
               <span className="font-semibold">nos conte mais sobre:</span>
               <textarea
-                onResize={"none"}
                 className="text rounded-lg outline-none w-96 h-32 p-3 bg-[#41464D]"
               ></textarea>
             </div>

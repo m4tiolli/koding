@@ -1,7 +1,5 @@
 import { IoIosArrowBack } from "react-icons/io";
-
 import { useNavigate } from "react-router-dom";
-import Logo1 from "../../Components/Logo1";
 import "../Ajuda/Ajuda.css";
 
 import MenuR from "../../Components/MenuR/MenuR";
@@ -139,8 +137,8 @@ function Ajuda() {
                 Como editar meu perfi?
               </summary>
               <div className="text-gray-700 dark:text-white">
-              &emsp;No menu <b>"perfil"</b> você irá encontrar uma sessão escrita <b>"Alterar Dados"</b>, é nela que você poderá editar seu perfil.<br></br>
-              &emsp; Além disso, você poderá entrar no menu <b>"Mais"</b> e ir em <b>"Configurações"</b>, lá você poderá modificar seus dados e ativar ou desativar a acessibilidade. 
+              &emsp;No menu <b>&ltquo;perfil&rdquo;</b> você irá encontrar uma sessão escrita <b>&ltquo;Alterar Dados&rdquo;</b>, é nela que você poderá editar seu perfil.<br></br>
+              &emsp; Além disso, você poderá entrar no menu <b>&ltquo;Mais&rdquo;</b> e ir em <b>&ltquo;Configurações&rdquo;</b>, lá você poderá modificar seus dados e ativar ou desativar a acessibilidade. 
               </div>
             </details>
 
@@ -149,7 +147,7 @@ function Ajuda() {
                 Como excluir minha conta?
               </summary>
               <div className="text-gray-700 dark:text-white">
-              &emsp; Você precisará ir no menu <b>"Mais"</b> e em <b>"Configurações"</b>, lá você poderá excluir ou sair da sua conta. 
+              &emsp; Você precisará ir no menu <b>&ltquo;Mais&rdquo;</b> e em <b>&ltquo;Configurações&rdquo;</b>, lá você poderá excluir ou sair da sua conta. 
               </div>
             </details>
 

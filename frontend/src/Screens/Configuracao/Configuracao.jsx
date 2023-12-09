@@ -29,11 +29,9 @@ import axios from "axios";
 function Configuracao() {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!localStorage.getItem("user") || !localStorage.getItem("nivel")) {
-      navigate("/");
-    }
-  });
+  if (!localStorage.getItem("user") || !localStorage.getItem("nivel")) {
+    navigate("/");
+  }
   const mode = localStorage.getItem("theme");
 
   function Color(mode, color) {
@@ -72,21 +70,10 @@ function Configuracao() {
   }
 
   const user = JSON.parse(atob(localStorage.getItem("user")));
-  const [novosDados, setNovosDados] = useState([]);
 
-  useEffect(() => {
-    const idCrianca = user.id;
-    axios
-      .get(`https://tcckoding.azurewebsites.net/crianca/${idCrianca}`)
-      .then((response) => {
-        setNovosDados(response.data);
-        localStorage.setItem("user", btoa(JSON.stringify(response.data)));
-      });
-  });
-
-  const [nome, setNome] = useState(novosDados.nome);
-  const [username, setUsername] = useState(novosDados.username);
-  const [email, setEmail] = useState(novosDados.email);
+  const [nome, setNome] = useState(user.nome);
+  const [username, setUsername] = useState(user.username);
+  const [email, setEmail] = useState(user.email);
   const [senha, setSenha] = useState();
 
   const [color, setColor] = useState(localStorage.getItem("theme"));
@@ -94,8 +81,10 @@ function Configuracao() {
   const Update = () => {
     if (senha == user.senha) {
       const body = { username, email, senha };
+      user.username = username;
+      user.email = email;
+      user.email = senha;
       localStorage.setItem("theme", color);
-      console.log(body);
       axios
         .put(`https://tcckoding.azurewebsites.net/crianca/${user.id}`, body)
         .then(
@@ -110,6 +99,11 @@ function Configuracao() {
             theme: "colored",
           })
         )
+        .then(() => {
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
+        })
         .catch((err) => console.error(err));
     } else {
       toast.error("A senha não coincide!", {
